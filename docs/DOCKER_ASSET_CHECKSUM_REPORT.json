@@ -1,0 +1,8 @@
+{
+  "status": "Passed",
+  "assets": 56,
+  "checkerExitCode": 0,
+  "input": "Git HEAD blob bytes (LF checkout content)",
+  "dockerBuild": "Not run: Docker unavailable",
+  "cssUnchanged": true
+}

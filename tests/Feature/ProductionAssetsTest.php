@@ -54,7 +54,11 @@ class ProductionAssetsTest extends TestCase
         foreach ($manifest['files'] as $entry) {
             $file = public_path('assets/'.$entry['file']);
             $this->assertFileExists($file);
-            $this->assertSame($entry['sha256'], hash_file('sha256', $file));
+            $bytes = file_get_contents($file);
+            if ($entry['mode'] === 'lf-text') {
+                $bytes = str_replace("\r\n", "\n", $bytes);
+            }
+            $this->assertSame($entry['sha256'], hash('sha256', $bytes));
             if (str_ends_with($file, '.css')) {
                 preg_match_all('~url\(\s*[\'"]?([^\s)\'"]+)[\'"]?\s*\)~', file_get_contents($file), $references);
                 foreach ($references[1] as $reference) {

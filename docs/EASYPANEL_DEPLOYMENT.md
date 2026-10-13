@@ -107,3 +107,8 @@ Form kontak tetap berupa validasi frontend demo; Docker deployment ini tidak men
 ## Perbaikan asset HTTPS
 
 Lihat PRODUCTION_ASSET_FIX.md. Production URL generation kini mengikuti APP_URL HTTPS; ASSET_URL opsional memakai root origin tanpa /assets. Docker final stage memverifikasi manifest aset sebagai user non-root. Startup menolak origin HTTP production. Validasi terbaru: 10 tests / 562 assertions; Docker build belum dijalankan karena Docker CLI tidak tersedia.
+
+
+## Manifest checksum lintas platform
+
+Manifest v2 menggunakan LF-canonical hash untuk text UTF-8 dan byte-exact hash untuk gambar/fonts. Lihat DOCKER_ASSET_CHECKSUM_FIX.md dan DOCKER_ASSET_CHECKSUM_REPORT.json. Regenerate manifest setelah perubahan aset, lalu commit manifest/checker bersama. Validasi final-stage non-root tetap aktif. Test terakhir: 15 passed / 572 assertions; validasi 56 Git HEAD assets exit 0. Docker build belum dijalankan karena Docker tidak tersedia.
