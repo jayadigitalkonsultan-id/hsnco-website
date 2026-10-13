@@ -194,17 +194,17 @@
     {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "78abed5101f1d3773417dc2e13e4539e971556431760ac8226b96257d90861f8"
+      "sha256": "56835fe782d57307c834923258b88b200e8fddd9e322ab978dbfeafb8a8a38aa"
     },
     {
       "file": "js/content-data.js",
       "mode": "lf-text",
-      "sha256": "0d4e1a5e506a3628bb7c60b578700330ebb59095bab113e06c2701be37467903"
+      "sha256": "cdb10abc936c9739a1218d1f0fcfcd6dd2a24dcdadb0450e19fee892aada6a33"
     },
     {
       "file": "js/main.js",
       "mode": "lf-text",
-      "sha256": "0b2fd52a26be04d6ed5129955a70c02d2f20bd0a6f304b9a365ea4fcc449b10c"
+      "sha256": "e23859d8c6fba6dcd4258d8974c0d21f6ef411521bca5aa29bb59fe34bee15e7"
     },
     {
       "file": "plugins-init/bootstrap-init.js",
@@ -214,7 +214,7 @@
     {
       "file": "plugins-init/jstree-init.js",
       "mode": "lf-text",
-      "sha256": "e86871a42fe50597addbac854ec0e34f7702cdf999848468b3c8758c5abf4403"
+      "sha256": "4b896500425e723d9e1b3b0590139a202443878fd9a8c9be81f79dc83ce31757"
     },
     {
       "file": "vendor/bootstrap/LICENSE",

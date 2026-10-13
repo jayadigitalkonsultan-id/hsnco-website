@@ -10,19 +10,19 @@
       const practice = content.practices.find(item => item.id === trigger.dataset.practice);
       if (!practice) return;
       ({ title, description } = practice); list = practice.services;
-      label = 'Practice overview'; subtitle = 'Scope of services';
+      label = 'Gambaran bidang praktik'; subtitle = 'Lingkup layanan';
       image = practice.image;
     } else if (trigger.hasAttribute('data-profile')) {
       title = content.roles[Number(trigger.dataset.profile)];
-      description = 'Profile placeholder. This stock portrait and preview do not identify an HSNCO lawyer. The firm must supply and approve the actual profile.';
-      list = ['Approved name and role', 'Verified biography and practice areas', 'Approved portrait and qualifications', 'Verified representative experience'];
-      label = 'Profile preview'; subtitle = 'Content to supply';
+      description = 'Profil contoh. Foto ilustrasi dan pratinjau ini tidak menunjukkan identitas advokat HSNCO. Firma perlu menyediakan dan menyetujui profil yang sebenarnya.';
+      list = ['Nama dan peran yang disetujui', 'Biografi dan bidang praktik yang terverifikasi', 'Potret dan kualifikasi yang disetujui', 'Pengalaman penanganan perkara yang terverifikasi'];
+      label = 'Pratinjau profil'; subtitle = 'Konten yang perlu dilengkapi';
       image = `team${Number(trigger.dataset.profile) + 1}`;
     } else {
       title = content.newsTitles[Number(trigger.dataset.insight)];
-      description = 'Editorial title retained from the source design. A full article has not been supplied; no legal analysis or publication date is asserted.';
-      list = ['Approved article and summary', 'Verified author and publication date', 'Reviewed references and legal content'];
-      label = 'Editorial preview'; subtitle = 'Publication requirements';
+      description = 'Judul publikasi berasal dari desain sumber. Artikel lengkap belum tersedia; tidak ada klaim analisis hukum atau tanggal terbit.';
+      list = ['Artikel dan ringkasan yang disetujui', 'Penulis dan tanggal terbit yang terverifikasi', 'Referensi dan isi hukum yang telah ditinjau'];
+      label = 'Pratinjau publikasi'; subtitle = 'Persyaratan publikasi';
       image = ['investment', 'transactions', 'data'][Number(trigger.dataset.insight)];
     }
     modal.querySelector('#detailTitle').textContent = title;
@@ -43,7 +43,7 @@
         card.hidden = !match; visible += Number(match);
       });
       document.querySelector('.empty-state').hidden = visible !== 0;
-      document.querySelector('[data-results]').textContent = `${visible} profile preview${visible === 1 ? '' : 's'}`;
+      document.querySelector('[data-results]').textContent = `${visible} profil contoh`;
     };
     search.addEventListener('input', apply);
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
@@ -52,7 +52,7 @@
       apply();
     }));
   }
-  const values = [['Straightforward approach.', 'We understand the business behind the legal question. Our role is to make complexity clear and the next decision easier.'], ['Integrity, without compromise.', 'We protect our clients’ interests with independence, discretion, and integrity.'], ['Reliability in every matter.', 'Responsive counsel, senior attention, and advice you can act on from beginning to outcome.']];
+  const values = [['Pendekatan yang jelas.', 'Kami memahami konteks bisnis di balik persoalan hukum. Peran kami adalah menjelaskan kompleksitas dan memudahkan pengambilan keputusan berikutnya.'], ['Integritas tanpa kompromi.', 'Kami menjaga kepentingan klien dengan independensi, kehati-hatian, dan integritas.'], ['Keandalan dalam setiap perkara.', 'Pendampingan yang tanggap, perhatian profesional berpengalaman, dan nasihat yang dapat diterapkan dari awal hingga hasil akhir.']];
   document.querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => {
     const [title, description] = values[Number(button.dataset.value)];
     document.getElementById('value-title').textContent = title;

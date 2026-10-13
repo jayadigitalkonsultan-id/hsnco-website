@@ -1,6 +1,6 @@
 @php
     $pageTitle = trim($__env->yieldContent('title', 'HSNCO'));
-    $pageDescription = trim($__env->yieldContent('description', 'HSNCO website'));
+    $pageDescription = trim($__env->yieldContent('description', 'Situs web HSNCO'));
 @endphp
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ $pageDescription }}"><meta name="theme-color" content="#080808">

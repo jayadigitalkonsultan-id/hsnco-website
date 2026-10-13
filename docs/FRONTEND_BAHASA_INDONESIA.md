@@ -1,0 +1,11 @@
+# Bahasa Indonesia pada frontend HSNCO
+
+Seluruh tujuh halaman publik kini menggunakan bahasa Indonesia: beranda, tentang firma, bidang praktik, profesional, publikasi, kontak dan peta situs. Navigasi/footer, judul dan deskripsi SEO, banner, CTA, alt/ARIA/placeholder, label formulir, deskripsi/layanan praktik, pratinjau profil/artikel, nilai firma, pencarian, status hasil, sitemap dan pesan validasi/feedback telah diterjemahkan. HTML memakai lang=id.
+
+Nama HSNCO, logo, dan nama resmi direktori seperti Chambers Asia-Pacific/IFLR1000 tetap dipertahankan. Konten yang belum terverifikasi tetap ditandai sebagai contoh/konten sementara; terjemahan tidak menambahkan klaim firma baru. Form tetap validasi demonstrasi dan tidak mengirim/menyimpan data. Penamaan route, ID, schema field dan alias gambar tidak diterjemahkan agar fungsi tetap kompatibel. CSS, gambar, database dan .env tidak diubah.
+
+Teks Blade tersedia di resources/views/frontend, layouts/partials dan components/frontend. Teks dinamis ada di public/assets/js/content-data.js, components.js, main.js dan plugins-init/jstree-init.js. Daftar padanan awal ada di tools/frontend-id.tsv. Untuk perubahan konten berikutnya, edit view/data secara langsung lalu regenerate docker/assets-manifest.json melalui node tools/update-asset-manifest.mjs jika JS/assets berubah.
+
+Validasi aktual: 17 tests passed / 634 assertions; browser QA 42 kombinasi responsif, semua sembilan modal praktik, profil/artikel, pencarian berbahasa Indonesia, formulir, accordion, values dan jsTree lolos. 14 axe scans tidak menemukan WCAG A/AA violations terdeteksi. Source CSS tidak berubah dan tidak ada overflow/HTTP 404/console error dalam pengujian. Bukti di docs/qa-id/report.json dan 14 screenshot desktop/mobile.
+
+Jalankan browser QA dari tools/: node indonesian-qa.mjs, dengan preview localhost:4180 aktif. tools/frontend-qa.mjs adalah alat perbandingan visual historis dengan template Inggris dan tidak menjadi baseline perbandingan teks/layout terjemahan ini. Deployment production masih membutuhkan commit/push main dan redeploy EasyPanel; hasil terjemahan ini belum dinyatakan sudah live.

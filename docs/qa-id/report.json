@@ -1,0 +1,292 @@
+{
+  "status": "Passed",
+  "viewports": [
+    {
+      "route": "/",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 1920,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 1366,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 768,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/practice-areas",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/team",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/insights",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "width": 375,
+      "passed": true
+    },
+    {
+      "route": "/sitemap",
+      "width": 375,
+      "passed": true
+    }
+  ],
+  "checks": [
+    "42 localized page/viewport checks: lang=id, Indonesian navigation, no overflow, HTTP errors or English UI remnants in main copy.",
+    "Practice/profile/article modal translations, Indonesian expertise search, result count, required/email validity messages, honest form feedback, accordion, values and jsTree."
+  ],
+  "errors": [],
+  "accessibility": [
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/practice-areas",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/team",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/insights",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/contact",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/sitemap",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/practice-areas",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/team",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/insights",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/sitemap",
+      "width": 390,
+      "violations": []
+    }
+  ]
+}
