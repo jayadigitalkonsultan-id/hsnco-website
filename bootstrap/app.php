@@ -11,7 +11,16 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // EasyPanel terminates TLS; enable only for the configured private proxy network.
+        $proxies = env('TRUSTED_PROXIES');
+        if (is_string($proxies) && trim($proxies) !== '') {
+            $middleware->trustProxies(
+                at: trim($proxies) === '*' ? '*' : array_filter(array_map('trim', explode(',', $proxies))),
+                headers: \Illuminate\Http\Request::HEADER_X_FORWARDED_FOR
+                    | \Illuminate\Http\Request::HEADER_X_FORWARDED_PORT
+                    | \Illuminate\Http\Request::HEADER_X_FORWARDED_PROTO,
+            );
+        }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

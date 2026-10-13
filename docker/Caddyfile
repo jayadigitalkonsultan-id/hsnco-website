@@ -1,0 +1,21 @@
+{
+    auto_https off
+    admin off
+    frankenphp
+}
+
+:8080 {
+    root * /app/public
+    encode zstd gzip
+
+    @hidden path_regexp hidden (^|/)\.
+    respond @hidden 404
+    @uploaded_script path_regexp uploaded_script (?i)^/storage/.*\.(php|phtml|phar)(/.*)?$
+    respond @uploaded_script 404
+
+    php_server
+    log {
+        output stdout
+        format json
+    }
+}
