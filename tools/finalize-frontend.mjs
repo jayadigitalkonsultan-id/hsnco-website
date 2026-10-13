@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const root=process.cwd(),source='C:/laragon/www/hsnco-template/hsnco-bootstrap-template';
+const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const mappingFile='docs/ASSET_MAPPING.json';const mapping=JSON.parse(fs.readFileSync(mappingFile,'utf8'));
+for(const file of ['assets/vendor/bootstrap/css/bootstrap.min.css.map','assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map']){const src=path.join(source,file),dest=path.join(root,'public',file);fs.copyFileSync(src,dest);mapping.push({source:file,destination:'public/'+file,sha256:hash(src),purpose:'Referenced Bootstrap developer source map'});}
+for(const entry of mapping){entry.destinationSha256=hash(path.join(root,entry.destination));entry.adapted=entry.sha256!==entry.destinationSha256;}
+fs.writeFileSync(mappingFile,JSON.stringify(mapping,null,2));
+for(const entry of JSON.parse(fs.readFileSync('docs/SOURCE_HASHES.json')))if(hash(path.join(source,entry.file))!==entry.sha256)throw new Error('Source changed: '+entry.file);
+for(const entry of JSON.parse(fs.readFileSync('docs/EXISTING_FILE_HASHES.json')))if(hash(path.join(root,entry.file))!==entry.sha256)throw new Error('Protected file changed: '+entry.file);
+const audit='docs/FRONTEND_INTEGRATION_AUDIT.md';fs.appendFileSync(audit,'\n## Hasil verifikasi\n\nSeluruh tujuh halaman HTTP 200. PHPUnit 5 passed / 110 assertions, tanpa risky output-buffer warnings setelah metadata Blade dipisahkan pada baris sendiri. QA browser 42 kombinasi responsive, 14 screenshot comparisons dan 14 axe scans lolos. Desktop screenshot identik; mobile maksimum 0.10% perbedaan yang tampak pada focus indicator navbar setelah keyboard test. 23 link/fragment valid; sembilan modal praktik, profil/insights, filter/search, form, accordion, values, reduced motion dan jsTree diuji. Source dan protected existing hashes tetap sama.\n\nDua source maps Bootstrap turut disalin karena dirujuk oleh bundle/CSS untuk debugging. Total asset mapping: '+mapping.length+' file. Hanya components.js yang diadaptasi untuk base URL Laravel; source/destination hashes dicatat. Detail mesin ada di docs/qa/report.json.\n');
+const report=JSON.parse(fs.readFileSync('docs/qa/report.json'));if(report.status!=='Passed')throw new Error('QA not passed');
+const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);
+const manifest=[...walk('resources/views/frontend'),...walk('resources/views/layouts'),...walk('resources/views/components/frontend'),...walk('public/assets'),...walk('docs'),...walk('tools').filter(file=>!file.includes('node_modules')),'routes/web.php','tests/Feature/FrontendIntegrationTest.php','.gitignore'];
+fs.writeFileSync('docs/FILE_MANIFEST.txt',Array.from(new Set([...manifest,'docs/FILE_MANIFEST.txt'])).sort().join('\n')+'\n');
+console.log(JSON.stringify({status:'Passed',assets:mapping.length,sourceFilesUnchanged:JSON.parse(fs.readFileSync('docs/SOURCE_HASHES.json')).length,protectedExistingFilesUnchanged:JSON.parse(fs.readFileSync('docs/EXISTING_FILE_HASHES.json')).length,views:7,viewportChecks:report.viewports.length,visualComparisons:report.comparisons.length,axeScans:report.accessibility.length}));

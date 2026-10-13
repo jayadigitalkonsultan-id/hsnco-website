@@ -1,0 +1,12 @@
+{
+  "name": "hsnco-frontend-qa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright": "1.56.1",
+    "axe-core": "4.11.0",
+    "pngjs": "7.0.0",
+    "pixelmatch": "5.3.0"
+  }
+}

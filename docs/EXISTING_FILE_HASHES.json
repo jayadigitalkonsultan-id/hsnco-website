@@ -1,0 +1,46 @@
+[
+  {
+    "file": ".env",
+    "sha256": "1d11bf4e6382ca2dab1de589da339e971ca3c45384c1b09771964ea794a3ae92"
+  },
+  {
+    "file": "composer.json",
+    "sha256": "2c2ee477271a0dcdf9ae5830b75da13049f5236e556d9e086d8f0cbb5e645bf5"
+  },
+  {
+    "file": "composer.lock",
+    "sha256": "374b0c1874e73f041fa4385e8788c187d3b71aac6ae317149a627a25cf2dfe12"
+  },
+  {
+    "file": "package.json",
+    "sha256": "f468a85e1fc5e344ff9505f0aaa407b3307fdc2af2f4ad9891a31c6c5d0a2845"
+  },
+  {
+    "file": "vite.config.js",
+    "sha256": "1bd7f75ae1df969c819e63114e9be5f0e2a69e399d4dcab4373aa680314a93d9"
+  },
+  {
+    "file": "bootstrap/app.php",
+    "sha256": "bba9ff06394e0df3dc993a33d0dacc60fcbfc169266abf6a4b230aa33892571a"
+  },
+  {
+    "file": "config/auth.php",
+    "sha256": "d5bd78db15ec31df30248bb56dff53d385d7826d9ab0cfb2846dc6ce06d531c0"
+  },
+  {
+    "file": "config/session.php",
+    "sha256": "c7f637c49f3e61d5488a11653b06a6b5a8a73b335d1dadbd84666be5ec4f6de6"
+  },
+  {
+    "file": "database/database.sqlite",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "resources/views/welcome.blade.php",
+    "sha256": "2712f5909e694cf0676ace8a9b9da3e190293e7a6cb5995fde756491c8385521"
+  },
+  {
+    "file": "tests/Feature/ExampleTest.php",
+    "sha256": "aaa4a192fb4aa96d4e81eda06a29968da3d9a73b71026b87a67297e66dd985b8"
+  }
+]

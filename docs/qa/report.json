@@ -1,0 +1,735 @@
+{
+  "date": "2026-10-13",
+  "status": "Passed",
+  "viewports": [
+    {
+      "id": "home",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 1920,
+      "scroll": 1920,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "home",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 1440,
+      "scroll": 1440,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "home",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 1366,
+      "scroll": 1366,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "home",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 768,
+      "scroll": 768,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "home",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 390,
+      "scroll": 390,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "home",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Strategic Legal Counsel — HSNCO",
+      "description": "Explore HSNCO’s legal service template, practice areas, firm approach and professional directory.",
+      "active": 1,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "about",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "About the Firm — HSNCO",
+      "description": "Discover the HSNCO template’s firm philosophy, values and approach; historical information awaits verification.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "practice-areas",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Practice Areas — HSNCO",
+      "description": "Browse the practice areas retained from the HSNCO source designs, with accessible service overview previews.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "team",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Our Professionals — HSNCO",
+      "description": "Explore the HSNCO professional directory layout. Profile names, credentials and biographies await verified firm content.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "insights",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Insights & Publications — HSNCO",
+      "description": "Editorial preview layouts for HSNCO insights. Full articles, author names and publication dates await approval.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "contact",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Contact Us — HSNCO",
+      "description": "Contact page layout and locally validated enquiry form. Verified contact details and a submission backend are pending.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    },
+    {
+      "id": "sitemap",
+      "width": 375,
+      "scroll": 375,
+      "h1": 1,
+      "main": 1,
+      "duplicates": [],
+      "title": "Website Sitemap — HSNCO",
+      "description": "Explore HSNCO website pages through an accessible visual sitemap.",
+      "active": 2,
+      "bootstrap": 1,
+      "images": true
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "home",
+      "width": 1440,
+      "height": 9009,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "about",
+      "width": 1440,
+      "height": 5835,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "practice-areas",
+      "width": 1440,
+      "height": 3391,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "team",
+      "width": 1440,
+      "height": 5277,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "insights",
+      "width": 1440,
+      "height": 2392,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "contact",
+      "width": 1440,
+      "height": 2153,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "sitemap",
+      "width": 1440,
+      "height": 1673,
+      "changedPixels": 0,
+      "ratio": 0
+    },
+    {
+      "id": "home",
+      "width": 390,
+      "height": 12459,
+      "changedPixels": 809,
+      "ratio": 0.00016649482096147157
+    },
+    {
+      "id": "about",
+      "width": 390,
+      "height": 7508,
+      "changedPixels": 832,
+      "ratio": 0.0002841413603267626
+    },
+    {
+      "id": "practice-areas",
+      "width": 390,
+      "height": 4818,
+      "changedPixels": 832,
+      "ratio": 0.00044278400442784003
+    },
+    {
+      "id": "team",
+      "width": 390,
+      "height": 6965,
+      "changedPixels": 832,
+      "ratio": 0.0003062933716200048
+    },
+    {
+      "id": "insights",
+      "width": 390,
+      "height": 3291,
+      "changedPixels": 832,
+      "ratio": 0.0006482325534285425
+    },
+    {
+      "id": "contact",
+      "width": 390,
+      "height": 3348,
+      "changedPixels": 832,
+      "ratio": 0.0006371963361210673
+    },
+    {
+      "id": "sitemap",
+      "width": 390,
+      "height": 2155,
+      "changedPixels": 832,
+      "ratio": 0.0009899458623356535
+    }
+  ],
+  "checks": [
+    "Seven Laravel pages at six breakpoints: HTTP 200, decoded images/fonts, one h1/main, no duplicate IDs/Bootstrap, unique metadata, mobile menu/Escape/focus restoration and no overflow.",
+    "14 source-versus-Laravel full-page screenshot comparisons at desktop/mobile; no significant regression (<1% pixel threshold).",
+    "23 internal URLs/fragments valid.",
+    "All nine practice modals, generated absolute image paths, Escape and focus restoration.",
+    "Professional filters/search/empty state and profile modal.",
+    "Insight modals, CSRF token, honest local-only forms/required/email/whitespace validation and accordion.",
+    "Values controls, reduced-motion, jsTree and generated sitemap route links.",
+    "Entire source and protected existing environment/composer/Vite/auth/database/scaffold hashes unchanged."
+  ],
+  "errors": [],
+  "accessibility": [
+    {
+      "id": "home",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "about",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "practice-areas",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "team",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "insights",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "contact",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "sitemap",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "id": "home",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "about",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "practice-areas",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "team",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "insights",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "contact",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "id": "sitemap",
+      "width": 390,
+      "violations": []
+    }
+  ]
+}

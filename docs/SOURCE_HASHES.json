@@ -1,0 +1,442 @@
+[
+  {
+    "file": ".gitignore",
+    "sha256": "7e6d164849fc39b87915a553395364fac2a75f37d806a0354bbe310b04967858"
+  },
+  {
+    "file": "assets/css/components.css",
+    "sha256": "7030a2e73c63d03803be9e76572a9394b2cf1013b46db48c3a87d4f3766cd2d8"
+  },
+  {
+    "file": "assets/css/home.css",
+    "sha256": "63603c02403d486e3109a0201e5f2be054c0f25731813efd8ab02a6df5fe0d27"
+  },
+  {
+    "file": "assets/css/inner-pages.css",
+    "sha256": "a4f1313aa737aa6f7586d5194229f6692bc95e0786fd2395c04c3b0b5ede88ad"
+  },
+  {
+    "file": "assets/css/plugins.css",
+    "sha256": "8517ed638c9bfb85f796a9438d5b806bb57a1cf1593975d479cc58a7dbf6f2ab"
+  },
+  {
+    "file": "assets/css/responsive.css",
+    "sha256": "82219125dea1e3382ce5274564f4b49ac1fa50635930979e2cfbefbcbfcb8215"
+  },
+  {
+    "file": "assets/css/style.css",
+    "sha256": "25982bd2159c6ba949f0328b0c35fff560d9f515c34c23e87ca85399f50046a5"
+  },
+  {
+    "file": "assets/css/variables.css",
+    "sha256": "e360d04ad18a6d39ff9dc3b88b1cf2be9d3782ce5570bfb7af8540e0c2eed79e"
+  },
+  {
+    "file": "assets/data/practice-areas.json",
+    "sha256": "78337de9520555ee07bf35a16be933ec9f7f86fea96f05c93e1e18e140015af6"
+  },
+  {
+    "file": "assets/fonts/cormorant-garamond-OFL.txt",
+    "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
+  },
+  {
+    "file": "assets/fonts/cormorant-italic.woff2",
+    "sha256": "4fb55a7a6d564d428061fe12c82c896264bcc8b7f0b52840bf88e0db5b91256f"
+  },
+  {
+    "file": "assets/fonts/cormorant.woff2",
+    "sha256": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235"
+  },
+  {
+    "file": "assets/fonts/manrope-OFL.txt",
+    "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  {
+    "file": "assets/fonts/manrope.woff2",
+    "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+  },
+  {
+    "file": "assets/fonts/playfair-display-OFL.txt",
+    "sha256": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e"
+  },
+  {
+    "file": "assets/fonts/playfair-italic.woff2",
+    "sha256": "8f074624e50ab805878b26ab5f3e0fa360043d546c35b043947e96a5c7071970"
+  },
+  {
+    "file": "assets/fonts/playfair.woff2",
+    "sha256": "1e3429a2122b4171bf393c8de5c501820e17ca2074c498d7080e2326975d825c"
+  },
+  {
+    "file": "assets/icons/favicon.svg",
+    "sha256": "f18c13de5e751d56a8e97e1e2079985d2105e0c66cb8bdeec10ef0061e50d887"
+  },
+  {
+    "file": "assets/images/banking.jpg",
+    "sha256": "58d23e39de5178d7fb3b80474877af21d9150e4e684311a0fbb734b7f82eaaa5"
+  },
+  {
+    "file": "assets/images/corporate.jpg",
+    "sha256": "7f130fbaa3727b3578cd7700f1df5f1132ab2f79bb281e6c5fc527f60897217e"
+  },
+  {
+    "file": "assets/images/data.jpg",
+    "sha256": "e2e0586acdd9fd4f1960501fea3741b41333475fffe950e6b7a2f985ed030369"
+  },
+  {
+    "file": "assets/images/disputes.jpg",
+    "sha256": "a8e987715b7cd4a070eedbae477e396f87bc28f32c91c07464dc38b4abf93450"
+  },
+  {
+    "file": "assets/images/employment.jpg",
+    "sha256": "fff2023f07c0767d8f7f0efa2f320af24d7bfd5977a732544fcf0ed77c3dc0d1"
+  },
+  {
+    "file": "assets/images/finance.jpg",
+    "sha256": "da7e4085f0ff72947c42793955c7f8ead139260bb782cea57179996f2384da3b"
+  },
+  {
+    "file": "assets/images/hero.jpg",
+    "sha256": "b538650e07f6127e168a9c059ef8c6b06e11e94d96feb8592a5a07539c11a812"
+  },
+  {
+    "file": "assets/images/investment.jpg",
+    "sha256": "390382d0e979c293632c3fc8c8f129089ddd27a6d588c070cbed7b87f4d78dad"
+  },
+  {
+    "file": "assets/images/logo-alternate-dark.png",
+    "sha256": "44825784bc854e7b92d6c97b0e129489580566fec179e37cc8a8610f18f20aff"
+  },
+  {
+    "file": "assets/images/logo-alternate-white.png",
+    "sha256": "cc9910c69726d1985a14233a510879c25ba8b68a25a8163088fa74c0c2d43869"
+  },
+  {
+    "file": "assets/images/logo-dark.png",
+    "sha256": "139007ba8e5e866fd37fb7ef556eda42d1146a133c62ff1bed5a99568fffee25"
+  },
+  {
+    "file": "assets/images/logo-white.png",
+    "sha256": "c26e0aae33a80b0cad49d3e2f4416190e9f78d45b8bae9bdf3ab209cf7737d98"
+  },
+  {
+    "file": "assets/images/maritime.jpg",
+    "sha256": "6fca7959364a5f293752b6fc84650132f6b498912b9a5049e927137fb82d36d0"
+  },
+  {
+    "file": "assets/images/mergers.jpg",
+    "sha256": "7d858b1b550ed2c241b2fa5c9d98b71fbdfa6658aa88cc345fa6039897f1bc51"
+  },
+  {
+    "file": "assets/images/office.jpg",
+    "sha256": "01aae34f41e28f09a48f71664e8671a31a2cf7512c7e02042281c36a574ce9b8"
+  },
+  {
+    "file": "assets/images/projects.jpg",
+    "sha256": "650c177fa725a800e87fb30d6530c9f2af834684d3e1cf58c8ca96a91f9d0956"
+  },
+  {
+    "file": "assets/images/team1.jpg",
+    "sha256": "165c6b835384b07af9d4ea883386ce18fac0e6761a1151d13f35065233e98660"
+  },
+  {
+    "file": "assets/images/team2.jpg",
+    "sha256": "c9467c2d6f42a336e67fd191601b59014ca10be97c05cc3fbb5d38c4e2e0a364"
+  },
+  {
+    "file": "assets/images/team3.jpg",
+    "sha256": "9a032338e9564cc5b200b831378fb7b053ed0f8bc6d30f974b9169823551ab7d"
+  },
+  {
+    "file": "assets/images/team4.jpg",
+    "sha256": "c350542294bf8f6eb53ab9bc62e1800ace03eeb72b55a255531a586f4af2e9fe"
+  },
+  {
+    "file": "assets/images/team5.jpg",
+    "sha256": "18f07a943d08909ec39c5aec356e95677fc880fc1db1a7c2415d9e0b43f02d3b"
+  },
+  {
+    "file": "assets/images/team6.jpg",
+    "sha256": "8c754e73dcdd7ee049ffe4c2c32d39b95d7e5fbefc3447784c46e511ec6d4ddb"
+  },
+  {
+    "file": "assets/images/technology.jpg",
+    "sha256": "e5020f2eeb2387a6d49931862bc59580e6fb18e7857470cc62bf2a8649e13a55"
+  },
+  {
+    "file": "assets/images/transactions.jpg",
+    "sha256": "f249454a07680c5d24f9a5383359944a3d84f1b0d32f2c838914b661c7dd683b"
+  },
+  {
+    "file": "assets/images/values.jpg",
+    "sha256": "9a69e3f07adadd84270af4b2904769b326895b1efd7a704a2e0fa6664167e854"
+  },
+  {
+    "file": "assets/js/components.js",
+    "sha256": "19c6681926dfec35cf74977bddb15d82abedba9c633b580aff13d192478ae48b"
+  },
+  {
+    "file": "assets/js/content-data.js",
+    "sha256": "0d4e1a5e506a3628bb7c60b578700330ebb59095bab113e06c2701be37467903"
+  },
+  {
+    "file": "assets/js/main.js",
+    "sha256": "0b2fd52a26be04d6ed5129955a70c02d2f20bd0a6f304b9a365ea4fcc449b10c"
+  },
+  {
+    "file": "assets/plugins-init/bootstrap-init.js",
+    "sha256": "76d2f7f0ac5abfc24ce5fec331dd06090eefe890d6002d96007348fc86013366"
+  },
+  {
+    "file": "assets/plugins-init/jstree-init.js",
+    "sha256": "e86871a42fe50597addbac854ec0e34f7702cdf999848468b3c8758c5abf4403"
+  },
+  {
+    "file": "assets/plugins-init/README.md",
+    "sha256": "138ccbcc6be21cbd8a80c342ce36332b3445a9dfba3a127bbfa95d96f24d4daa"
+  },
+  {
+    "file": "assets/vendor/bootstrap/css/bootstrap.min.css",
+    "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede"
+  },
+  {
+    "file": "assets/vendor/bootstrap/css/bootstrap.min.css.map",
+    "sha256": "48144faf6aa0fb3cd2ce748d9730238f888f4ab715f05dabd1c9af2c5671988a"
+  },
+  {
+    "file": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+    "sha256": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7"
+  },
+  {
+    "file": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map",
+    "sha256": "c61123e58cc0a4b65d737ba070c485911b3dbec6d7b802bdf6628395abd9c08b"
+  },
+  {
+    "file": "assets/vendor/bootstrap/LICENSE",
+    "sha256": "4620c84ad5ce8602ff65640ed6b7c8b78ebb9e036584f0ebc1ccc88206a4bb51"
+  },
+  {
+    "file": "assets/vendor/jquery/jquery.min.js",
+    "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a"
+  },
+  {
+    "file": "assets/vendor/jquery/jquery.min.map",
+    "sha256": "cf74d51c62d299189989130ebb423b30453532fdc8988d8e2b71b1b9165a80b8"
+  },
+  {
+    "file": "assets/vendor/jquery/LICENSE.txt",
+    "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d"
+  },
+  {
+    "file": "assets/vendor/jstree/jstree.min.js",
+    "sha256": "b7754dd60e7cb55e608675ee5112939625c8090710d33c079868e132010b1d6a"
+  },
+  {
+    "file": "assets/vendor/jstree/LICENSE-MIT",
+    "sha256": "31211520f079a45fbe812303d02e864ce4465359715b7a10cb92852a6f8927a6"
+  },
+  {
+    "file": "assets/vendor/jstree/themes/default/32px.png",
+    "sha256": "3a5c5ca760a324913b14af3e9c0f496b50d5c09d17dcf09786261881c8200f8d"
+  },
+  {
+    "file": "assets/vendor/jstree/themes/default/40px.png",
+    "sha256": "a83492a1563137335ce3d41d82552c17104ebea9bb80c3dbe7673201b92197d7"
+  },
+  {
+    "file": "assets/vendor/jstree/themes/default/style.min.css",
+    "sha256": "a0e940031a2893b30c999476073c0ccb774fdb08614171b7f2b721f4ce0a7a10"
+  },
+  {
+    "file": "assets/vendor/jstree/themes/default/throbber.gif",
+    "sha256": "28e3fcaacae52189201f54a20576ee63c7450be82a0ee55398ac2f51bed98fac"
+  },
+  {
+    "file": "assets/vendor/manifest.json",
+    "sha256": "7adfd2d7798f417287bfe8a9fe7c54cb5e6355ecefa45fc5f016313516784cb0"
+  },
+  {
+    "file": "assets/vendor/README.md",
+    "sha256": "bef20ea063c038ecac3a746b565e5a078d399d9dad52110f92dc00d5ec1c9264"
+  },
+  {
+    "file": "components/footer.html",
+    "sha256": "529e8dabeaafb420c1aed236dfde1c2775419e049be0dac4ac005cc4848669e1"
+  },
+  {
+    "file": "components/header.html",
+    "sha256": "4e22ef818ad721645ae4fb7868853150d69e0d5397b410bf79d46c584e5d182f"
+  },
+  {
+    "file": "components/navigation.html",
+    "sha256": "73c9d18b80757ec50a2ad6c257fa8b52b30f8908c933c51b07db7ddcee63d356"
+  },
+  {
+    "file": "docs/ASSET_MANIFEST.json",
+    "sha256": "9a1b5f538787c69636ba878ab4be42a01941f3eb22c92037e407888588839357"
+  },
+  {
+    "file": "docs/DESIGN_AUDIT.md",
+    "sha256": "4c3965a7d1da931b00aa641bfc2363b33d09bd52ce9363950cf0e8831869aad5"
+  },
+  {
+    "file": "docs/DESIGN_SYSTEM.md",
+    "sha256": "da525d667efb6e6a678fcddb958c30a4a230e4281f900e6a0fe075bf6e9a341e"
+  },
+  {
+    "file": "docs/FILE_MANIFEST.txt",
+    "sha256": "6a1c32232e4cc47eab5237fe3eadbdfa90db9b2c2801d2311de9b21842f88e7b"
+  },
+  {
+    "file": "docs/PLUGIN_ARCHITECTURE.md",
+    "sha256": "a07ff1d202ef0c9420085a8bbae4c965c1fcc987a67be49818a9d69f5c65c093"
+  },
+  {
+    "file": "docs/qa/about-1440.png",
+    "sha256": "5a29e4d03ae2f299111f9aa9307cb0fa59ce42de37bd20c239327a4727f522e0"
+  },
+  {
+    "file": "docs/qa/about-390.png",
+    "sha256": "8a17b2648211c81c777b10ee216bf40a7772f2ed02de57c8caf6c93d1b8f5480"
+  },
+  {
+    "file": "docs/qa/contact-1440.png",
+    "sha256": "748fde84f598708a10ffc3830ec53b16b8d8af3d92b90f1a8e6f912de5da6bba"
+  },
+  {
+    "file": "docs/qa/contact-390.png",
+    "sha256": "5d2e90a493d53561fa6ac70e8b63ee2a622b00c99b5e6b3799e66b60e91d6f48"
+  },
+  {
+    "file": "docs/qa/home-hero-390.png",
+    "sha256": "1ea7a16f996f342011adede47f85c20f916dbfa86b28f5f7c093a4cc7fddc4f1"
+  },
+  {
+    "file": "docs/qa/index-1440.png",
+    "sha256": "bb0d4286b7491e209613331c65cf28d0054f62c5d61ce89747bebbf7988b2a10"
+  },
+  {
+    "file": "docs/qa/index-390.png",
+    "sha256": "8c712012e50b0950a27387a5395b0c333f8fd70fcb48bf85098a2076ece100b2"
+  },
+  {
+    "file": "docs/qa/insights-1440.png",
+    "sha256": "7916c9a884ff920521ed36d40498dbd2ae681cc337fa1793693341789ef2d935"
+  },
+  {
+    "file": "docs/qa/insights-390.png",
+    "sha256": "416b5cf05509d2424e45c59f4fe090866373a556a387316ca3b23007acb6542d"
+  },
+  {
+    "file": "docs/qa/mobile-navigation-390.png",
+    "sha256": "6b6c4d287f86bb01f488073d9cff6dfe47938fa3a7e6d25d1617ede3f087bbbe"
+  },
+  {
+    "file": "docs/qa/plugin-tree-1440.png",
+    "sha256": "6711241ab1cea3090f96d6c118053ed39993df2ff73a5279e338432e1392571a"
+  },
+  {
+    "file": "docs/qa/plugin-tree-390.png",
+    "sha256": "5391bbcd8ec7af1f60943094240f12da8afc92f046d44e09a579020aa914d832"
+  },
+  {
+    "file": "docs/qa/plugins-report.json",
+    "sha256": "24eb501af84dab726ea5424556f94854ae21c2f167b3e899c48ffd6180166e87"
+  },
+  {
+    "file": "docs/qa/practice-areas-1440.png",
+    "sha256": "cda9489f055bfef99ef3ed56068b2d543c5da61cd768ab4d26327a751943d8cf"
+  },
+  {
+    "file": "docs/qa/practice-areas-390.png",
+    "sha256": "758d4bbf51f66bf8a7be8bb958de594c09427dab3b03af7e68bcb7ddaa4bec96"
+  },
+  {
+    "file": "docs/qa/practice-modal-390.png",
+    "sha256": "466ca6b4d9f35543eea90b1f57ab0fac419f689641f7a7748724a86fabb18b16"
+  },
+  {
+    "file": "docs/qa/report.json",
+    "sha256": "e345b1cb4f5fa1e69412b7dddf8c06a35c3605773de6417da909631728be36b8"
+  },
+  {
+    "file": "docs/qa/team-1440.png",
+    "sha256": "b498394d81229f459c24cb2be2ac17f86c308f56cbc2781b5cc0e678d520ce85"
+  },
+  {
+    "file": "docs/qa/team-390.png",
+    "sha256": "cea1ec0280401f85ebf27a972bdd6e3fa3ff5b0faf5799af9825cc7e30694924"
+  },
+  {
+    "file": "docs/QA_REPORT.md",
+    "sha256": "851caec39e28a1ac5fcd32b24d7db6b293b99e9f9c36621364404590e8f7c475"
+  },
+  {
+    "file": "docs/SOURCE_INVENTORY.json",
+    "sha256": "b7dc6740f401fe87b4c4d0d2a22fff0b79be9a5d7e1cd2123f63e3934cd359a3"
+  },
+  {
+    "file": "docs/TEMPLATE_GUIDE.md",
+    "sha256": "c17ea7813151cd8ead20cafbad1a2b3e6cc9ee2392a533dacada037bff6a1130"
+  },
+  {
+    "file": "docs/THIRD_PARTY.md",
+    "sha256": "19bdac42edfcc01fa2871492c3d56069b4bba3894b1bf7489992d0fa5a509611"
+  },
+  {
+    "file": "index.html",
+    "sha256": "eed2c29cd7a57b61123ab04bdc5886e491d5699d15bcd937106a49e4aef8e497"
+  },
+  {
+    "file": "pages/about.html",
+    "sha256": "776546d4374878552ec46f75276b3f56478a15731132e91b5e8d00e5cd4bf3f2"
+  },
+  {
+    "file": "pages/contact.html",
+    "sha256": "f31da9fc4aea865a722aeed4316495d89a1ece49f0f0151a07dc74e5aff74fba"
+  },
+  {
+    "file": "pages/insights.html",
+    "sha256": "c30bd2faf2c7f549cf94e48bb4f9ad41e2353baa9ba2351c0cb56399049c78ee"
+  },
+  {
+    "file": "pages/practice-areas.html",
+    "sha256": "189d684d0ad24072f1992ef681b1c63d2d4ee1844ee2b804aa4ce2a48170fb29"
+  },
+  {
+    "file": "pages/sitemap.html",
+    "sha256": "6dd27129cc53b9a12b3bacce98c034c0edecad90ce9ef9cf2b1c36af2ac5c8e9"
+  },
+  {
+    "file": "pages/team.html",
+    "sha256": "471691da81fd807d3005bb62d8277bd8c96c94e3bfdb0d1545656194c6538141"
+  },
+  {
+    "file": "README.md",
+    "sha256": "1a30397de2cc7c5f39b8739854d3cad9cf0ce5aadf8d410a861e053144629d20"
+  },
+  {
+    "file": "scripts/build.mjs",
+    "sha256": "0ec19a7b89eb3eb71865e3ec03f168ce569493e751df716fd0d264f3f07a9f1d"
+  },
+  {
+    "file": "scripts/package-lock.json",
+    "sha256": "1a030667974ac0b3b488851bcb5f9a9747de7879561662c07c79de303b71f0e9"
+  },
+  {
+    "file": "scripts/package.json",
+    "sha256": "21f300d4fcf5b1fdbf8aab96667f167fdd8e82b328cf07ee215bb13eb345a55c"
+  },
+  {
+    "file": "scripts/plugins-qa.mjs",
+    "sha256": "5f354e0df3c4bfd881eb89e7dc6b22eca3bbc7a7102d5c0e0facae5c33e15ac5"
+  },
+  {
+    "file": "scripts/qa.mjs",
+    "sha256": "214c70b57095729e00b8029bbcee579efcf96ad33ef4c0ecdb206742535b1988"
+  },
+  {
+    "file": "scripts/serve.mjs",
+    "sha256": "2a20f50487b77968a6fae02b8664d779a5f3e60f0600e53001c5fb2bc6334e73"
+  }
+]
