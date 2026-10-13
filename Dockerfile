@@ -37,6 +37,8 @@ COPY --from=dependencies /app /app
 COPY docker/Caddyfile /etc/caddy/Caddyfile
 COPY docker/entrypoint.sh /usr/local/bin/hsnco-entrypoint
 COPY docker/healthcheck.php /usr/local/bin/hsnco-healthcheck.php
+COPY docker/check-assets.php /usr/local/bin/hsnco-check-assets.php
+COPY docker/assets-manifest.json /usr/local/etc/hsnco-assets.json
 RUN groupadd --gid 1000 hsnco \
     && useradd --uid 1000 --gid hsnco --home-dir /app --no-create-home hsnco \
     && mkdir -p /app/storage/app/public /app/storage/app/private \
@@ -46,9 +48,12 @@ RUN groupadd --gid 1000 hsnco \
     && chown -R hsnco:hsnco /app/storage /app/bootstrap/cache /data/caddy /config/caddy \
     && chmod -R ug+rwX /app/storage /app/bootstrap/cache \
     && chmod 755 /usr/local/bin/hsnco-entrypoint \
+    && find /app/public/assets -type d -exec chmod 755 {} + \
+    && find /app/public/assets -type f -exec chmod 644 {} + \
     && ln -s /app/storage/app/public /app/public/storage \
     && if command -v setcap >/dev/null 2>&1; then setcap -r /usr/local/bin/frankenphp 2>/dev/null || true; fi
 USER 1000:1000
+RUN php /usr/local/bin/hsnco-check-assets.php
 EXPOSE 8080
 STOPSIGNAL SIGTERM
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \

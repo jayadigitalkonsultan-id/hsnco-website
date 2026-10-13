@@ -15,6 +15,20 @@ if [ ! -w storage ] || [ ! -w bootstrap/cache ]; then
     exit 1
 fi
 
+
+if [ "${APP_ENV:-production}" = "production" ]; then
+    php -r '
+        foreach (["APP_URL", "ASSET_URL"] as $name) {
+            $value = getenv($name);
+            if ($name === "ASSET_URL" && ($value === false || $value === "")) continue;
+            $parts = $value ? parse_url($value) : false;
+            if (!$parts || !filter_var($value, FILTER_VALIDATE_URL) || ($parts["scheme"] ?? "") !== "https" || empty($parts["host"]) || isset($parts["user"]) || isset($parts["pass"]) || isset($parts["query"]) || isset($parts["fragment"])) {
+                fwrite(STDERR, $name . " must be a valid HTTPS origin for production.\n");
+                exit(1);
+            }
+        }
+    '
+fi
 # Build caches only at runtime, after environment secrets are injected.
 # No key generation, dependency installation or database migration here.
 php artisan config:cache --no-interaction

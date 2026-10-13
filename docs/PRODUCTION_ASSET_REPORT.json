@@ -1,0 +1,427 @@
+{
+    "checkedAt":  "2026-10-13T15:29:42.7538798Z",
+    "domain":  "https://hsncoatlaw.com",
+    "homepageStatus":  200,
+    "existingHttpAssetUrls":  [
+                                  "http://hsncoatlaw.com/assets/css/components.css",
+                                  "http://hsncoatlaw.com/assets/css/home.css",
+                                  "http://hsncoatlaw.com/assets/css/responsive.css",
+                                  "http://hsncoatlaw.com/assets/css/style.css",
+                                  "http://hsncoatlaw.com/assets/css/variables.css",
+                                  "http://hsncoatlaw.com/assets/fonts/manrope.woff2",
+                                  "http://hsncoatlaw.com/assets/icons/favicon.svg",
+                                  "http://hsncoatlaw.com/assets/images/banking.jpg",
+                                  "http://hsncoatlaw.com/assets/images/corporate.jpg",
+                                  "http://hsncoatlaw.com/assets/images/data.jpg",
+                                  "http://hsncoatlaw.com/assets/images/disputes.jpg",
+                                  "http://hsncoatlaw.com/assets/images/hero.jpg",
+                                  "http://hsncoatlaw.com/assets/images/investment.jpg",
+                                  "http://hsncoatlaw.com/assets/images/logo-white.png",
+                                  "http://hsncoatlaw.com/assets/images/mergers.jpg",
+                                  "http://hsncoatlaw.com/assets/images/office.jpg",
+                                  "http://hsncoatlaw.com/assets/images/transactions.jpg",
+                                  "http://hsncoatlaw.com/assets/images/values.jpg",
+                                  "http://hsncoatlaw.com/assets/js/components.js",
+                                  "http://hsncoatlaw.com/assets/js/content-data.js",
+                                  "http://hsncoatlaw.com/assets/js/main.js",
+                                  "http://hsncoatlaw.com/assets/plugins-init/bootstrap-init.js",
+                                  "http://hsncoatlaw.com/assets/vendor/bootstrap/css/bootstrap.min.css",
+                                  "http://hsncoatlaw.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"
+                              ],
+    "assets":  [
+                   {
+                       "file":  "css/components.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/components.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  5502
+                   },
+                   {
+                       "file":  "css/home.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/home.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  3637
+                   },
+                   {
+                       "file":  "css/inner-pages.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/inner-pages.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  4202
+                   },
+                   {
+                       "file":  "css/plugins.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/plugins.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  1661
+                   },
+                   {
+                       "file":  "css/responsive.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/responsive.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  3945
+                   },
+                   {
+                       "file":  "css/style.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/style.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  2077
+                   },
+                   {
+                       "file":  "css/variables.css",
+                       "url":  "https://hsncoatlaw.com/assets/css/variables.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  1364
+                   },
+                   {
+                       "file":  "fonts/cormorant-garamond-OFL.txt",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/cormorant-garamond-OFL.txt",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  4387
+                   },
+                   {
+                       "file":  "fonts/cormorant-italic.woff2",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/cormorant-italic.woff2",
+                       "status":  200,
+                       "contentType":  "font/woff2",
+                       "bytes":  23924
+                   },
+                   {
+                       "file":  "fonts/cormorant.woff2",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/cormorant.woff2",
+                       "status":  200,
+                       "contentType":  "font/woff2",
+                       "bytes":  37640
+                   },
+                   {
+                       "file":  "fonts/manrope-OFL.txt",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/manrope-OFL.txt",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  4387
+                   },
+                   {
+                       "file":  "fonts/manrope.woff2",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/manrope.woff2",
+                       "status":  200,
+                       "contentType":  "font/woff2",
+                       "bytes":  24836
+                   },
+                   {
+                       "file":  "fonts/playfair-display-OFL.txt",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/playfair-display-OFL.txt",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  4449
+                   },
+                   {
+                       "file":  "fonts/playfair-italic.woff2",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/playfair-italic.woff2",
+                       "status":  200,
+                       "contentType":  "font/woff2",
+                       "bytes":  23076
+                   },
+                   {
+                       "file":  "fonts/playfair.woff2",
+                       "url":  "https://hsncoatlaw.com/assets/fonts/playfair.woff2",
+                       "status":  200,
+                       "contentType":  "font/woff2",
+                       "bytes":  23048
+                   },
+                   {
+                       "file":  "icons/favicon.svg",
+                       "url":  "https://hsncoatlaw.com/assets/icons/favicon.svg",
+                       "status":  200,
+                       "contentType":  "image/svg+xml",
+                       "bytes":  219
+                   },
+                   {
+                       "file":  "images/banking.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/banking.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  71789
+                   },
+                   {
+                       "file":  "images/corporate.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/corporate.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  91180
+                   },
+                   {
+                       "file":  "images/data.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/data.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  84819
+                   },
+                   {
+                       "file":  "images/disputes.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/disputes.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  124274
+                   },
+                   {
+                       "file":  "images/employment.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/employment.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  204776
+                   },
+                   {
+                       "file":  "images/finance.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/finance.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  64649
+                   },
+                   {
+                       "file":  "images/hero.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/hero.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  360028
+                   },
+                   {
+                       "file":  "images/investment.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/investment.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  181224
+                   },
+                   {
+                       "file":  "images/logo-white.png",
+                       "url":  "https://hsncoatlaw.com/assets/images/logo-white.png",
+                       "status":  200,
+                       "contentType":  "image/png",
+                       "bytes":  65879
+                   },
+                   {
+                       "file":  "images/maritime.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/maritime.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  235182
+                   },
+                   {
+                       "file":  "images/mergers.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/mergers.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  174453
+                   },
+                   {
+                       "file":  "images/office.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/office.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  271585
+                   },
+                   {
+                       "file":  "images/projects.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/projects.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  186800
+                   },
+                   {
+                       "file":  "images/team1.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team1.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  124058
+                   },
+                   {
+                       "file":  "images/team2.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team2.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  167421
+                   },
+                   {
+                       "file":  "images/team3.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team3.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  70999
+                   },
+                   {
+                       "file":  "images/team4.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team4.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  104567
+                   },
+                   {
+                       "file":  "images/team5.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team5.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  212519
+                   },
+                   {
+                       "file":  "images/team6.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/team6.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  45528
+                   },
+                   {
+                       "file":  "images/technology.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/technology.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  113208
+                   },
+                   {
+                       "file":  "images/transactions.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/transactions.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  61256
+                   },
+                   {
+                       "file":  "images/values.jpg",
+                       "url":  "https://hsncoatlaw.com/assets/images/values.jpg",
+                       "status":  200,
+                       "contentType":  "image/jpeg",
+                       "bytes":  364020
+                   },
+                   {
+                       "file":  "js/components.js",
+                       "url":  "https://hsncoatlaw.com/assets/js/components.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  4240
+                   },
+                   {
+                       "file":  "js/content-data.js",
+                       "url":  "https://hsncoatlaw.com/assets/js/content-data.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  3491
+                   },
+                   {
+                       "file":  "js/main.js",
+                       "url":  "https://hsncoatlaw.com/assets/js/main.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  1102
+                   },
+                   {
+                       "file":  "plugins-init/bootstrap-init.js",
+                       "url":  "https://hsncoatlaw.com/assets/plugins-init/bootstrap-init.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  692
+                   },
+                   {
+                       "file":  "plugins-init/jstree-init.js",
+                       "url":  "https://hsncoatlaw.com/assets/plugins-init/jstree-init.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  1332
+                   },
+                   {
+                       "file":  "vendor/bootstrap/LICENSE",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/bootstrap/LICENSE",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  1093
+                   },
+                   {
+                       "file":  "vendor/bootstrap/css/bootstrap.min.css",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/bootstrap/css/bootstrap.min.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  232111
+                   },
+                   {
+                       "file":  "vendor/bootstrap/css/bootstrap.min.css.map",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/bootstrap/css/bootstrap.min.css.map",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  590038
+                   },
+                   {
+                       "file":  "vendor/bootstrap/js/bootstrap.bundle.min.js",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  80496
+                   },
+                   {
+                       "file":  "vendor/bootstrap/js/bootstrap.bundle.min.js.map",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  332111
+                   },
+                   {
+                       "file":  "vendor/jquery/LICENSE.txt",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jquery/LICENSE.txt",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  1097
+                   },
+                   {
+                       "file":  "vendor/jquery/jquery.min.js",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jquery/jquery.min.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  87533
+                   },
+                   {
+                       "file":  "vendor/jstree/LICENSE-MIT",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/LICENSE-MIT",
+                       "status":  200,
+                       "contentType":  "text/plain; charset=utf-8",
+                       "bytes":  1057
+                   },
+                   {
+                       "file":  "vendor/jstree/jstree.min.js",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/jstree.min.js",
+                       "status":  200,
+                       "contentType":  "text/javascript; charset=utf-8",
+                       "bytes":  141974
+                   },
+                   {
+                       "file":  "vendor/jstree/themes/default/32px.png",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/themes/default/32px.png",
+                       "status":  200,
+                       "contentType":  "image/png",
+                       "bytes":  5660
+                   },
+                   {
+                       "file":  "vendor/jstree/themes/default/40px.png",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/themes/default/40px.png",
+                       "status":  200,
+                       "contentType":  "image/png",
+                       "bytes":  2215
+                   },
+                   {
+                       "file":  "vendor/jstree/themes/default/style.min.css",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/themes/default/style.min.css",
+                       "status":  200,
+                       "contentType":  "text/css; charset=utf-8",
+                       "bytes":  27363
+                   },
+                   {
+                       "file":  "vendor/jstree/themes/default/throbber.gif",
+                       "url":  "https://hsncoatlaw.com/assets/vendor/jstree/themes/default/throbber.gif",
+                       "status":  200,
+                       "contentType":  "image/gif",
+                       "bytes":  1464
+                   }
+               ],
+    "successfulHttpsAssets":  56,
+    "productionFixDeployed":  false
+}

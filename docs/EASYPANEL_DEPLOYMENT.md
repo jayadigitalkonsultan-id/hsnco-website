@@ -35,6 +35,7 @@ APP_NAME=HSNCO
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://hsncoatlaw.com
+ASSET_URL=https://hsncoatlaw.com
 APP_KEY=<APP_KEY_EXISTING_YANG_VALID>
 LOG_CHANNEL=stderr
 LOG_LEVEL=warning
@@ -101,3 +102,8 @@ Docker CLI tidak tersedia di environment Laragon ini, sehingga Docker build/run,
 
 Rujukan: [FrankenPHP Docker](https://frankenphp.dev/docs/docker/), [EasyPanel App Service](https://easypanel.io/docs/services/app), [EasyPanel Builders](https://easypanel.io/docs/builders).
 Form kontak tetap berupa validasi frontend demo; Docker deployment ini tidak menambahkan backend email/CMS. Konten placeholder dari template tetap memerlukan konten resmi sebelum publikasi.
+
+
+## Perbaikan asset HTTPS
+
+Lihat PRODUCTION_ASSET_FIX.md. Production URL generation kini mengikuti APP_URL HTTPS; ASSET_URL opsional memakai root origin tanpa /assets. Docker final stage memverifikasi manifest aset sebagai user non-root. Startup menolak origin HTTP production. Validasi terbaru: 10 tests / 562 assertions; Docker build belum dijalankan karena Docker CLI tidak tersedia.
