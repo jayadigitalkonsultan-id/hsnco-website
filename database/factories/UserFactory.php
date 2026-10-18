@@ -2,15 +2,26 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
+    public function invited(): static
+    {
+        return $this->state(fn () => ['name' => null, 'password' => null, 'email_verified_at' => null, 'status' => 'invited', 'activated_at' => null]);
+    }
+
+    public function active(string $role = 'editor'): static
+    {
+        return $this->state(fn () => ['status' => 'active', 'role' => $role, 'activated_at' => now()]);
+    }
+
     /**
      * The current password being used by the factory.
      */

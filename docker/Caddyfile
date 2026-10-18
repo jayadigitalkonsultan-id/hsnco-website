@@ -10,8 +10,10 @@
 
     @hidden path_regexp hidden (^|/)\.
     respond @hidden 404
-    @uploaded_script path_regexp uploaded_script (?i)^/storage/.*\.(php|phtml|phar)(/.*)?$
+    @uploaded_script path_regexp uploaded_script (?i)^/storage/.*\.(php[0-9]?|phtml|pht|phar|phps|cgi|pl|py|sh)(/.*)?$
     respond @uploaded_script 404
+
+    header /storage/media/* X-Content-Type-Options "nosniff"
 
     php_server
     log {

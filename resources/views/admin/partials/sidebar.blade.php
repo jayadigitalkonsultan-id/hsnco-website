@@ -1,0 +1,18 @@
+<aside class="admin-sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="adminSidebar" aria-labelledby="sidebarTitle">
+    <div class="sidebar-brand"><a href="{{ route('admin.dashboard') }}" aria-label="Dashboard HSNCO"><img src="{{ asset('admin-assets/images/logo-white.png') }}" alt="HSNCO" width="172" height="62"></a><button class="btn-close btn-close-white d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#adminSidebar" aria-label="Tutup navigasi"></button></div>
+    <h2 id="sidebarTitle" class="sidebar-caption">Pengelolaan website</h2>
+    <nav aria-label="Navigasi admin"><ul class="sidebar-links">
+        <li><a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" @if(request()->routeIs('admin.dashboard')) aria-current="page" @endif><x-admin.icon name="dashboard" /><span>Dashboard</span></a></li>
+        @foreach(config('admin.modules') as $module => $definition)
+        <li><a href="{{ route('admin.'.$module.'.index') }}" class="sidebar-link {{ request()->routeIs('admin.'.$module.'.*') ? 'active' : '' }}" @if(request()->routeIs('admin.'.$module.'.*')) aria-current="page" @endif><x-admin.icon :name="$definition['icon']" /><span>{{ $definition['label'] }}</span></a></li>
+        @endforeach
+        <li><a href="{{ route('admin.media.index') }}" class="sidebar-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}" @if(request()->routeIs('admin.media.*')) aria-current="page" @endif><x-admin.icon name="image" /><span>Media library</span></a></li>
+        <li class="sidebar-separator" aria-hidden="true"></li>
+        @if($preview || auth()->user()?->can('viewAny', \App\Models\Enquiry::class))<li><a href="{{ route('admin.enquiries.index') }}" class="sidebar-link {{ request()->routeIs('admin.enquiries.*') ? 'active' : '' }}" @if(request()->routeIs('admin.enquiries.*')) aria-current="page" @endif><x-admin.icon name="mail" /><span>Permintaan konsultasi</span></a></li>@endif
+        @if($preview || auth()->user()?->can('viewAny', \App\Models\SiteSetting::class))<li><a href="{{ route('admin.settings.edit') }}" class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" @if(request()->routeIs('admin.settings.*')) aria-current="page" @endif><x-admin.icon name="settings" /><span>Pengaturan</span></a></li>@endif
+        @if(! $preview && auth()->user()?->can('viewAny', \App\Models\User::class))<li><a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" @if(request()->routeIs('admin.users.*')) aria-current="page" @endif><x-admin.icon name="people" /><span>Pengguna &amp; undangan</span></a></li><li><a href="{{ route('admin.audit.index') }}" class="sidebar-link {{ request()->routeIs('admin.audit.*') ? 'active' : '' }}" @if(request()->routeIs('admin.audit.*')) aria-current="page" @endif><x-admin.icon name="file" /><span>Audit log</span></a></li>@endif
+        @unless($preview)<li><a href="{{ route('admin.account.security') }}" class="sidebar-link {{ request()->routeIs('admin.account.security*') ? 'active' : '' }}" @if(request()->routeIs('admin.account.security*')) aria-current="page" @endif><x-admin.icon name="settings" /><span>Keamanan akun</span></a></li>@endunless
+    </ul></nav>
+    <div class="sidebar-bottom"><div class="workspace-card"><span class="workspace-icon">H</span><div><strong>HSNCO workspace</strong><small>Website &amp; publikasi firma</small></div></div><a class="sidebar-website" href="{{ route('home') }}" target="_blank" rel="noopener">Lihat website <x-admin.icon name="external" /></a></div>
+</aside>
+

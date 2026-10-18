@@ -1,0 +1,182 @@
+{
+    "captured_at_utc": "2026-10-15T17:35:12+00:00",
+    "frontend_tests": {
+        "passed": 17,
+        "assertions": 634
+    },
+    "database": {
+        "driver": "mysql",
+        "version": "8.0.30",
+        "name": "hsnco",
+        "tables_before": []
+    },
+    "routes": [
+        {
+            "uri": "up",
+            "name": null,
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "/",
+            "name": "home",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "about",
+            "name": "about",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "practice-areas",
+            "name": "practice-areas",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "team",
+            "name": "team",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "insights",
+            "name": "insights",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "contact",
+            "name": "contact",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "sitemap",
+            "name": "sitemap",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "storage/{path}",
+            "name": "storage.local",
+            "methods": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        {
+            "uri": "storage/{path}",
+            "name": "storage.local.upload",
+            "methods": [
+                "PUT"
+            ]
+        }
+    ],
+    "sha256": {
+        "public/assets/css/components.css": "f3aeb2a7b54fd2808e03a8777150901bcd778127781da469c864960c3e0262fd",
+        "public/assets/css/home.css": "63603c02403d486e3109a0201e5f2be054c0f25731813efd8ab02a6df5fe0d27",
+        "public/assets/css/inner-pages.css": "c1497033f3b2738b29ba1322d6f2ded4056f483db77fb5420fcc594e6f9b27eb",
+        "public/assets/css/plugins.css": "8517ed638c9bfb85f796a9438d5b806bb57a1cf1593975d479cc58a7dbf6f2ab",
+        "public/assets/css/responsive.css": "4cac8502687228f5055786bdd25513cb52821d1a76c55edd38ee0df6227db55c",
+        "public/assets/css/style.css": "25982bd2159c6ba949f0328b0c35fff560d9f515c34c23e87ca85399f50046a5",
+        "public/assets/css/variables.css": "e360d04ad18a6d39ff9dc3b88b1cf2be9d3782ce5570bfb7af8540e0c2eed79e",
+        "public/assets/fonts/cormorant-garamond-OFL.txt": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+        "public/assets/fonts/cormorant-italic.woff2": "4fb55a7a6d564d428061fe12c82c896264bcc8b7f0b52840bf88e0db5b91256f",
+        "public/assets/fonts/cormorant.woff2": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235",
+        "public/assets/fonts/manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "public/assets/fonts/manrope.woff2": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+        "public/assets/fonts/playfair-display-OFL.txt": "566be814f8e96e93dfa16101331557eb6b5467e9e03f627c0910fe93ca12300e",
+        "public/assets/fonts/playfair-italic.woff2": "8f074624e50ab805878b26ab5f3e0fa360043d546c35b043947e96a5c7071970",
+        "public/assets/fonts/playfair.woff2": "1e3429a2122b4171bf393c8de5c501820e17ca2074c498d7080e2326975d825c",
+        "public/assets/icons/favicon.svg": "f18c13de5e751d56a8e97e1e2079985d2105e0c66cb8bdeec10ef0061e50d887",
+        "public/assets/images/banking.jpg": "58d23e39de5178d7fb3b80474877af21d9150e4e684311a0fbb734b7f82eaaa5",
+        "public/assets/images/corporate.jpg": "7f130fbaa3727b3578cd7700f1df5f1132ab2f79bb281e6c5fc527f60897217e",
+        "public/assets/images/data.jpg": "e2e0586acdd9fd4f1960501fea3741b41333475fffe950e6b7a2f985ed030369",
+        "public/assets/images/disputes.jpg": "a8e987715b7cd4a070eedbae477e396f87bc28f32c91c07464dc38b4abf93450",
+        "public/assets/images/employment.jpg": "fff2023f07c0767d8f7f0efa2f320af24d7bfd5977a732544fcf0ed77c3dc0d1",
+        "public/assets/images/finance.jpg": "da7e4085f0ff72947c42793955c7f8ead139260bb782cea57179996f2384da3b",
+        "public/assets/images/hero.jpg": "b538650e07f6127e168a9c059ef8c6b06e11e94d96feb8592a5a07539c11a812",
+        "public/assets/images/investment.jpg": "390382d0e979c293632c3fc8c8f129089ddd27a6d588c070cbed7b87f4d78dad",
+        "public/assets/images/logo-white.png": "c26e0aae33a80b0cad49d3e2f4416190e9f78d45b8bae9bdf3ab209cf7737d98",
+        "public/assets/images/maritime.jpg": "6fca7959364a5f293752b6fc84650132f6b498912b9a5049e927137fb82d36d0",
+        "public/assets/images/mergers.jpg": "7d858b1b550ed2c241b2fa5c9d98b71fbdfa6658aa88cc345fa6039897f1bc51",
+        "public/assets/images/office.jpg": "01aae34f41e28f09a48f71664e8671a31a2cf7512c7e02042281c36a574ce9b8",
+        "public/assets/images/projects.jpg": "650c177fa725a800e87fb30d6530c9f2af834684d3e1cf58c8ca96a91f9d0956",
+        "public/assets/images/team1.jpg": "165c6b835384b07af9d4ea883386ce18fac0e6761a1151d13f35065233e98660",
+        "public/assets/images/team2.jpg": "c9467c2d6f42a336e67fd191601b59014ca10be97c05cc3fbb5d38c4e2e0a364",
+        "public/assets/images/team3.jpg": "9a032338e9564cc5b200b831378fb7b053ed0f8bc6d30f974b9169823551ab7d",
+        "public/assets/images/team4.jpg": "c350542294bf8f6eb53ab9bc62e1800ace03eeb72b55a255531a586f4af2e9fe",
+        "public/assets/images/team5.jpg": "18f07a943d08909ec39c5aec356e95677fc880fc1db1a7c2415d9e0b43f02d3b",
+        "public/assets/images/team6.jpg": "8c754e73dcdd7ee049ffe4c2c32d39b95d7e5fbefc3447784c46e511ec6d4ddb",
+        "public/assets/images/technology.jpg": "e5020f2eeb2387a6d49931862bc59580e6fb18e7857470cc62bf2a8649e13a55",
+        "public/assets/images/transactions.jpg": "f249454a07680c5d24f9a5383359944a3d84f1b0d32f2c838914b661c7dd683b",
+        "public/assets/images/values.jpg": "9a69e3f07adadd84270af4b2904769b326895b1efd7a704a2e0fa6664167e854",
+        "public/assets/js/components.js": "56835fe782d57307c834923258b88b200e8fddd9e322ab978dbfeafb8a8a38aa",
+        "public/assets/js/content-data.js": "cdb10abc936c9739a1218d1f0fcfcd6dd2a24dcdadb0450e19fee892aada6a33",
+        "public/assets/js/main.js": "e23859d8c6fba6dcd4258d8974c0d21f6ef411521bca5aa29bb59fe34bee15e7",
+        "public/assets/plugins-init/bootstrap-init.js": "76d2f7f0ac5abfc24ce5fec331dd06090eefe890d6002d96007348fc86013366",
+        "public/assets/plugins-init/jstree-init.js": "4b896500425e723d9e1b3b0590139a202443878fd9a8c9be81f79dc83ce31757",
+        "public/assets/vendor/bootstrap/LICENSE": "4620c84ad5ce8602ff65640ed6b7c8b78ebb9e036584f0ebc1ccc88206a4bb51",
+        "public/assets/vendor/bootstrap/css/bootstrap.min.css": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede",
+        "public/assets/vendor/bootstrap/css/bootstrap.min.css.map": "48144faf6aa0fb3cd2ce748d9730238f888f4ab715f05dabd1c9af2c5671988a",
+        "public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7",
+        "public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map": "c61123e58cc0a4b65d737ba070c485911b3dbec6d7b802bdf6628395abd9c08b",
+        "public/assets/vendor/jquery/LICENSE.txt": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d",
+        "public/assets/vendor/jquery/jquery.min.js": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a",
+        "public/assets/vendor/jstree/LICENSE-MIT": "c8413d4b6a724884a9e7d72f8a33d538cfa4caa72102d349846f47f15d8b648f",
+        "public/assets/vendor/jstree/jstree.min.js": "b7754dd60e7cb55e608675ee5112939625c8090710d33c079868e132010b1d6a",
+        "public/assets/vendor/jstree/themes/default/32px.png": "3a5c5ca760a324913b14af3e9c0f496b50d5c09d17dcf09786261881c8200f8d",
+        "public/assets/vendor/jstree/themes/default/40px.png": "a83492a1563137335ce3d41d82552c17104ebea9bb80c3dbe7673201b92197d7",
+        "public/assets/vendor/jstree/themes/default/style.min.css": "a0e940031a2893b30c999476073c0ccb774fdb08614171b7f2b721f4ce0a7a10",
+        "public/assets/vendor/jstree/themes/default/throbber.gif": "28e3fcaacae52189201f54a20576ee63c7450be82a0ee55398ac2f51bed98fac",
+        "resources/views/components/frontend/breadcrumb.blade.php": "e167d4ee4943c107e9dfd195a7e80d7204fd1064972fd60771dd4eaf9e82ff0b",
+        "resources/views/components/frontend/button.blade.php": "435d12c20fc77c7d913b5a3625ce37c82f49fdc83f76cf1e57510675e4b94651",
+        "resources/views/components/frontend/detail-modal.blade.php": "49a0b006d4696c123f665e8065d7e4b8cb5f22cf2f42c5b3c679ac3abee8f407",
+        "resources/views/components/frontend/enquiry-form.blade.php": "c5f34c9dc2cdeb7b5e91847321caf018ed964362f95b6e50fac15aaaab636043",
+        "resources/views/components/frontend/page-banner.blade.php": "0dc68fc3ed9c5d47d832112b44dfb0276d0e7bad1fd0e17198b302de651fa723",
+        "resources/views/components/frontend/practice-card.blade.php": "e2120c405f3203bae1d0c5aee89c0c5e6f4215f229927762a8992815dc08c397",
+        "resources/views/components/frontend/section-heading.blade.php": "9e284e4780d895047dc512da893b36cdb3e8b7279a859a7901287d151662cd31",
+        "resources/views/frontend/about.blade.php": "675d0cfa66677d7f69e7b2d8162e79e26a9b28c2f5b45b7a90d9b8e58c79f3d1",
+        "resources/views/frontend/contact.blade.php": "bf2159935fc24b6081bb4799b0debd61d9843b1fbda0d5ed8451d9f480dd9ff4",
+        "resources/views/frontend/home.blade.php": "31941e8d9760b858f9be1cf5814b884d255334aa403d5a565b0cccdfccca20fe",
+        "resources/views/frontend/insights.blade.php": "389b1eb6c30617a3b86c080d8d4b1b86baa566d06d2178133a149abf2bd49834",
+        "resources/views/frontend/practice-areas.blade.php": "9855b24d5394b48b02e36022ee5f563a5c5b4a66382eabb1c36d0f6e12877dbb",
+        "resources/views/frontend/sitemap.blade.php": "e15f20d62abab1292e2f0022ed4d5882497e18912bc4c7340097397840527798",
+        "resources/views/frontend/team.blade.php": "fd4b3a793aebcc83b4e84ef90552c1c96c5d3ea696320347b21af326a5e7d2ea",
+        "resources/views/layouts/frontend.blade.php": "66db75cf207cf2871c5a79e66e75782d4f8966916f44a95b1c5bb49634fbfefa",
+        "resources/views/layouts/partials/footer.blade.php": "49ad1b4fd1aaa00c64f26893dc41e1deb13c56fcca70a55c0a56b2d68570b8a5",
+        "resources/views/layouts/partials/head.blade.php": "a966c2d530aaff1c8bb2ad3d7eb61af0b7160b2d16a133002821a4f34505e057",
+        "resources/views/layouts/partials/header.blade.php": "f3dd884087681ec674ecf3e504837f6964899312ff8b89bf50a878ab8d2e1635",
+        "resources/views/layouts/partials/navigation.blade.php": "8b5fdb098a5de0332faa77de58c86e43c5c70393d1adcf320f5fecbe48adb8ae",
+        "resources/views/layouts/partials/scripts.blade.php": "6e2c3ff22cc7d2c89200fe7c51b6c2ebe6eb034550be640a0c39c3bb69673a28",
+        "resources/views/welcome.blade.php": "2712f5909e694cf0676ace8a9b9da3e190293e7a6cb5995fde756491c8385521",
+        "routes/web.php": "7c1a0098c049e028f8325daa18e1a28962e1b120cbc8a0708ac3d76d2029a1b0",
+        "tests/Feature/DeploymentProxyTest.php": "dd8a4c420365d56512c94890bc23c60552851ac3bff7690fe1d70338b903c4a6",
+        "tests/Feature/ExampleTest.php": "aaa4a192fb4aa96d4e81eda06a29968da3d9a73b71026b87a67297e66dd985b8",
+        "tests/Feature/FrontendIntegrationTest.php": "fba9ae06de25f3d530d421f00150f10747cf9be2299bbf4b33f81831aa04853f",
+        "tests/Feature/IndonesianFrontendTest.php": "735143923a6f71e190d0640b6b87ae815f86b54dd22abeebcb12efaa481423cd",
+        "tests/Feature/ProductionAssetsTest.php": "7b666c8be330f0f75b2a8c75da44921137d6af2ae784503328ee78dc1bc67393",
+        "tests/TestCase.php": "c7c209f5579c42647c1f7b2a79ac828e8b54ac62a98442045a6e94fa2c0d0ebc",
+        "tests/Unit/AssetManifestTest.php": "80ed08e7057d786751ca7c1a173b8a86088211edb219650d1c7d5c1c86791c05",
+        "tests/Unit/ExampleTest.php": "ffacae5c1a2a44c809420af5b3b404910da1b12167d58764dac6d10b8ba8cfaf"
+    }
+}

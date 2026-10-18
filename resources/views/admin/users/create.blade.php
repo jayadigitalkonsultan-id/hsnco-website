@@ -1,0 +1,4 @@
+@extends('layouts.admin')
+@section('title','Daftarkan email')
+@section('intro','Akun baru belum memiliki password dan hanya dapat diaktifkan pemilik email tersebut.')
+@section('content')<div class="card"><div class="card-body"><form method="post" action="{{ route('admin.users.store') }}" class="vstack gap-3">@csrf <div><label class="form-label" for="email">Email</label><input class="form-control" id="email" name="email" type="email" value="{{ old('email') }}" required></div><div><label class="form-label" for="role">Role</label><select class="form-select" id="role" name="role" required>@foreach($roles as $role)<option value="{{ $role->value }}" @selected(old('role')===$role->value)>{{ str_replace('_',' ',$role->value) }}</option>@endforeach</select></div><button class="btn btn-dark align-self-start">Daftarkan</button></form></div></div>@endsection

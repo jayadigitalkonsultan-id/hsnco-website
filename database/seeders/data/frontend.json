@@ -1,0 +1,534 @@
+{
+    "pages": [
+        {
+            "key": "home",
+            "slug": "home",
+            "title": "Penasihat Hukum Strategis",
+            "sections": [
+                {
+                    "key": "hero",
+                    "type": "hero",
+                    "heading": "Layanan hukum yang menyeluruh.",
+                    "content": {
+                        "source_text": "Firma hukum independen di IndonesiaLayanan hukum yang menyeluruh.Solusi hukum terpadu bagi pelaku usaha, institusi, dan pemimpin dalam menghadapi peluang penting di Indonesia.Kenali HSNCO →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "introduction",
+                    "type": "rich_text",
+                    "heading": "Layanan hukum menyeluruh dari profesional tepercaya.",
+                    "content": {
+                        "source_text": "Pendampingan hukum yang menyeluruhLayanan hukum menyeluruh dari profesional tepercaya.HSNCO adalah firma hukum Indonesia yang menyediakan layanan menyeluruh dan solusi terpadu untuk berbagai persoalan kompleks. Kami memadukan keahlian hukum dengan pemahaman bisnis agar setiap rekomendasi praktis, tegas, dan sesuai dengan kebutuhan klien.Pemahaman lokal.Wawasan global.Cara kami membantu →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "office-image",
+                    "type": "image",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Pertimbangan berpengalaman, pemahaman industri, dan pendekatan kolaboratif dalam setiap penugasan.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "services-intro",
+                    "type": "rich_text",
+                    "heading": "Layanan unggul.Kejelasan tanpa kompromi.",
+                    "content": {
+                        "source_text": "Layanan unggul.Kejelasan tanpa kompromi.Dari nasihat hukum sehari-hari hingga transaksi dan sengketa penting, para profesional kami bekerja sebagai satu tim untuk mendukung tujuan Anda.Jelajahi bidang praktik →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "featured-practices",
+                    "type": "practice_selection",
+                    "heading": null,
+                    "content": {
+                        "source_text": "01 / KeahlianKorporasi &KomersialSelengkapnya →02 / KeahlianMerger &AkuisisiSelengkapnya →03 / KeahlianPerbankan &RestrukturisasiSelengkapnya →04 / KeahlianPenyelesaianSengketaSelengkapnya →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "values",
+                    "type": "values",
+                    "heading": "Pendekatan yang jelas.",
+                    "content": {
+                        "source_text": "Nilai yang kami pegangPendekatan yang jelas.Kami memahami konteks bisnis di balik persoalan hukum. Peran kami adalah menjelaskan kompleksitas dan memudahkan pengambilan keputusan berikutnya.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "sectors",
+                    "type": "sectors",
+                    "heading": "Memahamidunia usaha Anda.",
+                    "content": {
+                        "source_text": "Pemahaman sektor usahaMemahamidunia usaha Anda.Pemahaman industri membantu tim hukum kami mengantisipasi risiko, memahami kebutuhan pengambil keputusan, dan memberikan nasihat yang dapat diterapkan.01Jasa Keuangan & Teknologi FinansialRegulasi · Transaksi · Keuangan digital02Energi & Sumber Daya AlamProyek · Perizinan · Investasi03Teknologi & TelekomunikasiData · Platform · Kekayaan intelektual04Infrastruktur & PropertiPengembangan · Pembiayaan · Konstruksi05Konsumen & ManufakturMasuk pasar · Distribusi · Kepatuhan",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "approach",
+                    "type": "steps",
+                    "heading": "Dari pertanyaanmenuju arah yang jelas.",
+                    "content": {
+                        "source_text": "Pendekatan kamiDari pertanyaanmenuju arah yang jelas.Proses yang terarah, disesuaikan dengan prioritas Anda dan kondisi setiap perkara.01MemahamiKami mendengarkan dengan saksama, mengkaji konteks, dan merumuskan hasil yang ingin dicapai.02Menyusun strategiKami menghubungkan analisis hukum dengan prioritas bisnis untuk menyusun langkah yang praktis.03MelaksanakanKami melaksanakan penugasan secara terarah, dengan perhatian profesional berpengalaman dan komunikasi yang jelas.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "recognitions",
+                    "type": "recognitions",
+                    "heading": "Pengakuan independen.Kepercayaan yang berkelanjutan.",
+                    "content": {
+                        "source_text": "Pengakuan pasarPengakuan independen.Kepercayaan yang berkelanjutan.Konten sementara Daftar direktori dan peringkat memerlukan bukti serta persetujuan sebelum dipublikasikan. Tidak ada klaim penghargaan pada bagian ini.Menunggu verifikasiChambers Asia-PacificKonten sementara · peringkat dan tahun belum diverifikasiMenunggu verifikasiThe Legal 500 Asia PacificKonten sementara · peringkat dan tahun belum diverifikasiMenunggu verifikasiIFLR1000Konten sementara · peringkat dan tahun belum diverifikasiMenunggu verifikasiAsialaw ProfilesKonten sementara · peringkat dan tahun belum diverifikasi",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "consultation",
+                    "type": "enquiry",
+                    "heading": "Keahlian mendalam.Arah yang jelas.",
+                    "content": {
+                        "source_text": "Mulai percakapanKeahlian mendalam.Arah yang jelas.Sampaikan kebutuhan hukum yang sedang Anda hadapi.Konten sementara Alamat kantor, nomor telepon, dan email menunggu verifikasi firma.Informasi kontak →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                },
+                {
+                    "key": "latest-insights",
+                    "type": "latest_insights",
+                    "heading": "Publikasi terbaru.",
+                    "content": {
+                        "source_text": "Wawasan hukumPublikasi terbaru.Lihat publikasi kami →Konten sementara Judul artikel merupakan pratinjau publikasi. Artikel dan tanggal terbit yang terverifikasi belum tersedia.Pratinjau publikasiKerangka investasi baru Indonesia: hal yang perlu dipahami direksiLihat pratinjau publikasi →Pratinjau publikasiMerger dan akuisisi lintas batas di tengah perubahan regulasiLihat pratinjau publikasi →Pratinjau publikasiTata kelola data dan era baru akuntabilitas perusahaanLihat pratinjau publikasi →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/home.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "about",
+            "slug": "about",
+            "title": "Tentang Firma",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Tradisiintegritas.Pertimbangan yang jelas untuk menghadapi tantangan hukum dan bisnis yang kompleks.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "introduction",
+                    "type": "rich_text",
+                    "heading": "Pemahaman lokal.Wawasan global.",
+                    "content": {
+                        "source_text": "Tentang kamiPemahaman lokal.Wawasan global.HSNCO adalah firma hukum independen di Indonesia yang meyakini bahwa nasihat hukum yang baik harus mendukung kemajuan bisnis secara nyata. Kami memadukan ketelitian hukum dengan pemahaman tentang pengambilan keputusan dan penciptaan nilai.Perhatian dari profesional berpengalaman menjadi dasar setiap penugasan.Kami bekerja sebagai satu tim terpadu dengan keahlian yang tepat pada saat yang dibutuhkan. Hasilnya adalah nasihat yang akurat, memahami kepentingan bisnis, dan dapat ditindaklanjuti.Konten sementara Deskripsi firma berasal dari template sumber dan memerlukan persetujuan sebelum dipublikasikan.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "quote",
+                    "type": "rich_text",
+                    "heading": null,
+                    "content": {
+                        "source_text": "“Nilai kami tidak diukur dari kompleksitas yang kami uraikan, melainkan dari kejelasan yang kami berikan.Pernyataan dari desain sumber · atribusi menunggu persetujuan",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "history",
+                    "type": "timeline",
+                    "heading": "Tujuan yang tumbuhseiring waktu.",
+                    "content": {
+                        "source_text": "Perjalanan kamiTujuan yang tumbuhseiring waktu.Konten sementara Riwayat tahun 1998, 2008, dan 2018 pada sumber belum terverifikasi. Bagian ini perlu diisi dengan riwayat firma yang telah disetujui.Menunggu verifikasiAwal perjalananKonten sementara · tahun dan kisah pendirian firma.Menunggu verifikasiPengembangan keahlianKonten sementara · perkembangan bidang praktik yang disetujui.Menunggu verifikasiJangkauan regionalKonten sementara · informasi jaringan dan yurisdiksi yang terverifikasi.Menunggu verifikasiSaat iniKonten sementara · struktur firma terkini.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "vision-mission",
+                    "type": "vision_mission",
+                    "heading": "Menjadi penasihat hukum yang dipercaya klien pada saat-saat terpenting.",
+                    "content": {
+                        "source_text": "Visi kamiMenjadi penasihat hukum yang dipercaya klien pada saat-saat terpenting.Nasihat hukum yang jelas, memahami kebutuhan bisnis, dan berpegang pada prinsip.Misi kamiMengubah kompleksitas hukum menjadi langkah yang mantap.Keahlian khusus, pertimbangan berpengalaman, dan pendekatan kolaboratif.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "statistics",
+                    "type": "statistics",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Firma dalam angkaKonten sementara Lama beroperasi, jumlah tim, jangkauan yurisdiksi, dan penilaian klien memerlukan bukti yang terverifikasi.—Lama beroperasiMenunggu verifikasi—Profesional hukumMenunggu verifikasi—Jangkauan yurisdiksiMenunggu verifikasi—Pengalaman klienMenunggu verifikasi",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "clients",
+                    "type": "client_logos",
+                    "heading": "Kepercayaan yang dibangunseiring waktu.",
+                    "content": {
+                        "source_text": "Hubungan tepercayaKepercayaan yang dibangunseiring waktu.Konten sementara Identitas klien dan tanggapan mereka memerlukan persetujuan. Nama klien contoh serta penilaian rekaan dari sumber tidak ditampilkan.Logo klien 1Logo sementaraLogo klien 2Logo sementaraLogo klien 3Logo sementaraLogo klien 4Logo sementaraLogo klien 5Logo sementaraKeahlian hukum Menunggu tanggapan terverifikasiKetanggapan Menunggu tanggapan terverifikasiPemahaman bisnis Menunggu tanggapan terverifikasiKesediaan merekomendasikan Menunggu tanggapan terverifikasi",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "leadership",
+                    "type": "leadership",
+                    "heading": "Standar yang dibangundari pimpinan.",
+                    "content": {
+                        "source_text": "PimpinanStandar yang dibangundari pimpinan.Konten sementara Nama pimpinan, biografi, dan potret yang telah disetujui akan ditampilkan di sini. Foto yang digunakan saat ini hanya ilustrasi.Kenali tim profesional kami →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                },
+                {
+                    "key": "closing-cta",
+                    "type": "cta",
+                    "heading": "Wawasan yang mendorongkemajuan usaha.",
+                    "content": {
+                        "source_text": "Bekerja bersama HSNCOWawasan yang mendorongkemajuan usaha.Mulai percakapan →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/about.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "practice-areas",
+            "slug": "practice-areas",
+            "title": "Bidang Praktik",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Bidangpraktik.Keahlian hukum khusus yang dipadukan sesuai kebutuhan bisnis setiap perkara. Jelajahi bidang praktik berikut.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/practice-areas.blade.php"
+                    }
+                },
+                {
+                    "key": "practice-directory",
+                    "type": "practice_directory",
+                    "heading": "Keahlian terfokus.Nasihat terpadu.",
+                    "content": {
+                        "source_text": "Keahlian kamiKeahlian terfokus.Nasihat terpadu.Konten sementara Deskripsi bidang praktik berasal dari desain sumber dan memerlukan persetujuan firma.01Korporasi & KomersialPendampingan menyeluruh untuk tata kelola, penataan usaha, investasi, usaha patungan, dan kegiatan komersial sehari-hari.Jelajahi ↗02Merger & AkuisisiNasihat strategis untuk transaksi domestik maupun lintas batas, mulai dari penataan awal hingga penyelesaian.Jelajahi ↗03Perbankan & PembiayaanNasihat berorientasi bisnis bagi pemberi pinjaman, peminjam, sponsor, dan investor dalam transaksi pembiayaan.Jelajahi ↗04Litigasi & Penyelesaian SengketaPendampingan dalam litigasi komersial, arbitrase, mediasi, dan proses regulasi yang kompleks.Jelajahi ↗05Teknologi & Kekayaan IntelektualPerlindungan, tata kelola, penegakan hak, dan pemanfaatan komersial teknologi serta aset tidak berwujud yang penting.Jelajahi ↗06KetenagakerjaanNasihat praktis untuk perubahan tenaga kerja, pengangkatan eksekutif, investigasi, dan perselisihan ketenagakerjaan.Jelajahi ↗07Proyek & InfrastrukturNasihat terpadu untuk pengembangan, pengadaan, pembiayaan, konstruksi, dan pengoperasian proyek besar.Jelajahi ↗08Maritim & LogistikPendampingan khusus untuk pelayaran, pelabuhan, logistik, transaksi kapal, dan sengketa maritim.Jelajahi ↗09Restrukturisasi & KepailitanNasihat untuk restrukturisasi dan kepailitan. Lingkup praktik berasal dari sumber dan memerlukan persetujuan firma.Jelajahi ↗",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/practice-areas.blade.php"
+                    }
+                },
+                {
+                    "key": "integrated-services",
+                    "type": "rich_text",
+                    "heading": "Keahlian tanpabatas.",
+                    "content": {
+                        "source_text": "Pendekatan satu firmaKeahlian tanpabatas.Persoalan kompleks sering melibatkan lebih dari satu bidang. Perspektif transaksi, regulasi, dan sengketa dipadukan untuk menjawab setiap tantangan.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/practice-areas.blade.php"
+                    }
+                },
+                {
+                    "key": "closing-cta",
+                    "type": "cta",
+                    "heading": "Keahlian yang tepat.Di saat yang tepat.",
+                    "content": {
+                        "source_text": "Bekerja bersama HSNCOKeahlian yang tepat.Di saat yang tepat.Mulai percakapan →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/practice-areas.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "team",
+            "slug": "team",
+            "title": "Tim Profesional",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Timprofesional.Direktori untuk profil profesional, bidang keahlian, dan biografi pimpinan yang telah disetujui.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/team.blade.php"
+                    }
+                },
+                {
+                    "key": "professionals",
+                    "type": "professional_directory",
+                    "heading": "Pengalaman yangdapat diandalkan.",
+                    "content": {
+                        "source_text": "Direktori profesionalPengalaman yangdapat diandalkan.Cari profil contohSemuaMitraAsosiatKonten sementara Seluruh potret adalah foto ilustrasi. Nama, kualifikasi, keanggotaan profesi, dan pengalaman pada sumber belum terverifikasi sehingga diganti dengan profil contoh yang ditandai secara jelas.6 profil contohProfil contoh 01Profil pimpinanKorporasi · Merger & Akuisisi · Penanaman Modal AsingRuang untuk biografi pimpinan, latar belakang profesional, dan pendekatan pelayanan klien yang telah disetujui.Lihat profil contoh →Profil contoh 02Profil mitraLitigasi · Arbitrase · InvestigasiLihat profil contoh →Profil contoh 03Profil mitraTeknologi · Kekayaan Intelektual · Privasi DataLihat profil contoh →Profil contoh 04Profil asosiat seniorPerbankan · Pembiayaan · Pasar ModalLihat profil contoh →Profil contoh 05Profil asosiat seniorPersaingan Usaha · Regulasi · KepatuhanLihat profil contoh →Profil contoh 06Profil asosiatKetenagakerjaan · Nasihat Korporasi · Tata KelolaLihat profil contoh →Tidak ada profil contoh yang sesuai dengan pencarian Anda.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/team.blade.php"
+                    }
+                },
+                {
+                    "key": "closing-cta",
+                    "type": "cta",
+                    "heading": "Wawasan berpengalaman.Komitmen pribadi.",
+                    "content": {
+                        "source_text": "Bekerja bersama HSNCOWawasan berpengalaman.Komitmen pribadi.Mulai percakapan →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/team.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "insights",
+            "slug": "insights",
+            "title": "Wawasan & Publikasi",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Wawasan &perspektif.Ruang publikasi untuk analisis hukum dan tulisan firma yang telah disetujui. Judul dari sumber ditampilkan sebagai pratinjau.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/insights.blade.php"
+                    }
+                },
+                {
+                    "key": "publications",
+                    "type": "insight_directory",
+                    "heading": "Kerangka investasi baru Indonesia: hal yang perlu dipahami direksi",
+                    "content": {
+                        "source_text": "Konten sementara Artikel lengkap, analisis hukum, identitas penulis, dan tanggal terbit belum tersedia. Judul-judul ini merupakan contoh tampilan, bukan panduan hukum yang telah dipublikasikan.Pratinjau publikasi · InvestasiKerangka investasi baru Indonesia: hal yang perlu dipahami direksiKonten sementara untuk ringkasan artikel yang telah disetujui.Lihat status pratinjau →Pratinjau publikasi · TransaksiMerger dan akuisisi lintas batas di tengah perubahan regulasiKonten sementara untuk ringkasan artikel yang telah disetujui.Lihat status pratinjau →Pratinjau publikasi · TeknologiTata kelola data dan era baru akuntabilitas perusahaanKonten sementara untuk ringkasan artikel yang telah disetujui.Lihat status pratinjau →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/insights.blade.php"
+                    }
+                },
+                {
+                    "key": "closing-cta",
+                    "type": "cta",
+                    "heading": "Wawasan untukpasar yang berkembang.",
+                    "content": {
+                        "source_text": "Bekerja bersama HSNCOWawasan untukpasar yang berkembang.Mulai percakapan →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/insights.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "contact",
+            "slug": "contact",
+            "title": "Hubungi Kami",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Nasihat yang jelas.Dimulai di sini.Sampaikan kebutuhan hukum yang sedang Anda hadapi. Formulir ini siap dihubungkan dengan aplikasi Anda.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/contact.blade.php"
+                    }
+                },
+                {
+                    "key": "enquiry",
+                    "type": "enquiry",
+                    "heading": "Keahlian mendalam.Arah yang jelas.",
+                    "content": {
+                        "source_text": "Hubungi HSNCOKeahlian mendalam.Arah yang jelas.Langkah awal untuk memahami kebutuhan hukum Anda dengan saksama.KantorKonten sementara · alamat kantor terverifikasi belum tersedia.Kontak langsungKonten sementara · nomor telepon dan email yang disetujui belum tersedia.Konten sementara Informasi kontak pada sumber belum terverifikasi dan tidak digunakan sebagai tautan telepon, email, atau peta aktif.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/contact.blade.php"
+                    }
+                },
+                {
+                    "key": "faq",
+                    "type": "faq",
+                    "heading": "Awal percakapanyang bermakna.",
+                    "content": {
+                        "source_text": "Sebelum menghubungi kamiAwal percakapanyang bermakna.Apakah formulir ini mengirim permintaan?Ini adalah formulir demonstrasi. Informasi diperiksa di perangkat Anda, tetapi tidak dikirim, disimpan, atau dinyatakan telah diterima.Apa yang perlu disampaikan dalam permintaan awal?Untuk pengujian, gunakan informasi contoh. Formulir resmi dapat meminta bidang praktik dan uraian singkat setelah kebijakan privasi serta proses penerimaan disetujui.Apakah pengisian formulir membentuk hubungan advokat dan klien?Pengisian formulir tidak membentuk hubungan advokat dan klien. Ketentuan penugasan dan penerimaan klien ditangani secara terpisah oleh firma.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/contact.blade.php"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "sitemap",
+            "slug": "sitemap",
+            "title": "Peta Situs",
+            "sections": [
+                {
+                    "key": "banner",
+                    "type": "banner",
+                    "heading": null,
+                    "content": {
+                        "source_text": "Jalur yang jelas.Setiap halaman.Jelajahi informasi firma, bidang praktik, direktori profesional, dan pratinjau publikasi.",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/sitemap.blade.php"
+                    }
+                },
+                {
+                    "key": "directory",
+                    "type": "sitemap",
+                    "heading": "Jelajahi HSNCO",
+                    "content": {
+                        "source_text": "Cari halamanBuka semuaTutup semuaBerandaTentang FirmaBidang PraktikProfesionalPublikasiKontakTujuan Anda berikutnyaJelajahi HSNCOPilih halaman untuk melanjutkan kunjungan. Direktori halaman juga dapat diakses dengan papan ketik.Buka halaman terpilih →",
+                        "requires_verification": true,
+                        "source_view": "resources/views/frontend/sitemap.blade.php"
+                    }
+                }
+            ]
+        }
+    ],
+    "practices": [
+        {
+            "id": "corporate-commercial",
+            "title": "Korporasi & Komersial",
+            "description": "Pendampingan menyeluruh untuk tata kelola, penataan usaha, investasi, usaha patungan, dan kegiatan komersial sehari-hari.",
+            "services": [
+                "Tata kelola perusahaan",
+                "Perjanjian komersial",
+                "Penanaman modal asing",
+                "Usaha patungan"
+            ],
+            "image": "corporate"
+        },
+        {
+            "id": "mergers-acquisitions",
+            "title": "Merger & Akuisisi",
+            "description": "Nasihat strategis untuk transaksi domestik maupun lintas batas, mulai dari penataan awal hingga penyelesaian.",
+            "services": [
+                "Uji tuntas",
+                "Penataan transaksi",
+                "Akuisisi & pelepasan aset",
+                "Integrasi pascamerger"
+            ],
+            "image": "mergers"
+        },
+        {
+            "id": "banking-finance",
+            "title": "Perbankan & Pembiayaan",
+            "description": "Nasihat berorientasi bisnis bagi pemberi pinjaman, peminjam, sponsor, dan investor dalam transaksi pembiayaan.",
+            "services": [
+                "Pembiayaan akuisisi",
+                "Pembiayaan proyek",
+                "Pinjaman sindikasi",
+                "Pasar modal"
+            ],
+            "image": "finance"
+        },
+        {
+            "id": "litigation-dispute-resolution",
+            "title": "Litigasi & Penyelesaian Sengketa",
+            "description": "Pendampingan dalam litigasi komersial, arbitrase, mediasi, dan proses regulasi yang kompleks.",
+            "services": [
+                "Litigasi komersial",
+                "Arbitrase internasional",
+                "Mediasi",
+                "Investigasi"
+            ],
+            "image": "disputes"
+        },
+        {
+            "id": "technology-intellectual-property",
+            "title": "Teknologi & Kekayaan Intelektual",
+            "description": "Perlindungan, tata kelola, penegakan hak, dan pemanfaatan komersial teknologi serta aset tidak berwujud yang penting.",
+            "services": [
+                "Privasi data",
+                "Regulasi digital",
+                "Perlindungan kekayaan intelektual",
+                "Transaksi teknologi"
+            ],
+            "image": "technology"
+        },
+        {
+            "id": "employment",
+            "title": "Ketenagakerjaan",
+            "description": "Nasihat praktis untuk perubahan tenaga kerja, pengangkatan eksekutif, investigasi, dan perselisihan ketenagakerjaan.",
+            "services": [
+                "Perjanjian kerja",
+                "Restrukturisasi tenaga kerja",
+                "Hubungan industrial",
+                "Remunerasi eksekutif"
+            ],
+            "image": "employment"
+        },
+        {
+            "id": "projects-infrastructure",
+            "title": "Proyek & Infrastruktur",
+            "description": "Nasihat terpadu untuk pengembangan, pengadaan, pembiayaan, konstruksi, dan pengoperasian proyek besar.",
+            "services": [
+                "Pengembangan proyek",
+                "Kontrak konstruksi",
+                "Kerja sama pemerintah dan badan usaha",
+                "Pembiayaan infrastruktur"
+            ],
+            "image": "projects"
+        },
+        {
+            "id": "maritime-logistics",
+            "title": "Maritim & Logistik",
+            "description": "Pendampingan khusus untuk pelayaran, pelabuhan, logistik, transaksi kapal, dan sengketa maritim.",
+            "services": [
+                "Transaksi pelayaran",
+                "Pembiayaan kapal",
+                "Pelabuhan & logistik",
+                "Sengketa maritim"
+            ],
+            "image": "maritime"
+        },
+        {
+            "id": "restructuring-insolvency",
+            "title": "Restrukturisasi & Kepailitan",
+            "description": "Nasihat untuk restrukturisasi dan kepailitan. Lingkup praktik berasal dari sumber dan memerlukan persetujuan firma.",
+            "services": [
+                "Restrukturisasi utang",
+                "Proses kepailitan",
+                "Negosiasi dengan kreditur",
+                "Penataan kembali usaha"
+            ],
+            "image": "office"
+        }
+    ],
+    "professional_roles": [
+        "Profil pimpinan",
+        "Profil mitra",
+        "Profil mitra",
+        "Profil asosiat senior",
+        "Profil asosiat senior",
+        "Profil asosiat"
+    ],
+    "professional_focuses": [
+        "Korporasi · Merger & Akuisisi · Penanaman Modal Asing",
+        "Litigasi · Arbitrase · Investigasi",
+        "Teknologi · Kekayaan Intelektual · Privasi Data",
+        "Perbankan · Pembiayaan · Pasar Modal",
+        "Persaingan Usaha · Regulasi · Kepatuhan",
+        "Ketenagakerjaan · Nasihat Korporasi · Tata Kelola"
+    ],
+    "insight_titles": [
+        "Kerangka investasi baru Indonesia: hal yang perlu dipahami direksi",
+        "Merger dan akuisisi lintas batas di tengah perubahan regulasi",
+        "Tata kelola data dan era baru akuntabilitas perusahaan"
+    ]
+}

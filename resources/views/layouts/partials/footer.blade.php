@@ -1,2 +1,38 @@
-<footer class="site-footer"><div class="container"><div class="row g-4 g-lg-5"><div class="col-12 col-lg-4"><a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="Beranda HSNCO" width="130" height="80"></a><p class="footer-tagline">Layanan hukum profesional.<br>Kejelasan bagi dunia usaha.</p></div><div class="col-6 col-lg-2 footer-column"><h2>Firma</h2><a href="{{ route('about') }}">Tentang firma</a><a href="{{ route('team') }}">Profesional</a><a href="{{ route('insights') }}">Publikasi</a><a href="{{ route('sitemap') }}" @if(request()->routeIs('sitemap')) aria-current="page" @endif>Peta Situs</a></div><div class="col-6 col-lg-3 footer-column"><h2>Keahlian</h2><a href="{{ route('practice-areas') }}#corporate-commercial">Korporasi</a><a href="{{ route('practice-areas') }}#mergers-acquisitions">Transaksi</a><a href="{{ route('practice-areas') }}#litigation-dispute-resolution">Sengketa</a></div><div class="col-12 col-lg-3 footer-column"><h2>Mulai percakapan</h2><a href="{{ route('contact') }}">Hubungi HSNCO <span aria-hidden="true">↗</span></a><p>Alamat kantor dan kontak langsung<br>menunggu verifikasi firma.</p><span class="content-status">Kontak sementara</span></div></div><div class="footer-bottom"><span>© 2026 HSNCO. Template situs web.</span><span>Konten yang membutuhkan persetujuan telah ditandai.</span></div></div></footer>
-
+<footer class="site-footer">
+    <div class="container">
+        <div class="row g-4 g-lg-5">
+            <div class="col-12 col-lg-4">
+                <a href="{{ route('home') }}"><img src="{{ $logo }}" alt="Beranda {{ $name }}" width="130" height="80"></a>
+                <p class="footer-tagline">{{ $tagline }}</p>
+            </div>
+            <div class="col-6 col-lg-2 footer-column">
+                <h2>Firma</h2>
+                @foreach ($footerFirmLinks as $item)
+                    <a href="{{ route($item['route']) }}" @if(request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                @endforeach
+            </div>
+            <div class="col-6 col-lg-3 footer-column">
+                <h2>Keahlian</h2>
+                @forelse ($practiceAreas->take(3) as $practice)
+                    <a href="{{ route('practice-areas') }}#{{ $practice->slug }}">{{ $practice->name }}</a>
+                @empty
+                    <a href="{{ route('practice-areas') }}">Bidang Praktik</a>
+                @endforelse
+            </div>
+            <div class="col-12 col-lg-3 footer-column">
+                <h2>Mulai percakapan</h2>
+                <a href="{{ route('contact') }}">Hubungi {{ $name }} <span aria-hidden="true">↗</span></a>
+                @if ($footerContactDetails['address'])<p>{{ $footerContactDetails['address'] }}</p>@endif
+                @if ($footerContactDetails['phone'])<a href="tel:{{ $footerContactDetails['phone_href'] }}">{{ $footerContactDetails['phone'] }}</a>@endif
+                @if ($footerContactDetails['email'])<a href="mailto:{{ $footerContactDetails['email'] }}">{{ $footerContactDetails['email'] }}</a>@endif
+                @if (! $footerContactDetails['address'] && ! $footerContactDetails['phone'] && ! $footerContactDetails['email'])
+                    <p>Alamat dan kontak langsung akan ditampilkan setelah diverifikasi.</p>
+                @endif
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© {{ now()->year }} {{ $name }}.</span>
+            <span>Informasi pada situs ini bersifat umum dan bukan nasihat hukum.</span>
+        </div>
+    </div>
+</footer>

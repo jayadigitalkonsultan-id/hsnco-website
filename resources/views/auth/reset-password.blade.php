@@ -1,0 +1,4 @@
+@extends('layouts.auth')
+@section('title','Buat kata sandi baru')
+@section('intro','Buat kata sandi baru untuk akun Anda.')
+@section('content')<form method="post" action="{{ route('password.update') }}" class="vstack gap-3">@csrf <input type="hidden" name="token" value="{{ $token }}"><div><label class="form-label" for="email">Email</label><input class="form-control" id="email" name="email" type="email" value="{{ old('email',$email) }}" required></div><div><label class="form-label" for="password">Kata sandi baru</label><input class="form-control" id="password" name="password" type="password" required></div><div><label class="form-label" for="password_confirmation">Konfirmasi</label><input class="form-control" id="password_confirmation" name="password_confirmation" type="password" required></div><button class="btn btn-dark">Simpan</button></form>@endsection

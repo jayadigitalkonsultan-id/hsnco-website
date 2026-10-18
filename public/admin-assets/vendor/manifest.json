@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "policy": "Vendored local distributions; load only on pages using a plugin. No CDN requests at runtime.",
+  "plugins": [
+    {
+      "name": "Bootstrap",
+      "version": "5.3.8",
+      "license": "MIT",
+      "path": "assets/vendor/bootstrap",
+      "loadedOn": "all pages",
+      "dependencies": [
+        "Popper (included in bundle)"
+      ]
+    },
+    {
+      "name": "jQuery",
+      "version": "3.7.1",
+      "license": "MIT",
+      "path": "assets/vendor/jquery",
+      "loadedOn": "pages/content.html",
+      "dependencies": []
+    },
+    {
+      "name": "jsTree",
+      "version": "3.3.17",
+      "license": "MIT",
+      "path": "assets/vendor/jstree",
+      "loadedOn": "pages/content.html",
+      "dependencies": [
+        "jQuery 3.7.1"
+      ]
+    },
+    {
+      "name": "Chart.js",
+      "version": "4.4.8",
+      "license": "MIT",
+      "path": "assets/vendor/chartjs",
+      "loadedOn": "index.html",
+      "dependencies": []
+    }
+  ],
+  "integrity": [
+    {
+      "file": "assets/vendor/bootstrap/css/bootstrap.min.css",
+      "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede"
+    },
+    {
+      "file": "assets/vendor/bootstrap/css/bootstrap.min.css.map",
+      "sha256": "48144faf6aa0fb3cd2ce748d9730238f888f4ab715f05dabd1c9af2c5671988a"
+    },
+    {
+      "file": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+      "sha256": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7"
+    },
+    {
+      "file": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map",
+      "sha256": "c61123e58cc0a4b65d737ba070c485911b3dbec6d7b802bdf6628395abd9c08b"
+    },
+    {
+      "file": "assets/vendor/bootstrap/LICENSE",
+      "sha256": "4620c84ad5ce8602ff65640ed6b7c8b78ebb9e036584f0ebc1ccc88206a4bb51"
+    },
+    {
+      "file": "assets/vendor/chartjs/chart.umd.js.map",
+      "sha256": "de6d63bad217b1fc110ee083ba387f763ee9e5401dcc5a2742e9fe3637992d48"
+    },
+    {
+      "file": "assets/vendor/chartjs/chart.umd.min.js",
+      "sha256": "e4cf4d144b222634f2e64ff707cd57b953f8de4b65b231cd5ac6bde114648e4d"
+    },
+    {
+      "file": "assets/vendor/chartjs/LICENSE.md",
+      "sha256": "41a84aa2caba645f966a18d9c2056b73e6d3a81d80bc0046bc0011a2634d4cce"
+    },
+    {
+      "file": "assets/vendor/jquery/jquery.min.js",
+      "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a"
+    },
+    {
+      "file": "assets/vendor/jquery/jquery.min.map",
+      "sha256": "cf74d51c62d299189989130ebb423b30453532fdc8988d8e2b71b1b9165a80b8"
+    },
+    {
+      "file": "assets/vendor/jquery/LICENSE.txt",
+      "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d"
+    },
+    {
+      "file": "assets/vendor/jstree/jstree.min.js",
+      "sha256": "b7754dd60e7cb55e608675ee5112939625c8090710d33c079868e132010b1d6a"
+    },
+    {
+      "file": "assets/vendor/jstree/LICENSE-MIT",
+      "sha256": "31211520f079a45fbe812303d02e864ce4465359715b7a10cb92852a6f8927a6"
+    },
+    {
+      "file": "assets/vendor/jstree/themes/default/32px.png",
+      "sha256": "3a5c5ca760a324913b14af3e9c0f496b50d5c09d17dcf09786261881c8200f8d"
+    },
+    {
+      "file": "assets/vendor/jstree/themes/default/40px.png",
+      "sha256": "a83492a1563137335ce3d41d82552c17104ebea9bb80c3dbe7673201b92197d7"
+    },
+    {
+      "file": "assets/vendor/jstree/themes/default/style.min.css",
+      "sha256": "a0e940031a2893b30c999476073c0ccb774fdb08614171b7f2b721f4ce0a7a10"
+    },
+    {
+      "file": "assets/vendor/jstree/themes/default/throbber.gif",
+      "sha256": "28e3fcaacae52189201f54a20576ee63c7450be82a0ee55398ac2f51bed98fac"
+    }
+  ]
+}

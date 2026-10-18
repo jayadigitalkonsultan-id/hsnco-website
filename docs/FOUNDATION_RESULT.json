@@ -1,0 +1,25 @@
+{
+    "completed_date": "2026-10-16",
+    "database": "hsnco",
+    "driver": "mysql",
+    "migration_count": 21,
+    "pending_migrations": [],
+    "baseline_files_unchanged": 86,
+    "tests": {
+        "passed": 37,
+        "assertions": 759
+    },
+    "counts": {
+        "users": 0,
+        "pages": 7,
+        "page_sections": 35,
+        "practice_areas": 9,
+        "professionals": 6,
+        "insights": 3,
+        "content_revisions": 25,
+        "media": 19,
+        "media_usages": 19,
+        "site_settings": 7,
+        "enquiries": 0
+    }
+}

@@ -1,7 +1,18 @@
-<ul class="navbar-nav ms-auto align-items-lg-center"><li class="nav-item"><a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" @if(request()->routeIs('home')) aria-current="page" @endif href="{{ route('home') }}">Beranda</a></li>
-<li class="nav-item"><a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" @if(request()->routeIs('about')) aria-current="page" @endif href="{{ route('about') }}">Tentang Firma</a></li>
-<li class="nav-item"><a class="nav-link {{ request()->routeIs('practice-areas') ? 'active' : '' }}" @if(request()->routeIs('practice-areas')) aria-current="page" @endif href="{{ route('practice-areas') }}">Bidang Praktik</a></li>
-<li class="nav-item"><a class="nav-link {{ request()->routeIs('team') ? 'active' : '' }}" @if(request()->routeIs('team')) aria-current="page" @endif href="{{ route('team') }}">Profesional</a></li>
-<li class="nav-item"><a class="nav-link {{ request()->routeIs('insights') ? 'active' : '' }}" @if(request()->routeIs('insights')) aria-current="page" @endif href="{{ route('insights') }}">Publikasi</a></li>
-<li class="nav-item"><a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" @if(request()->routeIs('contact')) aria-current="page" @endif href="{{ route('contact') }}">Kontak</a></li><li class="nav-item ms-lg-3"><a class="btn btn-outline-brand" href="{{ route('contact') }}#enquiry">Jadwalkan konsultasi <span aria-hidden="true">↗</span></a></li></ul>
-
+<ul class="navbar-nav ms-auto align-items-lg-center">
+    @foreach ($navigationItems as $item)
+        @php($isActive = request()->routeIs($item['route']))
+        <li class="nav-item">
+            <a class="nav-link {{ $isActive ? 'active' : '' }}" @if ($isActive) aria-current="page" @endif href="{{ route($item['route']) }}">{{ $item['label'] }}</a>
+        </li>
+    @endforeach
+    <li class="nav-item ms-lg-2">
+        @guest
+            <a class="btn btn-outline-brand" href="{{ route('login') }}">Masuk</a>
+        @else
+            <a class="btn btn-outline-brand" href="{{ route('admin.dashboard') }}">Dashboard</a>
+        @endguest
+    </li>
+    <li class="nav-item ms-lg-2">
+        <a class="btn btn-outline-brand" href="{{ route('contact') }}#enquiry">Jadwalkan konsultasi <span aria-hidden="true">↗</span></a>
+    </li>
+</ul>

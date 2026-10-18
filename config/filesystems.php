@@ -30,6 +30,15 @@ return [
 
     'disks' => [
 
+        // Existing versioned frontend images; uploads must use a writable storage disk.
+        'frontend' => [
+            'driver' => 'local',
+            'root' => public_path('assets'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/assets',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),

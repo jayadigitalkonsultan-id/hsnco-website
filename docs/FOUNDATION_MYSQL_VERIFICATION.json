@@ -1,0 +1,136 @@
+{
+    "verified_at_utc": "2026-10-15T17:51:01+00:00",
+    "engine": "8.0.30",
+    "schema": {
+        "audit_logs": {
+            "sha256": "4c05d6f637dbc9ec1450fc8b00d7509b2034abc29466f1d2260b8972556601ba",
+            "columns": 12,
+            "foreign_keys": 1
+        },
+        "cache": {
+            "sha256": "cd29b320229c6746d78e62ecfaf80ff94a04e93f6fc7d73802cdb263d1099081",
+            "columns": 3,
+            "foreign_keys": 0
+        },
+        "cache_locks": {
+            "sha256": "a6c13c3ce7d80c29938825282ac2de232c521808ee833833caaab634f8c16d71",
+            "columns": 3,
+            "foreign_keys": 0
+        },
+        "content_revisions": {
+            "sha256": "51b9df2baa4970441266eb2ed5db761b47cfdcb7e0480da7db2e92b9e4e0d1f3",
+            "columns": 15,
+            "foreign_keys": 3
+        },
+        "enquiries": {
+            "sha256": "79c5b68712ed0d8cb869ee32d53df652ee55bb763063e437cf596b4b57850bad",
+            "columns": 20,
+            "foreign_keys": 2
+        },
+        "enquiry_notes": {
+            "sha256": "c3019828d06e1ceb15e9d0e00ecf3600036807f7b8db87ebefb0b342ce475758",
+            "columns": 6,
+            "foreign_keys": 2
+        },
+        "failed_jobs": {
+            "sha256": "40800920c4134ad592bcb3846e6dc245a3e9552e3efcfdc8ddc30973ce85b9ad",
+            "columns": 7,
+            "foreign_keys": 0
+        },
+        "insights": {
+            "sha256": "0da744d20cf37924fac6f5ddf02ff319f233b70d458c414c8fc27e731dcab020",
+            "columns": 17,
+            "foreign_keys": 4
+        },
+        "job_batches": {
+            "sha256": "9c0061f695cf5eb895530b1a3cebd24a7b9233427735f894ad749db969ac897f",
+            "columns": 10,
+            "foreign_keys": 0
+        },
+        "jobs": {
+            "sha256": "7b54a12ce89eedb1021190bfaacb5c98129bd9c8aca10552d2c46c8badd6d2f3",
+            "columns": 7,
+            "foreign_keys": 0
+        },
+        "media": {
+            "sha256": "c24dd2b49b055f77a09fa1c5195a3e363ee8f5eb5ada6c386e9f948cb29da012",
+            "columns": 15,
+            "foreign_keys": 1
+        },
+        "media_usages": {
+            "sha256": "5c753ee7190dfb94cc1d8be68ddf26bbda96c1ff71e2d52a28d4add8034f6ecb",
+            "columns": 7,
+            "foreign_keys": 1
+        },
+        "migrations": {
+            "sha256": "80f4bbe4b04fc4950c7f35135c2f75725f8e5fb49cacc01ea5aa6f61dfc970aa",
+            "columns": 3,
+            "foreign_keys": 0
+        },
+        "page_sections": {
+            "sha256": "d2b40c8b73961529e25c413bb43d3710432fa7f77b5c7437fdbb0c2c173e4134",
+            "columns": 10,
+            "foreign_keys": 1
+        },
+        "pages": {
+            "sha256": "bb2292cb4ba561f72ec3ba58021648484c88ea91653bcf18cc5b362cd04c55b2",
+            "columns": 16,
+            "foreign_keys": 3
+        },
+        "password_reset_tokens": {
+            "sha256": "0c65c61453079d1bbf21c21679fced5b555f54cffbae4cf9c6301de22d0407bb",
+            "columns": 3,
+            "foreign_keys": 0
+        },
+        "practice_area_professional": {
+            "sha256": "3a49c2723033333301dc4bc2fb5b24735bf8d07baffeec9ab8d8f8d029c0bb16",
+            "columns": 4,
+            "foreign_keys": 2
+        },
+        "practice_areas": {
+            "sha256": "84d9f3ce42231c4bdd6884eb723b11314d17bff4d589a4478e1cc8279b47928b",
+            "columns": 18,
+            "foreign_keys": 3
+        },
+        "professionals": {
+            "sha256": "8f8aef7905d91def133b7cd92565b34a0af4925bbbb8cd5873833fbc1dcea90a",
+            "columns": 22,
+            "foreign_keys": 3
+        },
+        "sessions": {
+            "sha256": "a11b66bf1c9215bd96ccc7dbe37c540d5c27297af515237f70d07a5c680f81ce",
+            "columns": 6,
+            "foreign_keys": 0
+        },
+        "site_settings": {
+            "sha256": "1adedb917e7504d5d99b705cb1f26ccb131f74ea517e3be4dc48bc60778fb6bc",
+            "columns": 7,
+            "foreign_keys": 1
+        },
+        "two_factor_challenges": {
+            "sha256": "dcf401067590261f86c69e7dd6a5f24f29a7f2e3ddb8a730ab265df12e7badb9",
+            "columns": 10,
+            "foreign_keys": 1
+        },
+        "two_factor_recovery_codes": {
+            "sha256": "8bec9f3ac3594efca44ac30d3e3e69738aecaa9057db0c561df57df0457d3ca4",
+            "columns": 5,
+            "foreign_keys": 1
+        },
+        "user_invitations": {
+            "sha256": "fd1bec949a93a8e0078176e895323ef50b0a8c5caf799cd7d6d3b302c4830749",
+            "columns": 12,
+            "foreign_keys": 2
+        },
+        "user_two_factor_authentications": {
+            "sha256": "86e58dea25af9a8d565d81400c76ca242f14258e1ee60f783903688499c89254",
+            "columns": 8,
+            "foreign_keys": 1
+        },
+        "users": {
+            "sha256": "beff0a8beaa6b1d4a3c8c054f8f7f1b050d4d973c46f846bcbb4fcdf2f0ec592",
+            "columns": 19,
+            "foreign_keys": 1
+        }
+    }
+}

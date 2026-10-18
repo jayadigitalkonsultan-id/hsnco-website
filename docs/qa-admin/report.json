@@ -1,0 +1,364 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "browser": "Chrome headless via CDP",
+  "pages": [
+    {
+      "route": "/admin",
+      "width": 1440,
+      "title": "Dashboard",
+      "screenshot": "admin-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/pages",
+      "width": 1440,
+      "title": "Halaman website",
+      "screenshot": "admin-pages-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/practice-areas",
+      "width": 1440,
+      "title": "Praktik hukum",
+      "screenshot": "admin-practice-areas-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/professionals",
+      "width": 1440,
+      "title": "Profesional",
+      "screenshot": "admin-professionals-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/insights",
+      "width": 1440,
+      "title": "Publikasi",
+      "screenshot": "admin-insights-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/media",
+      "width": 1440,
+      "title": "Media library",
+      "screenshot": "admin-media-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/enquiries",
+      "width": 1440,
+      "title": "Permintaan konsultasi",
+      "screenshot": "admin-enquiries-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/settings",
+      "width": 1440,
+      "title": "Pengaturan",
+      "screenshot": "admin-settings-1440.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "title": "Dashboard",
+      "screenshot": "admin-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/pages",
+      "width": 390,
+      "title": "Halaman website",
+      "screenshot": "admin-pages-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/practice-areas",
+      "width": 390,
+      "title": "Praktik hukum",
+      "screenshot": "admin-practice-areas-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/professionals",
+      "width": 390,
+      "title": "Profesional",
+      "screenshot": "admin-professionals-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/insights",
+      "width": 390,
+      "title": "Publikasi",
+      "screenshot": "admin-insights-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/media",
+      "width": 390,
+      "title": "Media library",
+      "screenshot": "admin-media-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/enquiries",
+      "width": 390,
+      "title": "Permintaan konsultasi",
+      "screenshot": "admin-enquiries-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    },
+    {
+      "route": "/admin/settings",
+      "width": 390,
+      "title": "Pengaturan",
+      "screenshot": "admin-settings-390.png",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "unlabelledFields": 0
+    }
+  ],
+  "interactions": [
+    "jsTree selection opens the matching database page link",
+    "Server-side search, status filtering and empty state",
+    "Local preview forms are disabled for writes",
+    "Mobile offcanvas, aria-expanded, keyboard focus and Escape"
+  ],
+  "errors": [],
+  "sidebar": [
+    {
+      "tag": "DIV",
+      "text": "",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 263,
+        "height": 106,
+        "top": 0,
+        "right": 263,
+        "bottom": 106,
+        "left": 0
+      }
+    },
+    {
+      "tag": "IMG",
+      "text": "",
+      "display": "block",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 29,
+        "y": 22,
+        "width": 172,
+        "height": 62,
+        "top": 22,
+        "right": 201,
+        "bottom": 84,
+        "left": 29
+      }
+    },
+    {
+      "tag": "NAV",
+      "text": "Dashboard\nHalaman website\nPraktik hukum\nProfesional\nPublikasi\nMedia library\nPermintaan konsultasi\nPengaturan",
+      "display": "block",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 0,
+        "y": 150.390625,
+        "width": 263,
+        "height": 468,
+        "top": 150.390625,
+        "right": 263,
+        "bottom": 618.390625,
+        "left": 0
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Dashboard",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 150.390625,
+        "width": 231,
+        "height": 48,
+        "top": 150.390625,
+        "right": 247,
+        "bottom": 198.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Halaman website",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 203.390625,
+        "width": 231,
+        "height": 48,
+        "top": 203.390625,
+        "right": 247,
+        "bottom": 251.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Praktik hukum",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 256.390625,
+        "width": 231,
+        "height": 48,
+        "top": 256.390625,
+        "right": 247,
+        "bottom": 304.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Profesional",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 309.390625,
+        "width": 231,
+        "height": 48,
+        "top": 309.390625,
+        "right": 247,
+        "bottom": 357.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Publikasi",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 362.390625,
+        "width": 231,
+        "height": 48,
+        "top": 362.390625,
+        "right": 247,
+        "bottom": 410.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Media library",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 415.390625,
+        "width": 231,
+        "height": 48,
+        "top": 415.390625,
+        "right": 247,
+        "bottom": 463.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Permintaan konsultasi",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 512.390625,
+        "width": 231,
+        "height": 48,
+        "top": 512.390625,
+        "right": 247,
+        "bottom": 560.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Pengaturan",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 16,
+        "y": 565.390625,
+        "width": 231,
+        "height": 48,
+        "top": 565.390625,
+        "right": 247,
+        "bottom": 613.390625,
+        "left": 16
+      }
+    },
+    {
+      "tag": "DIV",
+      "text": "H\nHSNCO workspace\nWebsite & publikasi firma",
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "rect": {
+        "x": 24,
+        "y": 870.71875,
+        "width": 215,
+        "height": 61.59375,
+        "top": 870.71875,
+        "right": 239,
+        "bottom": 932.3125,
+        "left": 24
+      }
+    }
+  ],
+  "passed": true
+}

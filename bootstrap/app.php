@@ -11,6 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'admin.access' => \App\Http\Middleware\EnsureAdminAccess::class,
+            'two-factor' => \App\Http\Middleware\EnsureTwoFactorVerified::class,
+        ]);
         // EasyPanel terminates TLS; enable only for the configured private proxy network.
         $proxies = env('TRUSTED_PROXIES');
         if (is_string($proxies) && trim($proxies) !== '') {
