@@ -172,24 +172,18 @@ class AppServiceProvider extends ServiceProvider
                 'values' => $mediaUrl($homeMedia->get(data_get($homeSections->get('values'), 'content.image_id'))),
             ];
 
-            $practiceIds = data_get($homeSections->get('featured-practices'), 'content.practice_area_ids', []);
-            $practiceMap = is_array($practiceIds) && $practiceIds !== []
-                ? PracticeArea::query()->published()->whereIn('id', $practiceIds)->with('publicImage')->get()->keyBy('id')
-                : collect();
-            $homePracticeItems = collect(is_array($practiceIds) ? $practiceIds : [])->map(function ($id) use ($practiceMap, $mediaUrl) {
-                $practice = $practiceMap->get($id);
-                if (! $practice) {
-                    return null;
-                }
-
-                return [
-                    'name' => $practice->name,
-                    'slug' => $practice->slug,
-                    'image' => $mediaUrl($practice->publicImage),
-                    'alt' => $practice->publicImage?->alt_text ?: $practice->name,
-                ];
-            })->filter()->values();
-
+            try {
+                $homePractices = PracticeArea::query()->published()->with('publicImage')
+                    ->orderBy('sort_order')->orderBy('name')->get();
+            } catch (QueryException) {
+                $homePractices = collect();
+            }
+            $homePracticeItems = $homePractices->map(fn ($practice) => [
+                'name' => $practice->name,
+                'slug' => $practice->slug,
+                'image' => $mediaUrl($practice->publicImage),
+                'alt' => $practice->publicImage?->alt_text ?: $practice->name,
+            ])->values();
             $homeRecognitions = collect(data_get($homeSections->get('recognitions'), 'content.items', []))
                 ->filter(fn ($item) => is_array($item)
                     && filter_var($item['verified'] ?? false, FILTER_VALIDATE_BOOLEAN)

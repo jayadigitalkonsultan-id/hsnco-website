@@ -70,18 +70,7 @@
 @endif
 
 @if ($practiceSelection?->is_visible)
-    <section class="home-practice-tiles" aria-label="{{ $practiceSelection->heading ?: 'Bidang praktik pilihan' }}">
-        <div class="row g-0">
-            @foreach ($homePracticeItems as $index => $practice)
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <x-frontend.practice-card :href="route('practice-areas').'#'.$practice['slug']">
-                        @if ($practice['image'])<img src="{{ $practice['image'] }}" alt="{{ $practice['alt'] }}" width="900" height="600" loading="lazy" decoding="async">@endif
-                        <div class="tile-copy"><span class="eyebrow">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }} / Keahlian</span><h3>{{ $practice['name'] }}</h3><span class="text-link">Selengkapnya <span aria-hidden="true">→</span></span></div>
-                    </x-frontend.practice-card>
-                </div>
-            @endforeach
-        </div>
-    </section>
+    @include('frontend.home.practice-directory')
 @endif
 
 @if ($values?->is_visible)
@@ -145,6 +134,7 @@
     </section>
 @endif
 
+@section('home-consultation')
 @if ($consultation?->is_visible)
     @php($content = $consultation->content ?? [])
     <section class="section-space surface-paper" id="contact">
@@ -162,6 +152,7 @@
         </div><div class="col-lg-6"><x-frontend.enquiry-form prefix="home" /></div></div></div>
     </section>
 @endif
+@endsection
 
 @if ($latestInsights?->is_visible)
     @php($content = $latestInsights->content ?? [])

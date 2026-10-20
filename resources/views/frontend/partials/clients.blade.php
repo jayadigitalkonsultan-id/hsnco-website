@@ -1,5 +1,5 @@
 @if($clients->isNotEmpty())
-@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}">@endpush
+@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}?v={{ filemtime(public_path('assets/css/clients.css')) }}">@endpush
 @push('scripts')<script defer src="{{ asset('assets/js/clients.js') }}"></script>@endpush
 <section class="section-space surface-paper clients-section" aria-labelledby="clients-title" data-client-showcase>
  <div class="container">
