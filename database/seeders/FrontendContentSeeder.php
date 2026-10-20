@@ -114,15 +114,9 @@ class FrontendContentSeeder extends Seeder
                                 ],
                             ],
                             'sectors' => [
-                                'eyebrow' => 'Pemahaman sektor usaha',
-                                'description' => 'Pemahaman industri membantu tim hukum kami mengantisipasi risiko, memahami kebutuhan pengambil keputusan, dan memberikan nasihat yang dapat diterapkan.',
-                                'items' => [
-                                    ['title' => 'Jasa Keuangan & Teknologi Finansial', 'description' => 'Regulasi · Transaksi · Keuangan digital'],
-                                    ['title' => 'Energi & Sumber Daya Alam', 'description' => 'Proyek · Perizinan · Investasi'],
-                                    ['title' => 'Teknologi & Telekomunikasi', 'description' => 'Data · Platform · Kekayaan intelektual'],
-                                    ['title' => 'Infrastruktur & Properti', 'description' => 'Pengembangan · Pembiayaan · Konstruksi'],
-                                    ['title' => 'Konsumen & Manufaktur', 'description' => 'Masuk pasar · Distribusi · Kepatuhan'],
-                                ],
+                                'eyebrow' => config('service-formats.eyebrow'),
+                                'description' => config('service-formats.description'),
+                                'items' => config('service-formats.items'),
                             ],
                             'approach' => [
                                 'eyebrow' => 'Pendekatan kami',
@@ -150,6 +144,9 @@ class FrontendContentSeeder extends Seeder
                             ],
                             default => [],
                         });
+                    }
+                    if ($item['key'] === 'home' && $section['key'] === 'sectors') {
+                        $section['heading'] = config('service-formats.heading');
                     }
                     if ($item['key'] === 'about') {
                         $defaults = config('about.sections.'.$section['key']);

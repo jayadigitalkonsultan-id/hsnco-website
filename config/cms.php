@@ -46,7 +46,7 @@ $sectionFields = [
         'image_id' => ['type' => 'media', 'label' => 'Gambar latar'],
         'items' => ['type' => 'items', 'label' => 'Daftar tiga nilai firma (JSON)', 'items' => $valueItem, 'min' => 3, 'max' => 3, 'required' => true],
     ],
-    'sectors' => $narrative + ['items' => ['type' => 'items', 'label' => 'Daftar lima sektor (JSON)', 'items' => ['title' => ['type' => 'text', 'label' => 'Sektor', 'max' => 255, 'required' => true], 'description' => $rich + ['required' => true]], 'min' => 5, 'max' => 5, 'required' => true]],
+    'sectors' => $narrative + ['items' => ['type' => 'items', 'label' => 'Daftar lima bentuk layanan (JSON)', 'items' => ['title' => ['type' => 'text', 'label' => 'Bentuk layanan', 'max' => 255, 'required' => true], 'description' => $rich + ['required' => true]], 'min' => 5, 'max' => 5, 'required' => true]],
     'steps' => $narrative + ['items' => ['type' => 'items', 'label' => 'Daftar tiga langkah (JSON)', 'items' => ['title' => ['type' => 'text', 'label' => 'Judul item', 'max' => 255, 'required' => true], 'description' => $rich + ['required' => true]], 'min' => 3, 'max' => 3, 'required' => true]],
     'recognitions' => $narrative + ['items' => ['type' => 'items', 'label' => 'Direktori/penghargaan (JSON)', 'items' => ['title' => ['type' => 'text', 'label' => 'Direktori/penghargaan', 'max' => 255], 'rank' => ['type' => 'text', 'label' => 'Peringkat', 'max' => 100], 'year' => ['type' => 'text', 'label' => 'Tahun', 'max' => 20], 'evidence' => ['type' => 'text', 'label' => 'Bukti internal', 'max' => 500], 'verified' => ['type' => 'boolean', 'label' => 'Terverifikasi dan disetujui untuk publikasi']], 'max' => 50]],
     'enquiry' => $narrative + $link,

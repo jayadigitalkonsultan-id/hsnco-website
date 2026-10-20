@@ -91,17 +91,7 @@
 @endif
 
 @if ($sectors?->is_visible)
-    @php($content = $sectors->content ?? [])
-    <section class="section-space surface-light">
-        <div class="container"><div class="row g-4 g-lg-5 align-items-end mb-5">
-            <div class="col-lg-6"><p class="eyebrow">{{ $content['eyebrow'] ?? '' }}</p><x-frontend.section-heading>{{ $sectors->heading }}</x-frontend.section-heading></div>
-            <div class="col-lg-6"><x-frontend.rich-text :html="$content['description'] ?? ''" /></div>
-        </div><div class="editorial-list">
-            @foreach (($content['items'] ?? []) as $index => $item)
-                <article class="editorial-row"><span class="row-number">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</span><h3>{{ $item['title'] ?? '' }}</h3><p>{{ strip_tags((string) ($item['description'] ?? '')) }}</p></article>
-            @endforeach
-        </div></div>
-    </section>
+    @include('frontend.home.service-formats', ['formatsSection' => $sectors])
 @endif
 
 @if ($approach?->is_visible)
