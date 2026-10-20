@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @php
 $module = request()->route('module');
 $nameField = $definition['title_field'];
@@ -17,6 +17,11 @@ $nameField = $definition['title_field'];
     @if($module === 'pages')
         <x-admin.field name="key" label="Halaman website" type="select" :value="$record->key" :options="['home'=>'Beranda','about'=>'Tentang Firma','practice-areas'=>'Bidang Praktik','team'=>'Profesional','insights'=>'Publikasi','contact'=>'Kontak','sitemap'=>'Peta Situs']" required />
         <x-admin.field name="template" label="Tampilan halaman" type="select" :value="$record->template" :options="['home'=>'Beranda','about'=>'Tentang Firma','practice-areas'=>'Bidang Praktik','team'=>'Profesional','insights'=>'Publikasi','contact'=>'Kontak','sitemap'=>'Peta Situs']" required />
+    @elseif($module === 'clients')
+        <x-admin.field name="category" label="Sektor klien" type="select" :value="$record->category" :options="config('clients.categories')" required />
+        <x-admin.field name="summary" label="Nama sebelumnya / keterangan singkat" type="textarea" :value="$record->summary" maxlength="5000" />
+        <x-admin.field name="body" label="Gambaran penugasan" type="textarea" :value="$record->body" maxlength="100000" help="Tampil pada detail klien. Gunakan materi yang telah disetujui untuk publikasi." />
+        <x-admin.field name="source_note" label="Catatan sumber internal" type="textarea" :value="$record->source_note" maxlength="5000" help="Tidak ditampilkan di website." />
     @elseif($module === 'professionals')
         <div class="row"><div class="col-md-7"><x-admin.field name="position" label="Jabatan" :value="$record->position" required maxlength="150" /></div><div class="col-md-5"><x-admin.field name="level" label="Kelompok" type="select" :value="$record->level ?? 'partner'" :options="['partner'=>'Mitra','associate'=>'Asosiat']" required /></div></div>
         <x-admin.field name="summary" label="Ringkasan keahlian" type="textarea" :value="$record->summary" maxlength="5000" />
@@ -27,18 +32,18 @@ $nameField = $definition['title_field'];
         <x-admin.field name="practice_area_ids" label="Bidang praktik" type="select" :value="$record->exists ? $record->practiceAreas->pluck('id')->all() : []" :options="$practices->pluck('name','id')->all()" multiple help="Pilih satu atau beberapa bidang praktik." />
     @else
         <x-admin.field :name="$module === 'insights' ? 'excerpt' : 'summary'" label="Ringkasan" type="textarea" :value="$record->{$module === 'insights' ? 'excerpt' : 'summary'}" maxlength="5000" />
-        <x-admin.field name="body" label="Isi konten" type="textarea" :value="$record->body" maxlength="100000" help="Gunakan teks biasa untuk draft awal." />
+        <x-admin.field name="body" :label="$module === 'practice-areas' ? 'Daftar layanan' : 'Isi konten'" type="textarea" :value="$record->body" maxlength="100000" :help="$module === 'practice-areas' ? 'Satu layanan per baris. Setiap baris ditampilkan sebagai satu butir pada panel website.' : 'Gunakan teks biasa untuk draft awal.'" />
         @if($module === 'insights')<x-admin.field name="author_id" label="Penulis" type="select" :value="$record->author_id" :options="$authors->pluck('name','id')->all()" />@endif
     @endif
     @if($module !== 'professionals')<hr class="my-4"><h3 class="mb-3">Informasi pencarian</h3><x-admin.field name="seo_title" label="Judul pencarian" :value="$record->seo_title" maxlength="255" /><x-admin.field name="seo_description" label="Deskripsi pencarian" type="textarea" :value="$record->seo_description" maxlength="1000" />@endif
 </fieldset></div></section></div>
 <div class="col-xl-4"><section class="panel"><div class="panel-heading"><div><h2>Pengaturan konten</h2><p>Status dan tampilan di website.</p></div></div><div class="editor-body"><fieldset @disabled(!$editable)>
     <x-admin.field name="status" label="Status editorial" type="select" :value="$record->status ?? 'draft'" :options="['draft'=>'Draft','review'=>'Ajukan review']" required />
-    @php($imageField = ['pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
-    <x-admin.field :name="$imageField" label="Gambar pilihan" type="select" :value="$record->{$imageField}" :options="$media->pluck('original_name','id')->all()" />
-    @if(in_array($module, ['practice-areas','professionals']))
+    @php($imageField = ['clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
+    <x-admin.field :name="$imageField" :label="$module === 'clients' ? 'Logo klien' : ($module === 'practice-areas' ? 'Gambar latar kategori' : 'Gambar pilihan')" type="select" :value="$record->{$imageField}" :options="$media->pluck('original_name','id')->all()" />
+    @if(in_array($module, ['clients','practice-areas','professionals']))
         <x-admin.field name="sort_order" label="Urutan tampil" type="number" :value="$record->sort_order ?? 0" min="0" />
-        <input type="hidden" name="is_featured" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_featured" id="isFeatured" value="1" @checked(old('is_featured', $record->is_featured))><label class="form-check-label" for="isFeatured">Tampilkan sebagai pilihan</label></div>
+        @if($module !== 'clients')<input type="hidden" name="is_featured" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_featured" id="isFeatured" value="1" @checked(old('is_featured', $record->is_featured))><label class="form-check-label" for="isFeatured">Tampilkan sebagai pilihan</label></div>@endif
         @if($module === 'professionals')<input type="hidden" name="is_leadership" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_leadership" id="isLeadership" value="1" @checked(old('is_leadership', $record->is_leadership))><label class="form-check-label" for="isLeadership">Tampilkan sebagai pimpinan</label></div>@endif
     @endif
     <button class="btn btn-dark w-100 mt-2" type="submit">Simpan draft</button>

@@ -2,9 +2,14 @@
   "version": 2,
   "files": [
     {
+      "file": "css/clients.css",
+      "mode": "lf-text",
+      "sha256": "a131fc161b84f76e27c3fd840808f52e926a3facef8f69d94af7929ab4ad81bc"
+    },
+    {
       "file": "css/components.css",
       "mode": "lf-text",
-      "sha256": "f3aeb2a7b54fd2808e03a8777150901bcd778127781da469c864960c3e0262fd"
+      "sha256": "ccd234a7ad05cc11a6ed7a4a094e9cfcc83de06ea6397a58a99500208ffc4df1"
     },
     {
       "file": "css/home.css",
@@ -14,12 +19,22 @@
     {
       "file": "css/inner-pages.css",
       "mode": "lf-text",
-      "sha256": "c1497033f3b2738b29ba1322d6f2ded4056f483db77fb5420fcc594e6f9b27eb"
+      "sha256": "8420fd7bb813faeecbc2eb528e418f4edd845c776d8cf692367cb0bcedb124a6"
+    },
+    {
+      "file": "css/motion.css",
+      "mode": "lf-text",
+      "sha256": "8363446cac902065024a8b7d8b47ae0ab20671d00839f6958e78098ec2bd5adf"
     },
     {
       "file": "css/plugins.css",
       "mode": "lf-text",
       "sha256": "8517ed638c9bfb85f796a9438d5b806bb57a1cf1593975d479cc58a7dbf6f2ab"
+    },
+    {
+      "file": "css/practice-areas.css",
+      "mode": "lf-text",
+      "sha256": "9f2de899138c823e0baba52a97df1478c2669a7135b89b97aad0cd59859ec4ef"
     },
     {
       "file": "css/responsive.css",
@@ -85,6 +100,41 @@
       "file": "images/banking.jpg",
       "mode": "binary",
       "sha256": "58d23e39de5178d7fb3b80474877af21d9150e4e684311a0fbb734b7f82eaaa5"
+    },
+    {
+      "file": "images/clients/bank-cimb-niaga.png",
+      "mode": "binary",
+      "sha256": "a8b18279b5bac87d2630f10eeb84e28bf0c72ee2d6bf6de9eceade68a6a3cafd"
+    },
+    {
+      "file": "images/clients/bank-kb-bukopin.png",
+      "mode": "binary",
+      "sha256": "ec4a763bd4e40ae48f50b716d5f021e2237d63ad256205efa8cfd30d0b2d9bc3"
+    },
+    {
+      "file": "images/clients/bank-mandiri.png",
+      "mode": "binary",
+      "sha256": "9890a4b82d95b9e70f452bbd3139ba5aaa1fa23aeb4f8ff6daef8bbe7a739e02"
+    },
+    {
+      "file": "images/clients/bank-maybank-indonesia.png",
+      "mode": "binary",
+      "sha256": "e29bcbada09c14a47bd5e4ca4f942ff4b201d99a9cddfcb1ea0790359cf86e3c"
+    },
+    {
+      "file": "images/clients/pt-jakarta-propertindo.png",
+      "mode": "binary",
+      "sha256": "36add133379f58d5fae06776834cd38123de2c2e396dac26933b946b38e78e85"
+    },
+    {
+      "file": "images/clients/pt-pelindo-pelabuhan-indonesia.png",
+      "mode": "binary",
+      "sha256": "a4e4aca9b00c68f5357611a1ff2caa9952d33b417a2fc23cfa45522cc239a6f2"
+    },
+    {
+      "file": "images/clients/pt-sucofindo.png",
+      "mode": "binary",
+      "sha256": "db7ffe3f63e94cc03c6ad4cdef1fb5c528ace0462cd38333e14beb86b2c5e375"
     },
     {
       "file": "images/corporate.jpg",
@@ -192,19 +242,29 @@
       "sha256": "9a69e3f07adadd84270af4b2904769b326895b1efd7a704a2e0fa6664167e854"
     },
     {
+      "file": "js/clients.js",
+      "mode": "lf-text",
+      "sha256": "565f7807bc51264ac1148cd314d0813a88b690a35fb4d3a6155bbe887f126342"
+    },
+    {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "56835fe782d57307c834923258b88b200e8fddd9e322ab978dbfeafb8a8a38aa"
+      "sha256": "23a005549d17ef29013e31f52c8325d00bc11f4f5078decb855f862a454ce3a1"
     },
     {
       "file": "js/content-data.js",
       "mode": "lf-text",
-      "sha256": "cdb10abc936c9739a1218d1f0fcfcd6dd2a24dcdadb0450e19fee892aada6a33"
+      "sha256": "34b46000a859c3a2a16f1435a50aa7b740531170bdb6ebbea25a3f3dd7dffbee"
     },
     {
       "file": "js/main.js",
       "mode": "lf-text",
-      "sha256": "e23859d8c6fba6dcd4258d8974c0d21f6ef411521bca5aa29bb59fe34bee15e7"
+      "sha256": "0e3a5701cc1aa44a5776ee43ca0f3c068e54b6208cfa61955d9dbb934138de4f"
+    },
+    {
+      "file": "js/motion.js",
+      "mode": "lf-text",
+      "sha256": "551c1dbff16e1aefb16ebdbfa05aee19023302fd4572ae176f826ea0140b061a"
     },
     {
       "file": "plugins-init/bootstrap-init.js",
@@ -214,7 +274,7 @@
     {
       "file": "plugins-init/jstree-init.js",
       "mode": "lf-text",
-      "sha256": "4b896500425e723d9e1b3b0590139a202443878fd9a8c9be81f79dc83ce31757"
+      "sha256": "b1207b0f2346721f459910beb0d32f6bcfb7706f03f44532a32c1d2d89cfcca0"
     },
     {
       "file": "vendor/bootstrap/LICENSE",

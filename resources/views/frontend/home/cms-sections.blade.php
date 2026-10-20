@@ -15,7 +15,7 @@
 @if ($hero?->is_visible)
     @php($content = $hero->content ?? [])
     <section class="home-hero" id="home">
-        <img class="hero-image" src="{{ $homeImageUrls['hero'] ?? asset('assets/images/hero.jpg') }}" alt="{{ $content['image_alt'] ?? '' }}" width="1920" height="1280" fetchpriority="high">
+        <x-frontend.hero-visual :primary="$homeImageUrls['hero'] ?? null" :alt="$content['image_alt'] ?? ''" />
         <div class="container hero-content">
             @if (!empty($content['eyebrow']))<p class="eyebrow">{{ $content['eyebrow'] }}</p>@endif
             <h1>{{ $hero->heading }}</h1>

@@ -43,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        View::composer('frontend.partials.clients', function ($view) {
+            try {
+                $clients = \App\Models\Client::query()->published()->with('publicImage')->orderBy('sort_order')->orderBy('name')->get();
+            } catch (QueryException) {
+                $clients = collect();
+            }
+            $view->with('clients', $clients);
+        });
         // Public CMS/settings data is read per request; no content cache can serve stale published values.
         View::composer([
             'layouts.partials.head',
@@ -444,11 +452,12 @@ class AppServiceProvider extends ServiceProvider
             'practice_area' => PracticeArea::class,
             'professional' => Professional::class,
             'insight' => Insight::class,
+            'client' => \App\Models\Client::class,
             'site_setting' => SiteSetting::class,
             'content_revision' => ContentRevision::class,
         ]);
 
-        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class] as $model) {
+        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class, \App\Models\Client::class] as $model) {
             Gate::policy($model, ContentPolicy::class);
         }
         foreach ([SiteSetting::class, Enquiry::class, EnquiryNote::class] as $model) {

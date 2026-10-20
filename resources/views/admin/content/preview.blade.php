@@ -1,10 +1,10 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @php($titleField = $definition['title_field'])
 @section('title', 'Pratinjau '.$definition['singular'])
 @section('intro', 'Pratinjau privat revisi v'.$revision->version.'. Hanya pengguna yang berizin dapat membuka halaman ini.')
 @section('actions')<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.edit', $record) }}">Kembali ke editor</a>@endsection
 @section('content')
-<article class="panel"><div class="panel-heading"><div><p class="overline">{{ $definition['label'] }} Â· {{ $payload['slug'] ?? '' }}</p><h2>{{ $payload[$titleField] ?? 'Konten tanpa judul' }}</h2><p>Revisi v{{ $revision->version }} Â· <x-admin.status :status="$revision->status" /></p></div></div>
+<article class="panel"><div class="panel-heading"><div><p class="overline">{{ $definition['label'] }} · {{ $payload['slug'] ?? '' }}</p><h2>{{ $payload[$titleField] ?? 'Konten tanpa judul' }}</h2><p>Revisi v{{ $revision->version }} · <x-admin.status :status="$revision->status" /></p></div></div>
     <div class="editor-body">
         @foreach(['description', 'summary', 'excerpt', 'seo_title', 'seo_description', 'body', 'biography'] as $field)
             @if(!empty($payload[$field]))<section class="mb-4"><h3>{{ \Illuminate\Support\Str::headline($field) }}</h3><p class="text-break">{{ $payload[$field] }}</p></section>@endif

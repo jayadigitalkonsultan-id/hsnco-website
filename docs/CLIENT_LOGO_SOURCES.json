@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Bank CIMB Niaga",
+    "file": "images/clients/bank-cimb-niaga.png",
+    "source": "https://www.cimbniaga.co.id/",
+    "asset": "https://www.cimbniaga.co.id/content/dam/cimb/revamp/cimb-logo/logo-cimb-personal.svg",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "Bank Maybank Indonesia",
+    "file": "images/clients/bank-maybank-indonesia.png",
+    "source": "https://www.maybank.co.id/",
+    "asset": "https://www.maybank.co.id/-/media/Project/Maybank/Logo/maybank.svg",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "Bank KB Bukopin",
+    "file": "images/clients/bank-kb-bukopin.png",
+    "source": "https://www.kbbank.co.id/",
+    "asset": "https://www.kbbank.co.id/kb-logo-2.png",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "PT JAKARTA PROPERTINDO",
+    "file": "images/clients/pt-jakarta-propertindo.png",
+    "source": "https://www.jakpro.co.id/",
+    "asset": "https://www.jakpro.co.id/images/logo-jakpro-wide-400.webp",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "PT PELINDO (PELABUHAN INDONESIA)",
+    "file": "images/clients/pt-pelindo-pelabuhan-indonesia.png",
+    "source": "https://www.pelindo.id/",
+    "asset": "Embedded logo on official homepage",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "Bank Mandiri",
+    "file": "images/clients/bank-mandiri.png",
+    "source": "https://www.bankmandiri.co.id/",
+    "asset": "Official header logo rendered by browser",
+    "retrieved": "2026-10-20"
+  },
+  {
+    "name": "PT SUCOFINDO",
+    "file": "images/clients/pt-sucofindo.png",
+    "source": "https://www.sucofindo.co.id/",
+    "asset": "https://www.sucofindo.co.id/wp-content/uploads/2022/08/image-4.webp",
+    "retrieved": "2026-10-20"
+  }
+]

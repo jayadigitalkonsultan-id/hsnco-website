@@ -1,0 +1,13 @@
+import {chromium} from 'playwright';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+await page.goto('http://127.0.0.1:4182/practice-areas');
+await page.addScriptTag({path:'tools/node_modules/axe-core/axe.min.js'});
+const result=await page.evaluate(()=>axe.run('.services-scope',{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));
+console.log(JSON.stringify(result.violations.map(v=>({id:v.id,impact:v.impact,count:v.nodes.length}))));
+await page.locator('.services-index a').nth(7).click();await page.waitForTimeout(200);
+if(!await page.locator('#compliance-tailored-services').isVisible())throw Error('Anchor navigation failed');
+await page.locator('#ketenagakerjaan-dan-imigrasi').scrollIntoViewIfNeeded();
+await page.locator('#ketenagakerjaan-dan-imigrasi img').evaluate(img=>img.decode());
+await page.locator('#ketenagakerjaan-dan-imigrasi').screenshot({path:'docs/qa-practices/employment-desktop.png'});
+await browser.close();if(result.violations.length)process.exit(1);

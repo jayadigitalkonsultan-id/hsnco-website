@@ -1,0 +1,12 @@
+import {chromium} from 'playwright';
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const p=await b.newPage({viewport:{width:1440,height:900},reducedMotion:'no-preference'});
+await p.addInitScript(()=>{window.motionCalls=[];const original=Element.prototype.animate;Element.prototype.animate=function(frames,options){window.motionCalls.push({tag:this.tagName,id:this.id,class:this.className,delay:options.delay||0,duration:options.duration});return original.call(this,frames,options);};});
+await p.goto('http://127.0.0.1:4182/');await p.waitForTimeout(150);
+if(!await p.evaluate(()=>window.motionCalls.some(c=>c.class==='hero-image'&&c.duration===9000)))throw Error('Hero movement missing');
+await p.goto('http://127.0.0.1:4182/practice-areas');const panel=p.locator('.services-panel').first();await panel.scrollIntoViewIfNeeded();await p.waitForTimeout(200);
+const id=await panel.getAttribute('id');const count=()=>p.evaluate(id=>window.motionCalls.filter(c=>c.id===id).length,id);const first=await count();if(!first)throw Error('Panel reveal missing');
+const opacity=await panel.evaluate(el=>+getComputedStyle(el).opacity);if(opacity>=1)throw Error('Fade not visible during reveal');
+await p.waitForTimeout(1400);if(await panel.evaluate(el=>+getComputedStyle(el).opacity)!==1)throw Error('Content stayed transparent');
+await p.evaluate(()=>scrollTo(0,document.body.scrollHeight));await p.waitForTimeout(250);await panel.scrollIntoViewIfNeeded();await p.waitForTimeout(250);if(await count()<=first)throw Error('Reveal did not replay');
+await p.emulateMedia({reducedMotion:'reduce'});await p.waitForTimeout(100);if(await panel.evaluate(el=>+getComputedStyle(el).opacity)!==1)throw Error('Reduced motion content hidden');
+await b.close();console.log('PASS: hero zoom, visible fade opacity, full visibility after reveal, replay on re-entry, reduced motion stops animations.');

@@ -35,7 +35,8 @@ class Media extends DomainModel
     protected static function booted(): void
     {
         static::deleting(function (Media $media) {
-            if ($media->usages()->exists()
+            if (Client::withTrashed()->where('image_id', $media->id)->exists()
+                || $media->usages()->exists()
                 || Page::withTrashed()->where('og_media_id', $media->id)->exists()
                 || PracticeArea::withTrashed()->where('image_id', $media->id)->exists()
                 || Professional::withTrashed()->where('photo_id', $media->id)->exists()

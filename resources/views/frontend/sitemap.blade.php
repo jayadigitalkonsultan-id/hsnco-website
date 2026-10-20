@@ -2,6 +2,7 @@
 @php
     $banner = $sitemapSections->get('banner');
     $directory = $sitemapSections->get('directory');
+    $showBanner = ! $banner || $banner->is_visible;
     $banner = $banner?->is_visible ? $banner : null;
     $directory = $directory?->is_visible ? $directory : null;
     $bannerContent = $banner?->content ?? [];
@@ -15,7 +16,7 @@
 {{ \Illuminate\Support\Str::limit(strip_tags($intro), 160) }}
 @endsection
 @section('content')
-@if ($banner)
+@if ($showBanner)
 <x-frontend.page-banner current="Peta Situs" :eyebrow="$bannerContent['eyebrow'] ?? 'Jelajahi HSNCO'"><x-slot:heading>{!! nl2br(e($banner?->heading ?? 'Jalur yang jelas. Setiap halaman.')) !!}</x-slot:heading><x-slot:intro>{!! app(\App\Services\Cms\RichTextSanitizer::class)->sanitize($intro) !!}</x-slot:intro></x-frontend.page-banner>
 @endif
 

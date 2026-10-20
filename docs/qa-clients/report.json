@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "viewports": [
+    1920,
+    1440,
+    1366,
+    768,
+    390,
+    375
+  ],
+  "pages": 2,
+  "clients": 43,
+  "logos": 7,
+  "filters": true,
+  "modal": true,
+  "navigation": true,
+  "pause": true,
+  "reducedMotion": true,
+  "noJs": true,
+  "axeViolations": 0
+}

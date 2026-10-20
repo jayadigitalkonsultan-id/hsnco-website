@@ -1,0 +1,11 @@
+import {chromium} from 'playwright';
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const p=await b.newPage({viewport:{width:390,height:900},reducedMotion:'no-preference'});const errors=[];p.on('pageerror',e=>errors.push(e.message));
+await p.clock.install();await p.goto('http://127.0.0.1:4182/about');await p.locator('.clients-rail').scrollIntoViewIfNeeded();await p.mouse.move(0,0);
+if(await p.locator('[data-client-play]').count())throw Error('Play button remains');
+const position=()=>p.locator('.clients-rail').evaluate(e=>e.scrollLeft);
+const before=await position();await p.clock.fastForward(6500);await p.waitForTimeout(800);const after=await position();if(after<=before)throw Error('Autoplay did not advance');
+await p.locator('.clients-rail').hover();const paused=await position();await p.clock.fastForward(6500);await p.waitForTimeout(200);if(Math.abs(await position()-paused)>3)throw Error('Hover did not pause');
+await p.mouse.move(0,0);await p.clock.fastForward(6500);await p.waitForTimeout(800);if(await position()<=paused)throw Error('Autoplay did not resume');
+await p.emulateMedia({reducedMotion:'reduce'});await p.waitForTimeout(500);const reduced=await position();await p.clock.fastForward(6500);await p.waitForTimeout(200);if(Math.abs(await position()-reduced)>3)throw Error('Reduced motion ignored');
+await b.close();if(errors.length)throw Error(errors.join('\n'));console.log('PASS: no play button, automatic advance, hover pause, automatic resume, reduced motion and no JS errors.');

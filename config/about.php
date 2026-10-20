@@ -13,8 +13,8 @@ return [
             'type' => 'about_intro', 'heading' => 'Pemahaman lokal. Wawasan global.',
             'content' => [
                 'eyebrow' => 'Tentang kami',
-                'column_one' => '<p>HSNCO adalah firma hukum independen di Indonesia yang meyakini bahwa nasihat hukum yang baik harus mendukung kemajuan bisnis secara nyata. Kami memadukan ketelitian hukum dengan pemahaman tentang pengambilan keputusan dan penciptaan nilai.</p><p>Perhatian dari profesional berpengalaman menjadi dasar setiap penugasan.</p>',
-                'column_two' => '<p>Kami bekerja sebagai satu tim terpadu dengan keahlian yang tepat pada saat yang dibutuhkan. Hasilnya adalah nasihat yang akurat, memahami kepentingan bisnis, dan dapat ditindaklanjuti.</p>',
+                'column_one' => '<p>HS & CO Counsellors at Law (HS & CO) adalah firma hukum yang menyediakan layanan hukum yang profesional dan efektif bagi klien baik dari Indonesia maupun internasional. Kami berlokasi di Jl. Letnan Jenderal TB. Simatupang Nomor 10B, Jakarta Selatan.</p><p>HS & CO fokus untuk memberikan solusi hukum yang tepat melalui pendekatan mediasi dan negosiasi, dengan jalur litigasi sebagai langkah terakhir apabila diperlukan.</p>',
+                'column_two' => '<p>Didirikan oleh praktisi hukum berpengalaman dan akademisi yang aktif mengajar di perguruan tinggi, HS & CO memiliki keahlian mendalam di berbagai bidang hukum, termasuk Hukum Pidana, Perdata, Properti, Perburuhan, Kepailitan, Hak Kekayaan Intelektual (HKI), Pertanahan, serta Sengketa Administrasi dan Tata Negara.</p><p>Kami memastikan bahwa setiap klien mendapat pelayanan yang mengutamakan etika, profesionalisme, dan respons cepat terhadap kebutuhan. Dalam hal litigasi, HS & CO didukung oleh tim advokat berpengalaman yang memiliki rekam jejak keberhasilan tinggi di berbagai kasus hukum.</p><p>Kami berkomitmen untuk memberikan pelayanan hukum yang efisien, solusi yang tepat, dan hasil yang berfokus pada keadilan dan kepentingan klien.</p>',
             ],
         ],
         'quote' => [

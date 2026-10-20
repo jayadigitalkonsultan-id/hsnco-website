@@ -1,0 +1,182 @@
+[
+    {
+        "name":  "Bank Negara Indonesia",
+        "category":  "finance",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Bank Danamon Indonesia",
+        "category":  "finance",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Bank Global",
+        "category":  "finance",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Badan Penyehatan Perbankan Nasional (BPPN)",
+        "category":  "finance",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT JAKARTA INFRASTRUKTUR PROPERTINDO",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT SINO INDONESIA SINO SHUNLIDA FISHING",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT INDOMAC TRADE JAYA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "CV MUTIARA SAWIT INDONESIA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT BUMI MENARA INTERNUSA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT GREAT RIVER INTERNASIONAL",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT INTAN WIJAYA INTERNASIONAL",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT BUANA FINANCE",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT ISUZU ASTRA MOTOR INDONESIA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT ASTRA DAIHATSU MOTOR",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT PRAKARSA ALAM SEGAR",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PERUMDA PEMBANGUNAN SARANA JAYA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT INDOARABICA MANGKURAJA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT ENDDEAVOR RESOURCES",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT WIJAYA TRI UTAMA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT SANGGA LABEL INDUSTRY",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT GT UTAMA GARMENTS",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT GUNUNG MERANTI RAYA PLYWOOD",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT GUNUNG MERANTI",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT IGAR JAYA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT EKAMAS MANDIRI PERKASA",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT PACIFIC METROREALTY",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT PARASTAR ECHORINDO",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT UNICOM HARBURA JAYA MAKMUR",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT PERDANA SATYA BHAKTI",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "PT BUMI ALAM SEGAR",
+        "category":  "corporate",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Persatuan Jaksa Indonesia (PJI)",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Kementerian Pendidikan dan Kebudayaan RI",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "Kementerian Lingkungan Hidup",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "KEMENTERIAN HUKUM DAN HAM",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "POLDA METRO JAYA",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    },
+    {
+        "name":  "SEKDA PROVINSI",
+        "category":  "institution",
+        "status":  "Belum tersedia; frontend menampilkan nama"
+    }
+]
