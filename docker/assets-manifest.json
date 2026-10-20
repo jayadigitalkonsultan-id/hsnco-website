@@ -19,7 +19,12 @@
     {
       "file": "css/components.css",
       "mode": "lf-text",
-      "sha256": "ccd234a7ad05cc11a6ed7a4a094e9cfcc83de06ea6397a58a99500208ffc4df1"
+      "sha256": "02cd329d9add029a1bac4a4b4a6987459aa75623a6d7b9ff3f1091d12ee74b00"
+    },
+    {
+      "file": "css/contact.css",
+      "mode": "lf-text",
+      "sha256": "e999d6376e3771bde8239135501e8eab05b44f841dd4ef6589869abd8a535c02"
     },
     {
       "file": "css/home.css",
@@ -59,7 +64,7 @@
     {
       "file": "css/team.css",
       "mode": "lf-text",
-      "sha256": "6c78936263bb6c1fa69470da8bbf744e8dff583530d0f5d30984492c2bf7e206"
+      "sha256": "f194c8b021ab989dc04d4e3e004cd033a2a57e3195ba80e664af1beec8eb64dd"
     },
     {
       "file": "css/variables.css",

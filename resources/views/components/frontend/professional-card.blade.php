@@ -5,11 +5,13 @@
     $initials = collect(explode(' ', preg_replace('/^(Assoc\. Prof\. Dr\.|Prof\. Dr\.|Dr\.|dr\.)\s*/', '', $professional->name)))->take(2)->map(fn ($part) => mb_substr($part, 0, 1))->implode('');
 @endphp
 <article class="col-md-6 col-lg-4" data-profile-card data-level="{{ $professional->level }}" data-search="{{ $searchText }}">
+    <button class="professional-photo-trigger" type="button" data-bs-toggle="modal" data-bs-target="#detailModal" data-profile="{{ $professional->slug }}" aria-label="Buka portofolio {{ $professional->name }}" aria-haspopup="dialog">
     @if ($professional->public_photo_url)
         <img class="person-photo" src="{{ $professional->public_photo_url }}" alt="{{ $professional->publicPhoto?->alt_text ?: 'Potret '.$professional->name }}" width="720" height="900" loading="lazy" decoding="async">
     @else
-        <div class="person-photo team-photo-placeholder" role="img" aria-label="Foto {{ $professional->name }} belum tersedia"><strong aria-hidden="true">{{ $initials }}</strong><span>Foto akan diperbarui</span></div>
+        <span class="person-photo team-photo-placeholder" role="img" aria-label="Foto {{ $professional->name }} belum tersedia"><strong aria-hidden="true">{{ $initials }}</strong><span>Foto akan diperbarui</span></span>
     @endif
+    </button>
     <div class="person-info">
         <p>{{ $professional->position }}</p>
         <h4>{{ $professional->name }}</h4>

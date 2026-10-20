@@ -32,7 +32,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© {{ now()->year }} {{ $name }}.</span>
+            <div class="footer-access"><span>&copy; {{ now()->year }} {{ $name }}.</span>
+                @guest
+                    <a class="footer-admin-link" href="{{ route('login') }}">Portal Admin</a>
+                @else
+                    <a class="footer-admin-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                @endguest
+            </div>
             <span>Informasi pada situs ini bersifat umum dan bukan nasihat hukum.</span>
         </div>
     </div>

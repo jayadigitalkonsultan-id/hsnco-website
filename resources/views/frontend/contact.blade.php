@@ -19,6 +19,9 @@
 @section('description')
 {{ $bannerContent['description'] ?? 'Sampaikan kebutuhan hukum Anda kepada HSNCO melalui formulir enquiry.' }}
 @endsection
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}?v={{ filemtime(public_path('assets/css/contact.css')) }}">
+@endpush
 @section('content')
 @if (! $banner || $banner->is_visible)
 <x-frontend.page-banner current="Kontak" :eyebrow="$bannerContent['eyebrow'] ?? 'Mulai percakapan'"><x-slot:heading>{!! nl2br(e($banner?->heading ?? 'Nasihat yang jelas. Dimulai di sini.')) !!}</x-slot:heading><x-slot:intro>{!! app(\App\Services\Cms\RichTextSanitizer::class)->sanitize($bannerContent['description'] ?? 'Sampaikan kebutuhan hukum yang sedang Anda hadapi. Tim HSNCO akan meninjau permintaan awal Anda.') !!}</x-slot:intro></x-frontend.page-banner>
@@ -37,6 +40,8 @@
     @if (! $verifiedContactDetails['address'] && ! $verifiedContactDetails['phone'] && ! $verifiedContactDetails['email'])<p class="content-notice">Informasi kontak langsung akan ditampilkan setelah diverifikasi.</p>@endif
 </div><div class="col-lg-7"><x-frontend.enquiry-form prefix="contact" /></div></div></div></section>
 @endif
+
+@include('frontend.partials.contact-map')
 
 @if (! $faqSection || $faqSection->is_visible)
 <section class="section-space surface-dark"><div class="container"><div class="row g-4"><div class="col-lg-5"><p class="eyebrow">{{ $faqContent['eyebrow'] ?? 'Sebelum menghubungi kami' }}</p><x-frontend.section-heading>{!! nl2br(e($faqSection?->heading ?? 'Awal percakapan yang bermakna.')) !!}</x-frontend.section-heading></div><div class="col-lg-7"><div class="accordion accordion-brand" id="contactQuestions">

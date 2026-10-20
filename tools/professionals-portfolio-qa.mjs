@@ -16,7 +16,7 @@ try{
   }
   await page.locator('[data-filter="all"]').click();await page.locator('#professionalSearch').fill('Arvin Wicaksono');
   if(await page.locator('[data-profile-card]:visible').count()!==1)throw Error('Search');
-  await page.locator('[data-profile-card]:visible [data-profile]').click();await page.locator('#detailModal').waitFor({state:'visible'});
+  await page.locator('[data-profile-card]:visible .text-link[data-profile]').click();await page.locator('#detailModal').waitFor({state:'visible'});
   if(!(await page.locator('#detailDescription').textContent()).includes('Pelindungan Data Pribadi'))throw Error('Biography not rendered');
   await page.locator('#detailModal [data-bs-dismiss="modal"]').first().click();await page.locator('#detailModal').waitFor({state:'hidden'});
   await page.locator('#professionalSearch').fill('');

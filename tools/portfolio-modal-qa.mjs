@@ -8,7 +8,7 @@ try{
  for(const width of [1920,1440,1366,768,390,375]){
   await page.setViewportSize({width,height:950});await page.goto('http://127.0.0.1:8000/team',{waitUntil:'networkidle'});
   await page.locator('#professionalSearch').fill('Arvin Wicaksono');
-  const trigger=page.locator('[data-profile-card]:visible [data-profile]');await trigger.click();
+  const trigger=page.locator('[data-profile-card]:visible .text-link[data-profile]');await trigger.click();
   const modal=page.locator('#detailModal');await modal.waitFor({state:'visible'});
   if(!(await page.locator('#detailTitle').textContent()).includes('Arvin'))throw Error('Wrong identity');
   if(!(await page.locator('#detailDescription').textContent()).includes('Pelindungan Data Pribadi'))throw Error('Missing biography');
@@ -25,7 +25,7 @@ try{
   if(!await trigger.evaluate(el=>el===document.activeElement))throw Error('Focus not restored');
  }
  // Reopening another profile must replace the first person's identity and content.
- await page.locator('#professionalSearch').fill('Dedi Purnawan');await page.locator('[data-profile-card]:visible [data-profile]').click();
+ await page.locator('#professionalSearch').fill('Dedi Purnawan');await page.locator('[data-profile-card]:visible .text-link[data-profile]').click();
  await page.locator('#detailModal').waitFor({state:'visible'});
  if(!(await page.locator('#detailDescription').textContent()).includes('Universitas Terbuka'))throw Error('Stale profile');
  if((await page.locator('#detailTitle').textContent()).includes('Arvin'))throw Error('Stale identity');
