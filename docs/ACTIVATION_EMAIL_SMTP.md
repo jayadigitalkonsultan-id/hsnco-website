@@ -67,3 +67,15 @@ Gmail melalui Google Cloud Console kini didukung melalui transport Gmail API/OAu
 
 
 Alur aktivasi pengguna tidak membuka Google OAuth. Google OAuth hanya digunakan operator untuk menghubungkan akun pengirim. Form kata sandi mengunci email penerima tautan; server tetap memvalidasi kecocokan email, token, masa berlaku dan izin aktivasi. Setelah kata sandi disimpan pengguna tetap belum login, lalu diarahkan ke halaman login. OTP baru dikirim setelah email dan kata sandi berhasil diverifikasi saat login.
+
+## Tambahan akun Jaya sebagai Admin
+
+Pemilik website menyetujui `jaya.digitalkonsultan@gmail.com` sebagai Admin. Migration `2026_10_20_000004_allow_jaya_admin_activation.php` menambahkan/mengaktifkan baris acuan saja. Tidak ada perubahan struktur tabel atau akun existing. Akun yang telah dihapus dapat meminta tautan aktivasi kembali setelah baris acuan aktif. Pengguna tetap harus membuat kata sandi dan memverifikasi OTP saat login.
+
+Setelah push dan deployment, pada terminal aplikasi EasyPanel jalankan migration tambahan secara khusus agar tidak terhalang migration lama yang statusnya belum tersinkron:
+
+```bash
+php artisan migrate --path=database/migrations/2026_10_20_000004_allow_jaya_admin_activation.php --force
+```
+
+Tabel `activation_email_allowlist` harus sudah tersedia. Jangan menjalankan `migrate:fresh`. Migration ini tidak mengirim email. Kunjungi `/activate` untuk meminta tautan baru. Rollback migration ini tidak menghapus izin; penonaktifan izin dilakukan eksplisit melalui pengelolaan acuan.

@@ -15,12 +15,24 @@ class ActivationAllowlistTest extends TestCase
 {
  use RefreshDatabase;
 
- public function test_migration_creates_exactly_the_requested_three_roles(): void
+ public function test_migrations_create_the_four_approved_accounts(): void
  {
-  $this->assertSame(3, AllowedActivationEmail::count());
-  foreach(['arvinz24wicaksono@gmail.com'=>'admin','hsandcoattorney@gmail.com'=>'admin','hermaliaziah22@gmail.com'=>'editor'] as $email=>$role) $this->assertDatabaseHas('activation_email_allowlist',['email'=>$email,'role'=>$role,'enabled'=>1]);
+  $this->assertSame(4, AllowedActivationEmail::count());
+  foreach(['arvinz24wicaksono@gmail.com'=>'admin','hsandcoattorney@gmail.com'=>'admin','hermaliaziah22@gmail.com'=>'editor','jaya.digitalkonsultan@gmail.com'=>'admin'] as $email=>$role) $this->assertDatabaseHas('activation_email_allowlist',['email'=>$email,'role'=>$role,'enabled'=>1]);
  }
 
+ public function test_jaya_can_request_activation_as_admin_without_automatic_login(): void
+ {
+  Mail::fake();$email='jaya.digitalkonsultan@gmail.com';
+  $this->post(route('activation.send'),['email'=>'Jaya.DigitalKonsultan@gmail.com'])->assertRedirect();
+  Mail::assertSent(AccountInvitationMail::class,fn($mail)=>$mail->hasTo($email));
+  $token=Mail::sent(AccountInvitationMail::class)->first()->token;
+  $this->get(route('activation.edit',$token))->assertOk()->assertSee($email);
+  $this->post(route('activation.update',$token),['email'=>$email,'name'=>'Jaya','password'=>'Password!12345','password_confirmation'=>'Password!12345','role'=>'super_admin'])->assertRedirect(route('login'));
+  $this->assertGuest();
+  $this->assertDatabaseHas('users',['email'=>$email,'role'=>'admin','status'=>'pending_2fa']);
+  Mail::assertNotSent(EmailOtpMail::class);
+ }
  public function test_only_approved_email_receives_activation_and_casing_is_normalized(): void
  {
   Mail::fake();
