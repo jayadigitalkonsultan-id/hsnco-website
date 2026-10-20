@@ -56,10 +56,10 @@ class ProfessionalPortfolioImportTest extends TestCase
         $this->assertSame('managing_partner',$profile->getPublishedRevision()->payload['level']);
         $this->assertSame(19,Professional::count());
     }
-    public function test_backend_editor_offers_all_imported_categories_and_photo_field(): void
+    public function test_admin_can_edit_imported_profiles_and_select_photo(): void
     {
         $this->artisan('hsnco:import-professionals',['--publish'=>true])->assertSuccessful();
-        $user=User::factory()->active('super_admin')->create();
+        $user=User::factory()->active('admin')->create();
         UserTwoFactorAuthentication::factory()->create(['user_id'=>$user->id,'method'=>'email','confirmed_at'=>now()]);
         $this->actingAs($user)->withSession(['auth.two_factor'=>['user_id'=>$user->id,'auth_version'=>$user->auth_version,'verified_at'=>time()]]);
         $response=$this->get(route('admin.professionals.edit',Professional::where('level','trainee_associate')->first()));

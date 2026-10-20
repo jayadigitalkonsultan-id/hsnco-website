@@ -43,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Route files are not executed when production uses route:cache.
+        // Register explicit CMS bindings on every application boot.
+        foreach (config('admin.modules', []) as $definition) {
+            \Illuminate\Support\Facades\Route::model($definition['parameter'], $definition['model']);
+        }
         \Illuminate\Support\Facades\Mail::extend('gmail', fn () => new \App\Mail\Transport\GmailApiTransport(app(\App\Services\Mail\GmailOAuth::class)));
         View::composer('frontend.partials.clients', function ($view) {
             try {

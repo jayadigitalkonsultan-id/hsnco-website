@@ -15,7 +15,6 @@ Route::prefix('admin')->name('admin.')->middleware('admin.access')->group(functi
     Route::get('/', DashboardController::class)->name('dashboard');
     foreach (config('admin.modules') as $module => $definition) {
         $parameter = $definition['parameter'];
-        Route::model($parameter, $definition['model']);
         Route::prefix($module)->name($module.'.')->group(function () use ($module, $parameter) {
             Route::get('/', [ContentController::class, 'index'])->defaults('module', $module)->name('index');
             Route::get('/create', [ContentController::class, 'create'])->defaults('module', $module)->name('create');
