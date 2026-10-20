@@ -36,6 +36,7 @@ return [
     */
 
     'mailers' => [
+        'gmail' => ['transport' => 'gmail'],
 
         'smtp' => [
             'transport' => 'smtp',
@@ -82,6 +83,7 @@ return [
         'failover' => [
             'transport' => 'failover',
             'mailers' => [
+        'gmail' => ['transport' => 'gmail'],
                 'smtp',
                 'log',
             ],
@@ -90,6 +92,7 @@ return [
         'roundrobin' => [
             'transport' => 'roundrobin',
             'mailers' => [
+        'gmail' => ['transport' => 'gmail'],
                 'ses',
                 'postmark',
             ],

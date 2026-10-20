@@ -18,7 +18,7 @@ Akun aktif existing tidak diubah, tidak dihapus dan tidak otomatis dicabut akses
 
 ## Alur
 
-Buka /activate → masukkan email yang diizinkan → terima tautan aktivasi → buat nama/kata sandi → OTP pertama otomatis dikirim → verifikasi OTP → akun aktif sesuai peran acuan. Token sekali pakai, expiry, cooldown, binding OTP ke sesi, password hashing dan autentikasi dua tahap tetap digunakan. Jika transport aktivasi gagal, token dibatalkan dan cooldown pengiriman dilepas agar dapat dicoba kembali. Kegagalan pengiriman OTP tidak mengaktifkan akun.
+Buka /activate → masukkan email yang diizinkan → terima tautan aktivasi → buat nama/kata sandi → kembali ke login → masukkan email/kata sandi → OTP dikirim → verifikasi OTP → akun aktif sesuai peran acuan. Token sekali pakai, expiry, cooldown, binding OTP ke sesi, password hashing dan autentikasi dua tahap tetap digunakan. Jika transport aktivasi gagal, token dibatalkan dan cooldown pengiriman dilepas agar dapat dicoba kembali. Kegagalan pengiriman OTP tidak mengaktifkan akun.
 
 ## Provider belum dipilih
 
@@ -60,6 +60,10 @@ Perintah menolak mailer log dan penerima di luar daftar. Sukses SMTP berarti tra
 
 ## Hasil pengujian
 
-ActivationAllowlistTest dan ManualAuthenticationTest: 15 pengujian lulus (72 assertion), mencakup tiga email/peran, normalisasi, penolakan email lain, penolakan eskalasi peran, OTP pertama otomatis, verifikasi sampai aktif, pencabutan izin sebelum token dan sebelum OTP, akun aktif existing tidak diubah, serta diagnostik mailer log/SMTP.
+ActivationAllowlistTest, ManualAuthenticationTest dan GmailOAuthTest: 26 pengujian lulus (126 assertion), mencakup tiga email/peran, normalisasi, penolakan email lain, penolakan eskalasi peran, OTP pertama setelah login, verifikasi sampai aktif, pencabutan izin sebelum token dan sebelum OTP, akun aktif existing tidak diubah, serta diagnostik mailer log/SMTP.
 
 node tools/smtp-loopback-qa.mjs berhasil menerima satu pesan dari transport SMTP Laravel pada server uji loopback. Tidak ada email eksternal dikirim dan tidak ada kredensial aktual dipakai pada pengujian itu. .env.example dikosongkan pada APP_KEY dan DB_PASSWORD karena merupakan file contoh yang dilacak Git, bukan tempat menyimpan rahasia. .env aktual dipertahankan. Belum di-push atau diterapkan ke production.
+Gmail melalui Google Cloud Console kini didukung melalui transport Gmail API/OAuth. Lihat docs/GMAIL_OAUTH.md. Konfigurasi .env lokal telah dialihkan ke mailer gmail; secret pengganti dan persetujuan akun pengirim tetap diperlukan sebelum email nyata dapat dikirim.
+
+
+Alur aktivasi pengguna tidak membuka Google OAuth. Google OAuth hanya digunakan operator untuk menghubungkan akun pengirim. Form kata sandi mengunci email penerima tautan; server tetap memvalidasi kecocokan email, token, masa berlaku dan izin aktivasi. Setelah kata sandi disimpan pengguna tetap belum login, lalu diarahkan ke halaman login. OTP baru dikirim setelah email dan kata sandi berhasil diverifikasi saat login.

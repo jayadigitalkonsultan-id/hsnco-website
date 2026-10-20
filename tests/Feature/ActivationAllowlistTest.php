@@ -31,13 +31,17 @@ class ActivationAllowlistTest extends TestCase
   $this->assertDatabaseHas('users',['email'=>'arvinz24wicaksono@gmail.com','role'=>'admin','status'=>'invited']);
  }
 
- public function test_editor_cannot_choose_admin_and_first_otp_is_sent_automatically(): void
+ public function test_editor_sets_password_then_logs_in_before_receiving_otp(): void
  {
   Mail::fake();$email='hermaliaziah22@gmail.com';
   $this->post(route('activation.send'),['email'=>$email]);
   $mail=Mail::sent(AccountInvitationMail::class)->first();$token=$mail->token;
-  $activation = $this->post(route('activation.update',$token),['email'=>$email,'name'=>'Editor','password'=>'Password!12345','password_confirmation'=>'Password!12345','role'=>'super_admin'])->assertRedirect(route('two-factor.challenge'));
+  $activation = $this->post(route('activation.update',$token),['email'=>$email,'name'=>'Editor','password'=>'Password!12345','password_confirmation'=>'Password!12345','role'=>'super_admin'])->assertRedirect(route('login'));
+  $this->assertGuest();
+  Mail::assertNotSent(EmailOtpMail::class);
   $this->withCookie(config('session.cookie'), $activation->getCookie(config('session.cookie'))->getValue());
+  $login = $this->post(route('login.store'), ['email'=>$email,'password'=>'Password!12345'])->assertRedirect(route('two-factor.challenge'));
+  $this->withCookie(config('session.cookie'), $login->getCookie(config('session.cookie'))->getValue());
   $user=User::where('email',$email)->firstOrFail();$this->assertSame('editor',$user->role->value);$this->assertSame(UserStatus::PendingTwoFactor,$user->status);
   Mail::assertSent(EmailOtpMail::class,fn($mail)=>$mail->hasTo($email));
   $otp=Mail::sent(EmailOtpMail::class)->first()->code;
@@ -45,6 +49,18 @@ class ActivationAllowlistTest extends TestCase
   $this->assertSame(UserStatus::Active,$user->fresh()->status);
  }
 
+ public function test_password_form_is_bound_to_recipient_and_rejects_another_approved_email(): void
+ {
+  Mail::fake();$email='hsandcoattorney@gmail.com';
+  $this->post(route('activation.send'),['email'=>$email]);
+  $mail=Mail::sent(AccountInvitationMail::class)->first();$token=$mail->token;
+  $this->assertTrue($mail->hasTo($email));
+  $this->get(route('activation.edit',$token))->assertOk()->assertSee('value="'.$email.'"',false)->assertSee('readonly',false);
+  $this->post(route('activation.update',$token),['email'=>'hermaliaziah22@gmail.com','name'=>'Other','password'=>'Password!12345','password_confirmation'=>'Password!12345'])->assertRedirect(route('activation.create'));
+  $this->assertGuest();
+  $this->assertDatabaseHas('users',['email'=>$email,'status'=>'invited','password'=>null]);
+  Mail::assertNotSent(EmailOtpMail::class);
+ }
  public function test_disabled_allowlist_entry_invalidates_issued_activation_token(): void
  {
   Mail::fake();$email='hsandcoattorney@gmail.com';app(InvitationService::class)->sendForEmail($email);
@@ -58,7 +74,11 @@ class ActivationAllowlistTest extends TestCase
  {
   Mail::fake();$email='hsandcoattorney@gmail.com';$this->post(route('activation.send'),['email'=>$email]);$token=Mail::sent(AccountInvitationMail::class)->first()->token;
   $activation = $this->post(route('activation.update',$token),['email'=>$email,'name'=>'Admin','password'=>'Password!12345','password_confirmation'=>'Password!12345']);
+  $this->assertGuest();
+  Mail::assertNotSent(EmailOtpMail::class);
   $this->withCookie(config('session.cookie'), $activation->getCookie(config('session.cookie'))->getValue());
+  $login = $this->post(route('login.store'), ['email'=>$email,'password'=>'Password!12345'])->assertRedirect(route('two-factor.challenge'));
+  $this->withCookie(config('session.cookie'), $login->getCookie(config('session.cookie'))->getValue());
   $code=Mail::sent(EmailOtpMail::class)->first()->code;AllowedActivationEmail::whereKey($email)->update(['enabled'=>false]);
   $this->post(route('two-factor.verify'),['code'=>$code])->assertSessionHasErrors('code');
   $this->assertSame(UserStatus::PendingTwoFactor,User::where('email',$email)->first()->status);

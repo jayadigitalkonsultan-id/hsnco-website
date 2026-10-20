@@ -43,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Mail::extend('gmail', fn () => new \App\Mail\Transport\GmailApiTransport(app(\App\Services\Mail\GmailOAuth::class)));
         View::composer('frontend.partials.clients', function ($view) {
             try {
                 $clients = \App\Models\Client::query()->published()->with('publicImage')->orderBy('sort_order')->orderBy('name')->get();

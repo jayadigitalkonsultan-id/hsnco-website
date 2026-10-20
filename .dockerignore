@@ -38,3 +38,6 @@ docs
 .idea
 .vscode
 .DS_Store
+
+client_secret_*.json
+**/client_secret_*.json

@@ -23,3 +23,7 @@ yarn-error.log
 /.zed
 
 /tools/node_modules/
+
+# Downloaded OAuth credential files must never be committed.
+client_secret_*.json
+**/client_secret_*.json

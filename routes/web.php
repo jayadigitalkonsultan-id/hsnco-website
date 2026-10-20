@@ -6,6 +6,8 @@ use App\Http\Controllers\PublicSeoController;
 
 require __DIR__.'/auth.php';
 
+Route::get('/auth/google/gmail/callback', \App\Http\Controllers\Auth\GmailConnectionController::class)->middleware('throttle:10,1')->name('gmail.callback');
+
 Route::get('/robots.txt', [PublicSeoController::class, 'robots'])->name('robots');
 Route::get('/sitemap.xml', [PublicSeoController::class, 'sitemap'])->name('sitemap.xml');
 

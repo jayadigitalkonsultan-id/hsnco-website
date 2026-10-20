@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Mail;
 class TestActivationEmail extends Command
 {
     protected $signature = 'hsnco:mail-test {email? : Optional approved test recipient}';
-    protected $description = 'Check SMTP configuration without exposing secrets; send only when an approved email is supplied';
+    protected $description = 'Check SMTP/Gmail configuration without exposing secrets; optionally send to an approved recipient';
 
     public function handle(): int
     {
         $mailer = config('mail.default');
         $settings = config('mail.mailers.'.$mailer, []);
+        if (($settings['transport'] ?? null) === 'gmail') {
+            $this->table(['Pemeriksaan', 'Nilai'], [['Mailer', 'Gmail API'], ['Pengirim', config('gmail.sender')]]);
+            return $this->testGmail();
+        }
         $this->table(['Pemeriksaan', 'Nilai'], [
             ['Mailer', $mailer], ['Transport', $settings['transport'] ?? '-'],
             ['Host SMTP', $settings['host'] ?? '-'], ['Port', $settings['port'] ?? '-'],
@@ -47,5 +51,20 @@ class TestActivationEmail extends Command
             $this->error('Pengiriman SMTP gagal. Periksa host, port, TLS, kredensial, pengirim terverifikasi dan koneksi keluar server.');
             return self::FAILURE;
         }
+    }
+
+    private function testGmail(): int
+    {
+        try {
+            app(\App\Services\Mail\GmailOAuth::class)->assertConfigured();
+            $connected=\App\Models\GmailConnection::where('email',mb_strtolower(config('gmail.sender')))->exists();
+            if(!$connected){$this->error('Gmail belum terhubung. Jalankan php artisan hsnco:gmail-connect.');return self::FAILURE;}
+            if(mb_strtolower((string)config('mail.from.address'))!==mb_strtolower(config('gmail.sender'))){$this->error('MAIL_FROM_ADDRESS harus sama dengan GMAIL_SENDER_EMAIL.');return self::FAILURE;}
+            if(!$this->argument('email')){$this->info('Konfigurasi Gmail dan token tersimpan. Belum ada email yang dikirim atau koneksi eksternal yang diuji.');return self::SUCCESS;}
+            $email=mb_strtolower(trim($this->argument('email')));
+            if(!AllowedActivationEmail::approved($email)){$this->error('Tujuan tidak termasuk email aktivasi yang diizinkan.');return self::FAILURE;}
+            Mail::raw('Email uji Gmail API HSNCO. Pesan ini tidak mengaktifkan akun.',fn($message)=>$message->to($email)->subject('Uji pengiriman Gmail HSNCO'));
+            $this->info('Pesan diterima Gmail API. Periksa inbox/spam penerima.');return self::SUCCESS;
+        }catch(\Throwable){$this->error('Gmail belum siap atau pengiriman gagal. Periksa konfigurasi, izin dan koneksi OAuth; hubungkan ulang bila token dicabut.');return self::FAILURE;}
     }
 }

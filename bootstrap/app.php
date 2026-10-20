@@ -11,6 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
         $middleware->alias([
             'admin.access' => \App\Http\Middleware\EnsureAdminAccess::class,
             'two-factor' => \App\Http\Middleware\EnsureTwoFactorVerified::class,

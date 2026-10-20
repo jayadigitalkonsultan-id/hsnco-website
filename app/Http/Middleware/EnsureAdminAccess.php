@@ -30,7 +30,17 @@ class EnsureAdminAccess
                 && is_int($verifiedAt) && $verifiedAt <= time()
                 && $verifiedAt > time() - (int) config('session.lifetime', 120) * 60)) {
                 $request->session()->forget('auth.two_factor');
-                return redirect()->route('two-factor.challenge');
+                if ($request->session()->get('auth.pending_user_id') === $user->id
+                    && $request->session()->get('auth.pending_auth_version') === $user->auth_version
+                    && in_array($user->status->value, ['active', 'pending_2fa'], true)) {
+                    return redirect()->route('two-factor.challenge');
+                }
+                \Illuminate\Support\Facades\Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect()->guest(route('login'))->withErrors([
+                    'email' => 'Sesi verifikasi berakhir. Silakan masuk kembali untuk mengakses dashboard.',
+                ]);
             }
         }
 

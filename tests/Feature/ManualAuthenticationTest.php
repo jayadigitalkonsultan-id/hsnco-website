@@ -22,17 +22,17 @@ class ManualAuthenticationTest extends TestCase
         $this->get('/admin')->assertRedirect(route('login'));
     }
 
-    public function test_invitation_activation_requires_matching_single_use_token_then_enters_otp_enrollment(): void
+    public function test_invitation_activation_requires_matching_single_use_token_then_returns_to_login(): void
     {
         $admin = User::factory()->active('super_admin')->create();
         $user = User::factory()->create(['email'=>'invitee@example.test','password'=>null,'status'=>UserStatus::Invited]);
         \App\Models\AllowedActivationEmail::create(['email' => $user->email, 'role' => 'editor']);
         $plain = str_repeat('A', 64);
         $invitation = UserInvitation::factory()->create(['user_id'=>$user->id,'email'=>$user->email,'token_hash'=>hash('sha256',$plain),'expires_at'=>now()->addHour()]);
-        $this->post(route('activation.update',$plain), ['email'=>$user->email,'name'=>'Invitee','password'=>'Password!1234','password_confirmation'=>'Password!1234'])->assertRedirect(route('two-factor.challenge'));
+        $this->post(route('activation.update',$plain), ['email'=>$user->email,'name'=>'Invitee','password'=>'Password!1234','password_confirmation'=>'Password!1234'])->assertRedirect(route('login'));
         $user->refresh(); $invitation->refresh();
         $this->assertSame(UserStatus::PendingTwoFactor, $user->status); $this->assertTrue(Hash::check('Password!1234',$user->password)); $this->assertNotNull($invitation->accepted_at); $this->assertNull($invitation->token_hash);
-        $this->post(route('logout'));
+        $this->assertGuest();
         $this->post(route('activation.update',$plain), ['email'=>$user->email,'name'=>'Again','password'=>'Password!1234','password_confirmation'=>'Password!1234'])->assertRedirect(route('activation.create'));
     }
 
