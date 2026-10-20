@@ -2,6 +2,7 @@
 @php
     $bannerImage = match(request()->route()?->getName()) {
         'practice-areas' => 'corporate.jpg',
+        'billing-fees' => 'finance.jpg',
         'team' => 'values.jpg',
         'insights' => 'investment.jpg',
         'contact' => 'office.jpg',

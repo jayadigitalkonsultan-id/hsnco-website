@@ -7,6 +7,11 @@
       "sha256": "dca7f80e7e2da50f15232c498efbdf8acbe35b90aa05c47b0a5390591e49b9c1"
     },
     {
+      "file": "css/billing.css",
+      "mode": "lf-text",
+      "sha256": "1a65e34219a55c01aa6b95ac5dabe87c3e99fdad75e095eb42cb7528ffd0e434"
+    },
+    {
       "file": "css/clients.css",
       "mode": "lf-text",
       "sha256": "c0762d13a0985afb1466b2f4e4f071e3d2a94451a067a436d54b7f6e1945ee75"
@@ -39,7 +44,7 @@
     {
       "file": "css/practice-areas.css",
       "mode": "lf-text",
-      "sha256": "9f2de899138c823e0baba52a97df1478c2669a7135b89b97aad0cd59859ec4ef"
+      "sha256": "a24f9a9214fbb57fbde5c1c98fa9f32a0393b9d3055c30ca15cdae209d093d37"
     },
     {
       "file": "css/responsive.css",
@@ -275,6 +280,11 @@
       "file": "js/motion.js",
       "mode": "lf-text",
       "sha256": "551c1dbff16e1aefb16ebdbfa05aee19023302fd4572ae176f826ea0140b061a"
+    },
+    {
+      "file": "js/practice-directory.js",
+      "mode": "lf-text",
+      "sha256": "d9fc94d36090b926cd8d2b0a2a165dbffe439cbc7a0dd11773936b9f199abfee"
     },
     {
       "file": "plugins-init/bootstrap-init.js",

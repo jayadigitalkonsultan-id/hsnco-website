@@ -37,6 +37,7 @@
     <p class="empty-state" @if ($professionals->isNotEmpty()) hidden @endif>Tidak ada profil profesional yang sesuai. Coba kata kunci atau kategori lainnya.</p>
 </div></section>
 @endif
+@include('frontend.partials.billing-link')
 @if (! $cta || $cta->is_visible)
 <section class="section-space surface-dark"><div class="container"><div class="row g-4 align-items-end"><div class="col-lg-8"><p class="eyebrow">{{ $ctaContent['eyebrow'] ?? 'Bekerja bersama HSNCO' }}</p><x-frontend.section-heading>{!! nl2br(e($cta?->heading ?? 'Diskusikan kebutuhan hukum Anda.')) !!}</x-frontend.section-heading></div><div class="col-lg-4 text-lg-end"><x-frontend.button :href="$ctaContent['button_url'] ?? (route('contact').'#enquiry')">{{ $ctaContent['button_label'] ?? 'Mulai percakapan' }} <span aria-hidden="true">&rarr;</span></x-frontend.button></div></div></div></section>
 @endif

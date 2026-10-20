@@ -10,6 +10,7 @@
                 @foreach ($footerFirmLinks as $item)
                     <a href="{{ route($item['route']) }}" @if(request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
                 @endforeach
+                <a href="{{ route('billing-fees') }}" @if(request()->routeIs('billing-fees')) aria-current="page" @endif>Biaya &amp; Kerja Sama</a>
             </div>
             <div class="col-6 col-lg-3 footer-column">
                 <h2>Keahlian</h2>

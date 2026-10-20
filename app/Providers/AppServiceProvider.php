@@ -398,6 +398,7 @@ class AppServiceProvider extends ServiceProvider
                 'about' => ['Tentang Firma', route('about'), 'Kenali firma, perjalanan, dan pendekatan HSNCO.'],
                 'practice-areas' => ['Bidang Praktik', route('practice-areas'), 'Jelajahi bidang keahlian hukum HSNCO.'],
                 'team' => ['Profesional', route('team'), 'Temukan direktori profesional HSNCO.'],
+                'billing-fees' => ['Biaya & Kerja Sama', route('billing-fees'), 'Kenali enam skema biaya layanan hukum HS & CO.'],
                 'insights' => ['Publikasi', route('insights'), 'Baca wawasan dan publikasi HSNCO yang tersedia.'],
                 'contact' => ['Kontak', route('contact'), 'Hubungi HSNCO melalui halaman kontak.'],
                 'sitemap' => ['Peta Situs', route('sitemap'), 'Lihat struktur halaman dan tautan publik HSNCO.'],

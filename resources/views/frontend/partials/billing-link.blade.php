@@ -1,0 +1,4 @@
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/billing.css') }}?v={{ filemtime(public_path('assets/css/billing.css')) }}">
+@endpush
+<section class="fee-callout surface-paper"><div class="container"><div class="row g-4 align-items-center fee-callout-inner"><div class="col-lg-8"><p class="eyebrow">Billing &amp; Fee</p><h2>Biaya yang transparan.<br>Kerja sama yang jelas.</h2><p>Kenali skema biaya layanan hukum sesuai bentuk kerja sama dan kebutuhan Anda.</p></div><div class="col-lg-4 text-lg-end"><a class="text-link" href="{{ route('billing-fees') }}">Pelajari skema biaya <span aria-hidden="true">&rarr;</span></a></div></div></div></section>

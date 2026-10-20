@@ -35,3 +35,15 @@ Pengujian PracticeServiceCmsTest mencakup impor idempoten, suntingan melalui rou
 Hasil pada implementasi ini: 5 pengujian integrasi layanan lulus dengan 89 assertion; browser lulus pada 1920, 1440, 1366, 768, 390, dan 375px, 8 panel/41 layanan dan semua gambar tampil tanpa overflow/error HTTP/JavaScript. Pemindaian axe pada lingkup layanan tidak menemukan pelanggaran WCAG A/AA yang diuji.
 
 Suite keseluruhan: 55 lulus dan 9 gagal. Kegagalan tercatat pada AdminShellTest (3), ContactEnquiryWorkflowTest (1), DatabaseFoundationTest (1), FrontendIntegrationTest (2), IndonesianFrontendTest (1), MigrationLifecycleTest (1). Sebagian ekspektasi masih mengacu formulir demo kontak dan jumlah migration 21 meskipun kini 23. Hasil suite penuh belum bersih; tidak ada klaim seluruh aplikasi lulus. Tidak ada perubahan migration atau autentikasi dalam integrasi layanan ini.
+
+## Pembaruan layout direktori dan modal
+
+Halaman `/practice-areas` mengikuti pola layout HTML yang diberikan pemilik website: hero foto besar, pengantar editorial, delapan baris direktori bernomor dengan ringkasan dan panah lingkaran, gambar ilustratif muncul saat hover/focus, dan modal dua kolom. Warna tetap hitam–emas. Header/footer Bootstrap existing tetap digunakan.
+
+Konten contoh HTML berupa profil pengacara, nilai transaksi, dan representative matters tidak diimpor karena bukan data firma yang terverifikasi. Modal hanya menampilkan nama, ringkasan dan seluruh butir layanan dari data CMS terpublikasi, ditambah tautan ke tim serta konsultasi. Tidak ditetapkan nama practice lead tanpa relasi/data yang mendukung. Foto memakai gambar kategori CMS dan fallback office lokal.
+
+ID slug setiap kategori tetap dipertahankan sehingga tautan dari Home/halaman lainnya tetap berfungsi. Tombol baris merupakan tombol native dengan accessible name, fokus yang terlihat, dan modal Bootstrap untuk penguncian fokus, Escape, backdrop dan pemulihan fokus. Isi layanan dirender aman oleh Blade ke template HTML lalu disalin ke modal. Tidak ada evaluasi HTML mentah dari atribut atau konten pengguna. Reduced motion menonaktifkan transisi dekoratif. Tidak ada framework, CDN atau library tambahan.
+
+File utama: frontend/practice-areas/service-profile.blade.php, components/frontend/practice-portfolio-modal.blade.php, assets/css/practice-areas.css dan assets/js/practice-directory.js. Daftar lama panel kartu digantikan sepenuhnya; tidak ada perubahan tabel, migration, isi database atau alur editorial.
+
+Pengujian PHP terkait: ServiceProfileTest, PracticeServiceCmsTest dan BillingFeePageTest lulus: 7 pengujian, 116 assertion. Pengujian browser/screenshot tersedia di tools/practice-directory-qa.mjs dan docs/qa-practices. Manifest aset production diperbarui. Belum di-deploy ke production.
