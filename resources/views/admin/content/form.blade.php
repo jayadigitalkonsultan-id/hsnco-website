@@ -23,7 +23,7 @@ $nameField = $definition['title_field'];
         <x-admin.field name="body" label="Gambaran penugasan" type="textarea" :value="$record->body" maxlength="100000" help="Tampil pada detail klien. Gunakan materi yang telah disetujui untuk publikasi." />
         <x-admin.field name="source_note" label="Catatan sumber internal" type="textarea" :value="$record->source_note" maxlength="5000" help="Tidak ditampilkan di website." />
     @elseif($module === 'professionals')
-        <div class="row"><div class="col-md-7"><x-admin.field name="position" label="Jabatan" :value="$record->position" required maxlength="150" /></div><div class="col-md-5"><x-admin.field name="level" label="Kelompok" type="select" :value="$record->level ?? 'partner'" :options="['partner'=>'Mitra','associate'=>'Asosiat']" required /></div></div>
+        <div class="row"><div class="col-md-7"><x-admin.field name="position" label="Jabatan" :value="$record->position" required maxlength="150" /></div><div class="col-md-5"><x-admin.field name="level" label="Kelompok" type="select" :value="$record->level ?? 'partner'" :options="config('professionals.categories')" required /></div></div>
         <x-admin.field name="summary" label="Ringkasan keahlian" type="textarea" :value="$record->summary" maxlength="5000" />
         <x-admin.field name="biography" label="Biografi" type="textarea" :value="$record->biography" maxlength="100000" />
         <x-admin.field name="qualifications_text" label="Kualifikasi" type="textarea" :value="implode(PHP_EOL, $record->qualifications ?? [])" help="Satu kualifikasi per baris." />

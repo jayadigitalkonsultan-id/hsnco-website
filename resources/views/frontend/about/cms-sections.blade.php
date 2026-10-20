@@ -10,18 +10,12 @@
             @break
 
         @case('introduction')
-            <section class="section-space surface-paper">
-                <div class="container"><div class="row g-5">
-                    <div class="col-lg-4">
-                        <p class="eyebrow">{{ $content['eyebrow'] ?? '' }}</p>
-                        <x-frontend.section-heading>{{ $section->heading }}</x-frontend.section-heading>
-                    </div>
-                    <div class="col-lg-8"><div class="row g-4 editorial-copy">
-                        <div class="col-md-6"><x-frontend.rich-text :html="$content['column_one'] ?? ''" /></div>
-                        <div class="col-md-6"><x-frontend.rich-text :html="$content['column_two'] ?? ''" /></div>
-                    </div></div>
-                </div></div>
-            </section>
+            @include('frontend.about.introduction', [
+                'introEyebrow' => $content['eyebrow'] ?? 'Tentang kami',
+                'introHeading' => $section->heading,
+                'introColumnOne' => $content['column_one'] ?? '',
+                'introColumnTwo' => $content['column_two'] ?? '',
+            ])
             @break
 
         @case('quote')
@@ -150,15 +144,14 @@
             @break
 
         @case('closing-cta')
-            <section class="section-space surface-dark">
-                <div class="container"><div class="row g-4 align-items-end">
-                    <div class="col-lg-8">
-                        <p class="eyebrow">{{ $content['eyebrow'] ?? '' }}</p>
-                        <x-frontend.section-heading>{{ $section->heading }}</x-frontend.section-heading>
-                    </div>
-                    <div class="col-lg-4 text-lg-end"><x-frontend.button :href="($content['button_url'] ?? null) ?: route('contact').'#enquiry'">{{ $content['button_label'] ?? 'Mulai percakapan' }} <span aria-hidden="true">&rarr;</span></x-frontend.button></div>
-                </div></div>
-            </section>
+            @section('about-closing-cta')
+            @include('frontend.about.contact-cta', [
+                'ctaEyebrow' => $content['eyebrow'] ?? 'Konsultasi hukum',
+                'ctaHeading' => $section->heading,
+                'ctaLabel' => $content['button_label'] ?? 'Hubungi tim kami',
+                'ctaUrl' => ($content['button_url'] ?? null) ?: route('contact').'#enquiry',
+            ])
+            @endsection
             @break
     @endswitch
 @endforeach

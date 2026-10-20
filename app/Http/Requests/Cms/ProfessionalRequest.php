@@ -29,7 +29,7 @@ class ProfessionalRequest extends ContentRequest
             'slug' => $this->uniqueSlug('professionals'),
             'name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:150'],
-            'level' => ['required', Rule::in(['partner', 'associate'])],
+            'level' => ['required', Rule::in(array_keys(config('professionals.categories')))],
             'summary' => ['nullable', 'string', 'max:5000'],
             'biography' => ['nullable', 'string', 'max:100000'],
             'qualifications' => ['nullable', 'array', 'max:30'],

@@ -4,6 +4,37 @@
   if (modal) modal.addEventListener('show.bs.modal', event => {
     const trigger = event.relatedTarget;
     if (!trigger) return;
+    if (modal.hasAttribute('data-portfolio-modal')) {
+      const profile = window.HSNCO_PROFESSIONALS?.[trigger.dataset.profile];
+      if (!profile) { event.preventDefault(); return; }
+      modal.querySelector('#detailTitle').textContent = profile.name;
+      modal.querySelector('[data-portfolio-role]').textContent = profile.position || '';
+      modal.querySelector('[data-portfolio-focus]').textContent = profile.summary || '';
+      const biography = modal.querySelector('#detailDescription');
+      biography.replaceChildren(...(profile.biography || profile.summary || '').split(/\n\s*\n/).filter(Boolean).map(text => {
+        const p = document.createElement('p'); p.textContent = text; return p;
+      }));
+      const photo = modal.querySelector('[data-portfolio-photo]');
+      const placeholder = modal.querySelector('[data-portfolio-placeholder]');
+      const showPlaceholder = () => { photo.hidden = true; placeholder.hidden = false; modal.classList.remove('portfolio-has-photo'); };
+      placeholder.textContent = profile.name.replace(/^(Assoc\. Prof\. Dr\.|Prof\. Dr\.|Dr\.|dr\.)\s*/i, '').split(/\s+/).slice(0, 2).map(part => part[0]).join('');
+      photo.onerror = showPlaceholder;
+      photo.hidden = !profile.photo; placeholder.hidden = !!profile.photo;
+      modal.classList.toggle('portfolio-has-photo', !!profile.photo);
+      photo.removeAttribute('src'); photo.alt = profile.photoAlt || `Potret ${profile.name}`;
+      if (profile.photo) photo.src = profile.photo;
+      const renderList = (key, items, tag = 'span') => {
+        const values = (items || []).filter(item => typeof item === 'string' && item.trim());
+        modal.querySelector(`[data-portfolio-${key}-block]`).hidden = !values.length;
+        const target = modal.querySelector(`[data-portfolio-${key === 'practices' ? 'tags' : key}]`);
+        target.replaceChildren(...values.map(text => { const element = document.createElement(tag); element.textContent = text; return element; }));
+      };
+      const focus = profile.practiceAreas?.length ? profile.practiceAreas : (profile.summary || '').split(';').map(s => s.trim()).filter(s => s && !/PQE|^English$|^Bahasa /i.test(s));
+      renderList('practices', focus);
+      renderList('qualifications', profile.qualifications, 'li');
+      renderList('languages', profile.languages);
+      return;
+    }
     let title, description, list, label, subtitle, image;
     if (trigger.hasAttribute('data-practice')) {
       title = trigger.dataset.practiceTitle || trigger.dataset.practice;
@@ -64,6 +95,7 @@
         const match = (filter === 'all' || card.dataset.level === filter) && (card.dataset.search || '').toLowerCase().includes(search.value.trim().toLowerCase());
         card.hidden = !match; visible += Number(match);
       });
+      document.querySelectorAll('[data-profile-group]').forEach(group => { group.hidden = ![...group.querySelectorAll('[data-profile-card]')].some(card => !card.hidden); });
       const emptyState = document.querySelector('.empty-state');
       if (emptyState) emptyState.hidden = visible !== 0;
       const results = document.querySelector('[data-results]');

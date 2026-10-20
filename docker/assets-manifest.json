@@ -2,6 +2,11 @@
   "version": 2,
   "files": [
     {
+      "file": "css/about.css",
+      "mode": "lf-text",
+      "sha256": "dca7f80e7e2da50f15232c498efbdf8acbe35b90aa05c47b0a5390591e49b9c1"
+    },
+    {
       "file": "css/clients.css",
       "mode": "lf-text",
       "sha256": "a131fc161b84f76e27c3fd840808f52e926a3facef8f69d94af7929ab4ad81bc"
@@ -45,6 +50,11 @@
       "file": "css/style.css",
       "mode": "lf-text",
       "sha256": "25982bd2159c6ba949f0328b0c35fff560d9f515c34c23e87ca85399f50046a5"
+    },
+    {
+      "file": "css/team.css",
+      "mode": "lf-text",
+      "sha256": "6c78936263bb6c1fa69470da8bbf744e8dff583530d0f5d30984492c2bf7e206"
     },
     {
       "file": "css/variables.css",
@@ -249,7 +259,7 @@
     {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "23a005549d17ef29013e31f52c8325d00bc11f4f5078decb855f862a454ce3a1"
+      "sha256": "3d8adcca64bdcdbde0bb8cb5ff24ee797029ff8e9625288196b2cdda46376304"
     },
     {
       "file": "js/content-data.js",
