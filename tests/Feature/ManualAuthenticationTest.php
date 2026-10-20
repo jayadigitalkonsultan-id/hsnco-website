@@ -26,6 +26,7 @@ class ManualAuthenticationTest extends TestCase
     {
         $admin = User::factory()->active('super_admin')->create();
         $user = User::factory()->create(['email'=>'invitee@example.test','password'=>null,'status'=>UserStatus::Invited]);
+        \App\Models\AllowedActivationEmail::create(['email' => $user->email, 'role' => 'editor']);
         $plain = str_repeat('A', 64);
         $invitation = UserInvitation::factory()->create(['user_id'=>$user->id,'email'=>$user->email,'token_hash'=>hash('sha256',$plain),'expires_at'=>now()->addHour()]);
         $this->post(route('activation.update',$plain), ['email'=>$user->email,'name'=>'Invitee','password'=>'Password!1234','password_confirmation'=>'Password!1234'])->assertRedirect(route('two-factor.challenge'));

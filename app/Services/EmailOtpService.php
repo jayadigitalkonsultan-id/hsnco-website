@@ -46,6 +46,8 @@ class EmailOtpService
         if (RateLimiter::tooManyAttempts($key, config('security.otp.verify_per_minute'))) return ['ok' => false, 'recovery_codes' => []];
         RateLimiter::hit($key, 60);
         return DB::transaction(function () use ($user, $request, $code, $purpose) {
+            $approved = $purpose === 'enrollment' ? \App\Models\AllowedActivationEmail::approved($user->email) : null;
+            if ($purpose === 'enrollment' && !$approved) return ['ok' => false, 'recovery_codes' => []];
             $challenge = TwoFactorChallenge::query()->where('user_id', $user->id)->where('purpose', $purpose)->where('session_binding_hash', hash('sha256', $request->session()->getId()))->whereNull('consumed_at')->latest('created_at')->lockForUpdate()->first();
             if (! $challenge || $challenge->expires_at->isPast() || $challenge->attempts >= config('security.otp.max_attempts') || ! Hash::check($code, (string) $challenge->code_hash)) {
                 if ($challenge) { $challenge->increment('attempts'); if ($challenge->attempts + 1 >= config('security.otp.max_attempts')) $challenge->forceFill(['consumed_at' => now()])->save(); }
@@ -56,7 +58,7 @@ class EmailOtpService
             $factor = UserTwoFactorAuthentication::query()->firstOrNew(['user_id' => $user->id]);
             $firstEnrollment = ! $factor->confirmed_at;
             $factor->forceFill(['method' => TwoFactorMethod::Email, 'secret' => null, 'confirmed_at' => now()])->save();
-            if ($user->status === UserStatus::PendingTwoFactor) $user->forceFill(['status' => UserStatus::Active, 'activated_at' => now()])->save();
+            if ($user->status === UserStatus::PendingTwoFactor) $user->forceFill(['status' => UserStatus::Active, 'role' => $approved->role, 'activated_at' => now()])->save();
             $codes = $firstEnrollment ? $this->issueRecoveryCodes($user) : [];
             app(SecurityAudit::class)->record('challenge_passed', 'success', $user, $request, null, ['purpose' => $purpose]);
             return ['ok' => true, 'recovery_codes' => $codes];

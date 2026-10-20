@@ -25,7 +25,7 @@ class InviteUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'max:254', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', 'max:254', Rule::unique('users', 'email'), Rule::exists('activation_email_allowlist', 'email')->where('enabled', true)],
             'role' => ['required', Rule::enum(UserRole::class)],
             'password' => ['prohibited'], 'status' => ['prohibited'],
             'invited_by' => ['prohibited'], 'auth_version' => ['prohibited'],
