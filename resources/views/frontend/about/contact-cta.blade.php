@@ -4,7 +4,7 @@
             <div class="col-lg-8">
                 <p class="eyebrow">{{ $ctaEyebrow }}</p>
                 <h2 id="about-contact-title">{{ $ctaHeading }}</h2>
-                <p class="about-contact-description">Sampaikan kebutuhan hukum Anda kepada tim HS &amp; CO.</p>
+                <p class="about-contact-description">Discuss your legal needs with the HS &amp; CO team.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <a class="about-contact-button" href="{{ $ctaUrl }}">{{ $ctaLabel }} <span aria-hidden="true">&rarr;</span></a>

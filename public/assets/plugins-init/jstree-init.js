@@ -29,7 +29,7 @@
     fallback.hidden = true;
     container.hidden = false;
     controls.hidden = false;
-    container.setAttribute('aria-label', 'Struktur halaman publik HSNCO');
+    container.setAttribute('aria-label', 'HSNCO public page structure');
   }).on('select_node.jstree', (_event, event) => {
     const node = event.node;
     const action = document.getElementById('openSitePage');
@@ -37,13 +37,13 @@
     const description = document.getElementById('sitePageDescription');
     const href = node.data?.href;
     if (!href) {
-      title.textContent = 'Jelajahi HSNCO';
-      description.textContent = 'Pilih halaman dari daftar untuk membaca informasi tujuan.';
+      title.textContent = 'Explore HSNCO';
+      description.textContent = 'Select a page to learn more.';
       action.hidden = true;
       return;
     }
     title.textContent = node.text;
-    description.textContent = node.data.description || 'Buka halaman publik ini untuk melihat informasinya.';
+    description.textContent = node.data.description || 'Open this page to find out more.';
     action.href = href;
     action.hidden = false;
   });

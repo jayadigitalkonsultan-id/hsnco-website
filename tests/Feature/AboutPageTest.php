@@ -31,7 +31,7 @@ class AboutPageTest extends TestCase
     private function page(string $status = 'published'): Page
     {
         $page = Page::factory()->create([
-            'key' => 'about', 'slug' => 'about', 'title' => 'Tentang Firma', 'template' => 'about',
+            'key' => 'about', 'slug' => 'about', 'title' => 'About the Firm', 'template' => 'about',
             'status' => $status, 'published_at' => $status === 'published' ? now()->subMinute() : null,
         ]);
         foreach (config('about.sections') as $key => $section) {
@@ -54,20 +54,20 @@ class AboutPageTest extends TestCase
         $photo = Media::factory()->create(['path' => 'images/approved-leader.jpg']);
         $leader = Professional::factory()->create([
             'status' => 'published', 'published_at' => now()->subMinute(), 'photo_id' => $photo->id,
-            'name' => 'Pimpinan Terbit', 'biography' => '<p>Biografi pimpinan dari modul Profesional.</p>',
+            'name' => 'Leadership Terbit', 'biography' => '<p>Biografi pimpinan dari modul Professional.</p>',
         ]);
         $edits = [
-            'banner' => ['eyebrow' => 'Profil firma', 'breadcrumb_label' => 'Tentang HSNCO', 'description' => 'Pengantar dari CMS'],
+            'banner' => ['eyebrow' => 'Profile firma', 'breadcrumb_label' => 'Tentang HSNCO', 'description' => 'Pengantar dari CMS'],
             'introduction' => ['column_one' => '<p>Narasi kolom pertama.</p>', 'column_two' => '<p>Narasi kolom kedua.</p>'],
             'quote' => ['quote' => '<p>Kejelasan untuk setiap keputusan.</p>', 'attribution' => 'Pernyataan resmi firma', 'approved' => true, 'evidence' => 'INTERNAL-QUOTE-PROOF'],
-            'history' => ['eyebrow' => 'Perjalanan kami', 'items' => [
+            'history' => ['eyebrow' => 'Our journey', 'items' => [
                 ['year' => '2020', 'title' => 'Milestone pertama dalam urutan editorial', 'description' => 'Riwayat yang disetujui.', 'verified' => true, 'evidence' => 'INTERNAL-HISTORY-PROOF'],
                 ['year' => '2010', 'title' => 'Milestone kedua dalam urutan editorial', 'description' => 'Riwayat lainnya.', 'verified' => true, 'evidence' => 'INTERNAL-HISTORY-PROOF'],
             ]],
             'vision-mission' => ['vision_title' => 'Judul visi dari CMS', 'vision' => 'Penjelasan visi.', 'mission_title' => 'Judul misi dari CMS', 'mission' => 'Penjelasan misi.'],
             'statistics' => ['items' => [['value' => '12', 'unit' => 'orang', 'title' => 'Jumlah terverifikasi', 'evidence' => 'INTERNAL-NUMBER-PROOF', 'verified_at' => today()->toDateString(), 'verified' => true]]],
             'clients' => ['items' => [['client_name' => 'Klien Berizin', 'media_id' => $logo->id, 'permission_confirmed' => true, 'evidence' => 'INTERNAL-CLIENT-PROOF', 'feedback' => 'Tanggapan yang telah diizinkan.', 'rating' => '5/5']]],
-            'leadership' => ['eyebrow' => 'Pimpinan', 'professional_ids' => [$leader->id]],
+            'leadership' => ['eyebrow' => 'Leadership', 'professional_ids' => [$leader->id]],
             'closing-cta' => ['button_label' => 'Konsultasi dengan firma', 'button_url' => '/contact#enquiry'],
         ];
         $this->get(route('admin.pages.edit', $page))->assertOk();
@@ -79,22 +79,22 @@ class AboutPageTest extends TestCase
             ])->assertRedirect()->assertSessionHasNoErrors();
         }
         $this->get(route('admin.pages.edit', $page))->assertOk()->assertSee('Narasi kolom pertama.');
-        $this->get('/about')->assertOk()->assertDontSee('Heading banner dari CMS')->assertDontSee('Pimpinan Terbit');
+        $this->get('/about')->assertOk()->assertDontSee('Heading banner dari CMS')->assertDontSee('Leadership Terbit');
         $preview = $this->get(route('admin.pages.preview', $page))->assertOk()
             ->assertHeader('X-Robots-Tag', 'noindex, nofollow')
-            ->assertSee('Heading banner dari CMS')->assertSee('Biografi pimpinan dari modul Profesional.')
+            ->assertSee('Heading banner dari CMS')->assertSee('Biografi pimpinan dari modul Professional.')
             ->assertDontSee('INTERNAL-CLIENT-PROOF');
         $this->assertStringContainsString('no-store', $preview->headers->get('Cache-Control'));
 
         $this->put(route('admin.pages.update', $page), [
-            'title' => 'Tentang Firma', 'slug' => 'about', 'key' => 'about', 'template' => 'about', 'status' => 'review',
+            'title' => 'About the Firm', 'slug' => 'about', 'key' => 'about', 'template' => 'about', 'status' => 'review',
         ])->assertRedirect()->assertSessionHasNoErrors();
         $this->post(route('admin.pages.publish', $page))->assertRedirect()->assertSessionHasNoErrors();
         $this->get('/about')->assertOk()->assertSeeInOrder([
             'Heading banner dari CMS', 'Narasi kolom pertama.', 'Narasi kolom kedua.',
             'Kejelasan untuk setiap keputusan.', 'Milestone pertama dalam urutan editorial',
             'Milestone kedua dalam urutan editorial', 'Judul visi dari CMS', 'Judul misi dari CMS',
-            'Jumlah terverifikasi', 'Klien Berizin', 'Pimpinan Terbit', 'Konsultasi dengan firma',
+            'Jumlah terverifikasi', 'Klien Berizin', 'Leadership Terbit', 'Konsultasi dengan firma',
         ])->assertSee('Tentang HSNCO')->assertSee('images/approved-client-logo.jpg')->assertSee('images/approved-leader.jpg')
             ->assertSee('href="/contact#enquiry"', false)->assertDontSee('INTERNAL-');
 
@@ -191,7 +191,7 @@ class AboutPageTest extends TestCase
         $page->sections()->where('key', 'closing-cta')->update(['heading' => 'Perubahan editor']);
         $this->seed(FrontendContentSeeder::class);
         $this->assertSame('Perubahan editor', $page->sections()->where('key', 'closing-cta')->firstOrFail()->heading);
-        $this->get('/about')->assertOk()->assertDontSee('Perubahan editor')->assertDontSee('Profil pimpinan');
+        $this->get('/about')->assertOk()->assertDontSee('Perubahan editor')->assertDontSee('Profile pimpinan');
         $this->get(route('admin.pages.preview', $page))->assertRedirect(route('login'));
     }
 }

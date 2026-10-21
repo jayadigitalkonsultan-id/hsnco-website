@@ -42,25 +42,25 @@ class PracticeServiceCmsTest extends TestCase
         $this->get(route('admin.practice-areas.index'))->assertOk()->assertSee($practice->name);
         $this->get(route('admin.practice-areas.edit', $practice))->assertOk()->assertSee('Daftar layanan')->assertSee('Gambar latar kategori');
         $this->put(route('admin.practice-areas.update', $practice), [
-            'name' => 'Layanan tenaga kerja diperbarui', 'slug' => $practice->slug,
+            'name' => 'Legal tenaga kerja diperbarui', 'slug' => $practice->slug,
             'summary' => 'Ringkasan panel dari CMS', 'body' => "Butir layanan pertama\r\nButir layanan kedua",
             'image_id' => $image, 'sort_order' => 0, 'status' => 'review',
         ])->assertSessionHasNoErrors()->assertRedirect();
-        $this->get('/practice-areas')->assertOk()->assertDontSee('Layanan tenaga kerja diperbarui');
+        $this->get('/practice-areas')->assertOk()->assertDontSee('Legal tenaga kerja diperbarui');
         $this->post(route('admin.practice-areas.publish', $practice))->assertSessionHasNoErrors()->assertRedirect();
-        $response = $this->get('/practice-areas')->assertOk()->assertSee('Layanan tenaga kerja diperbarui')
+        $response = $this->get('/practice-areas')->assertOk()->assertSee('Legal tenaga kerja diperbarui')
             ->assertSee('Ringkasan panel dari CMS')->assertSee('Butir layanan pertama')->assertSee('Butir layanan kedua');
-        $response->assertSeeInOrder(['Layanan tenaga kerja diperbarui', 'Perdata &amp; Komersial'], false);
+        $response->assertSeeInOrder(['Legal tenaga kerja diperbarui', 'Civil &amp; Commercial'], false);
         $this->assertSame($image, $practice->fresh()->image_id);
         $this->post(route('admin.practice-areas.archive', $practice))->assertRedirect();
-        $this->get('/practice-areas')->assertOk()->assertDontSee('Layanan tenaga kerja diperbarui');
+        $this->get('/practice-areas')->assertOk()->assertDontSee('Legal tenaga kerja diperbarui');
     }
 
     public function test_unpublished_data_is_not_replaced_by_static_config(): void
     {
         app(ImportServiceProfiles::class)->run();
         $this->get('/practice-areas')->assertOk()->assertDontSee('id="service-group-1"', false)
-            ->assertSee('Informasi bidang praktik sedang diperbarui');
+            ->assertSee('Our practice area information is being updated');
         $this->assertSame(8, PracticeArea::where('status', 'draft')->count());
     }
 

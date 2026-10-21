@@ -1,9 +1,9 @@
 <?php
 return ['fees'=>[
- ['name'=>'Hourly Rate','label'=>'Berdasarkan waktu','icon'=>'clock','description'=>'Biaya dihitung berdasarkan jam kerja advokat dalam menangani perkara.','basis'=>'Jam kerja advokat'],
- ['name'=>'Flat Fee','label'=>'Biaya tetap','icon'=>'document','description'=>'Biaya tetap untuk layanan tertentu dengan ruang lingkup yang jelas.','basis'=>'Ruang lingkup layanan'],
- ['name'=>'Success Fee','label'=>'Pencapaian tujuan','icon'=>'target','description'=>'Dikenakan jika tujuan hukum klien tercapai, berdasarkan persentase dari hasil atau objek perkara.','basis'=>'Hasil atau objek perkara'],
- ['name'=>'Retainer Fee','label'=>'Pendampingan berkelanjutan','icon'=>'calendar','description'=>'Biaya bulanan untuk layanan hukum berkelanjutan, biasanya untuk klien korporasi.','basis'=>'Layanan bulanan'],
- ['name'=>'Contingency Fee','label'=>'Berdasarkan hasil perkara','icon'=>'scales','description'=>'Biaya dibayarkan hanya jika perkara dimenangkan atau mencapai hasil yang menguntungkan.','basis'=>'Hasil perkara'],
- ['name'=>'Project-Based Fee','label'=>'Kebutuhan proyek','icon'=>'project','description'=>'Biaya disesuaikan untuk proyek hukum tertentu seperti merger, akuisisi, atau legal audit.','basis'=>'Lingkup proyek hukum'],
+ ['name'=>'Hourly Rate','label'=>'Time-based','icon'=>'clock','description'=>'Fees are calculated by reference to the time spent by our lawyers on a matter.','basis'=>'Lawyer time'],
+ ['name'=>'Flat Fee','label'=>'Fixed fee','icon'=>'document','description'=>'A fixed fee for specified services with a clearly defined scope.','basis'=>'Scope of services'],
+ ['name'=>'Success Fee','label'=>'Agreed outcomes','icon'=>'target','description'=>'A fee payable upon achieving the client’s agreed legal objective, calculated as a percentage of the outcome or subject matter.','basis'=>'Outcome or subject matter'],
+ ['name'=>'Retainer Fee','label'=>'Ongoing support','icon'=>'calendar','description'=>'A monthly fee for ongoing legal services, typically for corporate clients.','basis'=>'Monthly services'],
+ ['name'=>'Contingency Fee','label'=>'Outcome-based','icon'=>'scales','description'=>'A fee payable only if a matter is successful or achieves a favourable outcome.','basis'=>'Case outcome'],
+ ['name'=>'Project-Based Fee','label'=>'Project-specific','icon'=>'project','description'=>'A fee tailored to a specific legal project, such as a merger, acquisition or legal audit.','basis'=>'Scope of the legal project'],
 ]];

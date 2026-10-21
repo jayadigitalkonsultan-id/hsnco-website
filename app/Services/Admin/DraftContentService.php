@@ -30,6 +30,8 @@ class DraftContentService
 
             $practiceIds = $data['practice_area_ids'] ?? null;
             unset($data['practice_area_ids']);
+            $keyContactIds = $data['key_contact_ids'] ?? null;
+            unset($data['key_contact_ids']);
             foreach ($practiceIds ?? [] as $practiceId) {
                 Gate::forUser($actor)->authorize('view', PracticeArea::findOrFail($practiceId));
             }
@@ -37,16 +39,20 @@ class DraftContentService
                 Gate::forUser($actor)->authorize('view', Professional::findOrFail($data['author_id']));
             }
 
+            if ($content instanceof \App\Models\Industry && $keyContactIds !== null && \App\Models\Professional::published()->whereIn('id', $keyContactIds)->count() !== count($keyContactIds)) {
+                throw ValidationException::withMessages(['key_contact_ids'=>'Key Contact harus berasal dari profil profesional yang sudah terbit.']);
+            }
             $published = $content->exists && $content->status === ContentStatus::Published;
             $base = $content->exists ? ($this->workingPayload($content) ?? $this->snapshot($content)) : [];
             $payload = array_replace($base, $data);
             if ($practiceIds !== null) {
                 $payload['practice_area_ids'] = array_values($practiceIds);
             }
+            if ($content instanceof \App\Models\Industry && $keyContactIds !== null) $payload['key_contact_ids'] = $keyContactIds;
             $payload['status'] = $data['status'] ?? ($base['status'] ?? ContentStatus::Draft->value);
 
             if (! $published) {
-                $recordData = Arr::except($payload, ['sections', 'practice_area_ids']);
+                $recordData = Arr::except($payload, ['sections', 'practice_area_ids', 'key_contact_ids']);
                 $content->fill($recordData);
                 if (! $content->exists) {
                     $content->created_by = $actor->id;
@@ -57,6 +63,7 @@ class DraftContentService
                 if ($content instanceof Professional && $practiceIds !== null) {
                     $content->practiceAreas()->sync($practiceIds);
                 }
+                if ($content instanceof \App\Models\Industry && $keyContactIds !== null) $content->keyContacts()->sync($keyContactIds);
                 $payload = array_replace($this->snapshot($content), $payload);
                 if ($content instanceof Professional) {
                     $payload['practice_area_ids'] = $practiceIds ?? $content->practiceAreas()->pluck('practice_areas.id')->all();
@@ -110,6 +117,7 @@ class DraftContentService
             }
             $payload['sections'] = $sections->all();
             $status = $this->workingStatus($page) ?? ($page->status === ContentStatus::Published ? ContentStatus::Draft : $page->status);
+
             $payload['status'] = $status->value;
 
             return $this->createRevision($page, $payload, $status, $actor);
@@ -139,7 +147,7 @@ class DraftContentService
             return $content;
         }
 
-        $attributes = Arr::except($payload, ['sections', 'practice_area_ids']);
+        $attributes = Arr::except($payload, ['sections', 'practice_area_ids', 'key_contact_ids']);
         $content->fill($attributes);
         if ($content instanceof Page) {
             $sections = collect($this->normalizePageSections($content, $payload['sections'] ?? []))->map(function (array $section) {
@@ -164,6 +172,7 @@ class DraftContentService
     private function snapshot(ContentModel $content): array
     {
         $payload = $content->attributesToArray();
+        if ($content instanceof \App\Models\Industry) $payload['key_contact_ids'] = $content->keyContacts()->pluck('professionals.id')->all();
         if ($content instanceof Professional) {
             $payload['practice_area_ids'] = $content->practiceAreas()->pluck('practice_areas.id')->all();
         }

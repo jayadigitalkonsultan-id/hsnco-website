@@ -21,6 +21,7 @@ try{
   if(!await page.evaluate(()=>document.querySelector('#detailModal').contains(document.activeElement)))throw Error('Focus trap');
   if([1440,390].includes(width))await page.screenshot({path:`docs/qa-professionals/portfolio-${width}.png`});
   await page.keyboard.press('Escape');await modal.waitFor({state:'hidden'});
+  await page.waitForFunction(()=>!document.body.classList.contains('modal-open'));
   if(await page.evaluate(()=>document.body.classList.contains('modal-open')))throw Error('Scroll lock remained');
   if(!await trigger.evaluate(el=>el===document.activeElement))throw Error('Focus not restored');
  }

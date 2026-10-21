@@ -26,7 +26,7 @@ class EnquirySubmissionController extends Controller
                 'email' => Str::lower(trim($data['email'])),
                 'phone' => isset($data['phone']) ? trim($data['phone']) : null,
                 'practice_area_id' => $practice?->id,
-                'area_label' => $practice?->name ?? trim($data['area_label'] ?? $data['area'] ?? 'Lainnya'),
+                'area_label' => $practice?->name ?? trim($data['area_label'] ?? $data['area'] ?? 'Other'),
                 'message' => trim($data['message']),
                 'source' => $data['source'],
                 'status' => 'new',

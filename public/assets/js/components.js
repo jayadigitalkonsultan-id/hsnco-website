@@ -21,7 +21,7 @@
       photo.onerror = showPlaceholder;
       photo.hidden = !profile.photo; placeholder.hidden = !!profile.photo;
       modal.classList.toggle('portfolio-has-photo', !!profile.photo);
-      photo.removeAttribute('src'); photo.alt = profile.photoAlt || `Potret ${profile.name}`;
+      photo.removeAttribute('src'); photo.alt = profile.photoAlt || `Portrait of ${profile.name}`;
       if (profile.photo) photo.src = profile.photo;
       const renderList = (key, items, tag = 'span') => {
         const values = (items || []).filter(item => typeof item === 'string' && item.trim());
@@ -29,7 +29,7 @@
         const target = modal.querySelector(`[data-portfolio-${key === 'practices' ? 'tags' : key}]`);
         target.replaceChildren(...values.map(text => { const element = document.createElement(tag); element.textContent = text; return element; }));
       };
-      const focus = profile.practiceAreas?.length ? profile.practiceAreas : (profile.summary || '').split(';').map(s => s.trim()).filter(s => s && !/PQE|^English$|^Bahasa /i.test(s));
+      const focus = profile.practiceAreas?.length ? profile.practiceAreas : (profile.summary || '').split(';').map(s => s.trim()).filter(s => s && !/PQE|^English$|^Languages /i.test(s));
       renderList('practices', focus);
       renderList('qualifications', profile.qualifications, 'li');
       renderList('languages', profile.languages);
@@ -40,7 +40,7 @@
       title = trigger.dataset.practiceTitle || trigger.dataset.practice;
       description = trigger.dataset.practiceSummary || '';
       list = (trigger.dataset.practiceBody || '').split(/\r?\n/).map(item => item.trim()).filter(item => item && item !== description);
-      label = 'Gambaran bidang praktik'; subtitle = 'Lingkup layanan';
+      label = 'Practice area overview'; subtitle = 'Scope of services';
       image = trigger.dataset.practiceImage || new URL('images/office.jpg', document.body.dataset.assetBase).href;
       modal.querySelector('.content-notice').hidden = true;
     } else if (trigger.hasAttribute('data-profile')) {
@@ -49,11 +49,11 @@
       title = profile.name;
       description = profile.biography || profile.summary || '';
       list = [
-        ...(profile.practiceAreas || []).map(item => `Bidang praktik: ${item}`),
-        ...(profile.qualifications || []).map(item => `Kualifikasi: ${item}`),
-        ...(profile.languages || []).map(item => `Bahasa: ${item}`),
+        ...(profile.practiceAreas || []).map(item => `Practice areas: ${item}`),
+        ...(profile.qualifications || []).map(item => `Qualifications: ${item}`),
+        ...(profile.languages || []).map(item => `Languages: ${item}`),
       ];
-      label = profile.position; subtitle = 'Bidang praktik & kualifikasi';
+      label = profile.position; subtitle = 'Practice areas & qualifications';
       image = profile.photo;
       modal.querySelector('.content-notice').hidden = true;
     } else if (trigger.hasAttribute('data-insight')) {
@@ -62,10 +62,10 @@
       title = insight.title;
       description = insight.body || insight.excerpt || '';
       list = [
-        ...(insight.author ? [`Penulis: ${insight.author}`] : []),
-        ...(insight.publishedDate ? [`Terbit: ${insight.publishedDate}`] : []),
+        ...(insight.author ? [`Author: ${insight.author}`] : []),
+        ...(insight.publishedDate ? [`Published: ${insight.publishedDate}`] : []),
       ];
-      label = 'Publikasi HSNCO'; subtitle = 'Informasi publikasi';
+      label = 'Insights HSNCO'; subtitle = 'Publication information';
       image = insight.cover;
       modal.querySelector('.content-notice').hidden = true;
     } else {
@@ -81,7 +81,7 @@
     detailImage.alt = trigger.dataset.practiceImageAlt
       || (trigger.hasAttribute('data-profile') ? window.HSNCO_PROFESSIONALS?.[trigger.dataset.profile]?.photoAlt : null)
       || (trigger.hasAttribute('data-insight') ? window.HSNCO_INSIGHTS?.[trigger.dataset.insight]?.coverAlt : null)
-      || 'Foto ilustrasi';
+      || 'Illustrative image';
     modal.querySelector('#detailDescription').style.whiteSpace = 'pre-line';
     modal.querySelector('[data-detail-list]').replaceChildren(...list.map(text => { const li = document.createElement('li'); li.textContent = text; return li; }));
   });
@@ -99,7 +99,7 @@
       const emptyState = document.querySelector('.empty-state');
       if (emptyState) emptyState.hidden = visible !== 0;
       const results = document.querySelector('[data-results]');
-      if (results) results.textContent = `${visible} profesional`;
+      if (results) results.textContent = `${visible} ${visible === 1 ? 'professional' : 'professionals'}`;
     };
     search.addEventListener('input', apply);
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {

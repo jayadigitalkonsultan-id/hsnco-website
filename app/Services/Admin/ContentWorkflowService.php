@@ -37,14 +37,21 @@ class ContentWorkflowService
                 throw ValidationException::withMessages(['key' => 'Kunci halaman sudah dipakai halaman lain.']);
             }
             $practiceIds = $payload['practice_area_ids'] ?? null;
+            $keyContactIds = $payload['key_contact_ids'] ?? null;
+            if ($content instanceof \App\Models\Industry && $keyContactIds !== null) {
+                if (\App\Models\Professional::published()->whereIn('id', $keyContactIds)->lockForUpdate()->get()->count() !== count($keyContactIds)) {
+                    throw ValidationException::withMessages(['key_contact_ids'=>'Salah satu Key Contact tidak lagi terbit. Perbarui pilihan sebelum publikasi.']);
+                }
+            }
             $sections = $payload['sections'] ?? null;
             $content->fill(Arr::except($payload, [
                 'id', 'status', 'created_by', 'updated_by', 'published_at', 'published_revision', 'deleted_at',
-                'practice_area_ids', 'sections', 'created_at', 'updated_at',
+                'practice_area_ids', 'key_contact_ids', 'sections', 'created_at', 'updated_at',
             ]));
             if ($content instanceof Professional && $practiceIds !== null) {
                 $content->practiceAreas()->sync($practiceIds);
             }
+            if ($content instanceof \App\Models\Industry && $keyContactIds !== null) $content->keyContacts()->sync($keyContactIds);
             if ($content instanceof Page && $sections !== null) {
                 $this->syncPageSections($content, $sections);
             }

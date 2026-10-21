@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('title', 'Pratinjau — '.$aboutPage->title)
-@section('description', 'Pratinjau privat halaman Tentang Firma.')
+@section('description', 'Pratinjau privat halaman About the Firm.')
 @push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/about.css') }}?v={{ filemtime(public_path('assets/css/about.css')) }}">
 @endpush

@@ -15,7 +15,7 @@ class ImportServiceProfiles
         return DB::transaction(function () use ($publish) {
             $created = 0;
             foreach (config('services.groups', []) as $index => $group) {
-                $slug = Str::slug($group['title']);
+                $slug = $group['slug'] ?? Str::slug($group['title']);
                 if (PracticeArea::withTrashed()->where('slug', $slug)->exists()) {
                     continue;
                 }

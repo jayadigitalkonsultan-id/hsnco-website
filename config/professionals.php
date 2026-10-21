@@ -6,6 +6,6 @@ return [
         'associate' => 'Associate',
         'trainee_associate' => 'Trainee Associate',
         'paralegal' => 'Paralegal',
-        'professional' => 'Profesional',
+        'professional' => 'Professional',
     ],
 ];

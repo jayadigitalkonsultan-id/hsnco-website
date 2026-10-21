@@ -45,6 +45,11 @@ class PublicSeoController extends Controller
             return $origin.($path === '' ? '/' : '/'.$path);
         })->filter()->values();
 
+        if (Route::has('industries.show') && in_array('industries', config('seo.public_routes', []), true)) {
+            $urls = $urls->merge(app(\App\Services\Cms\IndustryCatalog::class)->published()->map(
+                fn (array $industry) => $origin.'/industries/'.rawurlencode($industry['slug'])
+            ))->unique()->values();
+        }
         return response()->view('frontend.sitemap-xml', compact('urls'), 200, [
             'Content-Type' => 'application/xml; charset=UTF-8',
             'Cache-Control' => 'no-cache, must-revalidate',

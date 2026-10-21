@@ -45,7 +45,8 @@ class ContactEnquiryWorkflowTest extends TestCase
         $this->assertDatabaseCount('enquiries', 2);
         $this->assertDatabaseHas('enquiries', ['source' => 'home', 'status' => 'new']);
         $this->assertDatabaseHas('enquiries', ['source' => 'contact', 'status' => 'new']);
-        Queue::assertPushedOn('emails', SendEnquiryNotification::class, 2);
+        Queue::assertPushedOn('emails', SendEnquiryNotification::class);
+        Queue::assertPushed(SendEnquiryNotification::class, 2);
 
         $user = User::factory()->active('admin')->create();
         UserTwoFactorAuthentication::factory()->create([
@@ -65,7 +66,7 @@ class ContactEnquiryWorkflowTest extends TestCase
             ->assertOk()
             ->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false)
             ->assertDontSee('<script>alert(1)</script>', false);
-        $this->assertSame('read', $enquiry->fresh()->status);
+        $this->assertSame('read', $enquiry->fresh()->status->value);
 
         $this->put(route('admin.enquiries.update', $enquiry), [
             'status' => 'in_progress',
@@ -74,7 +75,7 @@ class ContactEnquiryWorkflowTest extends TestCase
         $this->post(route('admin.enquiries.notes.store', $enquiry), ['body' => 'Follow up untuk jadwal konsultasi.'])
             ->assertSessionHasNoErrors()->assertRedirect();
 
-        $this->assertSame('in_progress', $enquiry->fresh()->status);
+        $this->assertSame('in_progress', $enquiry->fresh()->status->value);
         $this->assertSame('Follow up untuk jadwal konsultasi.', $enquiry->notes()->sole()->body);
         $this->assertSame($user->id, $enquiry->notes()->sole()->user_id);
     }

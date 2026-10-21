@@ -24,7 +24,7 @@ class ImportClients extends Command
                 $published = (bool) $this->option('publish');
                 $client = Client::create([
                     'name' => $item['name'], 'slug' => $slug, 'category' => $item['category'],
-                    'summary' => $item['summary'], 'body' => $item['body'], 'image_id' => $logo?->id,
+                    'summary' => app(\App\Services\Cms\EnglishCopy::class)->text($item['summary']), 'body' => app(\App\Services\Cms\EnglishCopy::class)->text($item['body']), 'image_id' => $logo?->id,
                     'source_note' => 'Materi klien diberikan pemilik website pada 20 Oktober 2026. Nama historis dipertahankan. Verifikasi penugasan dan pembaruan logo dikelola melalui CMS.',
                     'sort_order' => $index + 1, 'status' => $published ? 'published' : 'draft',
                     'published_at' => $published ? now() : null, 'published_revision' => $published ? 1 : null,

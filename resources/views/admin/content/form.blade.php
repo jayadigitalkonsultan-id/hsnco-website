@@ -22,6 +22,12 @@ $nameField = $definition['title_field'];
         <x-admin.field name="summary" label="Nama sebelumnya / keterangan singkat" type="textarea" :value="$record->summary" maxlength="5000" />
         <x-admin.field name="body" label="Gambaran penugasan" type="textarea" :value="$record->body" maxlength="100000" help="Tampil pada detail klien. Gunakan materi yang telah disetujui untuk publikasi." />
         <x-admin.field name="source_note" label="Catatan sumber internal" type="textarea" :value="$record->source_note" maxlength="5000" help="Tidak ditampilkan di website." />
+    @elseif($module === 'industries')
+        <x-admin.field name="english_name" label="Nama Inggris" :value="$record->english_name" maxlength="255" />
+        <x-admin.field name="summary" label="Ringkasan kartu" type="textarea" :value="$record->summary" maxlength="5000" />
+        <x-admin.field name="body" label="Gambaran industri" type="textarea" :value="$record->body" maxlength="100000" />
+        <x-admin.field name="focus_text" label="Topik diskusi" type="textarea" :value="implode(PHP_EOL, $record->focus ?? [])" help="Satu topik per baris." />
+        <x-admin.field name="key_contact_ids" label="Key Contact / Profesional" type="select" :value="$selectedKeyContacts" :options="$keyContactOptions->pluck('name','id')->all()" multiple help="Pilih satu atau beberapa profesional yang sudah terbit. Perubahan tampil setelah industri dipublikasikan." />
     @elseif($module === 'professionals')
         <div class="row"><div class="col-md-7"><x-admin.field name="position" label="Jabatan" :value="$record->position" required maxlength="150" /></div><div class="col-md-5"><x-admin.field name="level" label="Kelompok" type="select" :value="$record->level ?? 'partner'" :options="config('professionals.categories')" required /></div></div>
         <x-admin.field name="summary" label="Ringkasan keahlian" type="textarea" :value="$record->summary" maxlength="5000" />
@@ -39,11 +45,11 @@ $nameField = $definition['title_field'];
 </fieldset></div></section></div>
 <div class="col-xl-4"><section class="panel"><div class="panel-heading"><div><h2>Pengaturan konten</h2><p>Status dan tampilan di website.</p></div></div><div class="editor-body"><fieldset @disabled(!$editable)>
     <x-admin.field name="status" label="Status editorial" type="select" :value="$record->status ?? 'draft'" :options="['draft'=>'Draft','review'=>'Ajukan review']" required />
-    @php($imageField = ['clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
+    @php($imageField = ['industries'=>'image_id','clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
     <x-admin.field :name="$imageField" :label="$module === 'clients' ? 'Logo klien' : ($module === 'practice-areas' ? 'Gambar latar kategori' : 'Gambar pilihan')" type="select" :value="$record->{$imageField}" :options="$media->pluck('original_name','id')->all()" />
-    @if(in_array($module, ['clients','practice-areas','professionals']))
+    @if(in_array($module, ['industries','clients','practice-areas','professionals']))
         <x-admin.field name="sort_order" label="Urutan tampil" type="number" :value="$record->sort_order ?? 0" min="0" />
-        @if($module !== 'clients')<input type="hidden" name="is_featured" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_featured" id="isFeatured" value="1" @checked(old('is_featured', $record->is_featured))><label class="form-check-label" for="isFeatured">Tampilkan sebagai pilihan</label></div>@endif
+        @if(!in_array($module, ['clients','industries']))<input type="hidden" name="is_featured" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_featured" id="isFeatured" value="1" @checked(old('is_featured', $record->is_featured))><label class="form-check-label" for="isFeatured">Tampilkan sebagai pilihan</label></div>@endif
         @if($module === 'professionals')<input type="hidden" name="is_leadership" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_leadership" id="isLeadership" value="1" @checked(old('is_leadership', $record->is_leadership))><label class="form-check-label" for="isLeadership">Tampilkan sebagai pimpinan</label></div>@endif
     @endif
     <button class="btn btn-dark w-100 mt-2" type="submit">Simpan draft</button>

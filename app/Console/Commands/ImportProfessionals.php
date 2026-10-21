@@ -49,7 +49,7 @@ class ImportProfessionals extends Command
                         'name' => $item['name'], 'slug' => $slug,
                         'position' => config('professionals.categories.'.$item['level']),
                         'level' => $item['level'], 'summary' => $item['summary'] ?: null,
-                        'biography' => $item['biography'], 'qualifications' => $item['qualifications'],
+                        'biography' => app(\App\Services\Cms\EnglishCopy::class)->text($item['biography']), 'qualifications' => $item['qualifications'],
                         'languages' => $item['languages'], 'photo_id' => null, 'email' => null,
                         'sort_order' => $index + 1, 'is_featured' => $item['level'] === 'managing_partner',
                         'is_leadership' => $item['level'] === 'managing_partner',

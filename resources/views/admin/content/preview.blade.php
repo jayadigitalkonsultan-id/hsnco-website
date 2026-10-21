@@ -19,6 +19,11 @@
                 </section>
             @endforeach
         @endif
+        @if($module === 'industries')
+        <section class="mb-4"><h3>Key Contact</h3>
+        @php($contacts = \App\Models\Professional::whereIn('id', $payload['key_contact_ids'] ?? [])->orderBy('name')->get())
+        <ul>@forelse($contacts as $contact)<li>{{ $contact->name }} — {{ $contact->position }}</li>@empty<li>Belum ada kontak yang dipilih.</li>@endforelse</ul></section>
+        @endif
         <details class="mt-4"><summary>Data lengkap revisi</summary><pre class="text-break mt-3">{{ json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) }}</pre></details>
     </div>
 </article>

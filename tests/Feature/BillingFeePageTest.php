@@ -8,7 +8,7 @@ class BillingFeePageTest extends TestCase
     use RefreshDatabase;
     public function test_public_page_displays_all_six_schemes_and_illustrations(): void
     {
-        $response=$this->get(route('billing-fees'))->assertOk()->assertSee('Billing &amp; Fee',false)->assertSee('skema-biaya');
+        $response=$this->get(route('billing-fees'))->assertOk()->assertSee('Billing &amp; Fees',false)->assertSee('skema-biaya');
         foreach(config('billing.fees') as $fee)$response->assertSee($fee['name'])->assertSee($fee['description']);
         $this->assertSame(6,substr_count($response->getContent(),'class="fee-card h-100"'));
         $this->assertSame(6,substr_count($response->getContent(),'viewBox="0 0 120 100"'));

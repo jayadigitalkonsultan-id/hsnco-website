@@ -3,7 +3,7 @@
     @php($content = $section->content ?? [])
     @switch($section->key)
         @case('banner')
-            <x-frontend.page-banner :current="$content['breadcrumb_label'] ?? 'Tentang Firma'" :eyebrow="$content['eyebrow'] ?? ''">
+            <x-frontend.page-banner :current="$content['breadcrumb_label'] ?? 'About the Firm'" :eyebrow="$content['eyebrow'] ?? ''">
                 <x-slot:heading>{{ $section->heading }}</x-slot:heading>
                 <x-slot:intro>{{ strip_tags($content['description'] ?? '') }}</x-slot:intro>
             </x-frontend.page-banner>
@@ -11,7 +11,7 @@
 
         @case('introduction')
             @include('frontend.about.introduction', [
-                'introEyebrow' => $content['eyebrow'] ?? 'Tentang kami',
+                'introEyebrow' => $content['eyebrow'] ?? 'About us',
                 'introHeading' => $section->heading,
                 'introColumnOne' => $content['column_one'] ?? '',
                 'introColumnTwo' => $content['column_two'] ?? '',
@@ -56,12 +56,12 @@
             <section class="section-space surface-dark">
                 <div class="container"><div class="row g-5">
                     <article class="col-md-6">
-                        <p class="eyebrow">Visi kami</p>
+                        <p class="eyebrow">Our vision</p>
                         <h2 class="mission-title">{{ $content['vision_title'] ?? '' }}</h2>
                         <x-frontend.rich-text :html="$content['vision'] ?? ''" />
                     </article>
                     <article class="col-md-6">
-                        <p class="eyebrow">Misi kami</p>
+                        <p class="eyebrow">Our mission</p>
                         <h2 class="mission-title">{{ $content['mission_title'] ?? '' }}</h2>
                         <x-frontend.rich-text :html="$content['mission'] ?? ''" />
                     </article>
@@ -130,11 +130,11 @@
                                     <div class="col-md-6"><img class="leadership-photo" src="{{ $leader['photo_url'] }}" alt="{{ $leader['photo_alt'] }}" width="900" height="600" loading="lazy" decoding="async"></div>
                                 @endif
                                 <div class="{{ $leader['photo_url'] ? 'col-md-6' : 'col-12' }}">
-                                    <p class="eyebrow">{{ $content['eyebrow'] ?? 'Pimpinan' }}</p>
+                                    <p class="eyebrow">{{ $content['eyebrow'] ?? 'Leadership' }}</p>
                                     <x-frontend.section-heading>{{ $section->heading }}</x-frontend.section-heading>
                                     <h3>{{ $leader['name'] }}</h3><p>{{ $leader['position'] }}</p>
                                     <x-frontend.rich-text :html="$leader['biography'] ?: $leader['summary']" />
-                                    <a class="text-link" href="{{ route('team') }}">Kenali tim profesional kami <span aria-hidden="true">&rarr;</span></a>
+                                    <a class="text-link" href="{{ route('team') }}">Meet our professionals <span aria-hidden="true">&rarr;</span></a>
                                 </div>
                             </div>
                         @endforeach
@@ -146,9 +146,9 @@
         @case('closing-cta')
             @section('about-closing-cta')
             @include('frontend.about.contact-cta', [
-                'ctaEyebrow' => $content['eyebrow'] ?? 'Konsultasi hukum',
+                'ctaEyebrow' => $content['eyebrow'] ?? 'Legal consultation',
                 'ctaHeading' => $section->heading,
-                'ctaLabel' => $content['button_label'] ?? 'Hubungi tim kami',
+                'ctaLabel' => $content['button_label'] ?? 'Contact our team',
                 'ctaUrl' => ($content['button_url'] ?? null) ?: route('contact').'#enquiry',
             ])
             @endsection

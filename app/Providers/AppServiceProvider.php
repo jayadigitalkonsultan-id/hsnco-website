@@ -81,9 +81,9 @@ class AppServiceProvider extends ServiceProvider
             $identity = $settings['identity.name'] ?? [];
             $seo = $settings['seo.defaults'] ?? [];
             $name = trim((string) ($identity['name'] ?? $seo['site_name'] ?? 'HSNCO')) ?: 'HSNCO';
-            $description = trim((string) ($seo['description'] ?? '')) ?: 'Situs web '.$name;
+            $description = trim((string) ($seo['description'] ?? '')) ?: 'Website of '.$name;
             $tagline = trim((string) data_get($settings->get('footer.content', []), 'tagline', ''))
-                ?: 'Layanan hukum profesional. Kejelasan bagi dunia usaha.';
+                ?: 'Professional legal counsel. Clarity for business.';
 
             $logo = null;
             $logoId = $settings['identity.logo']['media_id'] ?? null;
@@ -95,7 +95,10 @@ class AppServiceProvider extends ServiceProvider
                         : Storage::disk('public')->url($media->path);
                 }
             }
-            $logo ??= asset('assets/images/logo-white.png');
+            $logo ??= asset('assets/images/hsnco-logo.png');
+            if (str_ends_with($logo, '/images/logo-white.png')) {
+                $logo = asset('assets/images/hsnco-logo.png');
+            }
 
             $faviconPath = $settings['identity.favicon']['path'] ?? null;
             $favicon = is_string($faviconPath)
@@ -104,12 +107,13 @@ class AppServiceProvider extends ServiceProvider
                 : asset('assets/icons/favicon.svg');
 
             $defaults = [
-                'home' => 'Beranda',
-                'about' => 'Tentang Firma',
-                'practice-areas' => 'Bidang Praktik',
-                'team' => 'Profesional',
-                'insights' => 'Publikasi',
-                'contact' => 'Kontak',
+                'home' => 'Home',
+                'about' => 'About the Firm',
+                'practice-areas' => 'Practice Areas',
+                'industries' => 'Industries',
+                'team' => 'Professionals',
+                'insights' => 'Insights',
+                'contact' => 'Contact',
             ];
             $configuredItems = $settings['navigation.main']['items'] ?? [];
             $configuredLabels = collect(is_array($configuredItems) ? $configuredItems : [])
@@ -121,7 +125,7 @@ class AppServiceProvider extends ServiceProvider
             ])->values();
 
             $canonicalOrigin = rtrim(config('seo.canonical_url') ?: config('app.url'), '/');
-            $routeUri = request()->route()?->uri() ?? '/';
+            $routeUri = request()->path();
             $canonicalPath = $routeUri === '/' ? '/' : '/'.ltrim($routeUri, '/');
             $canonicalUrl = $canonicalOrigin.$canonicalPath;
             $seoPageTitle = filled($seoPage?->seo_title) ? $seoPage->seo_title : null;
@@ -172,26 +176,6 @@ class AppServiceProvider extends ServiceProvider
                 'values' => $mediaUrl($homeMedia->get(data_get($homeSections->get('values'), 'content.image_id'))),
             ];
 
-            try {
-                $homePractices = PracticeArea::query()->published()->with('publicImage')
-                    ->orderBy('sort_order')->orderBy('name')->get();
-            } catch (QueryException) {
-                $homePractices = collect();
-            }
-            $homePracticeItems = $homePractices->map(fn ($practice) => [
-                'name' => $practice->name,
-                'slug' => $practice->slug,
-                'image' => $mediaUrl($practice->publicImage),
-                'alt' => $practice->publicImage?->alt_text ?: $practice->name,
-            ])->values();
-            $homeRecognitions = collect(data_get($homeSections->get('recognitions'), 'content.items', []))
-                ->filter(fn ($item) => is_array($item)
-                    && filter_var($item['verified'] ?? false, FILTER_VALIDATE_BOOLEAN)
-                    && filled($item['title'] ?? null)
-                    && filled($item['rank'] ?? null)
-                    && filled($item['year'] ?? null)
-                    && filled($item['evidence'] ?? null))
-                ->values();
             $contactDetails = [];
             $homeInsights = collect();
             try {
@@ -220,14 +204,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'homePageIsPublished' => $homePage !== null,
                 'homeSections' => $homeSections,
+                'homeIndustries' => app(\App\Services\Cms\IndustryCatalog::class)->published(),
                 'homeImageUrls' => $homeImageUrls,
-                'homePracticeItems' => $homePracticeItems,
-                'homeRecognitions' => $homeRecognitions,
                 'homeContactDetails' => $homeContactDetails,
                 'homeInsights' => $homeInsights,
             ]);
         });
 
+        View::composer('frontend.home.practice-summary', function ($view) {
+            $view->with('summaryPractices', PracticeArea::query()->published()->orderBy('sort_order')->orderBy('name')->get(['id','name','slug']));
+        });
         View::composer('frontend.about', function ($view) {
             try {
                 $aboutPage = Page::query()->published()->where('key', 'about')->with('sections')->first();
@@ -268,10 +254,10 @@ class AppServiceProvider extends ServiceProvider
                 ->filter(fn ($item) => is_array($item) && isset($item['route'], $item['label']))
                 ->keyBy('route');
             $footerFirmLinks = collect([
-                'about' => 'Tentang Firma',
-                'team' => 'Profesional',
-                'insights' => 'Publikasi',
-                'sitemap' => 'Peta Situs',
+                'about' => 'About the Firm',
+                'team' => 'Professionals',
+                'insights' => 'Insights',
+                'sitemap' => 'Sitemap',
             ])->map(fn ($label, $route) => [
                 'route' => $route,
                 'label' => trim((string) ($navigationLabels->get($route)['label'] ?? $label)) ?: $label,
@@ -319,7 +305,7 @@ class AppServiceProvider extends ServiceProvider
                 'languages' => $professional->languages ?? [],
                 'practiceAreas' => $professional->publishedPracticeAreas->pluck('name')->values(),
                 'photo' => $professional->public_photo_url,
-                'photoAlt' => $professional->publicPhoto?->alt_text ?: 'Potret '.$professional->name,
+                'photoAlt' => $professional->publicPhoto?->alt_text ?: 'Portrait of '.$professional->name,
             ]]);
 
             $view->with([
@@ -368,7 +354,7 @@ class AppServiceProvider extends ServiceProvider
                 'publishedAt' => $insight->published_at?->toIso8601String(),
                 'publishedDate' => $insight->published_at?->timezone(config('cms.display_timezone'))->format('d/m/Y'),
                 'cover' => $insight->cover_url,
-                'coverAlt' => $insight->publicCoverMedia?->alt_text ?: 'Sampul '.$insight->title,
+                'coverAlt' => $insight->publicCoverMedia?->alt_text ?: 'Cover image for '.$insight->title,
             ]]);
 
             $view->with([
@@ -394,21 +380,23 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $pageLinks = collect([
-                'home' => ['Beranda', route('home'), 'Kembali ke halaman utama HSNCO.'],
-                'about' => ['Tentang Firma', route('about'), 'Kenali firma, perjalanan, dan pendekatan HSNCO.'],
-                'practice-areas' => ['Bidang Praktik', route('practice-areas'), 'Jelajahi bidang keahlian hukum HSNCO.'],
-                'team' => ['Profesional', route('team'), 'Temukan direktori profesional HSNCO.'],
-                'billing-fees' => ['Biaya & Kerja Sama', route('billing-fees'), 'Kenali enam skema biaya layanan hukum HS & CO.'],
-                'insights' => ['Publikasi', route('insights'), 'Baca wawasan dan publikasi HSNCO yang tersedia.'],
-                'contact' => ['Kontak', route('contact'), 'Hubungi HSNCO melalui halaman kontak.'],
-                'sitemap' => ['Peta Situs', route('sitemap'), 'Lihat struktur halaman dan tautan publik HSNCO.'],
+                'home' => ['Home', route('home'), 'Return to the HSNCO homepage.'],
+                'about' => ['About the Firm', route('about'), 'Discover the firm, its journey and approach.'],
+                'practice-areas' => ['Practice Areas', route('practice-areas'), 'Explore HSNCO’s legal practice areas.'],
+                'industries' => ['Industries', route('industries'), 'Explore industry sectors and their legal context.'],
+                'clients' => ['Our Clients', route('clients'), 'Discover HSNCO’s clients across industries.'],
+                'team' => ['Professionals', route('team'), 'Explore the HSNCO professional directory.'],
+                'billing-fees' => ['Fees & Engagements', route('billing-fees'), 'Explore six fee arrangements offered by HS & CO.'],
+                'insights' => ['Insights', route('insights'), 'Read available HSNCO insights and publications.'],
+                'contact' => ['Contact', route('contact'), 'Contact HSNCO through our contact page.'],
+                'sitemap' => ['Sitemap', route('sitemap'), 'Explore the HSNCO website structure and public links.'],
             ])->map(function (array $default, string $key) use ($pages, $practices): array {
                 $page = $pages->get($key);
                 $children = $key === 'practice-areas'
                     ? $practices->map(fn (PracticeArea $practice) => [
                         'text' => $practice->name,
                         'href' => route('practice-areas').'#'.$practice->slug,
-                        'description' => $practice->summary ?: 'Informasi bidang praktik '.$practice->name.'.',
+                        'description' => $practice->summary ?: 'Informasi practice areas '.$practice->name.'.',
                     ])->values()->all()
                     : [];
 
@@ -427,6 +415,14 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        View::composer('frontend.partials.practice-enquiry', function ($view) {
+            try {
+                $settings = SiteSetting::query()->where('key', 'contact.details')->value('value') ?? [];
+            } catch (QueryException) {
+                $settings = [];
+            }
+            $view->with('verifiedContactDetails', app(VerifiedContactDetails::class)->from($settings));
+        });
         View::composer('frontend.contact', function ($view) {
             try {
                 $contactPage = Page::query()->published()->where('key', 'contact')->with('sections')->first();
@@ -454,11 +450,12 @@ class AppServiceProvider extends ServiceProvider
             'professional' => Professional::class,
             'insight' => Insight::class,
             'client' => \App\Models\Client::class,
+            'industry' => \App\Models\Industry::class,
             'site_setting' => SiteSetting::class,
             'content_revision' => ContentRevision::class,
         ]);
 
-        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class, \App\Models\Client::class] as $model) {
+        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class, \App\Models\Client::class, \App\Models\Industry::class] as $model) {
             Gate::policy($model, ContentPolicy::class);
         }
         foreach ([SiteSetting::class, Enquiry::class, EnquiryNote::class] as $model) {

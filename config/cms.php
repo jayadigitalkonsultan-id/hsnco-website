@@ -41,7 +41,7 @@ $sectionFields = [
         'column_two' => ['type' => 'rich_text', 'label' => 'Narasi kolom kedua', 'max' => 30000],
     ],
     'image' => ['media_id' => ['type' => 'media', 'label' => 'Gambar'], 'alt' => ['type' => 'text', 'label' => 'Alt text gambar', 'max' => 255], 'caption' => ['type' => 'text', 'label' => 'Keterangan singkat', 'max' => 1000]],
-    'practice_selection' => $narrative + ['practice_area_ids' => ['type' => 'ids', 'label' => 'Pilih tepat empat bidang praktik', 'table' => 'practice_areas', 'min' => 4, 'max' => 4, 'required' => true]],
+    'practice_selection' => $narrative,
     'values' => $narrative + [
         'image_id' => ['type' => 'media', 'label' => 'Gambar latar'],
         'items' => ['type' => 'items', 'label' => 'Daftar tiga nilai firma (JSON)', 'items' => $valueItem, 'min' => 3, 'max' => 3, 'required' => true],

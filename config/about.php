@@ -3,57 +3,57 @@
 return [
     'sections' => [
         'banner' => [
-            'type' => 'about_banner', 'heading' => 'Tradisi integritas.',
+            'type' => 'about_banner', 'heading' => 'A tradition of integrity.',
             'content' => [
-                'eyebrow' => 'Tentang firma', 'breadcrumb_label' => 'Tentang Firma',
-                'description' => 'Pertimbangan yang jelas untuk menghadapi tantangan hukum dan bisnis yang kompleks.',
+                'eyebrow' => 'About the firm', 'breadcrumb_label' => 'About the Firm',
+                'description' => 'Clear judgement for complex legal and commercial challenges.',
             ],
         ],
         'introduction' => [
-            'type' => 'about_intro', 'heading' => 'Pemahaman lokal. Wawasan global.',
+            'type' => 'about_intro', 'heading' => 'Local understanding. Global perspective.',
             'content' => [
-                'eyebrow' => 'Tentang kami',
-                'column_one' => '<p>HS & CO Counsellors at Law (HS & CO) adalah firma hukum yang menyediakan layanan hukum yang profesional dan efektif bagi klien baik dari Indonesia maupun internasional. Kami berlokasi di Jl. Letnan Jenderal TB. Simatupang Nomor 10B, Jakarta Selatan.</p><p>HS & CO fokus untuk memberikan solusi hukum yang tepat melalui pendekatan mediasi dan negosiasi, dengan jalur litigasi sebagai langkah terakhir apabila diperlukan.</p>',
-                'column_two' => '<p>Didirikan oleh praktisi hukum berpengalaman dan akademisi yang aktif mengajar di perguruan tinggi, HS & CO memiliki keahlian mendalam di berbagai bidang hukum, termasuk Hukum Pidana, Perdata, Properti, Perburuhan, Kepailitan, Hak Kekayaan Intelektual (HKI), Pertanahan, serta Sengketa Administrasi dan Tata Negara.</p><p>Kami memastikan bahwa setiap klien mendapat pelayanan yang mengutamakan etika, profesionalisme, dan respons cepat terhadap kebutuhan. Dalam hal litigasi, HS & CO didukung oleh tim advokat berpengalaman yang memiliki rekam jejak keberhasilan tinggi di berbagai kasus hukum.</p><p>Kami berkomitmen untuk memberikan pelayanan hukum yang efisien, solusi yang tepat, dan hasil yang berfokus pada keadilan dan kepentingan klien.</p>',
+                'eyebrow' => 'About us',
+                'column_one' => '<p>HS & CO Counsellors at Law (HS & CO) provides professional and effective legal services to Indonesian and international clients. Our office is located at Jl. Letnan Jenderal TB. Simatupang No. 10B, South Jakarta.</p><p>HS & CO seeks appropriate legal solutions through mediation and negotiation, with litigation pursued as a last resort where necessary.</p>',
+                'column_two' => '<p>Founded by experienced legal practitioners and academics who also teach at universities, HS & CO brings in-depth knowledge across criminal, civil, property, employment, insolvency, intellectual property, land, administrative and constitutional law.</p><p>Our service emphasises ethics, professionalism and a prompt response to each client’s needs. In contentious matters, HS & CO is supported by experienced advocates with a record of handling a wide range of legal cases.</p><p>We are committed to efficient legal service, appropriate solutions and outcomes focused on fairness and our clients’ interests.</p>',
             ],
         ],
         'quote' => [
             'type' => 'quote', 'heading' => null,
             'content' => [
-                'quote' => 'Nilai kami tidak diukur dari kompleksitas yang kami uraikan, melainkan dari kejelasan yang kami berikan.',
+                'quote' => 'Our value lies not in the complexity we describe, but in the clarity we provide.',
                 'attribution' => '', 'approved' => false, 'evidence' => '',
             ],
         ],
         'history' => [
-            'type' => 'timeline', 'heading' => 'Tujuan yang tumbuh seiring waktu.',
-            'content' => ['eyebrow' => 'Perjalanan kami', 'items' => []],
+            'type' => 'timeline', 'heading' => 'A purpose that evolves over time.',
+            'content' => ['eyebrow' => 'Our journey', 'items' => []],
         ],
         'vision-mission' => [
-            'type' => 'vision_mission', 'heading' => 'Visi dan misi',
+            'type' => 'vision_mission', 'heading' => 'Vision and mission',
             'content' => [
-                'vision_title' => 'Menjadi penasihat hukum yang dipercaya klien pada saat-saat terpenting.',
-                'vision' => 'Nasihat hukum yang jelas, memahami kebutuhan bisnis, dan berpegang pada prinsip.',
-                'mission_title' => 'Mengubah kompleksitas hukum menjadi langkah yang mantap.',
-                'mission' => 'Keahlian khusus, pertimbangan berpengalaman, dan pendekatan kolaboratif.',
+                'vision_title' => 'To be the legal adviser clients trust when it matters most.',
+                'vision' => 'Clear, commercially informed legal advice grounded in principle.',
+                'mission_title' => 'Turning legal complexity into confident action.',
+                'mission' => 'Specialist expertise, experienced judgement and a collaborative approach.',
             ],
         ],
         'statistics' => [
-            'type' => 'statistics', 'heading' => 'Firma dalam angka',
-            'content' => ['eyebrow' => 'Firma dalam angka', 'items' => []],
+            'type' => 'statistics', 'heading' => 'The firm at a glance',
+            'content' => ['eyebrow' => 'The firm at a glance', 'items' => []],
         ],
         'clients' => [
-            'type' => 'client_logos', 'heading' => 'Kepercayaan yang dibangun seiring waktu.',
-            'content' => ['eyebrow' => 'Hubungan tepercaya', 'items' => []],
+            'type' => 'client_logos', 'heading' => 'Trust built over time.',
+            'content' => ['eyebrow' => 'Trusted relationships', 'items' => []],
         ],
         'leadership' => [
-            'type' => 'leadership', 'heading' => 'Standar yang dibangun dari pimpinan.',
+            'type' => 'leadership', 'heading' => 'Standards set by our leadership.',
             'content' => ['eyebrow' => 'Pimpinan', 'professional_ids' => []],
         ],
         'closing-cta' => [
-            'type' => 'cta', 'heading' => 'Wawasan yang mendorong kemajuan usaha.',
+            'type' => 'cta', 'heading' => 'Insight that moves business forward.',
             'content' => [
-                'eyebrow' => 'Bekerja bersama HSNCO',
-                'button_label' => 'Mulai percakapan', 'button_url' => '/contact#enquiry',
+                'eyebrow' => 'Working with HSNCO',
+                'button_label' => 'Start a conversation', 'button_url' => '/contact#enquiry',
             ],
         ],
     ],

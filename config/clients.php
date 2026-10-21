@@ -1,5 +1,5 @@
 <?php
 return [
-    'categories' => ['finance' => 'Bank / Jasa Keuangan', 'corporate' => 'Korporasi / Komersial', 'institution' => 'Lembaga Negara'],
-    'introduction' => 'Kami dengan bangga melayani beragam klien dari berbagai sektor industri, baik nasional maupun internasional. HS & CO telah dipercaya sebagai mitra hukum oleh:',
+    'categories' => ['finance' => 'Banking / Financial Services', 'corporate' => 'Corporate / Commercial', 'institution' => 'Public Institutions'],
+    'introduction' => 'We are pleased to serve clients across a range of industries, both in Indonesia and internationally. The following organisations have entrusted HS & CO with legal matters:',
 ];

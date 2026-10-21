@@ -50,7 +50,7 @@ class ClientCmsTest extends TestCase
         $client = Client::where('slug', 'klien-uji-editorial')->firstOrFail();
         $this->get('/')->assertOk()->assertDontSee('Klien uji editorial');
         $this->post(route('admin.clients.publish', $client))->assertSessionHasNoErrors()->assertRedirect();
-        $this->get('/')->assertOk()->assertSee('Klien uji editorial')->assertSee('Penugasan yang disetujui')
+        $this->get('/')->assertOk()->assertSee('Klien uji editorial')->assertDontSee('Penugasan yang disetujui')
             ->assertSee('images/logo-white.png')->assertSee('assets/css/clients.css')->assertSee('assets/js/clients.js')->assertDontSee('INTERNAL-NOT-PUBLIC');
         $this->get('/about')->assertOk()->assertSee('Klien uji editorial')->assertSee('assets/css/clients.css')->assertSee('assets/js/clients.js');
         $this->put(route('admin.clients.update', $client), ['name' => 'Revisi nama klien', 'slug' => $client->slug, 'category' => 'corporate', 'status' => 'review'])->assertSessionHasNoErrors()->assertRedirect();
@@ -73,7 +73,8 @@ class ClientCmsTest extends TestCase
     {
         $this->administrator();$media = Media::factory()->create(['visibility' => 'private']);
         $this->post(route('admin.clients.store'), ['name' => 'Client', 'slug' => 'client', 'category' => 'finance', 'image_id' => $media->id])->assertSessionHasErrors('image_id');
-        Client::create(['name' => '<script>alert(1)</script>', 'slug' => 'escaped', 'category' => 'finance', 'status' => 'published', 'published_at' => now()]);
+        $logo = Media::factory()->create(['disk'=>'frontend','path'=>'images/logo-white.png','visibility'=>'public']);
+        Client::create(['name' => '<script>alert(1)</script>', 'slug' => 'escaped', 'category' => 'finance', 'image_id'=>$logo->id, 'status' => 'published', 'published_at' => now()]);
         $this->get('/')->assertOk()->assertDontSee('<script>alert(1)</script>', false)->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false);
     }
 

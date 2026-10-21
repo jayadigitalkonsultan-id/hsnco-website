@@ -130,7 +130,9 @@ class ContentController extends AdminController
             }
         }
 
-        return view('admin.content.form', compact('definition', 'record', 'workflowRecord', 'workingRevision', 'workingStatus', 'media', 'practices', 'authors', 'insights', 'editable'));
+        $keyContactOptions = $record instanceof \App\Models\Industry ? Professional::published()->orderBy('name')->get(['id','name']) : collect();
+        $selectedKeyContacts = $record instanceof \App\Models\Industry ? ($workingPayload['key_contact_ids'] ?? ($record->exists ? $record->keyContacts()->pluck('professionals.id')->all() : [])) : [];
+        return view('admin.content.form', compact('keyContactOptions', 'selectedKeyContacts', 'definition', 'record', 'workflowRecord', 'workingRevision', 'workingStatus', 'media', 'practices', 'authors', 'insights', 'editable'));
     }
 
     public function store(Request $request, DraftContentService $service)

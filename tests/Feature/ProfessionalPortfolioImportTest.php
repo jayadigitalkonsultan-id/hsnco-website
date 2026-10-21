@@ -20,7 +20,7 @@ class ProfessionalPortfolioImportTest extends TestCase
         }
         $this->assertSame(19,\App\Models\ContentRevision::where('revisionable_type',(new Professional)->getMorphClass())->count());
         $this->assertSame(0,Professional::whereNotNull('photo_id')->count());
-        $this->get(route('team'))->assertOk()->assertSee('Managing Partner')->assertSee('Trainee Associate')->assertSee('Paralegal')->assertSee('dr. Hilwani')->assertSee('Foto akan diperbarui');
+        $this->get(route('team'))->assertOk()->assertSee('Managing Partner')->assertSee('Trainee Associate')->assertSee('Paralegal')->assertSee('dr. Hilwani')->assertSee('Photograph forthcoming');
     }
 
     public function test_import_is_repeatable_and_preserves_cms_edits_and_deleted_records(): void

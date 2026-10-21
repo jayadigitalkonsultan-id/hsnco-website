@@ -3,6 +3,8 @@
     $bannerImage = match(request()->route()?->getName()) {
         'practice-areas' => 'corporate.jpg',
         'billing-fees' => 'finance.jpg',
+        'industries' => 'projects.jpg',
+        'clients' => 'transactions.jpg',
         'team' => 'values.jpg',
         'insights' => 'investment.jpg',
         'contact' => 'office.jpg',

@@ -14,12 +14,12 @@
     {
       "file": "css/clients.css",
       "mode": "lf-text",
-      "sha256": "c0762d13a0985afb1466b2f4e4f071e3d2a94451a067a436d54b7f6e1945ee75"
+      "sha256": "74f4c0ddd07726e350741ec82421373def087e16c6571c5bf55d961b7155fed8"
     },
     {
       "file": "css/components.css",
       "mode": "lf-text",
-      "sha256": "02cd329d9add029a1bac4a4b4a6987459aa75623a6d7b9ff3f1091d12ee74b00"
+      "sha256": "6d27ad0a6d9c12dc1d3138cbb0e338a1685e8e0a57ed555cdc056e78e7a4301d"
     },
     {
       "file": "css/contact.css",
@@ -29,7 +29,12 @@
     {
       "file": "css/home.css",
       "mode": "lf-text",
-      "sha256": "aacd8896d835eba6a48437de6011459701c471dba5ae65526c7f98f03320e3a9"
+      "sha256": "385edebff68977e7e7f050da5ab3d7b85ad9437c36f23a0e145afad6502ec5f4"
+    },
+    {
+      "file": "css/industries.css",
+      "mode": "lf-text",
+      "sha256": "d7f2ec9fe04ed54f68fe847d4d762fc5df77198f47a234999102d078e2738f1a"
     },
     {
       "file": "css/inner-pages.css",
@@ -54,7 +59,7 @@
     {
       "file": "css/responsive.css",
       "mode": "lf-text",
-      "sha256": "4cac8502687228f5055786bdd25513cb52821d1a76c55edd38ee0df6227db55c"
+      "sha256": "196a2a02413e9d1f1eb64ddf1288257f526546f9cf99098d0ad6ad5d2ac6bf1c"
     },
     {
       "file": "css/style.css",
@@ -64,12 +69,77 @@
     {
       "file": "css/team.css",
       "mode": "lf-text",
-      "sha256": "f194c8b021ab989dc04d4e3e004cd033a2a57e3195ba80e664af1beec8eb64dd"
+      "sha256": "671a88848c9c82a3897b1f8a6136870d146d97c51c78f985f9ddc2ba692ab1b0"
+    },
+    {
+      "file": "css/typography.css",
+      "mode": "lf-text",
+      "sha256": "8bb837b3b05d9b98d4065015a386c711d3fd5ad9f9ac2ac0b5daaef5979cd91d"
     },
     {
       "file": "css/variables.css",
       "mode": "lf-text",
-      "sha256": "e360d04ad18a6d39ff9dc3b88b1cf2be9d3782ce5570bfb7af8540e0c2eed79e"
+      "sha256": "d42bd9776a64d9a59272b2b63dac66b17d5a032d8a1249f49a89d53eb222ae30"
+    },
+    {
+      "file": "fonts/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIo.woff2",
+      "mode": "binary",
+      "sha256": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc"
+    },
+    {
+      "file": "fonts/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G07JIoSwQ.woff2",
+      "mode": "binary",
+      "sha256": "61eeb0eb8b881a84d069e67be1723f5b353b0b9b866ad8e7ad9dba66cdc4dabd"
+    },
+    {
+      "file": "fonts/9Bt43C1KxNDXMspQ1lPyU89-1h6ONRlW45G056IkUwCybQ.woff2",
+      "mode": "binary",
+      "sha256": "90d887d541fe6e912d15f826aae6ca1190efcf172b65401704472475ed771049"
+    },
+    {
+      "file": "fonts/9Bt43C1KxNDXMspQ1lPyU89-1h6ONRlW45G056IqUwA.woff2",
+      "mode": "binary",
+      "sha256": "bc8825fd435d4aa8e31449937826d583a7daaae15a83832c91b38375131ebf08"
+    },
+    {
+      "file": "fonts/9Bt73C1KxNDXMspQ1lPyU89-1h6ONRlW45G8Wbc9dCWP.woff2",
+      "mode": "binary",
+      "sha256": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0"
+    },
+    {
+      "file": "fonts/9Bt73C1KxNDXMspQ1lPyU89-1h6ONRlW45G8Wbc9eiWPVFw.woff2",
+      "mode": "binary",
+      "sha256": "840ced16f975d8abc2594b436d0206649e0c2a7327e36750ff849d3d37c3c02e"
+    },
+    {
+      "file": "fonts/9Bt93C1KxNDXMspQ1lPyU89-1h6ONRlW45G056qRdhWDTFieFA.woff2",
+      "mode": "binary",
+      "sha256": "43471ea6265ba9619c8c12d3f9f53c9e1741fa3af69f6b658100a841b09398c8"
+    },
+    {
+      "file": "fonts/9Bt93C1KxNDXMspQ1lPyU89-1h6ONRlW45G056qRdhWNTFg.woff2",
+      "mode": "binary",
+      "sha256": "73e0c9e1e284128dda599558f7c15bd5f3c056442c31dfae950528a16b3835cf"
+    },
+    {
+      "file": "fonts/K2F1fZFYk-dHSE0UPPuwQ5qnJy8.woff2",
+      "mode": "binary",
+      "sha256": "3cad1d144b870d6083c79131c4817b2bcf3b4d76fc4aaeaba2eec295fbaa5cb1"
+    },
+    {
+      "file": "fonts/K2F1fZFYk-dHSE0UPPuwQ5qoJy_KZA.woff2",
+      "mode": "binary",
+      "sha256": "595af4408b1a731b299c7eab0c22cfd7a0557af76af3679c099cd5d43de4f610"
+    },
+    {
+      "file": "fonts/K2F1fZFYk-dHSE0UPPuwQ5qpJy_KZA.woff2",
+      "mode": "binary",
+      "sha256": "bf9ad89e9fe6b809e0e867557e05cd1d65cc6b065c2f8ea0ccb6ef89bb922cd3"
+    },
+    {
+      "file": "fonts/atkinsonhyperlegible-OFL.txt",
+      "mode": "lf-text",
+      "sha256": "64b9cae8727cb41ea9e8843103e69647c82383f3a902e2bb39b2c5d92083b6e1"
     },
     {
       "file": "fonts/cormorant-garamond-OFL.txt",
@@ -85,6 +155,11 @@
       "file": "fonts/cormorant.woff2",
       "mode": "binary",
       "sha256": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235"
+    },
+    {
+      "file": "fonts/lexenddeca-OFL.txt",
+      "mode": "lf-text",
+      "sha256": "da67588af7e0987521d7dffc60ca92e8abee37f30535d94b503ec7bc52d73023"
     },
     {
       "file": "fonts/manrope-OFL.txt",
@@ -187,6 +262,66 @@
       "sha256": "b538650e07f6127e168a9c059ef8c6b06e11e94d96feb8592a5a07539c11a812"
     },
     {
+      "file": "images/hsnco-logo.png",
+      "mode": "binary",
+      "sha256": "cc9910c69726d1985a14233a510879c25ba8b68a25a8163088fa74c0c2d43869"
+    },
+    {
+      "file": "images/industries/agribisnis-dan-komoditas.svg",
+      "mode": "lf-text",
+      "sha256": "b79b737ce0061c2691e7108ac5bdb63061dafb898a9ff588abbcb7a6c4e97553"
+    },
+    {
+      "file": "images/industries/barang-konsumsi.svg",
+      "mode": "lf-text",
+      "sha256": "25ed9447db4cf504aaf42b880e602cc30635971bde1a3871d4cc418eff727721"
+    },
+    {
+      "file": "images/industries/emisi-dan-perdagangan-karbon.svg",
+      "mode": "lf-text",
+      "sha256": "3a1304251b9a0b3ec4203f01cad27e9a1dc4297039bc21ef95b30bad1d927ef4"
+    },
+    {
+      "file": "images/industries/energi-dan-sumber-daya.svg",
+      "mode": "lf-text",
+      "sha256": "614e261a031073177c3be62eb9c2343d7a0d9587e4e4c316f37d0da59cae46d9"
+    },
+    {
+      "file": "images/industries/kesehatan-dan-ilmu-hayati.svg",
+      "mode": "lf-text",
+      "sha256": "fd723790457b54db4ddb858135f36c4b94e7b4a2c24e94781adea92a06ff5213"
+    },
+    {
+      "file": "images/industries/konstruksi.svg",
+      "mode": "lf-text",
+      "sha256": "496909932ae5a6f331e9aa66396ff4da089b7d891216ea99f94c1b1e161d55e2"
+    },
+    {
+      "file": "images/industries/logistik-dan-transportasi.svg",
+      "mode": "lf-text",
+      "sha256": "16f0bdd84b00e349303189b791ea9a107ee32353deb86453aa6feb660849bcad"
+    },
+    {
+      "file": "images/industries/media-dan-hiburan.svg",
+      "mode": "lf-text",
+      "sha256": "29c598a974f5c1f49ee69bd0cd3140c634c1c4267597bf86179646e5832c6209"
+    },
+    {
+      "file": "images/industries/properti-dan-real-estat.svg",
+      "mode": "lf-text",
+      "sha256": "bec9afc79c405dc3d4f306e3bc9f83870d9545727eb481205c8c28c495fc93d5"
+    },
+    {
+      "file": "images/industries/sumber-daya-dan-infrastruktur.svg",
+      "mode": "lf-text",
+      "sha256": "da459c512a1b3fe0448c392d3269dd48cbdec249bb50d646dc673e97d25f8ff6"
+    },
+    {
+      "file": "images/industries/teknologi-dan-e-commerce.svg",
+      "mode": "lf-text",
+      "sha256": "98511efe6f6398254dc902cd4af41a5ef3de36d318a7247185854ef120418db5"
+    },
+    {
       "file": "images/investment.jpg",
       "mode": "binary",
       "sha256": "390382d0e979c293632c3fc8c8f129089ddd27a6d588c070cbed7b87f4d78dad"
@@ -264,12 +399,12 @@
     {
       "file": "js/clients.js",
       "mode": "lf-text",
-      "sha256": "565f7807bc51264ac1148cd314d0813a88b690a35fb4d3a6155bbe887f126342"
+      "sha256": "3a76eb82f5b88d2a9d35d018dbccea7a954d2109cceb84423f695a37353b7878"
     },
     {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "3d8adcca64bdcdbde0bb8cb5ff24ee797029ff8e9625288196b2cdda46376304"
+      "sha256": "5fee9f82504a835dbdc4ce6f19c522d325905685be08cd284f9adc057cbc4010"
     },
     {
       "file": "js/content-data.js",
@@ -279,7 +414,7 @@
     {
       "file": "js/main.js",
       "mode": "lf-text",
-      "sha256": "0e3a5701cc1aa44a5776ee43ca0f3c068e54b6208cfa61955d9dbb934138de4f"
+      "sha256": "b82bbe8fd26c23874d0f797f05d0a4e7db6c512068338b5c64ffdcf6343ebb2a"
     },
     {
       "file": "js/motion.js",
@@ -299,7 +434,7 @@
     {
       "file": "plugins-init/jstree-init.js",
       "mode": "lf-text",
-      "sha256": "b1207b0f2346721f459910beb0d32f6bcfb7706f03f44532a32c1d2d89cfcca0"
+      "sha256": "70707f3a3f6de54572e2567236ad68af5dffef02b4bdaf537365a63cda187d34"
     },
     {
       "file": "vendor/bootstrap/LICENSE",

@@ -1,0 +1,24 @@
+/* Frontend typography: Lexend for hierarchy, Atkinson for reading, Trebuchet for form UI. */
+body{font-size:16px;line-height:1.8}
+h1,h2,h3,h4,h5,h6{font-weight:500;letter-spacing:-.035em;line-height:1.2;text-wrap:balance}
+h1{font-size:clamp(40px,5.7vw,80px)}
+h2,.section-title,.home-page .section-title{font-size:clamp(30px,3.7vw,54px);line-height:1.2;letter-spacing:-.035em}
+h3{font-size:clamp(22px,2.2vw,30px)}
+h4,.h4{font-size:24px}
+h1 em,h2 em,h3 em,.section-title em{font-style:normal;font-weight:400}
+.home-hero h1{font-size:clamp(40px,5.8vw,84px);line-height:1.15;letter-spacing:-.045em}
+.inner-hero h1,.industry-detail-hero h1{font-size:clamp(40px,5.8vw,82px);line-height:1.15}
+.value-copy h2{font-size:clamp(32px,4.5vw,64px);line-height:1.2}
+.team-group-heading h3{font-size:clamp(30px,4vw,54px);font-style:normal;line-height:1.25}
+.professional-name-trigger{font-size:clamp(20px,2vw,27px);line-height:1.35}
+.site-header .nav-link{font-family:var(--font-heading);font-size:15px;font-weight:400;letter-spacing:0}
+.site-header .navbar-brand{margin-right:20px}
+.eyebrow{font-family:var(--font-body);font-size:12px;letter-spacing:.12em;font-weight:700}
+.btn,.form-control,.form-select,.form-label{font-family:var(--font-ui)}
+.form-control,.form-select{font-size:16px;line-height:1.6}
+.form-label{font-size:14px}
+.text-link{font-size:13px;letter-spacing:.025em}
+.portfolio-content p,.portfolio-content li{font-family:var(--font-body)}
+@media(min-width:992px) and (max-width:1199.98px){.site-header .nav-link{font-size:13px;padding-inline:7px}.site-header .navbar-brand .brand-logo{width:195px}}
+@media(max-width:991.98px){.site-header .offcanvas-body .nav-link{font-family:var(--font-heading);font-size:24px;line-height:1.4}}
+@media(max-width:575.98px){.home-hero h1{font-size:clamp(36px,9.5vw,48px)}.section-title,.home-page .section-title{font-size:32px}.inner-hero h1{font-size:40px}.value-copy h2{font-size:36px}.eyebrow{font-size:11px}}

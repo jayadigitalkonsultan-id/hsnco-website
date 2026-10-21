@@ -15,6 +15,9 @@ Route::get('/sitemap.xml', [PublicSeoController::class, 'sitemap'])->name('sitem
 Route::view('/', 'frontend.home')->name('home');
 Route::view('/about', 'frontend.about')->name('about');
 Route::view('/practice-areas', 'frontend.practice-areas')->name('practice-areas');
+Route::get('/industries', [App\Http\Controllers\IndustryController::class, 'index'])->name('industries');
+Route::get('/industries/{sector}', [App\Http\Controllers\IndustryController::class, 'show'])->where('sector', '[a-z0-9-]+')->name('industries.show');
+Route::get('/clients', App\Http\Controllers\ClientDirectoryController::class)->name('clients');
 Route::view('/team', 'frontend.team')->name('team');
 Route::view('/billing-fees', 'frontend.billing-fees')->name('billing-fees');
 Route::view('/insights', 'frontend.insights')->name('insights');

@@ -1,17 +1,26 @@
-import {chromium} from 'playwright';import fs from 'node:fs';
-const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const p=await b.newPage({reducedMotion:'reduce'});const errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
-for(const width of[1920,1440,1366,768,390,375]){
- await p.setViewportSize({width,height:1000});
- for(const path of['/','/about']){await p.goto('http://127.0.0.1:4182'+path);console.log('Checking '+width+path);await p.locator('[data-client-showcase]').scrollIntoViewIfNeeded();await p.evaluate(()=>document.fonts.ready);
- if(await p.locator('.client-card').count()!==43)throw Error('Client count');if(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Overflow '+width+path);
- if(width===1440||width===390){await p.locator('.client-logo-area img').first().evaluate(i=>{i.loading='eager';return i.decode();});await p.locator('[data-client-showcase]').screenshot({path:`docs/qa-clients/showcase-${width}-${path==='/'?'home':'about'}.png`});}
+import {chromium} from 'playwright';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const origin=process.env.QA_BASE_URL || 'http://127.0.0.1:8000';
+try {
+ const page=await browser.newPage();const errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`)});
+ for(const width of [1440,768,390,375])for(const path of ['/','/about']){
+  await page.setViewportSize({width,height:950});await page.goto(origin+path,{waitUntil:'networkidle'});
+  const section=page.locator('[data-client-showcase]');await section.scrollIntoViewIfNeeded();
+  await section.locator('img').evaluateAll(imgs=>imgs.forEach(img=>img.loading='eager'));
+  await page.waitForFunction(()=>[...document.querySelectorAll('[data-client-showcase] img')].every(img=>img.complete&&img.naturalWidth>0));
+  if((await section.innerText()).replace(/[↗\s]/g,'')!=='OurClients')throw Error('Unexpected visible text');
+  if(await section.locator('.clients-group').first().locator('img').count()<2)throw Error('Missing client logos');
+  if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Overflow');
  }
-}
-for(const [category,count]of[['finance',8],['corporate',29],['institution',6]]){await p.locator(`[data-client-filter="${category}"]`).click();if(await p.locator('.client-card:not([hidden])').count()!==count)throw Error('Filter '+category);}
-await p.locator('.client-detail').first().click();await p.locator('#clientDetailModal').waitFor({state:'visible'});if(!await p.locator('[data-client-modal-body]').innerText())throw Error('Empty modal');await p.locator('#clientDetailModal .btn-close').click();await p.locator('#clientDetailModal').waitFor({state:'hidden'});
-await p.locator('[data-client-filter="all"]').click();console.log('Rail before',await p.locator('.clients-rail').evaluate(e=>[e.scrollLeft,e.clientWidth,e.scrollWidth]));await p.locator('[data-client-next]').click();await p.waitForTimeout(700);console.log('Rail after',await p.locator('.clients-rail').evaluate(e=>[e.scrollLeft,e.clientWidth,e.scrollWidth]));if(await p.locator('.clients-rail').evaluate(e=>e.scrollLeft)<=0)throw Error('Next button');await p.locator('[data-client-prev]').click();
-if(await p.locator('[data-client-play]').count())throw Error('Play button still present');
-await p.addScriptTag({path:'tools/node_modules/axe-core/axe.min.js'});const audit=await p.evaluate(()=>axe.run('[data-client-showcase]',{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));if(audit.violations.length)errors.push(JSON.stringify(audit.violations.map(x=>({id:x.id,n:x.nodes.length}))));
-await p.locator('[data-client-filter="all"]').click();for(const image of await p.locator('.client-logo-area img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(i=>{i.loading='eager';return i.decode();});}
-const context=await b.newContext({javaScriptEnabled:false});const fallback=await context.newPage();await fallback.goto('http://127.0.0.1:4182/about');if(await fallback.locator('.client-card').count()!==43)throw Error('No JS fallback');await context.close();
-await b.close();if(errors.length)throw Error(errors.join('\n'));fs.writeFileSync('docs/qa-clients/report.json',JSON.stringify({status:'passed',viewports:[1920,1440,1366,768,390,375],pages:2,clients:43,logos:7,filters:true,modal:true,navigation:true,pause:true,reducedMotion:true,noJs:true,axeViolations:0},null,2));console.log('PASS: 12 viewport/page combinations; 43 clients; 7 local logos; filters, details, slideshow controls, reduced motion, no-JS, axe; no HTTP/JS errors.');
+ await page.mouse.move(0,0);
+ const track=page.locator('.clients-track');const transform=()=>track.evaluate(e=>getComputedStyle(e).transform);
+ const initial=await transform();await page.waitForTimeout(500);if(initial===await transform())throw Error('Autoplay static');
+ await page.locator('.clients-rail').hover();await page.waitForTimeout(60);const paused=await transform();await page.waitForTimeout(300);if(paused!==await transform())throw Error('Hover does not pause');
+ await page.emulateMedia({reducedMotion:'reduce'});
+ if(await track.evaluate(e=>getComputedStyle(e).animationName)!=='none')throw Error('Reduced motion ignored');
+ const context=await browser.newContext({javaScriptEnabled:false});const fallback=await context.newPage();await fallback.goto(origin+'/');if(await fallback.locator('.clients-group img').count()<1)throw Error('No JavaScript fallback');await context.close();
+ if(errors.length)throw Error(errors.join('\n'));
+ console.log('PASS: Home/About logo-only carousel at 4 widths, images loaded, autoplay, hover pause, reduced motion, no-JS fallback, no overflow or JS/HTTP errors.');
+} finally {await browser.close();}

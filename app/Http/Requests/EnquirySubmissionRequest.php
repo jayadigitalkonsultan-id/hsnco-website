@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\PracticeArea;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
@@ -11,6 +10,7 @@ class EnquirySubmissionRequest extends FormRequest
 {
     protected function prepareForValidation(): void
     {
+        app()->setLocale('en');
         $data = [];
         if (! $this->filled('area_label') && $this->has('area')) {
             $data['area_label'] = $this->input('area');
@@ -33,10 +33,15 @@ class EnquirySubmissionRequest extends FormRequest
             foreach (['first_name', 'last_name', 'message'] as $field) {
                 $value = $this->input($field);
                 if (is_string($value) && trim($value) === '') {
-                    $validator->errors()->add($field, 'Kolom ini wajib diisi.');
+                    $validator->errors()->add($field, 'Please complete this field.');
                 }
             }
         });
+    }
+
+    public function attributes(): array
+    {
+        return ['first_name' => 'first name', 'last_name' => 'last name', 'email' => 'email address', 'message' => 'message', 'practice_area_id' => 'practice area', 'area_label' => 'area of assistance'];
     }
 
     public function rules(): array
