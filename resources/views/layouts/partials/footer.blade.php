@@ -23,7 +23,6 @@
             <a href="{{ route('practice-areas') }}" @if(request()->routeIs('practice-areas')) aria-current="page" @endif>Practice Areas</a>
             <a href="{{ route('industries') }}" @if(request()->routeIs('industries*')) aria-current="page" @endif>Industries</a>
             <a href="{{ route('clients') }}" @if(request()->routeIs('clients')) aria-current="page" @endif>Our Clients</a>
-            <a href="{{ route('billing-fees') }}" @if(request()->routeIs('billing-fees')) aria-current="page" @endif>Fees &amp; Engagements</a>
         </nav>
         <div class="footer-bottom">
             <div class="footer-access"><span>&copy; {{ now()->year }} {{ $name }}. All rights reserved.</span>
