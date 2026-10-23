@@ -1,9 +1,11 @@
-# Home Practice Areas showcase
+# Home Practice Areas panorama
 
-Our Approach is replaced by one black Practice Areas section in both fallback Home and the CMS Home view. The old light/minimal practice list is removed so published services are not duplicated.
+The Home showcase follows the full-width, image-led panel structure requested from https://rifdaannovarazkaprabowo.com/ (Unmatched Services, Unmatched Excellence). The implementation uses HSNCO copy and a local image; no reference-site imagery, copy or vendor scripts are copied.
 
-Rows reuse practice-areas.css and the existing directory visual language: gold numbering, service name, short summary, arrow, and CMS image on hover or keyboard focus. Touch devices show a subdued background image without requiring hover. Links open the corresponding /practice-areas#slug entry. Missing/private images fall back to office.jpg.
+One img element (assets/images/office.jpg) spans the entire panel grid. Bootstrap columns divide it into independent links: four desktop columns and two columns below the lg breakpoint. All eight published practices remain available (two desktop rows), instead of limiting content to the four services in the reference.
 
-Content comes from published PracticeArea records, ordered by sort_order/name, with publicImage eager-loaded. Edit service content and images in /admin/practice-areas. No table or data migration. The existing Home approach section visibility controls the replacement when a CMS Home exists; obsolete heading/step content and the old recognitions placement are not rendered.
+Black heading area, white titles, subtle panel dividers, gold numbering, and Learn more on hover/focus. Touch layouts show the action without requiring hover. Reduced motion disables transitions. Each panel is a real keyboard-accessible anchor to /practice-areas#slug. The old horizontal rows, per-practice images, summaries and their Home stylesheet import are replaced; the internal Practice Areas page remains unchanged.
 
-Browser checks: 8 published services, exactly one black showcase, hover and focus images, valid anchor, no JS errors or overflow at 1920/1440/1366/768/390/375. No deployment or push performed.
+Data comes from published PracticeArea records, with sort_order/name ordering. Names/links remain editable via /admin/practice-areas. The shared panorama image is in the Home partial. Existing Home approach visibility controls the replacement in CMS Home; no table or data migration.
+
+QA: exactly one shared image and eight panels, hover/focus, valid destination, no horizontal overflow or JS errors at 1920/1440/1366/768/390/375. Eleven regression tests / 169 assertions passed. The 102 frontend assets pass the Docker manifest validator. No push or deployment performed.

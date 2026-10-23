@@ -92,7 +92,7 @@
     const apply = () => {
       let visible = 0;
       cards.forEach(card => {
-        const match = (filter === 'all' || card.dataset.level === filter) && (card.dataset.search || '').toLowerCase().includes(search.value.trim().toLowerCase());
+        const match = (filter === 'all' || (card.dataset.filterLevel || card.dataset.level) === filter) && (card.dataset.search || '').toLowerCase().includes(search.value.trim().toLowerCase());
         card.hidden = !match; visible += Number(match);
       });
       document.querySelectorAll('[data-profile-group]').forEach(group => { group.hidden = ![...group.querySelectorAll('[data-profile-card]')].some(card => !card.hidden); });

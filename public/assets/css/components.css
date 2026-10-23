@@ -22,3 +22,21 @@
 .site-header .navbar-brand .brand-logo{width:220px;height:94px;object-fit:cover;object-position:center 58%}
 .site-footer .brand-logo{width:270px;height:118px;object-fit:cover;object-position:center 58%}
 @media(max-width:991.98px){.site-header{--header-height:86px}.site-header .navbar-brand .brand-logo{width:180px;height:78px}}
+/* Editorial footer: brand, office and a single navigation band. */
+.site-footer.footer-editorial{background:#101010;padding:72px 0 22px;border-top:1px solid #343028}
+.footer-editorial .footer-main{padding-bottom:48px}
+.footer-editorial .footer-brand{display:inline-flex;max-width:100%}
+.footer-editorial .footer-tagline{font-size:18px;line-height:1.6;color:#d4bc7d;max-width:340px;margin:12px 0 0}
+.footer-office{text-align:right;padding-top:22px}
+.footer-office h2{font:600 12px/1.5 var(--font-heading);letter-spacing:.18em;text-transform:uppercase;color:#d4bc7d;margin-bottom:20px}
+.footer-office .footer-address{font:400 clamp(18px,1.6vw,23px)/1.65 var(--font-body);color:#f1eee8;max-width:540px;margin:0 0 18px auto}
+.footer-contact-links{display:flex;flex-direction:column;gap:8px;font-size:15px;color:#c9c6bf;overflow-wrap:anywhere}
+.footer-contact-action{display:inline-flex;gap:28px;align-items:center;padding:14px 0 8px;margin-top:12px;border-bottom:1px solid #a78c4e;color:#e4cd91;font-size:13px}
+.footer-navigation{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-block:1px solid #343434;padding:20px 0}
+.footer-navigation a{display:inline-flex;align-items:center;min-height:44px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#d7d4ce}
+.footer-navigation a:hover,.footer-navigation a[aria-current=page],.footer-contact-links a:hover{color:#e4cd91}
+.footer-editorial .footer-bottom{border:0;margin-top:0;padding-top:20px;align-items:center}
+.footer-editorial .footer-disclaimer{font-size:10px;line-height:1.7;max-width:440px;margin:0;text-align:right;color:#aaa7a0}
+.footer-editorial a:focus-visible{outline:2px solid #d4bc7d;outline-offset:5px}
+@media(max-width:991.98px){.footer-office{text-align:left;padding-top:0}.footer-office .footer-address{margin-left:0}.footer-editorial .footer-main{padding-bottom:32px}.footer-navigation{justify-content:flex-start}}
+@media(max-width:575.98px){.site-footer.footer-editorial{padding-top:40px}.footer-editorial .footer-bottom{align-items:flex-start}.footer-editorial .footer-disclaimer{text-align:left}.footer-navigation{gap:4px 20px}.footer-navigation a{font-size:10px}.footer-editorial .footer-tagline{font-size:16px}}

@@ -8,6 +8,7 @@ try {
  for(const width of [1440,768,390,375])for(const path of ['/','/about']){
   await page.setViewportSize({width,height:950});await page.goto(origin+path,{waitUntil:'networkidle'});
   const section=page.locator('[data-client-showcase]');await section.scrollIntoViewIfNeeded();
+  if(await section.evaluate(e=>getComputedStyle(e).backgroundColor)!=='rgb(255, 255, 255)')throw Error('Client background is not white');
   await section.locator('img').evaluateAll(imgs=>imgs.forEach(img=>img.loading='eager'));
   await page.waitForFunction(()=>[...document.querySelectorAll('[data-client-showcase] img')].every(img=>img.complete&&img.naturalWidth>0));
   if((await section.innerText()).replace(/[↗\s]/g,'')!=='OurClients')throw Error('Unexpected visible text');

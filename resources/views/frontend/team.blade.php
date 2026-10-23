@@ -7,7 +7,8 @@
     $directoryContent = $directory?->content ?? [];
     $ctaContent = $cta?->content ?? [];
     $categoryLabels = config('professionals.categories');
-    $professionalGroups = $professionals->groupBy('level')->sortBy(fn ($group, $key) => array_search($key, array_keys($categoryLabels), true) === false ? 999 : array_search($key, array_keys($categoryLabels), true));
+    $categoryLabels['associate'] = 'Associates';
+    $professionalGroups = $professionals->groupBy(fn ($professional) => $professional->level === 'trainee_associate' ? 'associate' : $professional->level)->sortBy(fn ($group, $key) => array_search($key, array_keys($categoryLabels), true) === false ? 999 : array_search($key, array_keys($categoryLabels), true));
 @endphp
 @section('title', ($banner?->heading ?? 'Our Professionals').' — HSNCO')
 @section('description', $bannerContent['description'] ?? 'Meet the professionals of HS & CO Counsellors at Law.')
@@ -31,13 +32,12 @@
     @foreach($professionalGroups as $level => $members)
     <section class="team-group" data-profile-group aria-labelledby="group-{{ $level }}">
         <div class="team-group-heading"><h3 id="group-{{ $level }}">{{ $categoryLabels[$level] ?? Illuminate\Support\Str::headline($level) }}</h3><span>{{ str_pad((string) $members->count(), 2, '0', STR_PAD_LEFT) }} {{ $members->count() === 1 ? 'profile' : 'profiles' }}</span></div>
-        <div class="row g-4 g-xl-5 people-grid">@foreach($members as $professional)<x-frontend.professional-card :professional="$professional" />@endforeach</div>
+        <div class="row g-4 g-xl-5 people-grid">@foreach($members as $professional)<x-frontend.professional-card :professional="$professional" :filter-level="$level" />@endforeach</div>
     </section>
     @endforeach
     <p class="empty-state" @if ($professionals->isNotEmpty()) hidden @endif>No professionals match your search. Please try another name or category.</p>
 </div></section>
 @endif
-@include('frontend.partials.billing-link')
 @if (! $cta || $cta->is_visible)
 <section class="section-space surface-dark"><div class="container"><div class="row g-4 align-items-end"><div class="col-lg-8"><p class="eyebrow">{{ $ctaContent['eyebrow'] ?? 'Working with HSNCO' }}</p><x-frontend.section-heading>{!! nl2br(e($cta?->heading ?? 'Discuss your legal needs.')) !!}</x-frontend.section-heading></div><div class="col-lg-4 text-lg-end"><x-frontend.button :href="$ctaContent['button_url'] ?? (route('contact').'#enquiry')">{{ $ctaContent['button_label'] ?? 'Start a conversation' }} <span aria-hidden="true">&rarr;</span></x-frontend.button></div></div></div></section>
 @endif

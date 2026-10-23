@@ -275,7 +275,7 @@ class FrontendContentSeeder extends Seeder
                     ['route' => 'insights', 'label' => 'Publikasi'],
                     ['route' => 'contact', 'label' => 'Kontak'],
                 ]],
-                'footer.content' => ['tagline' => 'Layanan hukum profesional. Kejelasan bagi dunia usaha.', 'requires_verification' => true],
+                'footer.content' => ['tagline' => 'Wisdom in Law. Strength in Advocacy.', 'requires_verification' => true],
                 'seo.defaults' => ['site_name' => 'HSNCO', 'description' => null],
             ];
             foreach ($settings as $key => $value) {

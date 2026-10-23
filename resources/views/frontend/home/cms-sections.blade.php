@@ -13,22 +13,29 @@
 @endphp
 
 @if ($hero?->is_visible)
-    @php($content = $hero->content ?? [])
+    @php
+        $content = $hero->content ?? [];
+        $heroDescription = trim(strip_tags((string)($content['description'] ?? '')));
+        if (in_array($heroDescription, [
+            'Integrated legal advice for businesses, institutions and decision-makers pursuing opportunities in Indonesia.',
+            'Solusi hukum terpadu bagi pelaku usaha, institusi, dan pemimpin dalam menghadapi peluang penting di Indonesia.',
+        ], true)) $heroDescription = '';
+    @endphp
     <section class="home-hero" id="home">
-        <x-frontend.hero-visual :primary="$homeImageUrls['hero'] ?? null" :alt="$content['image_alt'] ?? ''" />
+        <x-frontend.hero-visual />
         <div class="container hero-content">
             @if (!empty($content['eyebrow']))<p class="eyebrow">{{ $content['eyebrow'] }}</p>@endif
-            <h1>{{ $hero->heading }}</h1>
+            <x-frontend.home-heading :heading="$hero->heading" />
             <div class="row g-4 align-items-end mt-3">
-                <div class="col-lg-7">@if (!empty($content['description']))<p>{{ $content['description'] }}</p>@endif</div>
-                <div class="col-lg-5 text-lg-end">@if (!empty($content['button_label']))<a class="text-link" href="{{ $content['button_url'] ?: route('about') }}">{{ $content['button_label'] }} <span aria-hidden="true">→</span></a>@endif</div>
+                @if($heroDescription !== '')<div class="col-lg-7"><p>{{ $heroDescription }}</p></div>@endif
+                <div class="col-lg-5 ms-lg-auto text-lg-end">@if (!empty($content['button_label']))<a class="text-link" href="{{ $content['button_url'] ?: route('about') }}">{{ $content['button_label'] }} <span aria-hidden="true">→</span></a>@endif</div>
             </div>
         </div>
     </section>
 @endif
 
 @if ($services?->is_visible)
-    <section class="section-space surface-dark"><div class="container"><div class="row g-4 g-lg-5 align-items-end"><div class="col-lg-7"><p class="eyebrow">Industries</p><x-frontend.section-heading>{{ $services->heading }}</x-frontend.section-heading></div><div class="col-lg-5"><p>From agribusiness to technology, explore the industries we engage with and the legal considerations shaping them.</p><a class="text-link" href="{{ route('industries') }}">Explore industries <span aria-hidden="true">&rarr;</span></a></div></div></div></section>
+    @include('frontend.home.industries-heading')
 @endif
 @if ($practiceSelection?->is_visible)
     @include('frontend.home.industries')
@@ -37,7 +44,7 @@
 @if ($values?->is_visible)
     @php($content = $values->content ?? [])
     <section class="home-values" aria-labelledby="value-title">
-        <img src="{{ $homeImageUrls['values'] ?? asset('assets/images/values.jpg') }}" alt="" width="1920" height="1280" loading="lazy" decoding="async">
+        <img src="{{ asset('assets/images/hsnco4.jpg') }}" alt="" width="1920" height="1280" loading="lazy" decoding="async">
         <div class="value-copy">
             @if (!empty($content['eyebrow']))<p class="eyebrow">{{ $content['eyebrow'] }}</p>@endif
             <h2 id="value-title">{{ $values->heading }}</h2>

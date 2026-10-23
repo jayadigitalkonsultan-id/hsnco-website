@@ -4,7 +4,7 @@
 @if($logoClients->isNotEmpty())
 @push('styles')<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}?v={{ filemtime(public_path('assets/css/clients.css')) }}">@endpush
 @push('scripts')<script defer src="{{ asset('assets/js/clients.js') }}?v={{ filemtime(public_path('assets/js/clients.js')) }}"></script>@endpush
-<section class="clients-section surface-paper" aria-labelledby="clients-title" data-client-showcase>
+<section class="clients-section" aria-labelledby="clients-title" data-client-showcase>
     <div class="container">
         <h2 class="clients-title" id="clients-title"><a href="{{ route('clients') }}" aria-label="View all our clients">Our Clients</a></h2>
         <div class="clients-showcase-rows">

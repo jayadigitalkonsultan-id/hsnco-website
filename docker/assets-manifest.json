@@ -14,12 +14,12 @@
     {
       "file": "css/clients.css",
       "mode": "lf-text",
-      "sha256": "eb6514c175506310d3bba60db52ba5b54ee61172bcfb387a76bf5b4a214e60a9"
+      "sha256": "d35a34f01015ad348b11b6d36b61f5c091a9029f6c2f2e0b00c24bfaffe7d8b8"
     },
     {
       "file": "css/components.css",
       "mode": "lf-text",
-      "sha256": "ced4d7b99ae2482b13668be9b56da090f89437aeb7b1933cc4a2790754c35059"
+      "sha256": "1bfc652d5d4d30d443a603bcae59ebe553be0dc16c4fc383b29a9b9b043e26a5"
     },
     {
       "file": "css/contact.css",
@@ -29,12 +29,12 @@
     {
       "file": "css/home.css",
       "mode": "lf-text",
-      "sha256": "a642150dd0d493b04a7985b868517ec0e902f95888e680612c6f7737218ed4ba"
+      "sha256": "66c4d3ac754c9b05d393f3bade0e7ab1ccbbb21dbc762d10129025b2dd51e100"
     },
     {
       "file": "css/industries.css",
       "mode": "lf-text",
-      "sha256": "d7f2ec9fe04ed54f68fe847d4d762fc5df77198f47a234999102d078e2738f1a"
+      "sha256": "9a805b3a15a4a4a198dce2689fb8175f15081bc47fa4da5ed4d10e754d6b5aaf"
     },
     {
       "file": "css/inner-pages.css",
@@ -44,7 +44,7 @@
     {
       "file": "css/motion.css",
       "mode": "lf-text",
-      "sha256": "8363446cac902065024a8b7d8b47ae0ab20671d00839f6958e78098ec2bd5adf"
+      "sha256": "b673d280cf6ae2d06093f5463f51db72e684149732e6db695b5dceeb3e6808d7"
     },
     {
       "file": "css/plugins.css",
@@ -74,7 +74,7 @@
     {
       "file": "css/typography.css",
       "mode": "lf-text",
-      "sha256": "8bb837b3b05d9b98d4065015a386c711d3fd5ad9f9ac2ac0b5daaef5979cd91d"
+      "sha256": "228cdc24a16409999ce7ddc588d4c31855f6f7a59bea139849b769baaf5f707e"
     },
     {
       "file": "css/variables.css",
@@ -262,9 +262,34 @@
       "sha256": "b538650e07f6127e168a9c059ef8c6b06e11e94d96feb8592a5a07539c11a812"
     },
     {
+      "file": "images/hsnco-lawfirm2.jpg",
+      "mode": "binary",
+      "sha256": "a7731994b1078e098e458783ea30a3e484cbb1d6426a4ff7188b82a940d8bfce"
+    },
+    {
       "file": "images/hsnco-logo.png",
       "mode": "binary",
       "sha256": "cc9910c69726d1985a14233a510879c25ba8b68a25a8163088fa74c0c2d43869"
+    },
+    {
+      "file": "images/hsnco1.jpg",
+      "mode": "binary",
+      "sha256": "02ff069b889f99f79c92907b91bc75ae2ba905215188691769a4aaecac8c51ca"
+    },
+    {
+      "file": "images/hsnco2.jpg",
+      "mode": "binary",
+      "sha256": "97be0e333fb399a1d66d1d12fde8c4e33ec4c0cc47b739f0852b5a709b4da2f5"
+    },
+    {
+      "file": "images/hsnco3.jpg",
+      "mode": "binary",
+      "sha256": "6af77e3d3c85cca0d093446e6c71321d76ad7d0a32c8129e95c9383e003f2bc2"
+    },
+    {
+      "file": "images/hsnco4.jpg",
+      "mode": "binary",
+      "sha256": "6f54c0f77936dcf5ceacaa27a867de00ba8106826c34b62bc13ed7c3a1569d16"
     },
     {
       "file": "images/industries/agribisnis-dan-komoditas.svg",
@@ -414,7 +439,7 @@
     {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "5fee9f82504a835dbdc4ce6f19c522d325905685be08cd284f9adc057cbc4010"
+      "sha256": "963eba4edee8a330c494c6093e33e330f3b3761dade70dc0978d76e7c55dd24a"
     },
     {
       "file": "js/content-data.js",

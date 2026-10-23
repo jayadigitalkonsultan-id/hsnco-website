@@ -83,7 +83,10 @@ class AppServiceProvider extends ServiceProvider
             $name = trim((string) ($identity['name'] ?? $seo['site_name'] ?? 'HSNCO')) ?: 'HSNCO';
             $description = trim((string) ($seo['description'] ?? '')) ?: 'Website of '.$name;
             $tagline = trim((string) data_get($settings->get('footer.content', []), 'tagline', ''))
-                ?: 'Professional legal counsel. Clarity for business.';
+                ?: 'Wisdom in Law. Strength in Advocacy.';
+            if (in_array($tagline, ['Professional legal counsel. Clarity for business.', 'Layanan hukum profesional. Kejelasan bagi dunia usaha.'], true)) {
+                $tagline = 'Wisdom in Law. Strength in Advocacy.';
+            }
 
             $logo = null;
             $logoId = $settings['identity.logo']['media_id'] ?? null;
@@ -212,13 +215,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend.home.practice-summary', function ($view) {
-            $practices = PracticeArea::query()->published()->with('publicImage')->orderBy('sort_order')->orderBy('name')->get();
-            $practices->each(function (PracticeArea $practice) {
-                $image = $practice->publicImage;
-                $practice->public_image_url = $image && in_array($image->disk, ['frontend', 'public', 's3'], true)
-                    ? ($image->disk === 'frontend' ? asset('assets/'.ltrim($image->path, '/')) : Storage::disk($image->disk)->url($image->path))
-                    : null;
-            });
+            $practices = PracticeArea::query()->published()->orderBy('sort_order')->orderBy('name')->get(['id','name','slug']);
             $view->with('summaryPractices', $practices);
         });
         View::composer('frontend.about', function ($view) {

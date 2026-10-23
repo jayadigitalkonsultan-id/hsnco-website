@@ -48,6 +48,13 @@
     @foreach ($faqItems as $index => $item)
     <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer-{{ $index }}" aria-expanded="false" aria-controls="answer-{{ $index }}">{{ $item['question'] }}</button></h3><div class="accordion-collapse collapse" id="answer-{{ $index }}" data-bs-parent="#contactQuestions"><div class="accordion-body"><x-frontend.rich-text :html="$item['answer']" /></div></div></div>
     @endforeach
+    <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#billingAnswer" aria-expanded="false" aria-controls="billingAnswer">How are legal fees structured?</button></h3>
+        <div class="accordion-collapse collapse" id="billingAnswer" data-bs-parent="#contactQuestions"><div class="accordion-body">
+            <p>HS &amp; CO offers hourly rates, flat fees, success fees, retainers, contingency fees and project-based fees. Arrangements are discussed transparently and tailored to the scope, complexity and needs of each engagement.</p>
+            <a class="text-link" href="{{ route('billing-fees') }}">Explore our fee arrangements <span aria-hidden="true">&rarr;</span></a>
+        </div></div>
+    </div>
 </div></div></div></div></section>
 @endif
 @endsection
