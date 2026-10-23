@@ -1,20 +1,20 @@
 (() => {
   'use strict';
-  document.querySelectorAll('[data-client-showcase]').forEach(section => {
-    const rail = section.querySelector('.clients-rail');
-    const track = section.querySelector('.clients-track');
-    const group = section.querySelector('.clients-group');
-    if (!rail || !track || !group || group.children.length < 2) return;
+  document.querySelectorAll('[data-client-showcase] .clients-rail').forEach(rail => {
+    const track = rail.querySelector('.clients-track');
+    const group = rail.querySelector('.clients-group');
+    if (!track || !group || group.children.length < 2) return;
     rail.addEventListener('pointerdown', () => rail.focus({ preventScroll: true }), { passive: true });
     const copy = group.cloneNode(true);
     copy.setAttribute('aria-hidden', 'true');
     copy.querySelectorAll('img').forEach(img => { img.alt = ''; });
     track.append(copy);
     const resize = () => {
-      track.style.setProperty('--clients-duration', `${Math.max(25, group.getBoundingClientRect().width / 30)}s`);
+      track.style.setProperty('--clients-duration', `${Math.max(28, group.getBoundingClientRect().width / 28)}s`);
       rail.classList.toggle('is-enhanced', group.scrollWidth > rail.clientWidth);
     };
-    new ResizeObserver(resize).observe(rail);
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(rail);
+    else window.addEventListener('resize', resize, { passive: true });
     resize();
     document.addEventListener('visibilitychange', () => {
       track.style.animationPlayState = document.hidden ? 'paused' : '';

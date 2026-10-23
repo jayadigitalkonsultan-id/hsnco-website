@@ -95,9 +95,9 @@ class AppServiceProvider extends ServiceProvider
                         : Storage::disk('public')->url($media->path);
                 }
             }
-            $logo ??= asset('assets/images/hsnco-logo.png');
-            if (str_ends_with($logo, '/images/logo-white.png')) {
-                $logo = asset('assets/images/hsnco-logo.png');
+            $logo ??= asset('assets/images/logo-hsnco.png');
+            if (collect(['logo-white.png','hsnco-logo.png','logo-hsnco2.png','logo-hsnco2-white.svg'])->contains(fn ($legacyLogo) => str_ends_with($logo, '/images/'.$legacyLogo))) {
+                $logo = asset('assets/images/logo-hsnco.png');
             }
 
             $faviconPath = $settings['identity.favicon']['path'] ?? null;
@@ -212,7 +212,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend.home.practice-summary', function ($view) {
-            $view->with('summaryPractices', PracticeArea::query()->published()->orderBy('sort_order')->orderBy('name')->get(['id','name','slug']));
+            $practices = PracticeArea::query()->published()->with('publicImage')->orderBy('sort_order')->orderBy('name')->get();
+            $practices->each(function (PracticeArea $practice) {
+                $image = $practice->publicImage;
+                $practice->public_image_url = $image && in_array($image->disk, ['frontend', 'public', 's3'], true)
+                    ? ($image->disk === 'frontend' ? asset('assets/'.ltrim($image->path, '/')) : Storage::disk($image->disk)->url($image->path))
+                    : null;
+            });
+            $view->with('summaryPractices', $practices);
         });
         View::composer('frontend.about', function ($view) {
             try {

@@ -7,7 +7,7 @@
     $values = $homeSections->get('values');
     $sectors = $homeSections->get('sectors');
     $approach = $homeSections->get('approach');
-    $recognitions = $homeSections->get('recognitions');
+
     $consultation = $homeSections->get('consultation');
     $latestInsights = $homeSections->get('latest-insights');
 @endphp
@@ -55,21 +55,7 @@
     @include('frontend.home.service-formats', ['formatsSection' => $sectors])
 @endif
 
-@if ($approach?->is_visible)
-    @php($content = $approach->content ?? [])
-    <section class="section-space surface-dark">
-        <div class="container"><div class="row g-4 align-items-end mb-5">
-            <div class="col-lg-7"><p class="eyebrow">{{ $content['eyebrow'] ?? '' }}</p><x-frontend.section-heading>{{ $approach->heading }}</x-frontend.section-heading></div>
-            <div class="col-lg-5"><x-frontend.rich-text :html="$content['description'] ?? ''" /></div>
-        </div><div class="row g-0 method-steps">
-            @foreach (($content['items'] ?? []) as $index => $item)
-                <article class="col-md-4 method-step"><span class="row-number">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</span><h3>{{ $item['title'] ?? '' }}</h3><p>{{ strip_tags((string) ($item['description'] ?? '')) }}</p></article>
-            @endforeach
-        </div></div>
-    </section>
-@endif
-
-@if ($recognitions?->is_visible)
+@if (!$approach || $approach->is_visible)
     @include('frontend.home.practice-summary')
 @endif
 

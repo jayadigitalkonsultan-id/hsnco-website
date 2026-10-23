@@ -14,12 +14,12 @@
     {
       "file": "css/clients.css",
       "mode": "lf-text",
-      "sha256": "74f4c0ddd07726e350741ec82421373def087e16c6571c5bf55d961b7155fed8"
+      "sha256": "eb6514c175506310d3bba60db52ba5b54ee61172bcfb387a76bf5b4a214e60a9"
     },
     {
       "file": "css/components.css",
       "mode": "lf-text",
-      "sha256": "6d27ad0a6d9c12dc1d3138cbb0e338a1685e8e0a57ed555cdc056e78e7a4301d"
+      "sha256": "ced4d7b99ae2482b13668be9b56da090f89437aeb7b1933cc4a2790754c35059"
     },
     {
       "file": "css/contact.css",
@@ -29,7 +29,7 @@
     {
       "file": "css/home.css",
       "mode": "lf-text",
-      "sha256": "385edebff68977e7e7f050da5ab3d7b85ad9437c36f23a0e145afad6502ec5f4"
+      "sha256": "a642150dd0d493b04a7985b868517ec0e902f95888e680612c6f7737218ed4ba"
     },
     {
       "file": "css/industries.css",
@@ -189,7 +189,7 @@
     {
       "file": "icons/favicon.svg",
       "mode": "lf-text",
-      "sha256": "f18c13de5e751d56a8e97e1e2079985d2105e0c66cb8bdeec10ef0061e50d887"
+      "sha256": "b7b8ba098066a9a20f2c69abac22da21c9ab4f85ea72b5c53f542f815837e540"
     },
     {
       "file": "images/banking.jpg",
@@ -327,6 +327,16 @@
       "sha256": "390382d0e979c293632c3fc8c8f129089ddd27a6d588c070cbed7b87f4d78dad"
     },
     {
+      "file": "images/logo-hsnco.png",
+      "mode": "binary",
+      "sha256": "1d42e59d8a9b7163c882aa665fa4e527b9818a16dc8a10ad2be3cd99c7f2d0cf"
+    },
+    {
+      "file": "images/logo-hsnco2-white.svg",
+      "mode": "lf-text",
+      "sha256": "90f550597a72877edb3a1c21e3211157dc89c6a8adbe9379750022b63ea664c2"
+    },
+    {
       "file": "images/logo-white.png",
       "mode": "binary",
       "sha256": "c26e0aae33a80b0cad49d3e2f4416190e9f78d45b8bae9bdf3ab209cf7737d98"
@@ -399,7 +409,7 @@
     {
       "file": "js/clients.js",
       "mode": "lf-text",
-      "sha256": "3a76eb82f5b88d2a9d35d018dbccea7a954d2109cceb84423f695a37353b7878"
+      "sha256": "cfed0efd90bdb04682ba645ecea983f83bdb39c45995d3639a1a895b4239c2c4"
     },
     {
       "file": "js/components.js",

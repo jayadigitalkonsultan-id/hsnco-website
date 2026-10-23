@@ -28,9 +28,6 @@ Explore the legal services, practice areas, approach and professionals of HSNCO.
 @include('frontend.home.service-formats', ['formatsSection' => null])
 @endunless
 @unless ($homePageIsPublished)
-<section class="section-space surface-dark"><div class="container"><div class="row g-4 align-items-end mb-5"><div class="col-lg-7"><p class="eyebrow">Our approach</p><x-frontend.section-heading>From questions<br>to clear direction.</x-frontend.section-heading></div><div class="col-lg-5"><p>A considered process, tailored to your priorities and the circumstances of each matter.</p></div></div><div class="row g-0 method-steps"><article class="col-md-4 method-step"><span class="row-number">01</span><h3>Understanding</h3><p>We listen carefully, assess the context and establish the outcomes you seek.</p></article><article class="col-md-4 method-step"><span class="row-number">02</span><h3>Developing a strategy</h3><p>We align legal analysis with commercial priorities to develop practical next steps.</p></article><article class="col-md-4 method-step"><span class="row-number">03</span><h3>Delivering</h3><p>We deliver focused support, experienced attention and clear communication throughout the engagement.</p></article></div></div></section>
-@endunless
-@unless ($homePageIsPublished)
 @include('frontend.home.practice-summary')
 @endunless
 @unless ($homePageIsPublished)

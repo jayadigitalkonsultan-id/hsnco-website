@@ -5,7 +5,7 @@
     <meta name="description" content="Ruang pengelolaan website HSNCO."><meta name="robots" content="noindex,nofollow">
     <meta name="theme-color" content="#151718"><meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — HSNCO Admin</title>
-    <link rel="icon" href="{{ asset('admin-assets/images/favicon.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('admin-assets/images/favicon.svg') }}?v={{ filemtime(public_path('admin-assets/images/favicon.svg')) }}" type="image/svg+xml">
     <link rel="preload" href="{{ asset('admin-assets/fonts/manrope.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ asset('admin-assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/admin.css') }}">
