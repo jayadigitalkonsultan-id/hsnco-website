@@ -29,7 +29,7 @@
         const target = modal.querySelector(`[data-portfolio-${key === 'practices' ? 'tags' : key}]`);
         target.replaceChildren(...values.map(text => { const element = document.createElement(tag); element.textContent = text; return element; }));
       };
-      const focus = profile.practiceAreas?.length ? profile.practiceAreas : (profile.summary || '').split(';').map(s => s.trim()).filter(s => s && !/PQE|^English$|^Languages /i.test(s));
+      const focus = profile.practiceAreas?.length ? profile.practiceAreas : (profile.summary || '').split(/[;|\r\n]+/).map(s => s.trim()).filter(s => s && !/\bPQE\b|^English$|^Languages /i.test(s));
       renderList('practices', focus);
       renderList('qualifications', profile.qualifications, 'li');
       renderList('languages', profile.languages);
