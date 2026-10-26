@@ -8,3 +8,24 @@
 @media(max-width:991.98px){.professional-portfolio{grid-template-columns:minmax(0,42%) minmax(0,58%)}.portfolio-content{padding:30px 24px}.portfolio-identity{padding:32px 24px}.portfolio-top{flex-direction:column;align-items:flex-start;padding-right:40px}.portfolio-visual{min-height:580px}}
 @media(max-width:767.98px){.portfolio-modal .modal-dialog{margin:12px auto;padding-inline:10px}.professional-portfolio{grid-template-columns:minmax(0,1fr)}.portfolio-visual{min-height:390px}.portfolio-identity{padding:28px 24px}.portfolio-firm{padding-bottom:130px;margin:0}.portfolio-monogram{top:80px;font-size:140px}.portfolio-modal #detailTitle{font-size:34px;max-width:500px}.portfolio-close{position:fixed;right:26px;top:26px}.portfolio-content{padding:28px 24px}.portfolio-top{flex-direction:row;align-items:center;padding:0 0 20px}.portfolio-has-photo .portfolio-visual{min-height:520px}}
 .professional-photo-trigger{position:relative;display:block;width:100%;border:0;padding:0;background:transparent;color:inherit;text-align:inherit;cursor:pointer}.professional-photo-trigger:after{content:"";position:absolute;inset:0;border:1px solid transparent;pointer-events:none;transition:border-color .25s}.professional-photo-trigger:hover:after{border-color:var(--brand-gold-light)}.professional-photo-trigger:focus-visible{outline:3px solid var(--brand-gold-dark);outline-offset:5px}.professional-photo-trigger .person-photo{width:100%;margin:0}
+/* Compact portraits and section navigation. */
+.team-directory .person-photo{min-height:0;aspect-ratio:4/5;height:auto;max-height:340px}
+.team-directory [data-profile-card]{max-width:300px}
+.team-directory .person-info{padding-top:16px}
+.team-directory .person-info h4{font-size:20px}
+.team-directory .team-group-heading h3{font-size:clamp(32px,4vw,52px)}
+.team-directory .team-group{margin-top:48px;scroll-margin-top:180px}
+#professional-directory{scroll-margin-top:110px}
+.team-section-nav{position:sticky;top:var(--header-height);z-index:10;display:flex;gap:10px 24px;overflow-x:auto;padding:16px 0;background:#080808;border-block:1px solid #38352f;margin-bottom:24px;scrollbar-width:thin}
+.team-section-nav a{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;min-height:44px;color:#ddd5c6;font-size:13px;text-decoration:none}
+.team-section-nav a:hover,.team-section-nav a[aria-current=location]{color:var(--brand-gold-light)}
+.team-section-nav span{font-size:10px;color:#bba16c}
+@media(prefers-reduced-motion:no-preference){html:has(.team-directory){scroll-behavior:smooth}}
+@media(max-width:575.98px){.team-directory [data-profile-card]{max-width:280px}.team-directory .person-photo{max-height:320px}.team-section-nav{gap:20px}.team-directory .team-group{scroll-margin-top:165px}}
+
+.team-directory .people-grid{justify-content:center}
+.team-directory .team-group-heading{justify-content:center;text-align:center}
+.team-directory-content{min-width:0}
+.team-directory-content>.team-group:first-of-type{margin-top:28px}
+@media(min-width:992px){.team-section-nav{flex-direction:column;align-items:stretch;top:calc(var(--header-height) + 24px);overflow-x:visible;border-block:0;border-left:1px solid #38352f;padding:8px 0 8px 20px;gap:6px;margin:0}.team-section-nav a{justify-content:space-between;padding:8px 12px;font-size:14px;white-space:normal}.team-section-nav a[aria-current=location]{background:#c7a75e12;border-left:2px solid var(--brand-gold-light)}.team-directory .team-group{scroll-margin-top:calc(var(--header-height) + 35px)}}
+@media(max-width:991.98px){.team-directory-layout>aside{position:sticky;top:var(--header-height);z-index:10;background:#080808}.team-section-nav{position:static;margin:0}.team-directory-content>.team-group:first-of-type{margin-top:0}}

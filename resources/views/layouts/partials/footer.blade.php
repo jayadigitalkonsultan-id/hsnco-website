@@ -4,6 +4,10 @@
             <div class="col-lg-5">
                 <a class="footer-brand" href="{{ route('home') }}"><img class="brand-logo" src="{{ $logo }}" alt="{{ $name }} ? Home" width="270" height="118" loading="lazy"></a>
                 <p class="footer-tagline">{{ $tagline }}</p>
+                <a class="footer-contact-action footer-linkedin" href="https://www.linkedin.com/company/hsncoatlaw/" target="_blank" rel="noopener noreferrer" aria-label="HSNCO on LinkedIn (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42ZM19 18.75h-2.94V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.78V9.2h2.82v1.3h.04c.39-.74 1.35-1.52 2.78-1.52 2.97 0 3.58 1.95 3.58 4.49v5.28Z"/></svg>
+                    <span>LinkedIn</span>
+                </a>
             </div>
             <div class="col-lg-6 offset-lg-1 footer-office">
                 <h2>Our office</h2>

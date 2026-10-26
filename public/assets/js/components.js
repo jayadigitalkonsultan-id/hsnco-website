@@ -87,12 +87,11 @@
   });
   const search = document.getElementById('professionalSearch');
   if (search) {
-    let filter = 'all';
     const cards = [...document.querySelectorAll('[data-profile-card]')];
     const apply = () => {
       let visible = 0;
       cards.forEach(card => {
-        const match = (filter === 'all' || (card.dataset.filterLevel || card.dataset.level) === filter) && (card.dataset.search || '').toLowerCase().includes(search.value.trim().toLowerCase());
+        const match = (card.dataset.search || '').toLowerCase().includes(search.value.trim().toLowerCase());
         card.hidden = !match; visible += Number(match);
       });
       document.querySelectorAll('[data-profile-group]').forEach(group => { group.hidden = ![...group.querySelectorAll('[data-profile-card]')].some(card => !card.hidden); });
@@ -102,11 +101,25 @@
       if (results) results.textContent = `${visible} ${visible === 1 ? 'professional' : 'professionals'}`;
     };
     search.addEventListener('input', apply);
-    document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
-      filter = button.dataset.filter;
-      document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      apply();
-    }));
+    const sectionLinks = [...document.querySelectorAll('[data-team-section-link]')];
+    const updateSection = () => {
+      const groups = [...document.querySelectorAll('[data-profile-group]')].filter(group => !group.hidden);
+      const offset = matchMedia('(min-width: 992px)').matches
+        ? (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 100) + 35
+        : (document.querySelector('.team-section-nav')?.getBoundingClientRect().bottom || 180);
+      const current = groups.sort((a, b) => Math.abs(a.getBoundingClientRect().top - offset) - Math.abs(b.getBoundingClientRect().top - offset))[0];
+      sectionLinks.forEach(link => {
+        if (current && link.hash === '#' + current.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    let pending = false;
+    window.addEventListener('scroll', () => {
+      if (!pending) requestAnimationFrame(() => { updateSection(); pending = false; });
+      pending = true;
+    }, { passive: true });
+    search.addEventListener('input', updateSection);
+    updateSection();
   }
   document.querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => {
     const title = button.dataset.valueTitle;
