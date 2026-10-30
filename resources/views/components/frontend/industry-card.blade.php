@@ -5,7 +5,7 @@
     <div class="industry-card-copy">
         @unless($compact)<span class="industry-card-eyebrow">Industries</span>@endunless
         <h3>{{ $industry['name'] }}</h3>
-        @if($compact)<span class="industry-compact-arrow" aria-hidden="true">&nearr;</span>
-        @else<p>{{ $industry['summary'] }}</p><span class="industry-card-action">Explore industry <span aria-hidden="true">&#8599;</span></span>@endif
+        @if($compact)<span class="industry-compact-arrow" aria-hidden="true"><x-frontend.arrow-up-right /></span>
+        @else<p>{{ $industry['summary'] }}</p><span class="industry-card-action">Explore industry <span aria-hidden="true"><x-frontend.arrow-up-right /></span></span>@endif
     </div>
 </a>

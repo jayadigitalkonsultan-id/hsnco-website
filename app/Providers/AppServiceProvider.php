@@ -448,6 +448,7 @@ class AppServiceProvider extends ServiceProvider
         )->by((string) $request->ip()));
 
         Relation::enforceMorphMap([
+            'media' => Media::class,
             'page' => Page::class,
             'page_section' => PageSection::class,
             'practice_area' => PracticeArea::class,

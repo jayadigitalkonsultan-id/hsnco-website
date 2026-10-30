@@ -13,3 +13,17 @@
 @media(max-width:991.98px){.home-industries-compact .industry-card{min-height:215px}}
 @media(max-width:575.98px){.home-industries-compact .industry-card{min-height:190px}.home-industries-compact .industry-card-copy{padding:70px 16px 40px}.home-industries-compact .industry-card h3{font-size:17px;line-height:1.35}.home-industries-compact .industry-card-number{left:16px;top:15px}.industry-compact-arrow{right:14px;bottom:8px;font-size:21px}}
 @media(prefers-reduced-motion:reduce){.industry-compact-arrow{transition:none;transform:none!important}}
+/* SVG arrows retain the brand colour on iOS instead of becoming emoji. */
+.industry-compact-arrow{display:inline-flex;align-items:center;justify-content:center;line-height:1;width:24px;height:24px}
+.industry-compact-arrow svg,.industry-card-action svg{display:block;flex-shrink:0;width:22px;height:22px}
+.industry-card-copy{min-width:0}
+@media(max-width:575.98px){
+ .home-industries-compact .industry-card{min-height:204px}
+ .home-industries-compact .industry-card-copy{padding:96px 14px 48px}
+ .home-industries-compact .industry-card h3{font-size:clamp(15px,4vw,17px);line-height:1.4;letter-spacing:-.015em;overflow-wrap:break-word}
+ .home-industries-compact .industry-card-number{left:14px;top:14px}
+ .home-industries-compact .industry-card>img{object-position:center top}
+ .home-industries-compact .industry-compact-arrow{right:14px;bottom:14px}
+ .industry-card-action{min-height:44px}
+}
+@media(hover:none){.industry-card:hover>img{transform:none}.industry-card-compact:hover .industry-compact-arrow{transform:none}}
