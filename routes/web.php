@@ -23,6 +23,7 @@ Route::view('/billing-fees', 'frontend.billing-fees')->name('billing-fees');
 Route::view('/insights', 'frontend.insights')->name('insights');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy-policy');
+Route::view('/terms-of-service', 'frontend.terms-of-service')->name('terms-of-service');
 Route::view('/sitemap', 'frontend.sitemap')->name('sitemap');
 Route::post('/enquiries', EnquirySubmissionController::class)
     ->middleware('throttle:public-enquiries')

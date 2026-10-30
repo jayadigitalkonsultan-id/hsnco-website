@@ -12,5 +12,5 @@ return [
         'contact' => 'contact',
         'sitemap' => 'sitemap',
     ],
-    'public_routes' => ['home', 'about', 'practice-areas', 'industries', 'clients', 'team', 'billing-fees', 'insights', 'contact', 'privacy-policy', 'sitemap'],
+    'public_routes' => ['home', 'about', 'practice-areas', 'industries', 'clients', 'team', 'billing-fees', 'insights', 'contact', 'privacy-policy', 'terms-of-service', 'sitemap'],
 ];

@@ -29,7 +29,7 @@
             <a href="{{ route('clients') }}" @if(request()->routeIs('clients')) aria-current="page" @endif>Our Clients</a>
         </nav>
         <div class="footer-bottom">
-            <div class="footer-access"><a class="footer-admin-link" href="{{ route('privacy-policy') }}">Privacy Policy</a><span>&copy; {{ now()->year }} {{ $name }}. All rights reserved.</span>
+            <div class="footer-access"><a class="footer-admin-link" href="{{ route('privacy-policy') }}">Privacy Policy</a><a class="footer-admin-link" href="{{ route('terms-of-service') }}">Terms of Service</a><span>&copy; {{ now()->year }} {{ $name }}. All rights reserved.</span>
                 @guest
                     <a class="footer-admin-link" href="{{ route('login') }}">Admin Portal</a>
                 @else
