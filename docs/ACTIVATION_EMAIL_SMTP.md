@@ -18,7 +18,7 @@ Akun aktif existing tidak diubah, tidak dihapus dan tidak otomatis dicabut akses
 
 ## Alur
 
-Buka /activate → masukkan email yang diizinkan → terima tautan aktivasi → buat nama/kata sandi → kembali ke login → masukkan email/kata sandi → OTP dikirim → verifikasi OTP → akun aktif sesuai peran acuan. Token sekali pakai, expiry, cooldown, binding OTP ke sesi, password hashing dan autentikasi dua tahap tetap digunakan. Jika transport aktivasi gagal, token dibatalkan dan cooldown pengiriman dilepas agar dapat dicoba kembali. Kegagalan pengiriman OTP tidak mengaktifkan akun.
+Buka /activate → masukkan email yang diizinkan → terima tautan aktivasi → buat nama/kata sandi → kembali ke login → masukkan email/kata sandi → konfirmasi OTP pertama → akun aktif sesuai peran acuan. `email_verified_at` diisi setelah OTP pertama berhasil; login selanjutnya tidak meminta OTP lagi. Token sekali pakai, expiry, cooldown, binding OTP ke sesi, password hashing dan autentikasi dua tahap tetap digunakan. Jika transport aktivasi gagal, token dibatalkan dan cooldown pengiriman dilepas agar dapat dicoba kembali. Kegagalan pengiriman OTP tidak mengaktifkan akun.
 
 ## Provider belum dipilih
 

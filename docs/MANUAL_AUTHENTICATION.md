@@ -7,10 +7,11 @@ Autentikasi menggunakan guard `web` Laravel (driver `session`, provider Eloquent
 1. Jalankan `php artisan user:create-super-admin` untuk membuat Super Administrator pertama. Perintah meminta email, nama, dan password; tidak ada password bawaan di repository.
 2. Super Administrator membuka `/admin/users/create`, mendaftarkan email dan role. Akun dibuat sebagai `invited` tanpa password.
 3. Pemilik email membuka `/activate`, meminta tautan, lalu membuat nama dan password pada tautan yang berlaku 60 menit.
-4. Akun menjadi `pending_2fa`. Setelah password login atau aktivasi, sistem mengirim OTP email enam digit yang berlaku lima menit.
-5. OTP sukses mengaktifkan akun, mencatat login, membuat sesi penuh, dan menampilkan recovery code sekali saja.
+4. Akun menjadi `pending_2fa` dan `email_verified_at` tetap kosong sampai OTP email enam digit berhasil dikonfirmasi. Kode berlaku lima menit.
+5. OTP pertama sukses mengaktifkan akun, mengisi `email_verified_at`, mencatat login, membuat sesi penuh, dan menampilkan recovery code sekali saja.
+6. Login berikutnya dengan email terverifikasi dan faktor email yang sudah dikonfirmasi tidak meminta OTP lagi. Akun yang belum menyelesaikan enrollment tetap harus mengonfirmasi OTP.
 
-Link aktivasi disimpan sebagai SHA-256 hash. OTP disimpan sebagai hash password Laravel, terikat pada ID sesi dan pengguna, serta dikonsumsi sekali. Resend membatalkan challenge sebelumnya.
+Link aktivasi disimpan sebagai SHA-256 hash. OTP disimpan sebagai hash password Laravel, terikat pada ID sesi dan pengguna, serta dikonsumsi sekali. Resend membatalkan challenge sebelumnya. `email_verified_at` menandai bahwa OTP awal telah selesai, bukan sekadar tautan aktivasi dibuka.
 
 ## Konfigurasi produksi
 

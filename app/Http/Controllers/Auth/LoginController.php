@@ -34,6 +34,17 @@ class LoginController extends Controller
         $request->session()->put('auth.pending_user_id', $user->id);
         $request->session()->put('auth.pending_auth_version', $user->auth_version);
         $user->forceFill(['failed_login_attempts'=>0,'last_failed_login_at'=>null,'locked_until'=>null])->save();
+        $user->loadMissing('twoFactorAuthentication');
+        if ($user->status !== UserStatus::PendingTwoFactor
+            && $user->email_verified_at !== null
+            && $user->twoFactorAuthentication?->confirmed_at !== null) {
+            $request->session()->regenerate();
+            $request->session()->forget(['auth.pending_user_id', 'auth.pending_auth_version']);
+            $request->session()->put('auth.two_factor', ['user_id'=>$user->id,'auth_version'=>$user->auth_version,'verified_at'=>time()]);
+            $user->forceFill(['last_login_at'=>now(),'last_login_ip'=>$request->ip()])->save();
+            app(SecurityAudit::class)->record('login_success','success',$user,$request);
+            return redirect()->intended(route('admin.dashboard'));
+        }
         if (! $otp->send($user, $request, $user->status === UserStatus::PendingTwoFactor ? 'enrollment' : 'login')) return $this->logoutForDeliveryFailure($request);
         app(SecurityAudit::class)->record('password_verified', 'success', $user, $request);
         return redirect()->route('two-factor.challenge');

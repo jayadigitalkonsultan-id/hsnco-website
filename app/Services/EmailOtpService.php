@@ -58,7 +58,9 @@ class EmailOtpService
             $factor = UserTwoFactorAuthentication::query()->firstOrNew(['user_id' => $user->id]);
             $firstEnrollment = ! $factor->confirmed_at;
             $factor->forceFill(['method' => TwoFactorMethod::Email, 'secret' => null, 'confirmed_at' => now()])->save();
-            if ($user->status === UserStatus::PendingTwoFactor) $user->forceFill(['status' => UserStatus::Active, 'role' => $approved->role, 'activated_at' => now()])->save();
+            $userChanges = ['email_verified_at' => $user->email_verified_at ?? now()];
+            if ($user->status === UserStatus::PendingTwoFactor) $userChanges += ['status' => UserStatus::Active, 'role' => $approved->role, 'activated_at' => now()];
+            $user->forceFill($userChanges)->save();
             $codes = $firstEnrollment ? $this->issueRecoveryCodes($user) : [];
             app(SecurityAudit::class)->record('challenge_passed', 'success', $user, $request, null, ['purpose' => $purpose]);
             return ['ok' => true, 'recovery_codes' => $codes];

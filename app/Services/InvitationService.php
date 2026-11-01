@@ -77,7 +77,7 @@ class InvitationService
             $invitation = UserInvitation::query()->with('user')->where('token_hash', hash('sha256', $token))->lockForUpdate()->first();
             if (! $invitation || ! hash_equals((string) $invitation->email, $email) || ! $invitation->user || $invitation->user->status !== UserStatus::Invited || $invitation->revoked_at || $invitation->accepted_at || !$invitation->expires_at || $invitation->expires_at->isPast()) return null;
             $user = $invitation->user;
-            $user->forceFill(['role' => $approved->role, 'name' => $name, 'password' => $password, 'email_verified_at' => now(), 'password_changed_at' => now(), 'status' => UserStatus::PendingTwoFactor])->save();
+            $user->forceFill(['role' => $approved->role, 'name' => $name, 'password' => $password, 'email_verified_at' => null, 'password_changed_at' => now(), 'status' => UserStatus::PendingTwoFactor])->save();
             $invitation->forceFill(['accepted_at' => now(), 'token_hash' => null])->save();
             app(SecurityAudit::class)->record('invitation_accepted', 'success', $user);
             return $user;
