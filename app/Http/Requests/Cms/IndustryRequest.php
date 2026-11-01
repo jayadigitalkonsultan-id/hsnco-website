@@ -23,6 +23,7 @@ class IndustryRequest extends ContentRequest
     public function rules(): array
     {
         return array_merge($this->editorialRules(), [
+            'status' => ['required', Rule::in(['draft', 'published'])],
             'name' => ['required', 'string', 'max:255'], 'slug' => $this->uniqueSlug('industries'), 'english_name' => ['nullable', 'string', 'max:255'],
             'summary' => ['nullable', 'string', 'max:5000'], 'body' => ['nullable', 'string', 'max:100000'], 'focus' => ['nullable', 'array', 'max:50'], 'focus.*' => ['string', 'max:500'],
             'image_id' => $this->mediaRule(), 'sort_order' => ['sometimes', 'integer', 'min:0'], 'seo_title' => ['nullable', 'string', 'max:255'], 'seo_description' => ['nullable', 'string', 'max:1000'],

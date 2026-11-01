@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Storage;
 
 class Client extends ContentModel
 {
+    public function usesDirectPublishing(): bool
+    {
+        return true;
+    }
+
     protected function casts(): array
     {
         return array_merge(parent::casts(), ['sort_order' => 'integer']);

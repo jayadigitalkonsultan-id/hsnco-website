@@ -12,6 +12,11 @@ abstract class ContentModel extends DomainModel
 {
     use SoftDeletes;
 
+    public function usesDirectPublishing(): bool
+    {
+        return false;
+    }
+
     protected function casts(): array
     {
         return ['status' => ContentStatus::class, 'published_at' => 'datetime', 'published_revision' => 'integer'];

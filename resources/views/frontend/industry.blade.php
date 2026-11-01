@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('title',$industry['name'].' — HS & CO')
-@section('description',$industry['summary'])
+@section('description', $industry['summary'] ?? 'Explore the industry expertise and legal services of HS & CO Counsellors at Law.')
 @push('styles')<link rel="stylesheet" href="{{ asset('assets/css/industries.css') }}?v={{ filemtime(public_path('assets/css/industries.css')) }}">@endpush
 @section('content')
 <section class="industry-detail-hero"><img src="{{ $industry['image_url'] }}" alt="" width="1920" height="1280" decoding="async"><div class="container"><nav aria-label="Breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li><li class="breadcrumb-item"><a href="{{ route('industries') }}">Industries</a></li><li class="breadcrumb-item active" aria-current="page">{{ $industry['name'] }}</li></ol></nav><p class="eyebrow">{{ $industry['english'] }}</p><h1>{{ $industry['name'] }}</h1><p class="industry-detail-summary">{{ $industry['summary'] }}</p></div></section>

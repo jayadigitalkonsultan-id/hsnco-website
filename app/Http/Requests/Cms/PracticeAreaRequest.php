@@ -25,6 +25,7 @@ class PracticeAreaRequest extends ContentRequest
         }
 
         return array_merge($this->editorialRules(), [
+            'status' => ['required', Rule::in(['draft', 'published'])],
             'slug' => $slug,
             'name' => ['required', 'string', 'max:255'],
             'summary' => ['nullable', 'string', 'max:5000'],

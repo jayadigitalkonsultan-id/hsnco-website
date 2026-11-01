@@ -26,6 +26,7 @@ class ProfessionalRequest extends ContentRequest
     public function rules(): array
     {
         return array_merge($this->editorialRules(), [
+            'status' => ['required', Rule::in(['draft', 'published'])],
             'slug' => $this->uniqueSlug('professionals'),
             'name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:150'],

@@ -21,6 +21,10 @@ class ContentWorkflowService
             $content = $content->newQuery()->lockForUpdate()->findOrFail($content->getKey());
             Gate::forUser($actor)->authorize('publish', $content);
 
+            if ($content->usesDirectPublishing()) {
+                return app(DraftContentService::class)->save($content, ['status' => 'published'], $actor);
+            }
+
             $revision = $content->revisions()->orderByDesc('version')->lockForUpdate()->first();
             if (! $revision || $revision->status !== ContentStatus::Review) {
                 throw ValidationException::withMessages([
@@ -80,6 +84,10 @@ class ContentWorkflowService
         return DB::transaction(function () use ($content, $actor) {
             $content = $content->newQuery()->lockForUpdate()->findOrFail($content->getKey());
             Gate::forUser($actor)->authorize('archive', $content);
+
+            if ($content->usesDirectPublishing()) {
+                return app(DraftContentService::class)->save($content, ['status' => 'draft'], $actor);
+            }
 
             $content->forceFill(['status' => ContentStatus::Archived, 'updated_by' => $actor->id])->save();
 

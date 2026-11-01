@@ -28,15 +28,19 @@ class DraftContentService
                 Gate::forUser($actor)->authorize('create', $content::class);
             }
 
+            if (! empty($data['author_id'])) {
+                Gate::forUser($actor)->authorize('view', Professional::findOrFail($data['author_id']));
+            }
+            if ($content->usesDirectPublishing()) {
+                return $this->saveDirectContent($content, $data, $actor);
+            }
+
             $practiceIds = $data['practice_area_ids'] ?? null;
             unset($data['practice_area_ids']);
             $keyContactIds = $data['key_contact_ids'] ?? null;
             unset($data['key_contact_ids']);
             foreach ($practiceIds ?? [] as $practiceId) {
                 Gate::forUser($actor)->authorize('view', PracticeArea::findOrFail($practiceId));
-            }
-            if (! empty($data['author_id'])) {
-                Gate::forUser($actor)->authorize('view', Professional::findOrFail($data['author_id']));
             }
 
             if ($content instanceof \App\Models\Industry && $keyContactIds !== null && \App\Models\Professional::published()->whereIn('id', $keyContactIds)->count() !== count($keyContactIds)) {
@@ -77,6 +81,55 @@ class DraftContentService
 
             return $content;
         });
+    }
+
+    private function saveDirectContent(ContentModel $content, array $data, User $actor): ContentModel
+    {
+        $status = ContentStatus::from($data['status'] ?? ContentStatus::Draft->value);
+        if (! in_array($status, [ContentStatus::Draft, ContentStatus::Published], true)) {
+            throw ValidationException::withMessages(['status' => 'Pilih status Draf atau Tayang.']);
+        }
+        if ($status === ContentStatus::Published) {
+            Gate::forUser($actor)->authorize('publish', $content);
+        } elseif ($content->status === ContentStatus::Published) {
+            Gate::forUser($actor)->authorize('archive', $content);
+        }
+
+        $payload = array_replace($this->workingPayload($content) ?? $this->snapshot($content), $data);
+        $practiceIds = $content instanceof Professional ? ($payload['practice_area_ids'] ?? null) : null;
+        foreach ($practiceIds ?? [] as $practiceId) {
+            Gate::forUser($actor)->authorize('view', PracticeArea::findOrFail($practiceId));
+        }
+        $keyContactIds = $content instanceof \App\Models\Industry ? ($payload['key_contact_ids'] ?? null) : null;
+        if ($keyContactIds !== null && ($status === ContentStatus::Published || array_key_exists('key_contact_ids', $data))) {
+            $publishedContacts = Professional::published()->whereIn('id', $keyContactIds)->lockForUpdate()->get();
+            if ($publishedContacts->count() !== count($keyContactIds)) {
+                throw ValidationException::withMessages(['key_contact_ids' => 'Key Contact harus berasal dari profil profesional yang sudah tayang.']);
+            }
+        }
+        $content->fill(Arr::except($payload, [
+            'id', 'status', 'created_by', 'updated_by', 'published_at', 'published_revision',
+            'created_at', 'updated_at', 'deleted_at', 'practice_area_ids', 'key_contact_ids',
+        ]));
+        if (! $content->exists) {
+            $content->created_by = $actor->id;
+        }
+        $content->forceFill([
+            'status' => $status,
+            'updated_by' => $actor->id,
+            'published_at' => $status === ContentStatus::Published ? now() : null,
+            'published_revision' => $status === ContentStatus::Published ? ((int) $content->revisions()->max('version')) + 1 : null,
+        ])->save();
+
+        if ($content instanceof Professional && $practiceIds !== null) {
+            $content->practiceAreas()->sync($practiceIds);
+        }
+        if ($content instanceof \App\Models\Industry && $keyContactIds !== null) {
+            $content->keyContacts()->sync($keyContactIds);
+        }
+        $this->createRevision($content, $this->snapshot($content), $status, $actor);
+
+        return $content;
     }
 
     /** Save page section edits into a new draft snapshot without touching live sections. */
@@ -127,6 +180,8 @@ class DraftContentService
     public function workingRevision(ContentModel $content): ?ContentRevision
     {
         return $content->revisions()->whereIn('status', [ContentStatus::Draft->value, ContentStatus::Review->value])
+            ->when($content->usesDirectPublishing() && $content->published_revision !== null,
+                fn ($query) => $query->where('version', '>', $content->published_revision))
             ->orderByDesc('version')->first();
     }
 
@@ -202,13 +257,17 @@ class DraftContentService
     private function createRevision(ContentModel $content, array $payload, ContentStatus $status, User $actor): ContentRevision
     {
         $version = ((int) $content->revisions()->max('version')) + 1;
-        $revision = $content->revisions()->create([
+        $attributes = [
             'version' => $version,
             'status' => $status,
             'payload' => $payload,
             'created_by' => $actor->id,
             'submitted_at' => $status === ContentStatus::Review ? now() : null,
-        ]);
+        ];
+        if ($content->usesDirectPublishing() && $status === ContentStatus::Published) {
+            $attributes += ['published_by' => $actor->id, 'published_at' => $content->published_at];
+        }
+        $revision = $content->revisions()->create($attributes);
         $this->recordMediaUsages($revision, $payload);
 
         return $revision;

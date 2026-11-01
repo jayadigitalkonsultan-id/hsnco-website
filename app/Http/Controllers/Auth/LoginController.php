@@ -27,7 +27,12 @@ class LoginController extends Controller
         }
         RateLimiter::hit($key, 60); RateLimiter::hit($ipKey, 60);
         $user = User::query()->where('email', $email)->first();
-        if (! $user) { Hash::check($data['password'], '$2y$12$3qSoSws22J5Hga.8Rf/82.Oolxk3u0eQAlpFM4t6n0sVh7VgvKq7O'); app(SecurityAudit::class)->record('login_failed','failed',null,$request,'invalid_credentials',['identity'=>hash('sha256',$email)]); return $generic(); }
+        if (! $user) {
+            // Dummy bcrypt hash reduces timing differences for unknown emails; it never authenticates a user.
+            Hash::check($data['password'], '$2y$12$3qSoSws22J5Hga.8Rf/82.Oolxk3u0eQAlpFM4t6n0sVh7VgvKq7O');
+            app(SecurityAudit::class)->record('login_failed','failed',null,$request,'invalid_credentials',['identity'=>hash('sha256',$email)]);
+            return $generic();
+        }
         if ($user->locked_until?->isFuture() || $user->status === UserStatus::Inactive || ! $user->password) { app(SecurityAudit::class)->record('login_failed','failed',$user,$request,'invalid_credentials'); return $generic(); }
         if (! Auth::attempt(['email' => $email, 'password' => $data['password']])) { $this->failed($user, $request); return $generic(); }
         $request->session()->regenerate();

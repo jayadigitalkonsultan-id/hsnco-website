@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Insight extends ContentModel
 {
+    public function usesDirectPublishing(): bool
+    {
+        return true;
+    }
+
     public function coverMedia(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'cover_media_id');

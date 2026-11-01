@@ -32,13 +32,14 @@ class ContentPolicy
     {
         // DraftContentService writes a new immutable revision for live content.
         return $this->revise($user, $content)
+            && (! $content->usesDirectPublishing() || $content->status !== ContentStatus::Published || $user->managesContent())
             && $content->status !== ContentStatus::Archived;
     }
 
     public function publish(User $user, ContentModel $content): bool
     {
         return $user->managesContent() && ! $content->trashed()
-            && in_array($content->status, [ContentStatus::Review, ContentStatus::Published], true);
+            && ($content->usesDirectPublishing() || in_array($content->status, [ContentStatus::Review, ContentStatus::Published], true));
     }
 
     public function archive(User $user, ContentModel $content): bool

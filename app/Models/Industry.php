@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Industry extends ContentModel
 {
+    public function usesDirectPublishing(): bool
+    {
+        return true;
+    }
+
     protected function casts(): array
     {
         return array_merge(parent::casts(), ['focus' => 'array', 'sort_order' => 'integer']);

@@ -2,7 +2,7 @@
 
 URL admin: /admin/practice-areas. Masuk dengan akun pengelola dan selesaikan verifikasi yang berlaku.
 
-Panel layanan frontend membaca PracticeArea berstatus published dengan tanggal publikasi yang telah berlaku, diurutkan berdasarkan sort_order lalu nama. Daftar statis pada config/services.php hanya menjadi sumber impor awal; mengarsipkan seluruh layanan tidak akan memunculkan kembali data statis. Pengantar umum tetap berada pada config/services.php. Pengaturan banner dan CTA tetap mengikuti halaman CMS yang sudah ada.
+Panel layanan frontend membaca PracticeArea berstatus published dengan tanggal publikasi yang telah berlaku, diurutkan berdasarkan sort_order lalu nama. Praktik hanya memakai status Draf dan Tayang. Daftar statis pada config/services.php hanya menjadi sumber impor awal; mengembalikan seluruh layanan ke Draf tidak akan memunculkan kembali data statis. Pengantar umum tetap berada pada config/services.php. Pengaturan banner dan CTA tetap mengikuti halaman CMS yang sudah ada.
 
 ## Mengubah panel
 
@@ -11,14 +11,20 @@ Panel layanan frontend membaca PracticeArea berstatus published dengan tanggal p
 3. Isi Daftar layanan satu butir per baris. Baris kosong diabaikan.
 4. Unggah gambar melalui Pustaka Media, lalu pilih pada Gambar latar kategori. Hanya media publik yang dapat dipilih. Tanpa gambar, panel menggunakan ilustrasi kantor bawaan.
 5. Atur Urutan; angka kecil tampil lebih dahulu. Panel pertama mendapat layout lebar.
-6. Simpan draft atau ajukan review. Gunakan Terbitkan dengan akun berizin untuk menayangkan perubahan.
-7. Arsipkan untuk menghilangkan kategori dari website. Data serta hubungan konten lama tetap tersimpan.
+6. Pilih Draf atau Tayang, lalu klik Simpan praktik. Tayang langsung menampilkan perubahan tanpa tahapan review terpisah.
+7. Kembalikan ke Draf untuk menyembunyikan kategori dari website, pilihan formulir konsultasi, dan daftar praktik di sitemap. Data serta hubungan konten lama tetap tersimpan.
 
-Draft tidak mengubah tampilan publik sampai diterbitkan. Hak akses, CSRF, workflow editorial dan verifikasi akun existing tetap digunakan.
+Draf tidak tersedia untuk publik, termasuk ketika praktik yang sebelumnya tayang disimpan kembali sebagai Draf. Hanya Administrator yang dapat menayangkan atau menyembunyikan praktik tayang. Editor dapat membuat dan menyunting draf miliknya. Setiap penyimpanan mencatat revisi; revisi lama tidak menggantikan kembali perubahan yang sudah ditayangkan. Modul konten lain tetap memakai workflow editorial masing-masing.
 
 ## Impor awal dan deployment
 
-Tidak ada migration baru. Delapan kategori dan gambar ilustrasinya telah ditambahkan ke database lokal. Konten lama tidak dihapus atau diubah. Kategori lama yang masih published juga tampil; pengelola dapat mengarsipkannya melalui alur existing bila tidak dibutuhkan.
+Migration `2026_11_01_000001_simplify_practice_area_statuses.php` memindahkan status praktik lama `review` dan `archived` menjadi `draft`, tanpa menghapus isi atau riwayat revisi. Status `published` tetap tayang. Jalankan migration ini saat deployment kode terbaru:
+
+```sh
+php artisan migrate --path=database/migrations/2026_11_01_000001_simplify_practice_area_statuses.php
+```
+
+Delapan kategori dan gambar ilustrasinya telah ditambahkan ke database lokal pada integrasi awal. Kategori lama yang masih published juga tampil; pengelola dapat menyimpannya sebagai Draf bila tidak dibutuhkan.
 
 Untuk deployment, sesudah kode diperbarui jalankan satu kali dari console aplikasi:
 
@@ -29,6 +35,8 @@ php artisan hsnco:import-services --publish
 Opsi --publish ditujukan bagi delapan kategori awal yang materinya sudah diberikan pemilik. Tanpa opsi tersebut, kategori baru menjadi draft. Impor hanya menambahkan slug yang belum pernah ada, termasuk memperhitungkan soft delete; hasil edit dan status existing tidak ditimpa. Menjalankan ulang dengan --publish tidak menerbitkan draft yang sudah ada. Data berikutnya dikelola melalui admin, bukan impor. Command tidak berjalan otomatis saat container start. Production belum disentuh.
 
 ## Validasi
+
+Pembaruan status 1 November 2026: migration sudah diterapkan pada database lokal. Pengujian terkait lulus, 18 pengujian dengan 232 assertion, meliputi penyimpanan Draf/Tayang, pembaruan berulang tanpa kembali ke revisi lama, migrasi status lama, pembatasan hak publikasi, daftar konsultasi/sitemap publik, serta regresi modul klien dan industri. Angka pengujian dan penjelasan workflow pada catatan implementasi awal di bawah merupakan riwayat sebelum penyederhanaan status ini.
 
 Pengujian PracticeServiceCmsTest mencakup impor idempoten, suntingan melalui route admin, isolasi draft, publikasi, perubahan gambar dan urutan, arsip, tidak adanya fallback statis untuk draft, dan penolakan tamu. ServiceProfileTest memverifikasi seluruh materi layanan setelah diimpor ke CMS. Database pengujian menggunakan SQLite in-memory.
 

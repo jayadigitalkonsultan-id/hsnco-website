@@ -32,7 +32,12 @@ class ContentController extends AdminController
     {
         $definition = $this->definition($request);
         $this->authorizeRead($request, 'viewAny', $definition['model']);
-        $filters = $this->listingInput($request, ['draft', 'review', 'published', 'archived']);
+        $modelClass = $definition['model'];
+        $directPublishing = (new $modelClass)->usesDirectPublishing();
+        $statuses = $directPublishing
+            ? ['draft' => 'Draf', 'published' => 'Tayang']
+            : ['draft' => 'Draft', 'review' => 'Perlu review', 'published' => 'Tayang', 'archived' => 'Diarsipkan'];
+        $filters = $this->listingInput($request, array_keys($statuses));
         $query = $this->contentQuery($request, $definition['model']);
         if ($search = trim($filters['q'] ?? '')) {
             $query->where($definition['title_field'], 'like', '%'.$search.'%');
@@ -51,7 +56,7 @@ class ContentController extends AdminController
                 ]])->all();
         }
 
-        return view('admin.content.index', compact('definition', 'records', 'tree', 'filters'));
+        return view('admin.content.index', compact('definition', 'records', 'tree', 'filters', 'statuses', 'directPublishing'));
     }
 
     public function create(Request $request)
@@ -118,7 +123,10 @@ class ContentController extends AdminController
         if ($record->exists && $workflowRecord->status === ContentStatus::Published && ! $workingRevision) {
             $record->setAttribute('status', $workingStatus);
         }
-        $media = Media::where('visibility', 'public')->orderBy('original_name')->get(['id', 'original_name']);
+        if ($record->usesDirectPublishing()) {
+            $record->setAttribute('status', $workflowRecord->status === ContentStatus::Published ? ContentStatus::Published : ContentStatus::Draft);
+        }
+        $media = Media::where('visibility', 'public')->orderBy('original_name')->get(['id', 'original_name', 'caption']);
         $practices = $this->contentQuery($request, PracticeArea::class)->orderBy('sort_order')->get(['id', 'name']);
         $authors = $this->contentQuery($request, Professional::class)->orderBy('name')->get(['id', 'name']);
         $insights = $this->contentQuery($request, Insight::class)->orderBy('title')->get(['id', 'title']);
@@ -142,7 +150,11 @@ class ContentController extends AdminController
         $record = $service->save(new $definition['model'], $validated, $request->user());
         app(SecurityAudit::class)->record('content_created', 'success', $request->user(), $request, null, ['module' => $request->route('module'), 'status' => $record->status->value], $record);
 
-        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', 'Draft berhasil dibuat.');
+        $label = $definition['singular'];
+        $message = $record->usesDirectPublishing()
+            ? ($record->status === ContentStatus::Published ? $label.' berhasil dibuat dan ditayangkan.' : 'Draf '.strtolower($label).' berhasil dibuat.')
+            : 'Draft berhasil dibuat.';
+        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', $message);
     }
 
     public function update(Request $request, DraftContentService $service)
@@ -152,7 +164,11 @@ class ContentController extends AdminController
         $record = $service->save($this->record($request), $validated, $request->user());
         app(SecurityAudit::class)->record('content_updated', 'success', $request->user(), $request, null, ['module' => $request->route('module'), 'status' => $record->status->value], $record);
 
-        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', 'Perubahan draft berhasil disimpan.');
+        $label = $definition['singular'];
+        $message = $record->usesDirectPublishing()
+            ? ($record->status === ContentStatus::Published ? $label.' berhasil disimpan dan ditayangkan.' : 'Draf '.strtolower($label).' berhasil disimpan. Konten tidak ditampilkan di website.')
+            : 'Perubahan draft berhasil disimpan.';
+        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', $message);
     }
 
     public function publish(Request $request, ContentWorkflowService $workflow)
@@ -170,7 +186,7 @@ class ContentController extends AdminController
         $workflow->archive($record, $request->user());
         app(SecurityAudit::class)->record('content_archived', 'success', $request->user(), $request, null, ['module' => $request->route('module')], $record);
 
-        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', 'Konten berhasil diarsipkan.');
+        return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', $record->usesDirectPublishing() ? 'Konten dikembalikan ke Draf dan tidak ditampilkan di website.' : 'Konten berhasil diarsipkan.');
     }
 
     public function destroy(Request $request)

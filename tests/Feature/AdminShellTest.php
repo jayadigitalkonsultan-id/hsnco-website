@@ -128,20 +128,23 @@ class AdminShellTest extends TestCase
         $other = Insight::factory()->create(['title' => 'OTHER-PRIVATE-CONTENT', 'created_by' => User::factory()->create()->id]);
         $this->get('/admin/insights')->assertOk()->assertSee('OWN-CONTENT')->assertDontSee('OTHER-PRIVATE-CONTENT');
         $this->put(route('admin.insights.update', $other), ['title' => 'Tampered', 'slug' => $other->slug])->assertForbidden();
-        $this->put(route('admin.insights.update', $mine), ['title' => 'Tampered', 'slug' => $mine->slug, 'status' => 'published', 'created_by' => $other->created_by])->assertSessionHasErrors(['status', 'created_by']);
+        $this->put(route('admin.insights.update', $mine), ['title' => 'Tampered', 'slug' => $mine->slug, 'status' => 'published', 'created_by' => $other->created_by])->assertSessionHasErrors('created_by');
+        $this->put(route('admin.insights.update', $mine), ['title' => 'Tampered', 'slug' => $mine->slug, 'status' => 'published'])->assertForbidden();
         $this->get('/admin/settings')->assertForbidden();
         $this->get('/admin/enquiries')->assertForbidden();
     }
 
-    public function test_published_records_cannot_be_updated_directly_and_filtering_is_server_side(): void
+    public function test_insight_filtering_is_server_side_and_admin_can_return_published_content_to_draft(): void
     {
         $user = $this->verifiedUser();
         $published = Insight::factory()->create(['title' => 'PUBLISHED-ARTICLE', 'status' => 'published', 'published_at' => now()->subDay(), 'created_by' => $user->id]);
         Insight::factory()->count(12)->create(['title' => 'DRAFT-ARTICLE', 'created_by' => $user->id]);
         $this->get('/admin/insights?status=published&q=PUBLISHED&per_page=10')->assertOk()->assertSee('PUBLISHED-ARTICLE')->assertDontSee('DRAFT-ARTICLE');
         $this->get('/admin/insights?status=draft&per_page=10&page=2')->assertOk()->assertSee('11–12 dari 12');
-        $this->put(route('admin.insights.update', $published), ['title' => 'Overwritten', 'slug' => $published->slug, 'status' => 'draft'])->assertForbidden();
-        $this->assertSame('PUBLISHED-ARTICLE', $published->fresh()->title);
+        $this->put(route('admin.insights.update', $published), ['title' => 'Overwritten', 'slug' => $published->slug, 'status' => 'draft'])->assertSessionHasNoErrors()->assertRedirect();
+        $this->assertSame('Overwritten', $published->fresh()->title);
+        $this->assertSame('draft', $published->fresh()->status->value);
+        $this->get('/insights')->assertOk()->assertDontSee('PUBLISHED-ARTICLE')->assertDontSee('Overwritten');
     }
 
     public function test_upload_uses_validated_files_and_metadata_updates_cannot_replace_the_file(): void

@@ -14,6 +14,7 @@ class InsightRequest extends ContentRequest
     public function rules(): array
     {
         return array_merge($this->editorialRules(), [
+            'status' => ['required', Rule::in(['draft', 'published'])],
             'slug' => $this->uniqueSlug('insights'),
             'title' => ['required', 'string', 'max:255'],
             'excerpt' => ['nullable', 'string', 'max:5000'],

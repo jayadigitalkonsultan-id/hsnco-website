@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Professional extends ContentModel
 {
+    public function usesDirectPublishing(): bool
+    {
+        return true;
+    }
+
     protected function casts(): array
     {
         return array_merge(parent::casts(), [

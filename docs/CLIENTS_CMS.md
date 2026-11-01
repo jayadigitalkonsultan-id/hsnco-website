@@ -14,9 +14,15 @@ Slideshow tampil pada Beranda dan Tentang Firma, membaca database secara langsun
 
 ## Backend
 
-Buka /admin/clients, atau menu Klien. Autentikasi dan verifikasi akun existing tetap berlaku. Tambahkan/sunting Nama, Slug, Sektor, keterangan nama sebelumnya, Gambaran penugasan, logo publik, urutan serta catatan sumber internal. Unggah logo PNG/WebP/JPG melalui Pustaka Media, kemudian pilih pada Logo klien. Catatan sumber tidak ditampilkan di frontend.
+Buka /admin/clients, atau menu Klien. Autentikasi dan verifikasi akun existing tetap berlaku. Tambahkan/sunting Nama, Slug, Sektor, keterangan nama sebelumnya, Gambaran penugasan, logo publik, urutan serta catatan sumber internal. Unggah logo PNG/WebP/JPG melalui Pustaka Media, kemudian pilih thumbnail pada Logo klien. Logo terpilih ditandai bingkai emas dan tampil utuh; media bertanda `dark-surface` memakai latar gelap. Catatan sumber tidak ditampilkan di frontend.
 
-Simpan draft → ajukan review → terbitkan dengan akun berizin. Draft perubahan tidak langsung menimpa versi publik. Arsipkan untuk menghilangkan klien dari slideshow. Tanggal publikasi mendatang tidak tampil. Media private ditolak; logo yang sedang direferensikan tidak dapat dihapus. Gunakan angka urutan untuk mengatur urutan slideshow. Impor hanya menambah slug yang belum ada dan tidak mengubah hasil editorial atau soft-delete.
+Status hanya Draf dan Tayang pada filter daftar serta formulir tambah/edit. Simpan sebagai Tayang untuk langsung memperbarui logo dan informasi publik; simpan kembali sebagai Draf untuk menyembunyikan klien dari direktori, beranda, dan Tentang Firma. Administrator dan Super Administrator dapat menayangkan serta menyembunyikan konten; Editor dapat menyimpan draf miliknya. Setiap penyimpanan mencatat revisi. Tanggal publikasi mendatang tidak tampil. Media private ditolak; logo yang sedang direferensikan tidak dapat dihapus. Gunakan angka urutan untuk mengatur urutan slideshow. Impor hanya menambah slug yang belum ada dan tidak mengubah hasil editorial atau soft-delete.
+
+Migration `2026_11_02_000003_simplify_client_statuses.php` mengalihkan status lama `review` dan `archived` menjadi `draft`, tanpa menghapus isi maupun riwayat revisi. Status klien yang sudah tayang dipertahankan. Saat deployment kode terbaru jalankan:
+
+```sh
+php artisan migrate --path=database/migrations/2026_11_02_000003_simplify_client_statuses.php
+```
 
 ## Arsitektur dan deployment
 

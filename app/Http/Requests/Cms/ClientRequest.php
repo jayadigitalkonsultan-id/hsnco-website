@@ -12,6 +12,7 @@ class ClientRequest extends ContentRequest
     public function rules(): array
     {
         return array_merge($this->editorialRules(), [
+            'status' => ['required', Rule::in(['draft', 'published'])],
             'name' => ['required', 'string', 'max:255'],
             'slug' => $this->uniqueSlug('clients'),
             'category' => ['required', Rule::in(array_keys(config('clients.categories')))],
