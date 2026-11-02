@@ -1,7 +1,7 @@
 <footer class="site-footer footer-editorial">
     <div class="container">
         <div class="row g-5 align-items-start footer-main">
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <a class="footer-brand" href="{{ route('home') }}"><img class="brand-logo" src="{{ $logo }}" alt="{{ $name }} ? Home" width="270" height="118" loading="lazy"></a>
                 <p class="footer-tagline">{{ $tagline }}</p>
                 <a class="footer-contact-action footer-linkedin" href="https://www.linkedin.com/company/hsncoatlaw/" target="_blank" rel="noopener noreferrer" aria-label="HSNCO on LinkedIn (opens in a new tab)">
@@ -9,12 +9,18 @@
                     <span>LinkedIn</span>
                 </a>
             </div>
-            <div class="col-lg-6 offset-lg-1 footer-office">
+            <div class="col-lg-8 footer-office">
+                <div class="row g-4 g-xl-5 footer-office-columns"><div class="col-md-6">
                 <h2>Our office</h2>
                 @if ($footerContactDetails['address'])<p class="footer-address">{{ $footerContactDetails['address'] }}</p>@endif
                 <div class="footer-contact-links">
                     @if ($footerContactDetails['phone'])<a href="tel:{{ $footerContactDetails['phone_href'] }}">{{ $footerContactDetails['phone'] }}</a>@endif
                     @if ($footerContactDetails['email'])<a href="mailto:{{ $footerContactDetails['email'] }}">{{ $footerContactDetails['email'] }}</a>@endif
+                </div>
+                </div><div class="col-md-6 footer-desk-office">
+                    <h2>Desk Office</h2>
+                    <address class="footer-address">160 Robinson Road, #14-04 Singapore Business Federation Center<br>Singapore (068914)</address>
+                </div>
                 </div>
                 <a class="footer-contact-action" href="{{ route('contact') }}">Contact our team <span aria-hidden="true">&rarr;</span></a>
             </div>

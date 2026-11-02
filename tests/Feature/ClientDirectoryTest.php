@@ -11,15 +11,20 @@ class ClientDirectoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_all_published_clients_are_shown_including_clients_without_logos(): void
+    public function test_directory_displays_logos_and_designed_names_for_clients_without_logos(): void
     {
-        $this->artisan('hsnco:import-clients', ['--publish' => true])->assertSuccessful();
-        $response = $this->get(route('clients'))->assertOk();
-        foreach (Client::all() as $client) {
-            $response->assertSee($client->name);
+        $this->artisan('hsnco:import-clients', ['--publish'=>true])->assertSuccessful();
+        foreach(Client::orderBy('id')->take(3)->get() as $index=>$client) {
+            $logo=Media::factory()->create(['disk'=>'frontend','path'=>'images/test-client-'.$index.'.png','visibility'=>'public']);
+            $client->update(['image_id'=>$logo->id]);
         }
-        $this->assertSame(43, substr_count($response->getContent(), 'data-client-entry'));
-        $response->assertDontSee('data-client-filter', false)->assertDontSee('client-card-copy', false);
+        $response=$this->get(route('clients'))->assertOk();
+        $clients=Client::published()->with('publicImage')->get();
+        $logos=$clients->filter(fn($client)=>filled($client->logo_url))->unique(fn($client)=>$client->logo_url);
+        $this->assertSame($clients->count(),substr_count($response->getContent(),'data-client-entry'));
+        foreach($logos as $client) $response->assertSee('alt="'.e($client->name).'"',false);
+        foreach($clients->filter(fn($client)=>!filled($client->logo_url)) as $client) $response->assertSee($client->name);
+        $response->assertDontSee('client-directory-name',false)->assertDontSee('client-card-copy',false)->assertSee('clients-logo-grid')->assertSee('client-wordmark-name')->assertSee('client-wordmark-initials');
     }
 
     public function test_carousel_heading_links_to_directory_and_public_logo_is_displayed(): void

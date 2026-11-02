@@ -15,3 +15,11 @@ Animasi dijeda saat hover/fokus, dinonaktifkan untuk reduced motion, dan rail te
 Penyempurnaan terbaru: latar #ffffff, kartu putih dengan border abu-abu halus dan bayangan ringan, logo diperbesar, heading diapit garis emas lembut. Hover memberi aksen bingkai emas dan zoom logo ringan. Warna logo asli dipertahankan. Browser memverifikasi latar putih di desktop/mobile; QA carousel Home/About pada empat lebar layar lulus dan 102 aset lolos validator.
 
 Logo carousel dibagi menjadi dua kelompok terpisah: separuh pertama pada baris atas dan sisanya di bawah. URL logo yang sama dideduplikasi sebelum pembagian. Tidak ada logo yang digunakan bersama antarb??aris; duplikasi teknis untuk loop hanya terjadi dalam baris yang sama dan disembunyikan dari pembaca layar. Jika hanya satu logo tersedia, hanya satu baris ditampilkan.
+
+## Logo-only directory
+
+/clients menggunakan galeri putih 4 kolom desktop, 3 tablet dan 2 mobile. Hanya klien Tayang dengan logo publik ditampilkan; logo dengan URL yang sama ditampilkan sekali. Nama tetap menjadi alt text, bukan keterangan visual. Klien tanpa logo tetap tersimpan dan dapat dilengkapi lewat /admin/clients. Tidak ada kategori, deskripsi, angka atau tautan palsu pada kartu. Logo dengan caption dark-surface mempertahankan latar gelap agar logo putih terbaca. Tidak ada perubahan database.
+
+### Klien tanpa logo
+
+Semua klien Tayang kini ditampilkan. Logo resmi ditampilkan bila tersedia; jika belum ada, gunakan wordmark nama klien dengan inisial dekoratif dan garis emas. Ini bukan logo resmi baru. Tidak ada deskripsi atau kategori pada kartu. Nama klien dan data aslinya tidak diubah; unggah logo lewat backend untuk otomatis menggantikan wordmark.

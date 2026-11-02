@@ -105,7 +105,8 @@ class ClientCmsTest extends TestCase
             $this->get(route($route))->assertOk()->assertSee('value="draft"', false)->assertSee('value="published"', false)
                 ->assertDontSee('value="review"', false)->assertDontSee('value="archived"', false);
         }
-        $data = ['name' => 'Klien langsung tayang', 'slug' => 'klien-langsung-tayang', 'category' => 'finance'];
+        $logo = Media::factory()->create(['disk'=>'frontend','path'=>'images/logo-hsnco.png','visibility'=>'public']);
+        $data = ['name' => 'Klien langsung tayang', 'slug' => 'klien-langsung-tayang', 'category' => 'finance', 'image_id'=>$logo->id];
         foreach (['review', 'archived'] as $status) {
             $this->post(route('admin.clients.store'), $data + ['status' => $status])->assertSessionHasErrors('status');
         }
