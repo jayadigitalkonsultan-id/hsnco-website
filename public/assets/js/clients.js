@@ -10,8 +10,10 @@
     copy.querySelectorAll('img').forEach(img => { img.alt = ''; });
     track.append(copy);
     const resize = () => {
+      group.style.minWidth = `${rail.clientWidth}px`;
+      copy.style.minWidth = `${rail.clientWidth}px`;
       track.style.setProperty('--clients-duration', `${Math.max(28, group.getBoundingClientRect().width / 28)}s`);
-      rail.classList.toggle('is-enhanced', group.scrollWidth > rail.clientWidth);
+      rail.classList.toggle('is-enhanced', rail.clientWidth > 0);
     };
     if ('ResizeObserver' in window) new ResizeObserver(resize).observe(rail);
     else window.addEventListener('resize', resize, { passive: true });

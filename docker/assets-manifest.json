@@ -69,7 +69,7 @@
     {
       "file": "css/team.css",
       "mode": "lf-text",
-      "sha256": "00a8ec6276f0354c0cb0d54ad9e2658586200c444158e021af1beb167ef342f8"
+      "sha256": "90dba324aad1cbc246cce554be844269860d33c343ef3aee382ed7a8872f8273"
     },
     {
       "file": "css/typography.css",
@@ -434,7 +434,7 @@
     {
       "file": "js/clients.js",
       "mode": "lf-text",
-      "sha256": "cfed0efd90bdb04682ba645ecea983f83bdb39c45995d3639a1a895b4239c2c4"
+      "sha256": "7e92aba742ca34471a1a101d9a711e2bdc593368ec113396bc14b759e22a0b7c"
     },
     {
       "file": "js/components.js",

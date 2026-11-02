@@ -46,3 +46,11 @@ Suite terarah ClientCmsTest + PracticeServiceCmsTest + ServiceProfileTest: 10 lu
 
 Perintah: php artisan test --filter=ClientCmsTest --do-not-cache-result; node tools/clients-qa.mjs (preview port 4182). Docker build dan deployment production belum dijalankan.
 Pembaruan: tombol Putar slideshow dihapus. Slideshow otomatis berganti setiap 6 detik; jeda sementara saat hover/fokus, lalu berjalan lagi setelah interaksi berakhir. Reduced motion menonaktifkan autoplay. Pengujian tools/clients-autoplay-qa.mjs lulus untuk penghapusan tombol, perpindahan otomatis, jeda hover, resume dan reduced motion.
+
+## Pengelolaan klien
+
+Buka /admin/clients setelah login dan verifikasi OTP. Tambah Klien membuka form nama, slug, sektor, keterangan, logo, urutan dan status. Logo dipilih dari Pustaka Media; pilih Tayang untuk menampilkan perubahan atau Draf untuk menyembunyikannya. Tombol Edit tersedia pada daftar. Hapus tersedia pada daftar dan halaman edit, dengan konfirmasi; Administrator dapat menghapus klien Tayang, sedangkan Editor tidak dapat menghapus klien Tayang. Penghapusan bersifat soft delete, tidak menghapus logo atau riwayat revisi dan langsung mengecualikan klien dari halaman publik serta carousel. Tidak ada perubahan skema database untuk fitur ini.
+
+### Logo langsung dari form
+
+Area Unggah logo baru pada form klien menerima drag-and-drop satu file atau pemilihan file perangkat, dengan preview dan tombol pembatalan. JPG/PNG/WebP maksimal 5 MB, dimensi maksimal 8000 x 8000. File disimpan hanya saat Simpan klien ditekan. Upload baru menggantikan pilihan image_id, masuk Pustaka Media publik, dan mempertahankan file lama untuk riwayat. Jika validasi atau penyimpanan klien gagal, unggahan tidak ditinggalkan sebagai file/media yatim. Pilihan Pustaka Media tetap tersedia; memilih radio membatalkan file baru. Gunakan volume /app/storage permanen di hosting.

@@ -147,7 +147,7 @@ class ContentController extends AdminController
     {
         $definition = $this->definition($request);
         $validated = app($definition['request'])->validated();
-        $record = $service->save(new $definition['model'], $validated, $request->user());
+        $record = $this->saveWithLogo(new $definition['model'], $validated, $request, $service);
         app(SecurityAudit::class)->record('content_created', 'success', $request->user(), $request, null, ['module' => $request->route('module'), 'status' => $record->status->value], $record);
 
         $label = $definition['singular'];
@@ -161,7 +161,7 @@ class ContentController extends AdminController
     {
         $definition = $this->definition($request);
         $validated = app($definition['request'])->validated();
-        $record = $service->save($this->record($request), $validated, $request->user());
+        $record = $this->saveWithLogo($this->record($request), $validated, $request, $service);
         app(SecurityAudit::class)->record('content_updated', 'success', $request->user(), $request, null, ['module' => $request->route('module'), 'status' => $record->status->value], $record);
 
         $label = $definition['singular'];
@@ -169,6 +169,15 @@ class ContentController extends AdminController
             ? ($record->status === ContentStatus::Published ? $label.' berhasil disimpan dan ditayangkan.' : 'Draf '.strtolower($label).' berhasil disimpan. Konten tidak ditampilkan di website.')
             : 'Perubahan draft berhasil disimpan.';
         return redirect()->route('admin.'.$request->route('module').'.edit', $record)->with('success', $message);
+    }
+
+    private function saveWithLogo(ContentModel $record, array $validated, Request $request, DraftContentService $service): ContentModel
+    {
+        if ($record instanceof \App\Models\Client && ($validated['logo_file'] ?? null) instanceof \Illuminate\Http\UploadedFile) {
+            return app(\App\Services\Admin\ClientLogoUpload::class)->save($record, $validated, $request->user(), $service);
+        }
+        unset($validated['logo_file']);
+        return $service->save($record, $validated, $request->user());
     }
 
     public function publish(Request $request, ContentWorkflowService $workflow)

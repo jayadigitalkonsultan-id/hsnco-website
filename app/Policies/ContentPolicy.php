@@ -49,6 +49,10 @@ class ContentPolicy
 
     public function delete(User $user, ContentModel $content): bool
     {
+        if ($content instanceof \App\Models\Client && $user->managesContent()) {
+            return ! $content->trashed();
+        }
+
         return $this->update($user, $content)
             && ! in_array($content->status, [ContentStatus::Published, ContentStatus::Archived], true);
     }

@@ -52,4 +52,34 @@ class ClientDirectoryTest extends TestCase
         $this->get('/sitemap.xml')->assertOk()->assertSee('https://hsncoatlaw.com/clients');
         $this->get('/sitemap')->assertOk()->assertSee(route('clients'));
     }
+
+    public function test_carousel_rows_have_disjoint_logos_and_keep_every_unique_logo(): void
+    {
+        for ($index=0; $index<7; $index++) {
+            $logo=Media::factory()->create(['disk'=>'frontend','path'=>'images/unique-logo-'.$index.'.png','visibility'=>'public']);
+            Client::create(['name'=>'Unique logo '.$index,'slug'=>'unique-logo-'.$index,'category'=>'finance','image_id'=>$logo->id,'status'=>'published','published_at'=>now(),'sort_order'=>$index]);
+        }
+        Client::create(['name'=>'Shared logo','slug'=>'shared-logo','category'=>'finance','image_id'=>$logo->id,'status'=>'published','published_at'=>now()]);
+        foreach (['/','/about'] as $url) {
+            $html=$this->get($url)->assertOk()->getContent();
+            $dom=new \DOMDocument();
+            @$dom->loadHTML($html);
+            $xpath=new \DOMXPath($dom);
+            $rows=$xpath->query('//div[contains(concat(" ",normalize-space(@class)," ")," clients-rail ")]');
+            $this->assertCount(2,$rows);
+            $logos=[];
+            foreach($rows as $row) {
+                $sources=[];
+                foreach($xpath->query('.//img',$row) as $image) {
+                    $sources[]=$image->getAttribute('src');
+                    $this->assertNotEmpty($image->getAttribute('alt'));
+                }
+                $logos[]=$sources;
+            }
+            $this->assertCount(4,$logos[0]);
+            $this->assertCount(3,$logos[1]);
+            $this->assertSame([],array_intersect($logos[0],$logos[1]));
+            $this->assertCount(7,array_unique(array_merge(...$logos)));
+        }
+    }
 }

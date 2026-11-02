@@ -149,4 +149,66 @@ class ClientCmsTest extends TestCase
             $this->assertSame(1, $client->revisions()->count());
         }
     }
+
+    public function test_administrator_can_delete_live_client_without_removing_logo_or_history(): void
+    {
+        $this->administrator();
+        $logo = Media::factory()->create(['disk'=>'frontend','path'=>'images/logo-hsnco.png','visibility'=>'public']);
+        $client = Client::create(['name'=>'Client to remove','slug'=>'client-to-remove','category'=>'finance','image_id'=>$logo->id,'status'=>'published','published_at'=>now()]);
+        $revision = $client->revisions()->create(['version'=>1,'status'=>'published','payload'=>$client->attributesToArray()]);
+        $this->get(route('admin.clients.index'))->assertOk()->assertSee('Hapus');
+        $this->get(route('admin.clients.edit',$client))->assertOk()->assertSee('Hapus klien');
+        $this->delete(route('admin.clients.destroy',$client))->assertRedirect(route('admin.clients.index'));
+        $this->assertSoftDeleted($client);
+        $this->assertModelExists($logo);
+        $this->assertModelExists($revision);
+        $this->assertDatabaseHas('audit_logs',['event'=>'content_deleted','subject_type'=>'client','subject_id'=>$client->id]);
+        foreach (['/','/about','/clients'] as $url) $this->get($url)->assertOk()->assertDontSee('Client to remove');
+    }
+
+    public function test_editor_cannot_delete_a_published_client(): void
+    {
+        $editor = User::factory()->active('editor')->create();
+        UserTwoFactorAuthentication::factory()->create(['user_id'=>$editor->id,'method'=>'email','confirmed_at'=>now()]);
+        $this->actingAs($editor)->withSession(['auth.two_factor'=>['user_id'=>$editor->id,'auth_version'=>$editor->auth_version,'verified_at'=>time()]]);
+        $client = Client::create(['name'=>'Protected client','slug'=>'protected-client','category'=>'finance','status'=>'published','published_at'=>now(),'created_by'=>$editor->id]);
+        $this->delete(route('admin.clients.destroy',$client))->assertForbidden();
+        $this->assertNotSoftDeleted($client);
+    }
+
+    public function test_direct_logo_upload_is_stored_and_replaces_previous_logo(): void
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+        $this->administrator();
+        $this->get(route('admin.clients.create'))->assertOk()->assertSee('data-logo-dropzone',false)->assertSee('enctype="multipart/form-data"',false);
+        $data=['name'=>'Uploaded logo client','slug'=>'uploaded-logo-client','category'=>'finance','status'=>'published'];
+        $this->post(route('admin.clients.store'),$data+['logo_file'=>\Illuminate\Http\UploadedFile::fake()->image('logo.png',300,200)])->assertSessionHasNoErrors()->assertRedirect();
+        $client=Client::where('slug',$data['slug'])->sole();
+        $original=Media::findOrFail($client->image_id);
+        \Illuminate\Support\Facades\Storage::disk('public')->assertExists($original->path);
+        $this->assertSame('public',$original->visibility);
+        $this->assertSame($original->id,$client->getPublishedRevision()->payload['image_id']);
+        $this->put(route('admin.clients.update',$client),$data+['image_id'=>$original->id,'logo_file'=>\Illuminate\Http\UploadedFile::fake()->image('replacement.jpg',400,200)])->assertSessionHasNoErrors()->assertRedirect();
+        $this->assertNotSame($original->id,$client->fresh()->image_id);
+        $this->assertModelExists($original);
+        $this->get('/clients')->assertOk()->assertSee($client->fresh()->logo_url,false);
+        $this->assertDatabaseCount('media',2);
+    }
+
+    public function test_invalid_or_unauthorised_upload_does_not_leave_files_or_media(): void
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+        $this->administrator();
+        $data=['name'=>'Invalid upload','slug'=>'invalid-upload','category'=>'finance','status'=>'draft'];
+        $this->post(route('admin.clients.store'),$data+['logo_file'=>\Illuminate\Http\UploadedFile::fake()->create('bad.svg',1,'image/svg+xml')])->assertSessionHasErrors('logo_file');
+        $this->post(route('admin.clients.store'),$data+['logo_file'=>\Illuminate\Http\UploadedFile::fake()->image('large.jpg')->size(5121)])->assertSessionHasErrors('logo_file');
+        $editor=User::factory()->active('editor')->create();
+        UserTwoFactorAuthentication::factory()->create(['user_id'=>$editor->id,'method'=>'email','confirmed_at'=>now()]);
+        $this->actingAs($editor)->withSession(['auth.two_factor'=>['user_id'=>$editor->id,'auth_version'=>$editor->auth_version,'verified_at'=>time()]]);
+        $data['status']='published';
+        $this->post(route('admin.clients.store'),$data+['logo_file'=>\Illuminate\Http\UploadedFile::fake()->image('no-permission.jpg')])->assertForbidden();
+        $this->assertDatabaseCount('media',0);
+        $this->assertDatabaseCount('clients',0);
+        $this->assertSame([],\Illuminate\Support\Facades\Storage::disk('public')->allFiles());
+    }
 }

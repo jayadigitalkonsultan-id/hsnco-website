@@ -8,8 +8,13 @@ $directPublishing = $record->usesDirectPublishing();
 @section('intro', $directPublishing ? 'Lengkapi informasi '.strtolower($definition['singular']).', lalu pilih Draf atau Tayang untuk mengatur tampilannya di website.' : 'Lengkapi informasi utama dan simpan sebagai draft untuk proses editorial.')
 @section('actions')@if($record->exists && !$preview)<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.preview', $workflowRecord) }}">Pratinjau</a>@endif<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.index') }}">Kembali ke daftar</a>@endsection
 @section('content')
+@if($module === 'clients' && $record->exists && !$preview)
+@can('delete', $workflowRecord)
+<section class="panel mb-4"><div class="panel-heading"><div><h2>Hapus klien</h2><p>Klien akan dihapus dari daftar dan slideshow website. Logo serta riwayat tetap disimpan.</p></div><x-admin.delete :action="route('admin.clients.destroy', $workflowRecord)" :title="$record->name" label="Hapus klien" /></div></section>
+@endcan
+@endif
 @if(!$preview && !$editable)<div class="alert alert-info" role="status">{{ $directPublishing ? 'Konten ini hanya dapat ditinjau. Perubahan konten tayang dilakukan oleh Administrator.' : 'Konten ini hanya dapat ditinjau. Penyuntingan konten tayang dilakukan melalui revisi editorial.' }}</div>@endif
-<form method="post" action="{{ $record->exists ? route('admin.'.$module.'.update', $record) : route('admin.'.$module.'.store') }}" class="editor-form">
+<form method="post" action="{{ $record->exists ? route('admin.'.$module.'.update', $record) : route('admin.'.$module.'.store') }}" class="editor-form" enctype="multipart/form-data">
 @csrf @if($record->exists) @method('PUT') @endif
 <div class="row g-4"><div class="col-xl-8"><section class="panel"><div class="panel-heading"><div><h2>Informasi {{ strtolower($definition['singular']) }}</h2><p>Kolom bertanda * wajib diisi.</p></div></div><div class="editor-body"><fieldset @disabled(!$editable)>
     <x-admin.field :name="$nameField" :label="$nameField === 'name' ? 'Nama' : 'Judul'" :value="$record->{$nameField}" required maxlength="255" />
@@ -53,6 +58,7 @@ $directPublishing = $record->usesDirectPublishing();
     @php($imageField = ['industries'=>'image_id','clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
     @php($imageLabel = ['industries'=>'Gambar industri','clients'=>'Logo klien','practice-areas'=>'Gambar latar kategori','professionals'=>'Foto profil'][$module] ?? 'Gambar pilihan')
     @if($directPublishing)
+        @if($module === 'clients')<x-admin.logo-upload />@endif
         <x-admin.image-picker :name="$imageField" :label="$imageLabel" :value="$record->{$imageField}" :media="$media" :contain="$module === 'clients'" />
     @else
         <x-admin.field :name="$imageField" :label="$imageLabel" type="select" :value="$record->{$imageField}" :options="$media->pluck('original_name','id')->all()" />

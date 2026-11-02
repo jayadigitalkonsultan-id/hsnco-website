@@ -29,3 +29,7 @@
 .team-directory-content>.team-group:first-of-type{margin-top:28px}
 @media(min-width:992px){.team-section-nav{flex-direction:column;align-items:stretch;top:calc(var(--header-height) + 24px);overflow-x:visible;border-block:0;border-left:1px solid #38352f;padding:8px 0 8px 20px;gap:6px;margin:0}.team-section-nav a{justify-content:space-between;padding:8px 12px;font-size:14px;white-space:normal}.team-section-nav a[aria-current=location]{background:#c7a75e12;border-left:2px solid var(--brand-gold-light)}.team-directory .team-group{scroll-margin-top:calc(var(--header-height) + 35px)}}
 @media(max-width:991.98px){.team-directory-layout>aside{position:sticky;top:var(--header-height);z-index:10;background:#080808}.team-section-nav{position:static;margin:0}.team-directory-content>.team-group:first-of-type{margin-top:0}}
+
+/* Crop within the existing card, keeping full-resolution originals untouched. */
+.team-directory .professional-photo-trigger{overflow:hidden;isolation:isolate}
+.team-directory .professional-photo-trigger img.person-photo{display:block;object-fit:cover;object-position:center;transform:scale(var(--portrait-zoom,1.25));transform-origin:var(--portrait-origin,50% 50%)}

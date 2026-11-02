@@ -13,6 +13,8 @@ try {
   await page.waitForFunction(()=>[...document.querySelectorAll('[data-client-showcase] img')].every(img=>img.complete&&img.naturalWidth>0));
   if((await section.innerText()).replace(/[↗\s]/g,'')!=='OurClients')throw Error('Unexpected visible text');
   if(await section.locator('.clients-rail').count()!==2)throw Error('Expected two logo rows');
+  const rowLogos=await section.locator('.clients-rail').evaluateAll(rows=>rows.map(row=>[...row.querySelector('.clients-group').querySelectorAll('img')].map(img=>img.src)));
+  if(rowLogos[0].some(src=>rowLogos[1].includes(src)))throw Error('Same logo appears in both rows');
   if(await section.locator('.clients-group').first().locator('img').count()<2)throw Error('Missing client logos');
   if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Overflow');
  }
