@@ -11,14 +11,14 @@
             </div>
             <div class="col-lg-8 footer-office">
                 <div class="row g-4 g-xl-5 footer-office-columns"><div class="col-md-6">
-                <h2>Our office</h2>
+                <h2>Jakarta</h2>
                 @if ($footerContactDetails['address'])<p class="footer-address">{{ $footerContactDetails['address'] }}</p>@endif
                 <div class="footer-contact-links">
                     @if ($footerContactDetails['phone'])<a href="tel:{{ $footerContactDetails['phone_href'] }}">{{ $footerContactDetails['phone'] }}</a>@endif
                     @if ($footerContactDetails['email'])<a href="mailto:{{ $footerContactDetails['email'] }}">{{ $footerContactDetails['email'] }}</a>@endif
                 </div>
                 </div><div class="col-md-6 footer-desk-office">
-                    <h2>Desk Office</h2>
+                    <h2>Singapore</h2>
                     <address class="footer-address">160 Robinson Road, #14-04 Singapore Business Federation Center<br>Singapore (068914)</address>
                 </div>
                 </div>
