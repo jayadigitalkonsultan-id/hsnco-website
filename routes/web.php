@@ -21,6 +21,7 @@ Route::get('/clients', App\Http\Controllers\ClientDirectoryController::class)->n
 Route::view('/team', 'frontend.team')->name('team');
 Route::view('/billing-fees', 'frontend.billing-fees')->name('billing-fees');
 Route::view('/insights', 'frontend.insights')->name('insights');
+Route::view('/berita', 'frontend.news')->name('news');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy-policy');
 Route::view('/terms-of-service', 'frontend.terms-of-service')->name('terms-of-service');

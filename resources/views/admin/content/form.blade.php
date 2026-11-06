@@ -19,7 +19,7 @@ $directPublishing = $record->usesDirectPublishing();
 <div class="row g-4"><div class="col-xl-8"><section class="panel"><div class="panel-heading"><div><h2>Informasi {{ strtolower($definition['singular']) }}</h2><p>Kolom bertanda * wajib diisi.</p></div></div><div class="editor-body"><fieldset @disabled(!$editable)>
     <x-admin.field :name="$nameField" :label="$nameField === 'name' ? 'Nama' : 'Judul'" :value="$record->{$nameField}" required maxlength="255" />
     @if($module === 'pages')<x-admin.field name="description" label="Deskripsi halaman" type="textarea" :value="$record->description" maxlength="5000" />@endif
-    <x-admin.field name="slug" label="Slug" :value="$record->slug" required maxlength="160" help="Gunakan huruf kecil dan tanda hubung, misalnya: profil-firma." />
+    <x-admin.field name="slug" label="Slug" :value="$record->slug" required maxlength="160" :readonly="$module === 'news' && ! $record->exists" :help="$module === 'news' && ! $record->exists ? 'Slug dibuat otomatis dari judul.' : 'Gunakan huruf kecil dan tanda hubung, misalnya: profil-firma.'" />
     @if($module === 'pages')
         <x-admin.field name="key" label="Halaman website" type="select" :value="$record->key" :options="['home'=>'Beranda','about'=>'Tentang Firma','practice-areas'=>'Bidang Praktik','team'=>'Profesional','insights'=>'Publikasi','contact'=>'Kontak','sitemap'=>'Peta Situs']" required />
         <x-admin.field name="template" label="Tampilan halaman" type="select" :value="$record->template" :options="['home'=>'Beranda','about'=>'Tentang Firma','practice-areas'=>'Bidang Praktik','team'=>'Profesional','insights'=>'Publikasi','contact'=>'Kontak','sitemap'=>'Peta Situs']" required />
@@ -43,9 +43,9 @@ $directPublishing = $record->usesDirectPublishing();
         <x-admin.field name="email" label="Email profesional" type="email" :value="$record->email" maxlength="254" />
         <x-admin.field name="practice_area_ids" label="Bidang praktik" type="select" :value="$record->exists ? $record->practiceAreas->pluck('id')->all() : []" :options="$practices->pluck('name','id')->all()" multiple help="Pilih satu atau beberapa bidang praktik." />
     @else
-        <x-admin.field :name="$module === 'insights' ? 'excerpt' : 'summary'" label="Ringkasan" type="textarea" :value="$record->{$module === 'insights' ? 'excerpt' : 'summary'}" maxlength="5000" />
+        <x-admin.field :name="in_array($module, ['insights', 'news']) ? 'excerpt' : 'summary'" label="Ringkasan" type="textarea" :value="$record->{in_array($module, ['insights', 'news']) ? 'excerpt' : 'summary'}" maxlength="5000" />
         <x-admin.field name="body" :label="$module === 'practice-areas' ? 'Daftar layanan' : 'Isi konten'" type="textarea" :value="$record->body" maxlength="100000" :help="$module === 'practice-areas' ? 'Satu layanan per baris. Setiap baris ditampilkan sebagai satu butir pada panel website.' : 'Gunakan teks biasa untuk draft awal.'" />
-        @if($module === 'insights')<x-admin.field name="author_id" label="Penulis" type="select" :value="$record->author_id" :options="$authors->pluck('name','id')->all()" />@endif
+        @if(in_array($module, ['insights', 'news']))<x-admin.field name="author_id" label="Penulis" type="select" :value="$record->author_id" :options="$authors->pluck('name','id')->all()" />@endif
     @endif
     @if($module !== 'professionals')<hr class="my-4"><h3 class="mb-3">Informasi pencarian</h3><x-admin.field name="seo_title" label="Judul pencarian" :value="$record->seo_title" maxlength="255" /><x-admin.field name="seo_description" label="Deskripsi pencarian" type="textarea" :value="$record->seo_description" maxlength="1000" />@endif
 </fieldset></div></section></div>
@@ -55,7 +55,7 @@ $directPublishing = $record->usesDirectPublishing();
     @else
         <x-admin.field name="status" label="Status editorial" type="select" :value="$record->status ?? 'draft'" :options="['draft'=>'Draft','review'=>'Ajukan review']" required />
     @endif
-    @php($imageField = ['industries'=>'image_id','clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id'][$module])
+    @php($imageField = ['industries'=>'image_id','clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id','news'=>'cover_media_id'][$module])
     @php($imageLabel = ['industries'=>'Gambar industri','clients'=>'Logo klien','practice-areas'=>'Gambar latar kategori','professionals'=>'Foto profil'][$module] ?? 'Gambar pilihan')
     @if($directPublishing)
         @if($module === 'clients')<x-admin.logo-upload />@endif
@@ -119,6 +119,35 @@ document.addEventListener('DOMContentLoaded', () => {
         select.addEventListener('change', updateSchema);
         updateSchema();
     });
+});
+</script>
+@endpush
+@endif
+
+@if($module === 'news' && ! $record->exists)
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const title = document.getElementById('field-title');
+    const slug = document.getElementById('field-slug');
+    if (!title || !slug) return;
+
+    let manuallyEdited = slug.value.trim() !== '';
+    const makeSlug = (value) => value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 160)
+        .replace(/-+$/g, '');
+
+    if (!manuallyEdited) slug.value = makeSlug(title.value);
+    title.addEventListener('input', () => {
+        if (!manuallyEdited) slug.value = makeSlug(title.value);
+    });
+    slug.addEventListener('input', () => { manuallyEdited = true; });
 });
 </script>
 @endpush

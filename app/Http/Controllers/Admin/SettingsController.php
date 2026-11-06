@@ -20,7 +20,7 @@ class SettingsController extends AdminController
         $settings = SiteSetting::whereIn('key', ['identity.name', 'identity.logo', 'identity.favicon', 'contact.details', 'footer.content', 'seo.defaults', 'navigation.main'])->pluck('value', 'key');
         $navigationDefaults = [
             'home' => 'Beranda', 'about' => 'Tentang Firma', 'practice-areas' => 'Bidang Praktik',
-            'team' => 'Profesional', 'insights' => 'Publikasi', 'contact' => 'Kontak',
+            'team' => 'Profesional', 'insights' => 'Publikasi', 'news' => 'Berita', 'contact' => 'Kontak',
         ];
         $navigationItems = collect($settings['navigation.main']['items'] ?? [])
             ->filter(fn ($item) => is_array($item) && isset($item['route'], $item['label']))
@@ -50,7 +50,7 @@ class SettingsController extends AdminController
         $data = $request->validated();
         $navigationDefaults = [
             'home' => 'Beranda', 'about' => 'Tentang Firma', 'practice-areas' => 'Bidang Praktik',
-            'team' => 'Profesional', 'insights' => 'Publikasi', 'contact' => 'Kontak',
+            'team' => 'Profesional', 'insights' => 'Publikasi', 'news' => 'Berita', 'contact' => 'Kontak',
         ];
         $storedNavigation = SiteSetting::query()->where('key', 'navigation.main')->first()?->value ?? [];
         $navigation = $data['navigation'] ?? collect($storedNavigation['items'] ?? [])

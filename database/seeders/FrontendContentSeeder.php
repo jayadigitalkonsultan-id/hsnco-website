@@ -273,6 +273,7 @@ class FrontendContentSeeder extends Seeder
                     ['route' => 'practice-areas', 'label' => 'Bidang Praktik'],
                     ['route' => 'team', 'label' => 'Profesional'],
                     ['route' => 'insights', 'label' => 'Publikasi'],
+                    ['route' => 'news', 'label' => 'Berita'],
                     ['route' => 'contact', 'label' => 'Kontak'],
                 ]],
                 'footer.content' => ['tagline' => 'Wisdom in Law. Strength in Advocacy.', 'requires_verification' => true],

@@ -24,12 +24,13 @@ class AdminSettingsRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:1000'],
             'logo_media_id' => ['nullable', 'string', 'ulid', Rule::exists('media', 'id')->where('visibility', 'public')->whereNull('deleted_at')],
             'favicon_path' => ['required', Rule::in(['assets/icons/favicon.svg'])],
-            'navigation' => ['sometimes', 'required', 'array:home,about,practice-areas,team,insights,contact'],
+            'navigation' => ['sometimes', 'required', 'array:home,about,practice-areas,team,insights,news,contact'],
             'navigation.home' => ['required_with:navigation', 'string', 'max:80'],
             'navigation.about' => ['required_with:navigation', 'string', 'max:80'],
             'navigation.practice-areas' => ['required_with:navigation', 'string', 'max:80'],
             'navigation.team' => ['required_with:navigation', 'string', 'max:80'],
             'navigation.insights' => ['required_with:navigation', 'string', 'max:80'],
+            'navigation.news' => ['required_with:navigation', 'string', 'max:80'],
             'navigation.contact' => ['required_with:navigation', 'string', 'max:80'],
         ];
     }

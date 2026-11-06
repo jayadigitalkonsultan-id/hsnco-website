@@ -7,6 +7,7 @@ use App\Models\ContentRevision;
 use App\Models\Enquiry;
 use App\Models\EnquiryNote;
 use App\Models\Insight;
+use App\Models\News;
 use App\Models\Media;
 use App\Models\Page;
 use App\Models\PageSection;
@@ -116,6 +117,7 @@ class AppServiceProvider extends ServiceProvider
                 'industries' => 'Industries',
                 'team' => 'Professionals',
                 'insights' => 'Insights',
+                'news' => 'News',
                 'contact' => 'Contact',
             ];
             $configuredItems = $settings['navigation.main']['items'] ?? [];
@@ -371,6 +373,28 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        View::composer('frontend.news', function ($view) {
+            try {
+                $news = News::query()->published()
+                    ->with(['publicCoverMedia', 'publishedAuthor'])
+                    ->orderByDesc('published_at')->orderByDesc('id')
+                    ->paginate(7)->withQueryString();
+            } catch (QueryException) {
+                $news = new \Illuminate\Pagination\LengthAwarePaginator(collect(), 0, 7);
+            }
+
+            $news->getCollection()->transform(function (News $item) {
+                $media = $item->publicCoverMedia;
+                $item->cover_url = ! $media || ! in_array($media->disk, ['frontend', 'public', 's3'], true)
+                    ? null
+                    : ($media->disk === 'frontend' ? asset('assets/'.ltrim($media->path, '/')) : Storage::disk($media->disk)->url($media->path));
+                $item->published_author_name = $item->publishedAuthor?->name;
+                return $item;
+            });
+
+            $view->with('news', $news);
+        });
+
         View::composer('frontend.sitemap', function ($view) {
             $page = null;
             $pages = collect();
@@ -392,6 +416,7 @@ class AppServiceProvider extends ServiceProvider
                 'team' => ['Professionals', route('team'), 'Explore the HSNCO professional directory.'],
                 'billing-fees' => ['Fees & Engagements', route('billing-fees'), 'Explore six fee arrangements offered by HS & CO.'],
                 'insights' => ['Insights', route('insights'), 'Read available HSNCO insights and publications.'],
+                'news' => ['Berita', route('news'), 'Read the latest HSNCO news.'],
                 'contact' => ['Contact', route('contact'), 'Contact HSNCO through our contact page.'],
                 'sitemap' => ['Sitemap', route('sitemap'), 'Explore the HSNCO website structure and public links.'],
             ])->map(function (array $default, string $key) use ($pages, $practices): array {
@@ -454,13 +479,14 @@ class AppServiceProvider extends ServiceProvider
             'practice_area' => PracticeArea::class,
             'professional' => Professional::class,
             'insight' => Insight::class,
+            'news' => News::class,
             'client' => \App\Models\Client::class,
             'industry' => \App\Models\Industry::class,
             'site_setting' => SiteSetting::class,
             'content_revision' => ContentRevision::class,
         ]);
 
-        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class, \App\Models\Client::class, \App\Models\Industry::class] as $model) {
+        foreach ([Page::class, PracticeArea::class, Professional::class, Insight::class, News::class, \App\Models\Client::class, \App\Models\Industry::class] as $model) {
             Gate::policy($model, ContentPolicy::class);
         }
         foreach ([SiteSetting::class, Enquiry::class, EnquiryNote::class] as $model) {

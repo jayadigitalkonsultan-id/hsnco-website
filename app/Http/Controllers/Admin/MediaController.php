@@ -148,6 +148,7 @@ class MediaController extends AdminController
             'practice_area' => ['Bidang praktik', 'name'],
             'professional' => ['Profesional', 'name'],
             'insight' => ['Publikasi', 'title'],
+            'news' => ['Berita', 'title'],
             'site_setting' => ['Pengaturan situs', 'key'],
             'content_revision' => ['Revisi konten', 'version'],
         ];
@@ -171,6 +172,7 @@ class MediaController extends AdminController
             ['model' => \App\Models\PracticeArea::class, 'column' => 'image_id', 'type' => 'Bidang praktik · gambar', 'field' => 'name'],
             ['model' => \App\Models\Professional::class, 'column' => 'photo_id', 'type' => 'Profesional · foto', 'field' => 'name'],
             ['model' => \App\Models\Insight::class, 'column' => 'cover_media_id', 'type' => 'Publikasi · sampul', 'field' => 'title'],
+            ['model' => \App\Models\News::class, 'column' => 'cover_media_id', 'type' => 'Berita · sampul', 'field' => 'title'],
         ] as $reference) {
             foreach ($reference['model']::withTrashed()->where($reference['column'], $media->id)->get([$reference['field'], 'id']) as $record) {
                 $references[] = [

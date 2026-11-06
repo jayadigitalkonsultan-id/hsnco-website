@@ -33,7 +33,7 @@
     <section class="panel mt-4">
         <div class="panel-heading"><div><h2>Navigasi utama</h2><p>Urutan menu mengikuti navigasi website yang sudah ada.</p></div></div>
         <div class="editor-body row g-3">
-            @foreach (['home' => 'Beranda', 'about' => 'Tentang Firma', 'practice-areas' => 'Bidang Praktik', 'team' => 'Profesional', 'insights' => 'Publikasi', 'contact' => 'Kontak'] as $route => $label)
+            @foreach (['home' => 'Beranda', 'about' => 'Tentang Firma', 'practice-areas' => 'Bidang Praktik', 'team' => 'Profesional', 'insights' => 'Publikasi', 'news' => 'Berita', 'contact' => 'Kontak'] as $route => $label)
                 <div class="col-md-6"><x-admin.field name="navigation.{{ $route }}" :label="$label" :value="$values['navigation'][$route]" required maxlength="80" /></div>
             @endforeach
         </div>
