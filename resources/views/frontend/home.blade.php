@@ -22,9 +22,6 @@ Explore the legal services, practice areas, approach and professionals of HSNCO.
 @include('frontend.home.industries')
 @endunless
 @unless ($homePageIsPublished)
-<section class="home-values" aria-labelledby="value-title"><img class="" src="{{ asset('assets/images/hsnco4.jpg') }}" alt="" width="1920" height="1280" loading="lazy" decoding="async"><div class="value-copy"><p class="eyebrow">Our values</p><h2 id="value-title">A clear approach.</h2><p id="value-description">We understand the business context behind legal matters. Our role is to bring clarity to complexity and support informed decisions.</p><div class="value-controls" role="group" aria-label="Our values"><button type="button" data-value="0" data-value-title="A clear approach." data-value-description="We understand the business context behind legal matters. Our role is to bring clarity to complexity and support informed decisions." aria-label="Show value: Pendekatan that jelas" aria-pressed="true"><span></span></button><button type="button" data-value="1" data-value-title="Uncompromising integrity." data-value-description="We protect our clients’ interests with independence, care and integrity." aria-label="Show value: Integrity" aria-pressed="false"><span></span></button><button type="button" data-value="2" data-value-title="Reliability in every matter." data-value-description="Responsive support, experienced attention and practical advice throughout each engagement." aria-label="Show value: Reliability" aria-pressed="false"><span></span></button></div></div></section>
-@endunless
-@unless ($homePageIsPublished)
 @include('frontend.home.service-formats', ['formatsSection' => null])
 @endunless
 @unless ($homePageIsPublished)

@@ -4,7 +4,6 @@
     $office = $homeSections->get('office-image');
     $services = $homeSections->get('services-intro');
     $practiceSelection = $homeSections->get('featured-practices');
-    $values = $homeSections->get('values');
     $sectors = $homeSections->get('sectors');
     $approach = $homeSections->get('approach');
 
@@ -41,22 +40,6 @@
     @include('frontend.home.industries')
 @endif
 
-@if ($values?->is_visible)
-    @php($content = $values->content ?? [])
-    <section class="home-values" aria-labelledby="value-title">
-        <img src="{{ asset('assets/images/hsnco4.jpg') }}" alt="" width="1920" height="1280" loading="lazy" decoding="async">
-        <div class="value-copy">
-            @if (!empty($content['eyebrow']))<p class="eyebrow">{{ $content['eyebrow'] }}</p>@endif
-            <h2 id="value-title">{{ $values->heading }}</h2>
-            <p id="value-description">{{ strip_tags((string) data_get($content, 'items.0.description', '')) }}</p>
-            <div class="value-controls" role="group" aria-label="Our values">
-                @foreach (($content['items'] ?? []) as $index => $item)
-                    <button type="button" data-value="{{ $index }}" data-value-title="{{ $item['title'] ?? '' }}" data-value-description="{{ strip_tags($item['description'] ?? '') }}" aria-label="Show value: {{ $item['title'] ?? 'Our values' }}" aria-pressed="{{ $index === 0 ? 'true' : 'false' }}"><span></span></button>
-                @endforeach
-            </div>
-        </div>
-    </section>
-@endif
 
 @if ($sectors?->is_visible)
     @include('frontend.home.service-formats', ['formatsSection' => $sectors])

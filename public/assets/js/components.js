@@ -121,13 +121,4 @@
     search.addEventListener('input', updateSection);
     updateSection();
   }
-  document.querySelectorAll('[data-value]').forEach(button => button.addEventListener('click', () => {
-    const title = button.dataset.valueTitle;
-    const description = button.dataset.valueDescription;
-    const titleTarget = document.getElementById('value-title');
-    const descriptionTarget = document.getElementById('value-description');
-    if (titleTarget && title) titleTarget.textContent = title;
-    if (descriptionTarget && description !== undefined) descriptionTarget.textContent = description;
-    document.querySelectorAll('[data-value]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  }));
 })();

@@ -29,7 +29,7 @@
     {
       "file": "css/home.css",
       "mode": "lf-text",
-      "sha256": "9c05ab45d622c1ea58a6664120df259df7484ffa258f600282d316a8ecd66144"
+      "sha256": "77db960b43a4a8ba629c7668962f340de565d062f21dca51634462548bda00e2"
     },
     {
       "file": "css/industries.css",
@@ -59,7 +59,7 @@
     {
       "file": "css/responsive.css",
       "mode": "lf-text",
-      "sha256": "196a2a02413e9d1f1eb64ddf1288257f526546f9cf99098d0ad6ad5d2ac6bf1c"
+      "sha256": "67fcf1308ddc2d0f30f3f6c6fa8dbd869bb9909bbb2c8b36e443d3f1965efdf3"
     },
     {
       "file": "css/style.css",
@@ -439,7 +439,7 @@
     {
       "file": "js/components.js",
       "mode": "lf-text",
-      "sha256": "eb1ba81494b8cfc4ffca549a86e22ce18167eca6804c557c794a25b4424916ab"
+      "sha256": "3571b4d74c12fce0d3af9ecca6b3a66554558963eeecb7d33fbce9714a3baff8"
     },
     {
       "file": "js/content-data.js",
