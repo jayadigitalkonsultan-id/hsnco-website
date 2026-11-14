@@ -56,7 +56,7 @@ $directPublishing = $record->usesDirectPublishing();
         <x-admin.field name="status" label="Status editorial" type="select" :value="$record->status ?? 'draft'" :options="['draft'=>'Draft','review'=>'Ajukan review']" required />
     @endif
     @php($imageField = ['industries'=>'image_id','clients'=>'image_id','pages'=>'og_media_id','practice-areas'=>'image_id','professionals'=>'photo_id','insights'=>'cover_media_id','news'=>'cover_media_id'][$module])
-    @php($imageLabel = ['industries'=>'Gambar industri','clients'=>'Logo klien','practice-areas'=>'Gambar latar kategori','professionals'=>'Foto profil'][$module] ?? 'Gambar pilihan')
+    @php($imageLabel = ['industries'=>'Gambar industri','clients'=>'Logo klien','practice-areas'=>'Gambar latar kategori','professionals'=>'Foto profil','insights'=>'Gambar sampul publikasi','news'=>'Gambar sampul berita'][$module] ?? 'Gambar pilihan')
     @if($directPublishing)
         @if($module === 'clients')<x-admin.logo-upload />@endif
         <x-admin.image-picker :name="$imageField" :label="$imageLabel" :value="$record->{$imageField}" :media="$media" :contain="$module === 'clients'" />

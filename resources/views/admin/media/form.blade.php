@@ -5,6 +5,7 @@
 @section('content')
 <div class="row g-4"><div class="col-lg-7"><section class="panel"><div class="panel-heading"><div><h2>{{ $record->exists ? $record->original_name : 'Gambar baru' }}</h2><p>JPG, PNG, atau WebP, maksimal 5 MB.</p></div></div><form class="editor-body" method="post" enctype="multipart/form-data" action="{{ $record->exists ? route('admin.media.update', $record) : route('admin.media.store') }}">@csrf @if($record->exists) @method('PUT') @endif
 <fieldset @disabled(!$editable)>
+    @if($record->exists)<p class="field-help">Penggunaan: <strong>{{ $record->visibility === 'public' ? 'Gambar publik website' : 'Gambar internal' }}</strong>. @if($record->visibility === 'private')Gambar internal tidak muncul di pilihan sampul berita atau publikasi. Untuk memakai gambar ini di website, unggah ulang melalui Pustaka Media dengan pilihan Gambar publik website.@endif</p>@endif
     @if(!$record->exists)<x-admin.field name="file" label="Pilih gambar" type="file" accept="image/jpeg,image/png,image/webp" required /><x-admin.field name="visibility" label="Penggunaan" type="select" value="public" :options="['public'=>'Gambar publik website','private'=>'Gambar internal']" required />@endif
     <x-admin.field name="alt_text" label="Teks alternatif" :value="$record->alt_text" maxlength="255" help="Jelaskan isi gambar secara singkat." />
     <x-admin.field name="caption" label="Keterangan" type="textarea" :value="$record->caption" maxlength="2000" />

@@ -126,7 +126,7 @@ class ContentController extends AdminController
         if ($record->usesDirectPublishing()) {
             $record->setAttribute('status', $workflowRecord->status === ContentStatus::Published ? ContentStatus::Published : ContentStatus::Draft);
         }
-        $media = Media::where('visibility', 'public')->orderBy('original_name')->get(['id', 'original_name', 'caption']);
+        $media = Media::where('visibility', 'public')->orderByDesc('created_at')->orderByDesc('id')->get(['id', 'original_name', 'caption']);
         $practices = $this->contentQuery($request, PracticeArea::class)->orderBy('sort_order')->get(['id', 'name']);
         $authors = $this->contentQuery($request, Professional::class)->orderBy('name')->get(['id', 'name']);
         $insights = $this->contentQuery($request, Insight::class)->orderBy('title')->get(['id', 'title']);

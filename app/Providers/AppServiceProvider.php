@@ -205,6 +205,20 @@ class AppServiceProvider extends ServiceProvider
                 $homeInsights = collect();
             }
 
+            try {
+                $homeNews = News::query()->published()
+                    ->with('publicCoverMedia')
+                    ->orderByDesc('published_at')->orderByDesc('id')
+                    ->limit(3)->get()
+                    ->map(function (News $item) use ($mediaUrl) {
+                        $item->home_cover_url = $mediaUrl($item->publicCoverMedia);
+
+                        return $item;
+                    });
+            } catch (QueryException) {
+                $homeNews = collect();
+            }
+
             $homeContactDetails = app(VerifiedContactDetails::class)->from($contactDetails);
             $view->with([
                 'homePageIsPublished' => $homePage !== null,
@@ -213,6 +227,7 @@ class AppServiceProvider extends ServiceProvider
                 'homeImageUrls' => $homeImageUrls,
                 'homeContactDetails' => $homeContactDetails,
                 'homeInsights' => $homeInsights,
+                'homeNews' => $homeNews,
             ]);
         });
 
