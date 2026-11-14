@@ -16,6 +16,7 @@ class Professional extends ContentModel
     protected function casts(): array
     {
         return array_merge(parent::casts(), [
+            'photo_framing' => 'array',
             'qualifications' => 'array',
             'languages' => 'array',
             'sort_order' => 'integer',

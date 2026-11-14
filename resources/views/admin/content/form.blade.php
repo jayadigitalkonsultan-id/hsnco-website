@@ -63,6 +63,7 @@ $directPublishing = $record->usesDirectPublishing();
     @else
         <x-admin.field :name="$imageField" :label="$imageLabel" type="select" :value="$record->{$imageField}" :options="$media->pluck('original_name','id')->all()" />
     @endif
+    @if($module === 'professionals')<x-admin.portrait-editor :record="$record" />@endif
     @if(in_array($module, ['industries','clients','practice-areas','professionals']))
         <x-admin.field name="sort_order" label="Urutan tampil" type="number" :value="$record->sort_order ?? 0" min="0" />
         @if(!in_array($module, ['clients','industries']))<input type="hidden" name="is_featured" value="0"><div class="form-check mb-3"><input class="form-check-input" type="checkbox" name="is_featured" id="isFeatured" value="1" @checked(old('is_featured', $record->is_featured))><label class="form-check-label" for="isFeatured">Tampilkan sebagai pilihan</label></div>@endif
