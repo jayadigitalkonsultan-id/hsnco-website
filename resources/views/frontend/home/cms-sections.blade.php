@@ -8,7 +8,6 @@
     $approach = $homeSections->get('approach');
 
     $consultation = $homeSections->get('consultation');
-    $latestInsights = $homeSections->get('latest-insights');
 @endphp
 
 @if ($hero?->is_visible)
@@ -68,20 +67,3 @@
     </section>
 @endif
 @endsection
-
-@if ($latestInsights?->is_visible)
-    @php($content = $latestInsights->content ?? [])
-    <section class="section-space surface-light" id="news">
-        <div class="container"><div class="row g-4 align-items-end mb-5"><div class="col-lg-8"><p class="eyebrow">{{ $content['eyebrow'] ?? '' }}</p><x-frontend.section-heading>{{ $latestInsights->heading }}</x-frontend.section-heading></div><div class="col-lg-4 text-lg-end"><a class="text-link" href="{{ route('insights') }}">Explore our insights <span aria-hidden="true">→</span></a></div></div>
-        @if ($homeInsights->isNotEmpty())
-            <div class="row g-4">@foreach ($homeInsights as $insight)<article class="col-md-4 insight-card">
-                @if ($insight->home_cover_url)<img src="{{ $insight->home_cover_url }}" alt="{{ $insight->title }}" width="900" height="600" loading="lazy" decoding="async">@endif
-                <p class="eyebrow">{{ $insight->published_at?->format('d M Y') }}</p><h3>{{ $insight->title }}</h3><p>{{ $insight->excerpt }}</p>
-                <a class="text-link" href="{{ route('insights') }}#{{ $insight->slug }}">Baca publication <span aria-hidden="true">→</span></a>
-            </article>@endforeach</div>
-        @else
-            <p class="content-notice">Belum ada publication that telah diterbitkan.</p>
-        @endif
-        </div>
-    </section>
-@endif

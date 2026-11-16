@@ -8,9 +8,8 @@ return [
         'about' => 'about',
         'practice-areas' => 'practice-areas',
         'team' => 'team',
-        'insights' => 'insights',
         'contact' => 'contact',
         'sitemap' => 'sitemap',
     ],
-    'public_routes' => ['home', 'about', 'practice-areas', 'industries', 'clients', 'team', 'billing-fees', 'insights', 'news', 'contact', 'privacy-policy', 'terms-of-service', 'sitemap'],
+    'public_routes' => ['home', 'about', 'practice-areas', 'industries', 'clients', 'team', 'billing-fees', 'insights', 'contact', 'privacy-policy', 'terms-of-service', 'sitemap'],
 ];

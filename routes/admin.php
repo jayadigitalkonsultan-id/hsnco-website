@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->middleware('admin.access')->group(function () {
     Route::get('/', DashboardController::class)->name('dashboard');
+    Route::get('/publications', \App\Http\Controllers\Admin\PublicationController::class)->name('publications.index');
     foreach (config('admin.modules') as $module => $definition) {
         $parameter = $definition['parameter'];
         Route::prefix($module)->name($module.'.')->group(function () use ($module, $parameter) {

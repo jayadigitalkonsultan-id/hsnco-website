@@ -116,8 +116,7 @@ class AppServiceProvider extends ServiceProvider
                 'practice-areas' => 'Practice Areas',
                 'industries' => 'Industries',
                 'team' => 'Professionals',
-                'insights' => 'Insights',
-                'news' => 'News',
+                'insights' => 'News & Insights',
                 'contact' => 'Contact',
             ];
             $configuredItems = $settings['navigation.main']['items'] ?? [];
@@ -126,7 +125,7 @@ class AppServiceProvider extends ServiceProvider
                 ->keyBy('route');
             $navigationItems = collect($defaults)->map(fn ($label, $route) => [
                 'route' => $route,
-                'label' => trim((string) ($configuredLabels->get($route)['label'] ?? $label)) ?: $label,
+                'label' => $route === 'insights' ? 'News & Insights' : (trim((string) ($configuredLabels->get($route)['label'] ?? $label)) ?: $label),
             ])->values();
 
             $canonicalOrigin = rtrim(config('seo.canonical_url') ?: config('app.url'), '/');
@@ -181,43 +180,8 @@ class AppServiceProvider extends ServiceProvider
                 'values' => $mediaUrl($homeMedia->get(data_get($homeSections->get('values'), 'content.image_id'))),
             ];
 
-            $contactDetails = [];
-            $homeInsights = collect();
-            try {
-                $contactDetails = SiteSetting::query()->where('key', 'contact.details')->value('value') ?? [];
-                $insightContent = $homeSections->get('latest-insights')?->content ?? [];
-                $limit = min(12, max(1, (int) ($insightContent['limit'] ?? 3)));
-                $selectedInsightIds = $insightContent['insight_ids'] ?? [];
-                $publishedInsights = Insight::query()->published()->with('publicCoverMedia');
-                if (is_array($selectedInsightIds) && $selectedInsightIds !== []) {
-                    $insightMap = $publishedInsights->whereIn('id', $selectedInsightIds)->get()->keyBy('id');
-                    $homeInsights = collect($selectedInsightIds)->map(fn ($id) => $insightMap->get($id))->filter()->take($limit)->values();
-                } else {
-                    $homeInsights = $publishedInsights->orderByDesc('published_at')->orderByDesc('id')->limit($limit)->get();
-                }
-                $homeInsights = $homeInsights->map(function (Insight $insight) use ($mediaUrl) {
-                    $insight->home_cover_url = $mediaUrl($insight->publicCoverMedia);
-
-                    return $insight;
-                });
-            } catch (QueryException) {
-                $contactDetails = [];
-                $homeInsights = collect();
-            }
-
-            try {
-                $homeNews = News::query()->published()
-                    ->with('publicCoverMedia')
-                    ->orderByDesc('published_at')->orderByDesc('id')
-                    ->limit(3)->get()
-                    ->map(function (News $item) use ($mediaUrl) {
-                        $item->home_cover_url = $mediaUrl($item->publicCoverMedia);
-
-                        return $item;
-                    });
-            } catch (QueryException) {
-                $homeNews = collect();
-            }
+            $contactDetails = SiteSetting::query()->where('key', 'contact.details')->value('value') ?? [];
+            $homePublications = app(\App\Services\Cms\PublicationFeed::class)->latest(3);
 
             $homeContactDetails = app(VerifiedContactDetails::class)->from($contactDetails);
             $view->with([
@@ -226,8 +190,7 @@ class AppServiceProvider extends ServiceProvider
                 'homeIndustries' => app(\App\Services\Cms\IndustryCatalog::class)->published(),
                 'homeImageUrls' => $homeImageUrls,
                 'homeContactDetails' => $homeContactDetails,
-                'homeInsights' => $homeInsights,
-                'homeNews' => $homeNews,
+                'homePublications' => $homePublications,
             ]);
         });
 
@@ -281,7 +244,7 @@ class AppServiceProvider extends ServiceProvider
                 'sitemap' => 'Sitemap',
             ])->map(fn ($label, $route) => [
                 'route' => $route,
-                'label' => trim((string) ($navigationLabels->get($route)['label'] ?? $label)) ?: $label,
+                'label' => $route === 'insights' ? 'News & Insights' : (trim((string) ($navigationLabels->get($route)['label'] ?? $label)) ?: $label),
             ])->values();
             $view->with([
                 'practiceAreas' => $practiceAreas,
@@ -339,77 +302,6 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::composer('frontend.insights', function ($view) {
-            try {
-                $insightPage = Page::query()->published()->where('key', 'insights')->with('sections')->first();
-                $insights = Insight::query()->published()
-                    ->with(['publicCoverMedia', 'publishedAuthor'])
-                    ->orderByDesc('published_at')->orderByDesc('id')
-                    ->paginate(7)->withQueryString();
-            } catch (QueryException) {
-                $insightPage = null;
-                $insights = new \Illuminate\Pagination\LengthAwarePaginator(collect(), 0, 7);
-            }
-
-            $mediaUrl = static function ($media): ?string {
-                if (! $media || ! in_array($media->disk, ['frontend', 'public', 's3'], true)) {
-                    return null;
-                }
-                return $media->disk === 'frontend'
-                    ? asset('assets/'.ltrim($media->path, '/'))
-                    : Storage::disk($media->disk)->url($media->path);
-            };
-            $insights->getCollection()->transform(function (Insight $insight) use ($mediaUrl) {
-                $insight->cover_url = $mediaUrl($insight->publicCoverMedia);
-                $insight->published_author_name = $insight->publishedAuthor?->name;
-                return $insight;
-            });
-            $insightItems = $insights->getCollection();
-            $leadInsight = $insightItems->first();
-            $insightStories = $insightItems->slice(1)->values();
-            $insightModalData = $insightItems->mapWithKeys(fn (Insight $insight) => [$insight->slug => [
-                'title' => $insight->title,
-                'excerpt' => $insight->excerpt,
-                'body' => $insight->body,
-                'author' => $insight->published_author_name,
-                'publishedAt' => $insight->published_at?->toIso8601String(),
-                'publishedDate' => $insight->published_at?->timezone(config('cms.display_timezone'))->format('d/m/Y'),
-                'cover' => $insight->cover_url,
-                'coverAlt' => $insight->publicCoverMedia?->alt_text ?: 'Cover image for '.$insight->title,
-            ]]);
-
-            $view->with([
-                'insightPageIsPublished' => $insightPage !== null,
-                'insightSections' => $insightPage?->sections->keyBy('key') ?? collect(),
-                'insights' => $insights,
-                'leadInsight' => $leadInsight,
-                'insightStories' => $insightStories,
-                'insightModalData' => $insightModalData,
-            ]);
-        });
-
-        View::composer('frontend.news', function ($view) {
-            try {
-                $news = News::query()->published()
-                    ->with(['publicCoverMedia', 'publishedAuthor'])
-                    ->orderByDesc('published_at')->orderByDesc('id')
-                    ->paginate(7)->withQueryString();
-            } catch (QueryException) {
-                $news = new \Illuminate\Pagination\LengthAwarePaginator(collect(), 0, 7);
-            }
-
-            $news->getCollection()->transform(function (News $item) {
-                $media = $item->publicCoverMedia;
-                $item->cover_url = ! $media || ! in_array($media->disk, ['frontend', 'public', 's3'], true)
-                    ? null
-                    : ($media->disk === 'frontend' ? asset('assets/'.ltrim($media->path, '/')) : Storage::disk($media->disk)->url($media->path));
-                $item->published_author_name = $item->publishedAuthor?->name;
-                return $item;
-            });
-
-            $view->with('news', $news);
-        });
-
         View::composer('frontend.sitemap', function ($view) {
             $page = null;
             $pages = collect();
@@ -430,8 +322,7 @@ class AppServiceProvider extends ServiceProvider
                 'clients' => ['Our Clients', route('clients'), 'Discover HSNCO’s clients across industries.'],
                 'team' => ['Professionals', route('team'), 'Explore the HSNCO professional directory.'],
                 'billing-fees' => ['Fees & Engagements', route('billing-fees'), 'Explore six fee arrangements offered by HS & CO.'],
-                'insights' => ['Insights', route('insights'), 'Read available HSNCO insights and publications.'],
-                'news' => ['Berita', route('news'), 'Read the latest HSNCO news.'],
+                'insights' => ['News & Insights', route('insights'), 'Read legal perspectives and the latest updates from HSNCO.'],
                 'contact' => ['Contact', route('contact'), 'Contact HSNCO through our contact page.'],
                 'sitemap' => ['Sitemap', route('sitemap'), 'Explore the HSNCO website structure and public links.'],
             ])->map(function (array $default, string $key) use ($pages, $practices): array {

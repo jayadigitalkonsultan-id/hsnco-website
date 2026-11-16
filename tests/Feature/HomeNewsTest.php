@@ -11,7 +11,7 @@ class HomeNewsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_home_shows_three_latest_published_news_below_insights_in_both_page_modes(): void
+    public function test_home_shows_one_combined_publication_section_in_both_page_modes(): void
     {
         foreach (range(1, 4) as $number) {
             News::create([
@@ -47,13 +47,13 @@ class HomeNewsTest extends TestCase
     private function assertHomeNews(): void
     {
         $response = $this->get(route('home'))->assertOk()
-            ->assertSeeInOrder(['Latest insights', 'id="recent-news"', 'Recent news.'], false)
+            ->assertSee('id="news-insights"', false)
             ->assertSeeInOrder(['Published news 4', 'Published news 3', 'Published news 2'])
-            ->assertSee('href="'.route('news').'#published-news-4"', false)
+            ->assertSee('href="'.route('publications.show', ['kind'=>'news', 'slug'=>'published-news-4']).'"', false)
             ->assertDontSee('Published news 1')
             ->assertDontSee('Private draft news')
             ->assertDontSee('Scheduled news');
 
-        $this->assertSame(1, substr_count($response->getContent(), 'id="recent-news"'));
+        $this->assertSame(1, substr_count($response->getContent(), 'id="news-insights"'));
     }
 }

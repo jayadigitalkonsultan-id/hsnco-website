@@ -28,7 +28,7 @@
         <nav class="footer-navigation" aria-label="Footer navigation">
             <a href="{{ route('home') }}" @if(request()->routeIs('home')) aria-current="page" @endif>Home</a>
             @foreach ($footerFirmLinks as $item)
-                <a href="{{ route($item['route']) }}" @if(request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                <a href="{{ route($item['route']) }}" @if((request()->routeIs($item['route']) || ($item['route'] === 'insights' && request()->routeIs('publications.show')))) aria-current="page" @endif>{{ $item['label'] }}</a>
             @endforeach
             <a href="{{ route('practice-areas') }}" @if(request()->routeIs('practice-areas')) aria-current="page" @endif>Practice Areas</a>
             <a href="{{ route('industries') }}" @if(request()->routeIs('industries*')) aria-current="page" @endif>Industries</a>

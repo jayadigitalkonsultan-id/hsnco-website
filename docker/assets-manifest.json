@@ -29,7 +29,7 @@
     {
       "file": "css/home.css",
       "mode": "lf-text",
-      "sha256": "77db960b43a4a8ba629c7668962f340de565d062f21dca51634462548bda00e2"
+      "sha256": "90ff4d8c0f782998353bde0362ad97e6510e3df67a34f739e8a57d4ada181fe9"
     },
     {
       "file": "css/industries.css",
@@ -55,6 +55,11 @@
       "file": "css/practice-areas.css",
       "mode": "lf-text",
       "sha256": "a24f9a9214fbb57fbde5c1c98fa9f32a0393b9d3055c30ca15cdae209d093d37"
+    },
+    {
+      "file": "css/publications.css",
+      "mode": "lf-text",
+      "sha256": "0ada5aa589e0ddc7b18786b571ca6f3c83033d21b60350fdcbb83629fe5a1e4f"
     },
     {
       "file": "css/responsive.css",

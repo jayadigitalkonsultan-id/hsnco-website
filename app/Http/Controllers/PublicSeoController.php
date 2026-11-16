@@ -50,6 +50,9 @@ class PublicSeoController extends Controller
                 fn (array $industry) => $origin.'/industries/'.rawurlencode($industry['slug'])
             ))->unique()->values();
         }
+        foreach (['insight' => \App\Models\Insight::class, 'news' => \App\Models\News::class] as $kind => $model) {
+            $urls = $urls->merge($model::published()->pluck('slug')->map(fn ($slug) => $origin.'/news-insights/'.$kind.'/'.rawurlencode($slug)));
+        }
         return response()->view('frontend.sitemap-xml', compact('urls'), 200, [
             'Content-Type' => 'application/xml; charset=UTF-8',
             'Cache-Control' => 'no-cache, must-revalidate',

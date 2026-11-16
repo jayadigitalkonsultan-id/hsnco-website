@@ -4,6 +4,11 @@
     <nav aria-label="Navigasi admin"><ul class="sidebar-links">
         <li><a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" @if(request()->routeIs('admin.dashboard')) aria-current="page" @endif><x-admin.icon name="dashboard" /><span>Dashboard</span></a></li>
         @foreach(config('admin.modules') as $module => $definition)
+        @if($module === 'news') @continue @endif
+        @if($module === 'insights')
+        <li><a href="{{ route('admin.publications.index') }}" class="sidebar-link {{ request()->routeIs('admin.publications.*','admin.insights.*','admin.news.*') ? 'active' : '' }}"><x-admin.icon name="news" /><span>News &amp; Insights</span></a></li>
+        @continue
+        @endif
         <li><a href="{{ route('admin.'.$module.'.index') }}" class="sidebar-link {{ request()->routeIs('admin.'.$module.'.*') ? 'active' : '' }}" @if(request()->routeIs('admin.'.$module.'.*')) aria-current="page" @endif><x-admin.icon :name="$definition['icon']" /><span>{{ $definition['label'] }}</span></a></li>
         @endforeach
         <li><a href="{{ route('admin.media.index') }}" class="sidebar-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}" @if(request()->routeIs('admin.media.*')) aria-current="page" @endif><x-admin.icon name="image" /><span>Media library</span></a></li>

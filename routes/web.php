@@ -20,8 +20,10 @@ Route::get('/industries/{sector}', [App\Http\Controllers\IndustryController::cla
 Route::get('/clients', App\Http\Controllers\ClientDirectoryController::class)->name('clients');
 Route::view('/team', 'frontend.team')->name('team');
 Route::view('/billing-fees', 'frontend.billing-fees')->name('billing-fees');
-Route::view('/insights', 'frontend.insights')->name('insights');
-Route::view('/berita', 'frontend.news')->name('news');
+Route::get('/news-insights', [App\Http\Controllers\PublicationController::class, 'index'])->name('insights');
+Route::get('/news-insights/{kind}/{slug}', [App\Http\Controllers\PublicationController::class, 'show'])->where('kind', 'news|insight')->where('slug', '[a-z0-9-]+')->name('publications.show');
+Route::redirect('/insights', '/news-insights', 301);
+Route::redirect('/berita', '/news-insights', 301)->name('news');
 Route::view('/contact', 'frontend.contact')->name('contact');
 Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy-policy');
 Route::view('/terms-of-service', 'frontend.terms-of-service')->name('terms-of-service');

@@ -6,7 +6,7 @@ $directPublishing = $record->usesDirectPublishing();
 @endphp
 @section('title', ($record->exists ? ($directPublishing ? 'Edit ' : 'Tinjau ') : 'Tambah ').$definition['singular'])
 @section('intro', $directPublishing ? 'Lengkapi informasi '.strtolower($definition['singular']).', lalu pilih Draf atau Tayang untuk mengatur tampilannya di website.' : 'Lengkapi informasi utama dan simpan sebagai draft untuk proses editorial.')
-@section('actions')@if($record->exists && !$preview)<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.preview', $workflowRecord) }}">Pratinjau</a>@endif<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.index') }}">Kembali ke daftar</a>@endsection
+@section('actions')@if($record->exists && !$preview)<a class="btn btn-outline-secondary" href="{{ route('admin.'.$module.'.preview', $workflowRecord) }}">Pratinjau</a>@endif<a class="btn btn-outline-secondary" href="{{ in_array($module, ['news', 'insights']) ? route('admin.publications.index') : route('admin.'.$module.'.index') }}">Kembali ke daftar</a>@endsection
 @section('content')
 @if($module === 'clients' && $record->exists && !$preview)
 @can('delete', $workflowRecord)
