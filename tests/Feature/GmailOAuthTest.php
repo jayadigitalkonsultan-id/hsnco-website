@@ -79,4 +79,26 @@ class GmailOAuthTest extends TestCase
  public function test_diagnostic_does_not_send_mail_without_recipient(): void {
   $this->connection();config(['mail.default'=>'gmail']);$this->artisan('hsnco:mail-test')->assertSuccessful();Http::assertNothingSent();
  }
+
+ public function test_refresh_failure_reports_safe_error_without_provider_secrets(): void {
+  $this->connection(true);
+  Http::fake(['oauth2.googleapis.com/token'=>Http::response(['error'=>'invalid_grant','error_description'=>'SECRET_PROVIDER_PAYLOAD'],400)]);
+  try {app(GmailOAuth::class)->accessToken();$this->fail('Invalid grant accepted');}
+  catch(\App\Services\Mail\GmailDeliveryException $e){
+   $this->assertStringContainsString('invalid_grant',$e->getMessage());
+   $this->assertStringNotContainsString('SECRET_PROVIDER_PAYLOAD',$e->getMessage());
+   $this->assertStringNotContainsString('OLD_REFRESH',$e->getMessage());
+  }
+ }
+ public function test_send_permission_error_has_actionable_safe_diagnostic(): void {
+  $this->connection();
+  Http::fake(['gmail.googleapis.com/gmail/v1/users/me/messages/send'=>Http::response(['error'=>['message'=>'SECRET_PROVIDER_PAYLOAD']],403)]);
+  try {Mail::mailer('gmail')->raw('Test',fn($message)=>$message->to('hsandcoattorney@gmail.com'));$this->fail('Forbidden send accepted');}
+  catch(\App\Services\Mail\GmailDeliveryException $e){
+   $this->assertStringContainsString('HTTP 403',$e->getMessage());
+   $this->assertStringContainsString('gmail.send',$e->getMessage());
+   $this->assertStringNotContainsString('SECRET_PROVIDER_PAYLOAD',$e->getMessage());
+  }
+  Http::assertSentCount(1);
+ }
 }

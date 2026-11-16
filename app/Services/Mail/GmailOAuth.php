@@ -59,9 +59,17 @@ class GmailOAuth
  private function tokens(array $data): array
  {
   try{$response=Http::asForm()->timeout(15)->post('https://oauth2.googleapis.com/token',$data+['client_id'=>config('gmail.client_id'),'client_secret'=>config('gmail.client_secret')]);}
-  catch(\Throwable){throw new RuntimeException('Tidak dapat menghubungi layanan token Google.');}
+  catch(\Throwable){throw new GmailDeliveryException('Tidak dapat menghubungi layanan token Google. Periksa DNS, TLS dan koneksi keluar server.');}
   $tokens=$response->json();
-  if(!$response->successful()||!is_array($tokens)||!filled($tokens['access_token']??null)) throw new RuntimeException('Otorisasi Google gagal atau dicabut. Hubungkan ulang Gmail melalui console.');
+  if(!$response->successful()||!is_array($tokens)||!filled($tokens['access_token']??null)) {
+   $reason = match (is_array($tokens) ? ($tokens['error'] ?? null) : null) {
+    'invalid_grant' => 'invalid_grant: otorisasi kedaluwarsa atau dicabut. Hubungkan ulang Gmail; periksa status Testing pada OAuth Google.',
+    'invalid_client' => 'invalid_client: Client ID atau Client Secret tidak diterima Google. Periksa Environment hosting.',
+    'unauthorized_client' => 'unauthorized_client: OAuth client tidak diizinkan menggunakan alur ini.',
+    default => 'Layanan token Google menolak permintaan. Periksa konfigurasi dan otorisasi Gmail.',
+   };
+   throw new GmailDeliveryException('Google OAuth HTTP '.$response->status().': '.$reason);
+  }
   return $tokens;
  }
 

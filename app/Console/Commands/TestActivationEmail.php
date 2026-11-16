@@ -65,6 +65,6 @@ class TestActivationEmail extends Command
             if(!AllowedActivationEmail::approved($email)){$this->error('Tujuan tidak termasuk email aktivasi yang diizinkan.');return self::FAILURE;}
             Mail::raw('Email uji Gmail API HSNCO. Pesan ini tidak mengaktifkan akun.',fn($message)=>$message->to($email)->subject('Uji pengiriman Gmail HSNCO'));
             $this->info('Pesan diterima Gmail API. Periksa inbox/spam penerima.');return self::SUCCESS;
-        }catch(\Throwable){$this->error('Gmail belum siap atau pengiriman gagal. Periksa konfigurasi, izin dan koneksi OAuth; hubungkan ulang bila token dicabut.');return self::FAILURE;}
+        }catch(\App\Services\Mail\GmailDeliveryException $e){$this->error($e->getMessage());return self::FAILURE;}catch(\Throwable){$this->error('Gmail belum siap atau pengiriman gagal. Periksa konfigurasi, izin dan koneksi OAuth; hubungkan ulang bila token dicabut.');return self::FAILURE;}
     }
 }
